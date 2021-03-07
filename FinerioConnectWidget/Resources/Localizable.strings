@@ -1,0 +1,32 @@
+/*
+  Localizable.strings
+  FinerioConnectWidget
+
+  Created by René Sandoval on 03/02/21.
+  Copyright © 2021 Finerio. All rights reserved.
+*/
+
+// General
+"company_name" = "Finerio Connect";
+"alert_button_cancel" = "Cancelar";
+"alert_button_error" = "Aceptar";
+"alert_button_ok" = "OK";
+"submit_label" = "Enviar información";
+
+// Errors
+"error_unexpected" = "Unexpected error";
+
+// Init Section
+"init_title" = "¡Hola René!";
+"init_subtitle" = "En ? queremos ofrecerte un mejor servicio.";
+
+// Banks Section
+"banks_title" = "Selecciona tu banco:";
+
+// Credential Section
+"create_credential_title" = "Introduce los datos con los que accedes a la banca en línea web de ?";
+"privacy_terms_url" = "https://finerioconnect.com/privacy";
+"terms_and_conditions_url" = "https://finerioconnect.com/license";
+
+// Account Status Section
+"synchronization_title" = "Agregando cuentas";
