@@ -26,7 +26,7 @@ pod 'FinerioAccountWidget'
 
 
 ```ruby
-pod 'FinerioAccountWidget', '~> 1.0'
+pod 'FinerioAccountWidget', '~> 1.1'
 ```
 
 and then run `pod install`. More info about CocoaPods [here](https://cocoapods.org)
@@ -35,12 +35,11 @@ and then run `pod install`. More info about CocoaPods [here](https://cocoapods.o
 
 In your application add the following code:
 
-### Swift
 
 First import the module:
 
 ``` swift
-import FinerioConnectWidget
+import FinerioAccountWidget
 ```
 
 and then the start:
