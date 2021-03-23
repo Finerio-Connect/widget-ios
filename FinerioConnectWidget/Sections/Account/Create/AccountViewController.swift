@@ -52,8 +52,8 @@ internal class AccountViewController: BaseViewController {
 
         accountsTableView.topAnchor(equalTo: animationView.bottomAnchor)
         accountsTableView.bottomAnchor(equalTo: view.bottomAnchor)
-        accountsTableView.leadingAnchor(equalTo: view.leadingAnchor, constant: 60)
-        accountsTableView.trailingAnchor(equalTo: view.trailingAnchor, constant: -60)
+        accountsTableView.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
+        accountsTableView.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
     }
 }
 
@@ -168,10 +168,6 @@ extension AccountViewController {
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, errorMessage: self.accountViewModel.errorMessage))
             case .updated:
                 self.accountsTableView.reloadData()
-
-                if self.accountViewModel.accountCreated && self.accountViewModel.transactionsCreated {
-                    self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
-                }
             case .interactive:
                 self.showAlertToken()
             }

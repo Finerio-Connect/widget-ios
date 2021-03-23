@@ -10,7 +10,7 @@ import Foundation
 
 enum APIRoute {
     static var magicLinkBaseURL = URL(staticString: "https://magiclink-api.finerioconnect.com")
-    static var apiV2FinerioBaseURL = URL(staticString: "https://api-v2.finerio.mx")
+    static var apiV2FinerioBaseURL = URL(staticString: Configuration.shared.environment == .sandbox ? "https://api-v2-sandbox.finerio.mx" : "https://api-v2.finerio.mx")
 
     static let pathCreateCredential = "j2GVbQs3kkcBEttuPWZihSFZkoWnIDwQt2zsGRmQZoitHzMllB"
     static let pathUpdateCredential = "p8U55qGnTMLb7HQzZfCjwcQARtVrrgyt8he9fQKz3KgAFPbAwb"

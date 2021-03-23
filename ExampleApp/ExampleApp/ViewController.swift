@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
+        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")
 
 //        finerioConnectWidget.palette = Palette(

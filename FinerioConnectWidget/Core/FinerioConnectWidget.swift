@@ -9,14 +9,6 @@
 import FirebaseCore
 import UIKit
 
-/// Type of Applivery's logs you want displayed in the debug console
-public enum LogLevel: Int {
-    case none = 0
-    case error = 1
-    case info = 2
-    case debug = 3
-}
-
 public final class FinerioConnectWidget: NSObject {
     // MARK: - Type Properties
 
@@ -32,6 +24,12 @@ public final class FinerioConnectWidget: NSObject {
     public var logLevel: LogLevel {
         didSet {
             configuration.logLevel = logLevel
+        }
+    }
+
+    public var environment: Environment {
+        didSet {
+            configuration.environment = environment
         }
     }
 
@@ -66,6 +64,7 @@ public final class FinerioConnectWidget: NSObject {
     internal init(configuration: Configuration) {
         self.configuration = configuration
         logLevel = .info
+        environment = .sandbox
         texts = Texts()
         palette = Palette()
         animations = Animations()

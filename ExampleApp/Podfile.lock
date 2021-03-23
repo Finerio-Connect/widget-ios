@@ -1,11 +1,11 @@
 PODS:
-  - FinerioAccountWidget (1.0.0):
-    - FinerioAccountWidget/Sources (= 1.0.0)
+  - FinerioAccountWidget (1.1.0):
+    - FinerioAccountWidget/Sources (= 1.1.0)
     - Firebase/Analytics (~> 7.7.0)
     - Firebase/Database (~> 7.7.0)
     - lottie-ios (= 3.2.1)
     - SwiftyRSA (= 1.6.0)
-  - FinerioAccountWidget/Sources (1.0.0):
+  - FinerioAccountWidget/Sources (1.1.0):
     - Firebase/Analytics (~> 7.7.0)
     - Firebase/Database (~> 7.7.0)
     - lottie-ios (= 3.2.1)
@@ -110,7 +110,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FinerioAccountWidget: 3fd7380e315b3adc4f7e1dd201ef182c7e3f9627
+  FinerioAccountWidget: 30c28deb981b0d893030224f8b2aa06ccc499a14
   Firebase: cd2ab85eec8170dc260186159f21072ecb679ad5
   FirebaseAnalytics: f3f8f75de34fe04141a69bb1c4bd7e24a80178e1
   FirebaseCore: ac35d680a0bf32319a59966a1478e0741536b97b

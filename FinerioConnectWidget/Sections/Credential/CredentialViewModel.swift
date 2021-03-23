@@ -59,7 +59,6 @@ internal class CredentialViewModel {
 
     func textFieldDidChange(_ textField: UITextField) {
         let text = textField.text ?? ""
-        logInfo(text)
         
         if !text.isEmpty {
             if !totalValidationTextfields.contains(textField.id ?? "") {

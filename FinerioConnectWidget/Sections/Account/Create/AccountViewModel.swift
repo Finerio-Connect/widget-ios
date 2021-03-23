@@ -42,16 +42,13 @@ internal class AccountViewModel {
                     }
 
                     if let status = values["status"] {
-                        if status as! String == Constants.CredentialStatus.success {
+                        if status as! String == Constants.CredentialStatus.created {
                             accountCreated = true
-                            transactionsCreated = true
-
-                            accounts.forEach { (account: AccountStatus) in
-                                if account.status == Constants.CredentialStatus.accountCreated {
-                                    transactionsCreated = false
-                                }
-                            }
                             serviceStatusHandler(.updated)
+                        }
+                        if status as! String == Constants.CredentialStatus.success {
+                            transactionsCreated = true
+                            serviceStatusHandler(.success)
                         }
 
                         if status as! String == Constants.CredentialStatus.failure {

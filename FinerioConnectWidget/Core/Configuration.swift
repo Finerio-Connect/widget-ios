@@ -23,6 +23,7 @@ internal final class Configuration {
     var automaticFetching: Bool!
     var state: String!
     var logLevel: LogLevel = .info
+    var environment: Environment = .sandbox
     var texts = Texts()
     var palette = Palette()
     var animations = Animations()

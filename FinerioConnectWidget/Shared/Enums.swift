@@ -22,3 +22,15 @@ enum FieldType: String {
     case password = "PASSWORD"
     case securityCode = "SECURITYCODE"
 }
+
+public enum LogLevel: Int {
+    case none = 0
+    case error = 1
+    case info = 2
+    case debug = 3
+}
+
+public enum Environment {
+    case sandbox
+    case production
+}
