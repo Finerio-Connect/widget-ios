@@ -54,12 +54,18 @@ finerioConnectWidget.start(
 
 ## 💡Advanced integration
 
+### Environment
+
+The default environment is sandbox, you can do this:
+``` swift
+finerioConnectWidget.environment = .production
+```
+
 ### Logs and debugging
 
 Logs and debugging
 In some cases you'll find usefull to see what is happening inside FinerioConnectWidget. If so, you can enable logs for debugging purposes.
 
-#### Swift
 
 ``` swift
 finerioConnectWidget.logLevel = .info
