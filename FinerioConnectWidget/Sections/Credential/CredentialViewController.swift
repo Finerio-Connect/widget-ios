@@ -13,6 +13,7 @@ internal class CredentialViewController: BaseViewController {
 
     fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
     fileprivate lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
+    fileprivate lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
     fileprivate lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
     fileprivate lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
     // fileprivate lazy var tyCLabel: UITextView = setupTyCLabel()
@@ -36,7 +37,7 @@ internal class CredentialViewController: BaseViewController {
     private func configureView() {
         title = credentialViewModel.getTitle()
 
-        [titleLabel, logoBankImageView, textFieldsTableView, tyCLabel, continueButton].forEach {
+        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
@@ -47,13 +48,17 @@ internal class CredentialViewController: BaseViewController {
         titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 20.0, secondValue: 50.0))
         titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
-        logoBankImageView.url(Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id))
+        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
         logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2)
         logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2) / 2)
         logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
         logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
 
-        textFieldsTableView.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 30.0))
+        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
+        helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
+        helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
+
+        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
         textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
         textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
 
@@ -88,6 +93,16 @@ extension CredentialViewController {
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
         return imageView
+    }
+
+    private func setupHelpWithCredentialsButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
+        button.setTitleColor(Configuration.shared.palette.mainTextColor, for: .normal)
+        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13.0 : 15.0)
+        button.setAttributedTitle(NSAttributedString(string: button.titleLabel!.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
+        button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
+        return button
     }
 
     private func setupTextFieldTableView() -> UITableView {
@@ -149,6 +164,17 @@ extension CredentialViewController {
 // MARK: - Actions
 
 extension CredentialViewController {
+    @objc private func didButtonHelp() {
+        let popup = Popup()
+        popup.imageView.image = UIImage.gifImageWithURL(Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id))
+
+        view.addSubview(popup)
+        popup.centerXAnchor(equalTo: view.centerXAnchor)
+        popup.centerYAnchor(equalTo: view.centerYAnchor)
+        popup.heightAnchor(equalTo: view.bounds.height)
+        popup.widthAnchor(equalTo: view.bounds.width)
+    }
+
     @objc private func createCredential() {
         startLoader()
         getTextFeildValuesFromTableView()

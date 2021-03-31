@@ -11,11 +11,12 @@ import UIKit
 internal class BankCollectionViewCell: UICollectionViewCell {
     static let id = "BankCollectionViewCell"
 
-    var bankImageView: UIImageView = {
+    lazy var bankImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -31,7 +32,6 @@ internal class BankCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(with bank: Bank) {
-        bankImageView.url(Constants.URLS.bankImageOff.replacingOccurrences(of: Constants.Placeholders.bankId, with: bank.id))
-        bankImageView.contentMode = .scaleAspectFit
+        bankImageView.setImage(with: URL(string: Constants.URLS.bankImageOff.replacingOccurrences(of: Constants.Placeholders.bankId, with: bank.id)))
     }
 }

@@ -34,6 +34,7 @@ internal struct Constants {
         }
 
         struct CredentialSection {
+            static let helpWithCredentialsLabel = "¿Dónde encuentro mis claves?"
             static let tyCLabel = "Al dar clic en Enviar información aceptas expresamente nuestros Términos de servicio así como nuestro Aviso de privacidad."
             static let titleDatePicker = "Fecha"
             static let doneButtonTitleDatePicker = "Ok"
@@ -78,6 +79,7 @@ internal struct Constants {
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_on.png"
+        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
     }
 
     /// Tags

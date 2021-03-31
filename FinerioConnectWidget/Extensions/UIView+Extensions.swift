@@ -126,6 +126,18 @@ internal extension UIView {
         widthAnchor.constraint(equalToConstant: constant).isActive = true
         return self
     }
+    
+    /// Adds a constraint (width) that defines one item’s attribute as equal to another item’s attribute plus a constant offset.
+    /// - Parameters:
+    ///   - anchor: A layout anchor.
+    ///   - multiplier: The multiplier constant for the constraint.
+    ///   - constant: The constant offset for the constraint.
+    @discardableResult
+    func widthAnchor(equalTo anchor: NSLayoutDimension, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalTo: anchor, multiplier: multiplier, constant: constant).isActive = true
+        return self
+    }
 
     /// Adds a constraint (width) that defines one item’s attribute as greater than or equal to another item’s attribute plus a constant offset.
     /// - Parameter constant: The constant offset for the constraint.

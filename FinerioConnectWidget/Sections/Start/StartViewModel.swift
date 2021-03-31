@@ -24,14 +24,7 @@ internal class StartViewModel {
             }
 
             SessionManager.shared.banks = result.value
-            self?.setImagesCache()
             self?.serviceStatusHandler(.loaded)
-        }
-    }
-    
-    fileprivate func setImagesCache() {
-        SessionManager.shared.banks?.forEach {
-            CacheImages().setCache(url: Constants.URLS.bankImageOff.replacingOccurrences(of: Constants.Placeholders.bankId, with: $0.id)) 
         }
     }
 }

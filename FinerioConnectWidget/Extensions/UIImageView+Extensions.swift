@@ -9,29 +9,62 @@
 import UIKit
 
 internal extension UIImageView {
-    func url(_ url: String?) {
-        DispatchQueue.global().async { [weak self] in
-            guard let stringURL = url, let url = URL(string: stringURL) else {
-                return
-            }
+    private enum AssociatedKeys {
+        static var CurrentTask = "CurrentTask"
+    }
 
-            func setImage(image: UIImage?) {
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
-            }
-
-            let urlToString = url.absoluteString as NSString
-            if let cachedImage = ImageStore.imageCache.object(forKey: urlToString) {
-                setImage(image: cachedImage)
-            } else if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    ImageStore.imageCache.setObject(image, forKey: urlToString)
-                    setImage(image: image)
-                }
-            } else {
-                setImage(image: Images.otherBanksOff.image())
+    var currentTask: URLSessionDataTask? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.CurrentTask) as? URLSessionDataTask
+        }
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(
+                    self,
+                    &AssociatedKeys.CurrentTask,
+                    newValue as URLSessionDataTask?,
+                    .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+                )
             }
         }
+    }
+
+    func setImage(with url: URL?, placeholder: UIImage? = nil, animated: Bool = true) {
+        currentTask?.cancel()
+
+        // Set the placeholder meanwhile the image is downloaded
+        image = placeholder
+
+        guard let url = url else { return }
+
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
+            replaceImage(cachedImage, animated: animated)
+        } else {
+            currentTask = URLSession.shared.dataTask(with: url) { data, _, _ in
+                if let data = data,
+                   let image = UIImage(data: data) {
+                    imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                    mainAsync { [weak self] in
+                        guard let self = self else { return }
+                        self.replaceImage(image, animated: animated)
+                    }
+                }
+            }
+            currentTask?.resume()
+        }
+    }
+
+    func replaceImage(_ image: UIImage, animated: Bool) {
+        guard animated else {
+            self.image = image
+            return
+        }
+
+        UIView.transition(with: self,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                              self.image = image
+                          })
     }
 }
