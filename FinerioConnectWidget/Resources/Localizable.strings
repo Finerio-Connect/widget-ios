@@ -1,10 +1,10 @@
 /*
-  Localizable.strings
-  FinerioConnectWidget
+   Localizable.strings
+   FinerioConnectWidget
 
-  Created by René Sandoval on 03/02/21.
-  Copyright © 2021 Finerio. All rights reserved.
-*/
+   Created by René Sandoval on 03/02/21.
+   Copyright © 2021 Finerio. All rights reserved.
+ */
 
 // General
 "company_name" = "Finerio Connect";
@@ -13,9 +13,6 @@
 "alert_button_ok" = "OK";
 "submit_label" = "Enviar información";
 
-// Errors
-"error_unexpected" = "Unexpected error";
-
 // Init Section
 "init_title" = "¡Hola René!";
 "init_subtitle" = "En ? queremos ofrecerte un mejor servicio.";
@@ -23,10 +20,28 @@
 // Banks Section
 "banks_title" = "Selecciona tu banco:";
 
-// Credential Section
+/*
+   Credential Section
+ */
 "create_credential_title" = "Introduce los datos con los que accedes a la banca en línea web de ?";
 "privacy_terms_url" = "https://finerioconnect.com/privacy";
 "terms_and_conditions_url" = "https://finerioconnect.com/license";
+
+// Error Codes
+"credentialWidgetService.create.widgetId.null" = "El Id del Widget es requerido";
+"credentialWidgetService.create.widgetId.notFound" = "Hubo un problema con el Id del Widget";
+"credentialWidgetService.create.username.null" = "El nombre de usuario es requerido";
+"credentialWidgetService.create.password.null" = "La contraseña es requerida";
+"credentialWidgetService.create.bankId.null" = "El Id del banco es requerido";
+"credentialWidgetService.create.validate.customerId.customerName.null" = "El Id o el nombre del cliente es requerido";
+
+"ConstraintViolationList.rfc.message" = "El RFC que escribiste es incorrecto";
+"ConstraintViolationList.password.message" = "La contraseña que escribiste es incorrecta";
+
+// Error Messages
+"error_unexpected" = "Unexpected error";
+"create_credential_title" = "Introduce los datos con los que accedes a la banca en línea web de ?";
+"general_error" = "Hubo un problema al crear la conexión a tu banco";
 
 // Account Status Section
 "synchronization_title" = "Agregando cuentas";

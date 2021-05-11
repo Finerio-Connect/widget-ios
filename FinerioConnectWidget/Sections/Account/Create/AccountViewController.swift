@@ -170,6 +170,7 @@ extension AccountViewController {
                 self.accountsTableView.reloadData()
             case .interactive:
                 self.showAlertToken()
+            case .error: break
             }
         }
     }

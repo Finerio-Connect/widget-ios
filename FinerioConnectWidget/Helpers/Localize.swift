@@ -9,7 +9,5 @@
 import Foundation
 
 public func localize(_ key: String) -> String {
-    let literal = NSLocalizedString(key, tableName: nil, bundle: Bundle.finerioConnectWidget(), value: "", comment: "")
-
-    return literal
+    return NSLocalizedString(key, tableName: nil, bundle: Bundle.finerioConnectWidget(), value: "", comment: "")
 }

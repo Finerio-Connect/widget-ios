@@ -124,6 +124,7 @@ extension StartViewController {
                 self.app.showAlert(self.startViewModel.errorMessage, viewController: self)
             case .updated: break
             case .interactive: break
+            case .error: break
             }
         }
     }

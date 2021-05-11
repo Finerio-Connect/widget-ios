@@ -166,7 +166,7 @@ extension CredentialViewController {
 extension CredentialViewController {
     @objc private func didButtonHelp() {
         let popup = Popup()
-        popup.imageView.image = UIImage.gifImageWithURL(Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id))
+        popup.setImage(UIImage.gifImageWithURL(Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
 
         view.addSubview(popup)
         popup.centerXAnchor(equalTo: view.centerXAnchor)
@@ -260,6 +260,8 @@ extension CredentialViewController {
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure))
             case .updated: break
             case .interactive: break
+            case .error:
+                self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }
         }
     }

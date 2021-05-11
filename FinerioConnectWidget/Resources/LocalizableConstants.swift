@@ -19,7 +19,7 @@ public let fLocaleAlertButtonCancel: String = localize("alert_button_cancel")
 public let fLocaleAlertButtonError: String = localize("alert_button_error")
 public let fLocaleAlertButtonOk: String = localize("alert_button_ok")
 
-// Error
+// Error Messages
 public let fLocaleErrorUnexpected: String = localize("error_unexpected")
 
 // Init Section

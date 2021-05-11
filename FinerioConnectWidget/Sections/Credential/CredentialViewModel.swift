@@ -6,9 +6,9 @@
 //  Copyright © 2021 Finerio Connect. All rights reserved.
 //
 
-import FirebaseDatabase
 import Foundation
 import UIKit
+import FirebaseDatabase
 
 internal class CredentialViewModel {
     var bank: Bank!
@@ -42,7 +42,7 @@ internal class CredentialViewModel {
         FinerioConnectWidgetAPI.createCredential(credential: credential) { result in
             if let error = result.error {
                 self.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
-                self.serviceStatusHandler(.failure)
+                self.serviceStatusHandler(.error)
                 return
             }
 
@@ -59,7 +59,7 @@ internal class CredentialViewModel {
 
     func textFieldDidChange(_ textField: UITextField) {
         let text = textField.text ?? ""
-        
+
         if !text.isEmpty {
             if !totalValidationTextfields.contains(textField.id ?? "") {
                 totalValidationTextfields.append(textField.id ?? "")

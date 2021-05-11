@@ -19,7 +19,7 @@ internal class BaseViewController: UIViewController {
     let currentLoadingView = LoadingViewController()
 
     override open func viewDidLoad() {
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, *) { 
             overrideUserInterfaceStyle = .light
         }
 

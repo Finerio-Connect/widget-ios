@@ -15,6 +15,7 @@ enum ServiceStatus {
     case updated
     case failure
     case interactive
+    case error
 }
 
 enum FieldType: String {

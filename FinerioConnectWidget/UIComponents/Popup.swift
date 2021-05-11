@@ -8,7 +8,7 @@
 import UIKit
 
 internal class Popup: UIView {
-    lazy var containerView: UIView = {
+    private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -16,7 +16,7 @@ internal class Popup: UIView {
         return view
     }()
 
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,8 +24,17 @@ internal class Popup: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private lazy var messageLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20)
+        label.textColor = Configuration.shared.palette.mainTextColor
+        return label
+    }()
 
-    lazy var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("X", for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
@@ -48,12 +57,22 @@ internal class Popup: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setImage(_ gifImage: UIImage?) {
+        if let image = gifImage {
+            imageView.image = image
+        }
+    }
+    
+    func setMessage(_ text: String) {
+        messageLabel.text = text
+    }
 
     fileprivate func animateIn() {
         containerView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         containerView.alpha = 0
 
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.containerView.alpha = 1
         }
@@ -69,11 +88,11 @@ internal class Popup: UIView {
     }
 
     fileprivate func setupView() {
-        backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        backgroundColor = .gray.withAlphaComponent(0.8)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(animateScaleOut))
-        isUserInteractionEnabled = true
-        addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tap)
 
         addSubview(containerView)
         containerView.centerXAnchor(equalTo: centerXAnchor)
@@ -85,6 +104,11 @@ internal class Popup: UIView {
         imageView.centerXAnchor(equalTo: containerView.centerXAnchor)
         imageView.centerYAnchor(equalTo: containerView.centerYAnchor)
         imageView.widthAnchor(equalTo: containerView.widthAnchor)
+        
+        containerView.addSubview(messageLabel)
+        messageLabel.centerXAnchor(equalTo: containerView.centerXAnchor)
+        messageLabel.centerYAnchor(equalTo: containerView.centerYAnchor)
+        messageLabel.widthAnchor(equalTo: containerView.widthAnchor)
 
         containerView.addSubview(closeButton)
         closeButton.topAnchor(equalTo: containerView.topAnchor, constant: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 0 : 15.0)

@@ -28,21 +28,22 @@ public struct ApiV2FinerioAPIError: Error {
             return nil
         }
 
-        var titleError = ""
-        var messageError = ""
+        var errorTitle = ""
+        var errorCode = ""
+
         if let errors = response?["errors"] as? [[String: Any]] {
             for error in errors {
                 if let title = error["title"] as? String {
-                    titleError = title
+                    errorTitle = title
                 }
 
-                if let detail = error["detail"] as? String {
-                    messageError = detail
+                if let code = error["code"] as? String {
+                    errorCode = code
                 }
             }
         }
 
-        error = titleError
-        message = messageError
+        error = errorTitle
+        message = localize(errorCode)
     }
 }

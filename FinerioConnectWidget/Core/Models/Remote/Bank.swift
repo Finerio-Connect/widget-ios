@@ -24,7 +24,7 @@ extension Bank: JSONMappable {
             return nil
         }
 
-        guard status == "ACTIVE" else { return nil }
+        guard status == "ACTIVE" || status == "PARTIALLY_ACTIVE" else { return nil }
 
         self.id = String(id)
         self.name = name
