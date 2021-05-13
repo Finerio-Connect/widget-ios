@@ -22,12 +22,8 @@ internal class StartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startLoader()
         startViewModel = viewModel as? StartViewModel
         configureView()
-
-        observerServiceStatus()
-        startViewModel.loadBanks()
     }
 
     private func configureView() {
@@ -92,6 +88,7 @@ extension StartViewController {
         button.setTitle(Constants.Texts.InitSection.titleButton, for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
         button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: 18.0)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
@@ -105,27 +102,5 @@ extension StartViewController {
 extension StartViewController {
     @objc private func goNext() {
         context?.initialize(coordinator: BankCoordinator(context: context!))
-    }
-}
-
-// MARK: - Observers View Model
-
-extension StartViewController {
-    private func observerServiceStatus() {
-        startViewModel?.serviceStatusHandler = { [weak self] status in
-            guard let `self` = self else { return }
-            self.stopLoader()
-            switch status {
-            case .active: break
-            case .success: break
-            case .loaded:
-                self.continueButton.addTarget(self, action: #selector(self.goNext), for: .touchUpInside)
-            case .failure:
-                self.app.showAlert(self.startViewModel.errorMessage, viewController: self)
-            case .updated: break
-            case .interactive: break
-            case .error: break
-            }
-        }
     }
 }

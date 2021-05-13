@@ -8,7 +8,7 @@
 
 import UIKit
 
-final internal class Images {
+internal final class Images {
     var rawValue: String
 
     init(_ value: String) {
@@ -16,10 +16,13 @@ final internal class Images {
     }
 
     func image() -> UIImage? {
-        return UIImage(named: rawValue, in: Bundle(for: FinerioConnectWidget.self), compatibleWith: nil)
+        return UIImage(named: rawValue, in: Bundle.finerioConnectWidget(), compatibleWith: nil)
     }
 }
 
 extension Images {
     static let otherBanksOff = Images("other_banks_off")
+    static let otherBanksOn = Images("other_banks_on")
+    static let eyeOpen = Images("eye_open")
+    static let eyeClosed = Images("eye_closed")
 }

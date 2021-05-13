@@ -32,6 +32,8 @@ internal class CredentialViewController: BaseViewController {
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
+
+        //        bankImageView.image = Images.eyeOpen.image()?.withRenderingMode(.alwaysTemplate)
     }
 
     private func configureView() {
