@@ -26,7 +26,7 @@ pod 'FinerioAccountWidget'
 
 
 ```ruby
-pod 'FinerioAccountWidget', '~> 1.1'
+pod 'FinerioAccountWidget', '~> 1.2'
 ```
 
 and then run `pod install`. More info about CocoaPods [here](https://cocoapods.org)
