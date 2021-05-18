@@ -15,16 +15,4 @@ internal class StartViewModel {
     func getTitle() -> String {
         return Constants.Titles.initSection
     }
-
-    func loadBanks() {
-        FinerioConnectWidgetAPI.banks { [weak self] result in
-            if let error = result.error {
-                self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
-                self?.serviceStatusHandler(.failure)
-            }
-
-            SessionManager.shared.banks = result.value
-            self?.serviceStatusHandler(.loaded)
-        }
-    }
 }

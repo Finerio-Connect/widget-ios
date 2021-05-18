@@ -16,8 +16,8 @@ internal final class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController = StartViewController()
-        viewController.viewModel = StartViewModel()
+        let viewController = BankViewController()
+        viewController.viewModel = BankViewModel()
         viewController.coordinator = self
         viewController.context = context
         context?.push(viewController: viewController)

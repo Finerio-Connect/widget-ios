@@ -86,6 +86,7 @@ internal struct Constants {
     struct Tags {
         static let loader = 200
         static let fieldSecurityCode = 33
+        static let fieldPassword = 66
     }
 
     /// Keys

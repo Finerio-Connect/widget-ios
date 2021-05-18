@@ -16,8 +16,10 @@ internal class BankViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        startLoader()
         bankViewModel = viewModel as? BankViewModel
-        configureView()
+        observerServiceStatus()
+        bankViewModel.loadBanks()
     }
 
     private func configureView() {
@@ -64,6 +66,28 @@ extension BankViewController {
         collectionView.delegate = self
         collectionView.register(BankCollectionViewCell.self, forCellWithReuseIdentifier: BankCollectionViewCell.id)
         return collectionView
+    }
+}
+
+// MARK: - Observers View Model
+
+extension BankViewController {
+    private func observerServiceStatus() {
+        bankViewModel?.serviceStatusHandler = { [weak self] status in
+            guard let `self` = self else { return }
+            self.stopLoader()
+            switch status {
+            case .active: break
+            case .success: break
+            case .loaded:
+                self.configureView()
+            case .failure:
+                self.app.showAlert(self.bankViewModel.errorMessage, viewController: self)
+            case .updated: break
+            case .interactive: break
+            case .error: break
+            }
+        }
     }
 }
 
