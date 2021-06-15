@@ -23,7 +23,6 @@
 		0FCBAF7F25F1795D00DA2D18 /* BankField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0425F1795C00DA2D18 /* BankField.swift */; };
 		0FCBAF8025F1795D00DA2D18 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0525F1795C00DA2D18 /* TransactionStatus.swift */; };
 		0FCBAF8125F1795D00DA2D18 /* FAANavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0725F1795C00DA2D18 /* FAANavigationController.swift */; };
-		0FCBAF8225F1795D00DA2D18 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0925F1795C00DA2D18 /* Theme.swift */; };
 		0FCBAF8325F1795D00DA2D18 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0A25F1795C00DA2D18 /* Texts.swift */; };
 		0FCBAF8425F1795D00DA2D18 /* ApiV2FinerioAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0C25F1795C00DA2D18 /* ApiV2FinerioAPIError.swift */; };
 		0FCBAF8525F1795D00DA2D18 /* FinerioConnectWidgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF0D25F1795C00DA2D18 /* FinerioConnectWidgetAPI.swift */; };
@@ -37,7 +36,6 @@
 		0FCBAF8D25F1795D00DA2D18 /* FinerioConnectWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1525F1795C00DA2D18 /* FinerioConnectWidget.swift */; };
 		0FCBAF8E25F1795D00DA2D18 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1625F1795C00DA2D18 /* Configuration.swift */; };
 		0FCBAF8F25F1795D00DA2D18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1825F1795C00DA2D18 /* Constants.swift */; };
-		0FCBAF9025F1795D00DA2D18 /* NavigationControllerFinerio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1925F1795C00DA2D18 /* NavigationControllerFinerio.swift */; };
 		0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1A25F1795C00DA2D18 /* BaseViewController.swift */; };
 		0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1B25F1795D00DA2D18 /* Enums.swift */; };
 		0FCBAF9325F1795D00DA2D18 /* AnimationsURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */; };
@@ -127,7 +125,6 @@
 		0FCBAF0425F1795C00DA2D18 /* BankField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankField.swift; sourceTree = "<group>"; };
 		0FCBAF0525F1795C00DA2D18 /* TransactionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStatus.swift; sourceTree = "<group>"; };
 		0FCBAF0725F1795C00DA2D18 /* FAANavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAANavigationController.swift; sourceTree = "<group>"; };
-		0FCBAF0925F1795C00DA2D18 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0FCBAF0A25F1795C00DA2D18 /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		0FCBAF0C25F1795C00DA2D18 /* ApiV2FinerioAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiV2FinerioAPIError.swift; sourceTree = "<group>"; };
 		0FCBAF0D25F1795C00DA2D18 /* FinerioConnectWidgetAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinerioConnectWidgetAPI.swift; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 		0FCBAF1525F1795C00DA2D18 /* FinerioConnectWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinerioConnectWidget.swift; sourceTree = "<group>"; };
 		0FCBAF1625F1795C00DA2D18 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0FCBAF1825F1795C00DA2D18 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0FCBAF1925F1795C00DA2D18 /* NavigationControllerFinerio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerFinerio.swift; sourceTree = "<group>"; };
 		0FCBAF1A25F1795C00DA2D18 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0FCBAF1B25F1795D00DA2D18 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsURLS.swift; sourceTree = "<group>"; };
@@ -252,7 +248,6 @@
 				0FCBAF0625F1795C00DA2D18 /* Components */,
 				0FCBAEF825F1795C00DA2D18 /* Managers */,
 				0FCBAEFC25F1795C00DA2D18 /* Models */,
-				0FCBAF0825F1795C00DA2D18 /* Theme */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -304,14 +299,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		0FCBAF0825F1795C00DA2D18 /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				0FCBAF0925F1795C00DA2D18 /* Theme.swift */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
 		0FCBAF0B25F1795C00DA2D18 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,7 +323,6 @@
 				0FCBAF1825F1795C00DA2D18 /* Constants.swift */,
 				0FCBAF1B25F1795D00DA2D18 /* Enums.swift */,
 				0FCBAF1E25F1795D00DA2D18 /* LoadingViewController.swift */,
-				0FCBAF1925F1795C00DA2D18 /* NavigationControllerFinerio.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -735,7 +721,6 @@
 				0FCBAF7725F1795D00DA2D18 /* ThemeManager.swift in Sources */,
 				0FCBAF8F25F1795D00DA2D18 /* Constants.swift in Sources */,
 				0FCBAF7925F1795D00DA2D18 /* Animations.swift in Sources */,
-				0FCBAF8225F1795D00DA2D18 /* Theme.swift in Sources */,
 				0FCBAF8A25F1795D00DA2D18 /* FinerioConnectWidgetAPIURLEncoding.swift in Sources */,
 				0FCBAF9325F1795D00DA2D18 /* AnimationsURLS.swift in Sources */,
 				0FCBAF8C25F1795D00DA2D18 /* App.swift in Sources */,
@@ -747,7 +732,6 @@
 				0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */,
 				0FCBAFAE25F1795D00DA2D18 /* UIViewController+Extension.swift in Sources */,
 				0FCBAFCE25F1795D00DA2D18 /* UIBezierPath+Circle.swift in Sources */,
-				0FCBAF9025F1795D00DA2D18 /* NavigationControllerFinerio.swift in Sources */,
 				0FCBAFAA25F1795D00DA2D18 /* String+Extensions.swift in Sources */,
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,

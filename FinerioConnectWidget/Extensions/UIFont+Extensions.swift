@@ -8,17 +8,20 @@
 
 import UIKit
 
-extension UIFont {
-    func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
-        let descriptor = fontDescriptor.withSymbolicTraits(traits)
-        return UIFont(descriptor: descriptor!, size: 0) // size 0 means keep the size as it is
+internal extension UIFont {
+    class func fcLighFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Constants.Fonts.lighFont, size: size) ?? .systemFont(ofSize: size, weight: .light)
     }
 
-    func bold() -> UIFont {
-        return withTraits(traits: .traitBold)
+    class func fcRegularFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Constants.Fonts.regularFont, size: size) ?? .systemFont(ofSize: size)
     }
 
-    func italic() -> UIFont {
-        return withTraits(traits: .traitItalic)
+    class func fcBoldFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Constants.Fonts.boldFont, size: size) ?? .boldSystemFont(ofSize: size)
+    }
+
+    class func fcItalicFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Constants.Fonts.italicFont, size: size) ?? .italicSystemFont(ofSize: size)
     }
 }

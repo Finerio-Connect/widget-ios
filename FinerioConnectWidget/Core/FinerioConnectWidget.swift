@@ -51,6 +51,12 @@ public final class FinerioConnectWidget: NSObject {
         }
     }
 
+    public var font: String = "" {
+        didSet {
+            configuration.font = font
+        }
+    }
+
     // MARK: - Private properties
 
     private let configuration: Configuration

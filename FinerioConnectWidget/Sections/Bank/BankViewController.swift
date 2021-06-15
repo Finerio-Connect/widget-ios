@@ -49,7 +49,7 @@ extension BankViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = Configuration.shared.texts.banksTitle
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20.0)?.bold()
+        label.font = .fcBoldFont(ofSize: 20)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }

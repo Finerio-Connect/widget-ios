@@ -52,7 +52,7 @@ open class DatePickerDialog: UIView {
     @objc public init(
         textColor: UIColor? = nil,
         buttonColor: UIColor? = nil,
-        font: UIFont = .boldSystemFont(ofSize: 15),
+        font: UIFont? = nil,
         locale: Locale? = nil,
         showCancelButton: Bool = true
     ) {
@@ -60,7 +60,7 @@ open class DatePickerDialog: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         self.textColor = textColor ?? DPDColors.text
         self.buttonColor = buttonColor ?? DPDColors.accent
-        self.font = font
+        self.font = .fcBoldFont(ofSize: 15)
         self.showCancelButton = showCancelButton
         self.locale = locale
         setupView()
