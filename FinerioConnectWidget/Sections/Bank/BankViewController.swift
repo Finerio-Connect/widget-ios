@@ -59,7 +59,6 @@ extension BankViewController {
         layout.scrollDirection = .vertical
 
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
