@@ -1,6 +1,6 @@
 # Finerio Connect iOS Widget
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 ![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
 
@@ -71,6 +71,22 @@ In some cases you'll find usefull to see what is happening inside FinerioConnect
 finerioConnectWidget.logLevel = .info
 ```
 
+### Custom fonts
+
+You can customize the default SDK font by adding the font name, keeping the following convention in mind:
+
+- Ubuntu**-Light**
+
+- Ubuntu**-Regular**
+
+- Ubuntu**-Bold**
+
+- Ubuntu**-Italic**
+
+``` swift
+finerioConnectWidget.font = "Ubuntu"
+```
+
 ### Customize colors
 
 You can create a new instance of `Palette` class and assign it to `FinerioConnectWidget.shared.palette`
@@ -108,8 +124,7 @@ FinerioConnectWidget.shared.texts = Texts(
     banksTitle: "Banks Availables",
     createCredentialTitle: "Enter your credentials for ?",
     submitLabel: "Submit",
-    synchronizationTitle: "Synchronization",
-    mainFont: "Ubuntu"
+    synchronizationTitle: "Synchronization"
 )
 ```
 ### Customize animations
@@ -127,6 +142,6 @@ FinerioConnectWidget.shared.animations = Animations(
 ```
 
 ## Dependency
-  - Firebase iOS SDK with v7.7.0
+  - Firebase iOS SDK with v8.0.0
   - SwiftyRSA with v1.6.0
-  - Lottie iOS SDK with 3.2.1
+  - Lottie iOS SDK with 3.2.3

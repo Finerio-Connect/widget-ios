@@ -31,8 +31,6 @@ internal class CredentialViewController: BaseViewController {
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
-
-        //        bankImageView.image = Images.eyeOpen.image()?.withRenderingMode(.alwaysTemplate)
     }
 
     private func configureView() {
@@ -265,16 +263,6 @@ extension CredentialViewController {
                 self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }
         }
-    }
-
-    private func animateViewMoving(up: Bool, moveValue: CGFloat) {
-        let movementDuration: TimeInterval = 0.3
-        let movement: CGFloat = (up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        view.frame = view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
     }
 }
 
