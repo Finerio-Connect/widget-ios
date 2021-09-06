@@ -116,4 +116,11 @@ internal struct Constants {
         static let PORTRAIT_KEYBOARD_HEIGHT: CGFloat = 216
         static let LANDSCAPE_KEYBOARD_HEIGHT: CGFloat = 162
     }
+
+    struct Fonts {
+        static let lighFont = "\(Configuration.shared.font)-Light"
+        static let regularFont = "\(Configuration.shared.font)-Regular"
+        static let boldFont = "\(Configuration.shared.font)-Bold"
+        static let italicFont = "\(Configuration.shared.font)-Italic"
+    }
 }

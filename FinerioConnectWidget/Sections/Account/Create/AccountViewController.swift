@@ -65,7 +65,7 @@ extension AccountViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = Configuration.shared.texts.synchronizationTitle
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))?.bold()
+        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }

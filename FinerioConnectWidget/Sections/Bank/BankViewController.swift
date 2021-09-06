@@ -49,7 +49,7 @@ extension BankViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = Configuration.shared.texts.banksTitle
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20.0)?.bold()
+        label.font = .fcBoldFont(ofSize: 20)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -59,7 +59,6 @@ extension BankViewController {
         layout.scrollDirection = .vertical
 
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear

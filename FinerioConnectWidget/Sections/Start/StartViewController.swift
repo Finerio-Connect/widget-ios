@@ -60,7 +60,7 @@ extension StartViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "¡Hola \(Configuration.shared.customerName)!"
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 17.0)
+        label.font = .fcRegularFont(ofSize: 17)
         label.textColor = Configuration.shared.palette.mainColor
         return label
     }
@@ -69,7 +69,7 @@ extension StartViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: Configuration.shared.texts.companyName)
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20.0)?.bold()
+        label.font = .fcBoldFont(ofSize: 20)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -78,7 +78,7 @@ extension StartViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = Constants.Texts.InitSection.bodyLabel
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 15.0)
+        label.font = .fcRegularFont(ofSize: 15)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -89,7 +89,7 @@ extension StartViewController {
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

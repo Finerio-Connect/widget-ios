@@ -138,7 +138,7 @@ extension AccountStatusViewController {
         label.numberOfLines = 0
         label.text = accountStatusViewModel.serviceStatus == ServiceStatus.success ? Constants.Texts.StatusSection.successTitleLabel : Constants.Texts.StatusSection.failureTitleLabel
         label.textAlignment = .center
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 30.0)?.bold()
+        label.font = .fcBoldFont(ofSize: 30.0)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -148,7 +148,7 @@ extension AccountStatusViewController {
         label.numberOfLines = 0
         label.text = accountStatusViewModel.serviceStatus == ServiceStatus.success ? Constants.Texts.StatusSection.successSubtitleLabel : "\(Constants.Texts.StatusSection.failureSubtitleLabel) \(accountStatusViewModel.errorMessage ?? "")"
         label.textAlignment = .center
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 16.0)
+        label.font = .fcRegularFont(ofSize: 16)
         label.textColor = accountStatusViewModel.serviceStatus == ServiceStatus.success ? Configuration.shared.palette.mainColor : .red
         return label
     }
@@ -162,7 +162,7 @@ extension AccountStatusViewController {
         }
         button.addTarget(self, action: #selector(exit), for: .touchUpInside)
         button.setTitleColor(color == Configuration.shared.palette.mainColor ? .white : Configuration.shared.palette.mainColor, for: .normal)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

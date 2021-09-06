@@ -16,7 +16,6 @@ internal class CredentialViewController: BaseViewController {
     fileprivate lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
     fileprivate lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
     fileprivate lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
-    // fileprivate lazy var tyCLabel: UITextView = setupTyCLabel()
     fileprivate lazy var continueButton: UIButton = setupContinueButton()
 
     let datePicker = DatePickerDialog()
@@ -32,8 +31,6 @@ internal class CredentialViewController: BaseViewController {
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
-
-        //        bankImageView.image = Images.eyeOpen.image()?.withRenderingMode(.alwaysTemplate)
     }
 
     private func configureView() {
@@ -84,7 +81,7 @@ extension CredentialViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = Configuration.shared.texts.createCredentialTitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))?.bold()
+        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -101,7 +98,7 @@ extension CredentialViewController {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
         button.setTitleColor(Configuration.shared.palette.mainTextColor, for: .normal)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13.0 : 15.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13.0 : 15.0)
         button.setAttributedTitle(NSAttributedString(string: button.titleLabel!.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
         button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
         return button
@@ -124,7 +121,7 @@ extension CredentialViewController {
         let label = InteractiveLinkLabel()
         label.numberOfLines = 0
         label.text = Constants.Texts.CredentialSection.tyCLabel
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 12.0)
+        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12.0 : 14.0)
         label.textAlignment = .center
         label.textColor = Configuration.shared.palette.termsTextColor
 
@@ -153,7 +150,7 @@ extension CredentialViewController {
         button.setTitle(Configuration.shared.texts.submitLabel, for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)
         button.alpha = 0.5
         button.isEnabled = false
         button.layer.masksToBounds = true
@@ -266,16 +263,6 @@ extension CredentialViewController {
                 self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }
         }
-    }
-
-    private func animateViewMoving(up: Bool, moveValue: CGFloat) {
-        let movementDuration: TimeInterval = 0.3
-        let movement: CGFloat = (up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        view.frame = view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
     }
 }
 

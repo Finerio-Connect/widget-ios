@@ -13,9 +13,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Example FinerioConnectWidget"
-
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
+        finerioConnectWidget.font = "Ubuntu"
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")
 

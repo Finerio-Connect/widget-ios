@@ -29,7 +29,7 @@ internal class Popup: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20)
+        label.font = .fcRegularFont(ofSize: 20)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }()
@@ -39,7 +39,7 @@ internal class Popup: UIView {
         button.setTitle("X", for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 15 : 18)
+        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 15.0 : 18.0)
         button.addTarget(self, action: #selector(animateScaleOut), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.clipsToBounds = true

@@ -19,7 +19,7 @@ internal class AccountTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)?.bold()
+        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }()

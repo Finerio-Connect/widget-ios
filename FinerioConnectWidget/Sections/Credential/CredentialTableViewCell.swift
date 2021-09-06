@@ -15,7 +15,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)?.bold()
+        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
         label.textColor = Configuration.shared.palette.mainColor
         return label
     }()
@@ -31,7 +31,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         textField.layer.borderColor = Configuration.shared.palette.mainColor.cgColor
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
-        textField.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
+        textField.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
         return textField
     }()
 

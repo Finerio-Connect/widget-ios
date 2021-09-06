@@ -14,7 +14,6 @@ public final class Texts: NSObject {
     public var synchronizationTitle: String
     public var privacyTermsUrl: String
     public var termsAndConditionsUrl: String
-    public var mainFont: String
 
     @objc public init(
         companyName: String = fLocaleCompanyName,
@@ -23,8 +22,7 @@ public final class Texts: NSObject {
         submitLabel: String = fLocaleSubmitLabel,
         synchronizationTitle: String = fLocaleSynchronizationTitle,
         privacyTermsUrl: String = fLocalePrivacyTermsUrl,
-        termsAndConditionsUrl: String = fLocaletermsAndConditionsUrl,
-        mainFont: String = "Helvetica") {
+        termsAndConditionsUrl: String = fLocaletermsAndConditionsUrl) {
         self.companyName = companyName
         self.banksTitle = banksTitle
         self.createCredentialTitle = createCredentialTitle
@@ -32,7 +30,6 @@ public final class Texts: NSObject {
         self.synchronizationTitle = synchronizationTitle
         self.privacyTermsUrl = privacyTermsUrl
         self.termsAndConditionsUrl = termsAndConditionsUrl
-        self.mainFont = mainFont
     }
 }
 
@@ -44,7 +41,6 @@ enum Literal: CustomStringConvertible {
     case synchronizationTitle
     case privacyTermsUrl
     case termsAndConditionsUrl
-    case mainFont
 
     var description: String {
         return literal(self) ?? String(hashValue)
@@ -62,6 +58,5 @@ func literal(_ literal: Literal) -> String? {
     case .synchronizationTitle: return literals.synchronizationTitle
     case .privacyTermsUrl: return literals.privacyTermsUrl
     case .termsAndConditionsUrl: return literals.termsAndConditionsUrl
-    case .mainFont: return literals.mainFont
     }
 }
