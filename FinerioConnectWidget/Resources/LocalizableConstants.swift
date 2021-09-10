@@ -28,6 +28,10 @@ public let fLocaleInitSubtitle: String = localize("init_subtitle")
 
 // Banks Section
 public let fLocaleBanksTitle: String = localize("banks_title")
+public let fLocaleCountriesTitle: String = localize("countries_title")
+public let fLocalePersonalBankTitle: String = localize("personal_bank_title")
+public let fLocaleBusinessBankTitle: String = localize("business_bank_title")
+public let fLocaleFiscalTitle: String = localize("fiscal_title")
 
 // CredentialCredential Section
 public let fLocaleCreateCredentialTitle: String = localize("create_credential_title")

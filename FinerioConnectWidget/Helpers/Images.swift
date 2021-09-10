@@ -25,4 +25,6 @@ extension Images {
     static let otherBanksOn = Images("other_banks_on")
     static let eyeOpen = Images("eye_open")
     static let eyeClosed = Images("eye_closed")
+    static let downArrow = Images("down_arrow")
+    static let cancelButton = Images("cancel_button")
 }

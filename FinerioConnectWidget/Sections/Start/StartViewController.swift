@@ -10,12 +10,12 @@ import FirebaseDatabase
 import UIKit
 
 internal class StartViewController: BaseViewController {
-    internal var startViewModel: StartViewModel!
+    private var startViewModel: StartViewModel!
 
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var subtitleLabel: UILabel = setupSubtitleLabel()
-    fileprivate lazy var bodyLabel: UILabel = setupBodyLabel()
-    fileprivate lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var countriesLabel: UILabel = setupTitleLabel()
+    private lazy var subtitleLabel: UILabel = setupSubtitleLabel()
+    private lazy var bodyLabel: UILabel = setupBodyLabel()
+    private lazy var continueButton: UIButton = setupContinueButton()
 
     private let indicator = ActivityIndicatorView()
 
@@ -29,17 +29,17 @@ internal class StartViewController: BaseViewController {
     private func configureView() {
         title = startViewModel.getTitle()
 
-        [titleLabel, subtitleLabel, bodyLabel, continueButton].forEach {
+        [countriesLabel, subtitleLabel, bodyLabel, continueButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
 
-        titleLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 30.0, secondValue: 50.0))
-        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
+        countriesLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
+        countriesLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 30.0, secondValue: 50.0))
+        countriesLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
         subtitleLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
-        subtitleLabel.topAnchor(equalTo: titleLabel.bottomAnchor, constant: getConstraintConstant(firstValue: 25.0, secondValue: 50.0))
+        subtitleLabel.topAnchor(equalTo: countriesLabel.bottomAnchor, constant: getConstraintConstant(firstValue: 25.0, secondValue: 50.0))
         subtitleLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
         bodyLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
@@ -68,7 +68,7 @@ extension StartViewController {
     private func setupSubtitleLabel() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: Configuration.shared.texts.companyName)
+        label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: literal(.companyName) ?? "")
         label.font = .fcBoldFont(ofSize: 20)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label

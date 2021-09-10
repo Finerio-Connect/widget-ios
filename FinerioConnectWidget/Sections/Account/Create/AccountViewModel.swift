@@ -13,8 +13,6 @@ internal class AccountViewModel {
     var token: String!
     var credentialId: String!
     var accounts: [AccountStatus] = []
-    var currentAccountId: String = ""
-    var accountCreated: Bool = false
     var transactionsCreated: Bool = false
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
@@ -37,33 +35,37 @@ internal class AccountViewModel {
         DispatchQueue.main.async {
             self.databaseReference.child(Constants.Keys.firebaseNode).child(self.credentialId).observe(.value, with: { [self] snapshot in
                 if let values = snapshot.value as? [String: Any] {
+                    logInfo(values.description)
+
                     if let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
                         processAccountsStatus(dataSnapshot: dataSnapshot)
                     }
 
-                    if let status = values["status"] {
-                        if status as! String == Constants.CredentialStatus.created {
-                            accountCreated = true
+                    if let status = values["status"] as? String {
+                        if status == Constants.CredentialStatus.created {
                             serviceStatusHandler(.updated)
                         }
-                        if status as! String == Constants.CredentialStatus.success {
+
+                        if status == Constants.CredentialStatus.success && !transactionsCreated {
                             transactionsCreated = true
                             serviceStatusHandler(.success)
                         }
 
-                        if status as! String == Constants.CredentialStatus.failure {
+                        if status == Constants.CredentialStatus.failure {
                             errorMessage = values["message"] as? String
                             serviceStatusHandler(.failure)
                         }
 
-                        if status as! String == Constants.CredentialStatus.interactive {
+                        if status == Constants.CredentialStatus.interactive {
                             token = values["bankToken"] as? String
                             serviceStatusHandler(.interactive)
                         }
                     }
                 }
             }) { error in
-                print(error.localizedDescription)
+                logError(error as NSError)
+                self.errorMessage = error.localizedDescription
+                self.serviceStatusHandler(.failure)
             }
         }
     }
@@ -83,8 +85,6 @@ internal class AccountViewModel {
                     let filtered = accounts.filter { accountFound in
                         accountFound.id == account.key
                     }
-
-                    currentAccountId = account.key
 
                     if filtered.isEmpty {
                         accounts.append(transaction)

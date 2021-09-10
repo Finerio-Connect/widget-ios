@@ -20,6 +20,9 @@ internal final class Configuration {
     var widgetId: String = ""
     var customerId: String?
     var customerName: String = ""
+    var countryCode: String = Constants.Country.code
+    var showCountryOptions: Bool = true
+    var bankType: String = ""
     var automaticFetching: Bool!
     var state: String!
     var logLevel: LogLevel = .info

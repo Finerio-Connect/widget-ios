@@ -9,14 +9,15 @@
 import UIKit
 
 internal class CredentialViewController: BaseViewController {
-    internal var credentialViewModel: CredentialViewModel!
+    private var credentialViewModel: CredentialViewModel!
 
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
-    fileprivate lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
-    fileprivate lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
-    fileprivate lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
-    fileprivate lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var titleLabel: UILabel = setupTitleLabel()
+    private lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
+    private lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
+    private lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
+    private lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
+    private lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var helpDialog = CredentialHelpDialog()
 
     let datePicker = DatePickerDialog()
     var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
@@ -36,7 +37,7 @@ internal class CredentialViewController: BaseViewController {
     private func configureView() {
         title = credentialViewModel.getTitle()
 
-        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton].forEach {
+        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton, helpDialog].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
@@ -44,20 +45,20 @@ internal class CredentialViewController: BaseViewController {
         let generalWidth = view.layer.frame.width - 100
 
         titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 20.0, secondValue: 50.0))
+        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
-        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
-        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2)
-        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2) / 2)
+        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)), defaultImage: Images.otherBanksOn.image())
+        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
+        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
         logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
         logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
 
-        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
+        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
         helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
 
-        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
+        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
         textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
 
@@ -66,10 +67,15 @@ internal class CredentialViewController: BaseViewController {
         tyCLabel.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: 10)
         tyCLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
-        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40.0, secondValue: 50.0))
+        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40, secondValue: 50))
         continueButton.widthAnchor(equalTo: generalWidth)
-        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20.0, secondValue: -30.0))
+        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20, secondValue: -30))
         continueButton.centerXAnchor(equalTo: view.centerXAnchor)
+
+        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
+        helpDialog.heightAnchor(equalTo: view.bounds.height)
+        helpDialog.widthAnchor(equalTo: view.bounds.width)
     }
 }
 
@@ -80,8 +86,8 @@ extension CredentialViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = Configuration.shared.texts.createCredentialTitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
-        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
+        label.text = literal(.createCredentialTitle)!.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
+        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16, secondValue: 18))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -98,7 +104,7 @@ extension CredentialViewController {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
         button.setTitleColor(Configuration.shared.palette.mainTextColor, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13.0 : 15.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13 : 15)
         button.setAttributedTitle(NSAttributedString(string: button.titleLabel!.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
         button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
         return button
@@ -121,17 +127,17 @@ extension CredentialViewController {
         let label = InteractiveLinkLabel()
         label.numberOfLines = 0
         label.text = Constants.Texts.CredentialSection.tyCLabel
-        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12.0 : 14.0)
+        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.textAlignment = .center
         label.textColor = Configuration.shared.palette.termsTextColor
 
         let plainAttributedString = NSMutableAttributedString(string: "Al dar clic en Enviar información aceptas expresamente nuestros ", attributes: nil)
         let string = "Términos de servicio"
-        let attributedLinkString = NSMutableAttributedString(string: string, attributes: [NSAttributedString.Key.link: URL(string: Configuration.shared.texts.termsAndConditionsUrl)!])
+        let attributedLinkString = NSMutableAttributedString(string: string, attributes: [NSAttributedString.Key.link: URL(string: literal(.termsAndConditionsUrl)!)!])
 
         let plainAttributedString2 = NSMutableAttributedString(string: " así como nuestro ", attributes: nil)
         let string2 = "Aviso de privacidad"
-        let attributedLinkString2 = NSMutableAttributedString(string: string2, attributes: [NSAttributedString.Key.link: URL(string: Configuration.shared.texts.privacyTermsUrl)!])
+        let attributedLinkString2 = NSMutableAttributedString(string: string2, attributes: [NSAttributedString.Key.link: URL(string: literal(.privacyTermsUrl)!)!])
 
         let fullAttributedString = NSMutableAttributedString()
         fullAttributedString.append(plainAttributedString)
@@ -147,10 +153,10 @@ extension CredentialViewController {
 
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(Configuration.shared.texts.submitLabel, for: .normal)
+        button.setTitle(literal(.submitLabel), for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
         button.alpha = 0.5
         button.isEnabled = false
         button.layer.masksToBounds = true
@@ -164,14 +170,10 @@ extension CredentialViewController {
 
 extension CredentialViewController {
     @objc private func didButtonHelp() {
-        let popup = Popup()
-        popup.setImage(UIImage.gifImageWithURL(Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
-
-        view.addSubview(popup)
-        popup.centerXAnchor(equalTo: view.centerXAnchor)
-        popup.centerYAnchor(equalTo: view.centerYAnchor)
-        popup.heightAnchor(equalTo: view.bounds.height)
-        popup.widthAnchor(equalTo: view.bounds.width)
+        DispatchQueue.main.async {
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: self.credentialViewModel.bank.id)
+            self.helpDialog.show()
+        }
     }
 
     @objc private func createCredential() {
@@ -247,6 +249,7 @@ extension CredentialViewController {
             guard let `self` = self else { return }
             self.stopLoader()
             switch status {
+            case .updated, .interactive: break
             case .active:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
             case .success:
@@ -257,8 +260,6 @@ extension CredentialViewController {
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
             case .failure:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure))
-            case .updated: break
-            case .interactive: break
             case .error:
                 self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }

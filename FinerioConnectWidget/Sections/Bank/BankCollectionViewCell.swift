@@ -32,6 +32,6 @@ internal class BankCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(with bank: Bank) {
-        bankImageView.setImage(with: URL(string: Constants.URLS.bankImageOff.replacingOccurrences(of: Constants.Placeholders.bankId, with: bank.id)))
+        bankImageView.setImage(with: URL(string: Constants.URLS.bankImageOff.replacingOccurrences(of: Constants.Placeholders.bankId, with: bank.id)), defaultImage: Images.otherBanksOff.image())
     }
 }

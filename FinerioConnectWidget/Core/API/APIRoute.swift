@@ -15,7 +15,8 @@ enum APIRoute {
     static let pathCreateCredential = "j2GVbQs3kkcBEttuPWZihSFZkoWnIDwQt2zsGRmQZoitHzMllB"
     static let pathUpdateCredential = "p8U55qGnTMLb7HQzZfCjwcQARtVrrgyt8he9fQKz3KgAFPbAwb"
 
-    case banks
+    case countries
+    case banks(country: String, type: String)
     case bankFields(bankId: String)
     case createCredential
     case createCredentialToken
@@ -25,8 +26,10 @@ extension APIRoute: Routable {
     var url: URL {
         let path: String = {
             switch self {
-            case .banks:
-                return "/banks"
+            case .countries:
+                return "/countries"
+            case let .banks(country: _country, type: _type):
+                return "/banks?country=\(_country)&type=\(_type)"
             case let .bankFields(bankId: _bankId):
                 return "/banks/\(_bankId)/fields"
             case .createCredential:

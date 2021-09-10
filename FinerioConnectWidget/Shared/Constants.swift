@@ -32,6 +32,11 @@ internal struct Constants {
                 """
             static let titleButton = "Continuar"
         }
+        
+        struct BankSection {
+            static let titleButton = "Seleccionar"
+            static let labelEmpty = "No hay bancos disponibles"
+        }
 
         struct CredentialSection {
             static let helpWithCredentialsLabel = "¿Dónde encuentro mis claves?"
@@ -122,5 +127,22 @@ internal struct Constants {
         static let regularFont = "\(Configuration.shared.font)-Regular"
         static let boldFont = "\(Configuration.shared.font)-Bold"
         static let italicFont = "\(Configuration.shared.font)-Italic"
+    }
+
+    struct Country {
+        static let name = "México"
+        static let code = "MX"
+        static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
+        
+        struct bankType {
+            static let personal = "personal"
+            static let business = "business"
+            static let fiscal = "fiscal"
+        }
+    }
+
+    struct Color {
+        static let grayColor = "#989DB3"
+        static let segmentColor = "#EEEEF0"
     }
 }

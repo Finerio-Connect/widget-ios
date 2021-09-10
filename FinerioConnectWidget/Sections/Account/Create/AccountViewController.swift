@@ -10,11 +10,11 @@ import Lottie
 import UIKit
 
 internal class AccountViewController: BaseViewController {
-    internal var accountViewModel: AccountViewModel!
+    private var accountViewModel: AccountViewModel!
 
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var animationView: AnimationView = setupAnimationView()
-    fileprivate lazy var accountsTableView: UITableView = setupAccountsTableView()
+    private lazy var titleLabel: UILabel = setupTitleLabel()
+    private lazy var animationView: AnimationView = setupAnimationView()
+    private lazy var accountsTableView: UITableView = setupAccountsTableView()
 
     var credentialToken = CredentialToken(widgetId: Configuration.shared.widgetId)
 
@@ -33,6 +33,8 @@ internal class AccountViewController: BaseViewController {
 
     private func configureView() {
         title = accountViewModel.getTitle()
+        
+        navigationController?.navigationBar.isHidden = true
 
         [titleLabel, animationView, accountsTableView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +66,7 @@ extension AccountViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = Configuration.shared.texts.synchronizationTitle
+        label.text = literal(.synchronizationTitle)
         label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
@@ -160,17 +162,15 @@ extension AccountViewController {
             guard let `self` = self else { return }
             self.stopLoader()
             switch status {
-            case .active: break
+            case .active, .loaded, .error: break
             case .success:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
-            case .loaded: break
             case .failure:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, errorMessage: self.accountViewModel.errorMessage))
             case .updated:
                 self.accountsTableView.reloadData()
             case .interactive:
                 self.showAlertToken()
-            case .error: break
             }
         }
     }

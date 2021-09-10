@@ -17,11 +17,11 @@ class LoadingViewController: UIViewController {
         }
 
         view.backgroundColor = .white
-        view.addSubview(loadingIndicator)
+        
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loadingIndicator.color = Configuration.shared.palette.mainColor
+        view.addSubview(loadingIndicator)
+        loadingIndicator.centerXAnchor(equalTo: view.centerXAnchor)
+        loadingIndicator.centerYAnchor(equalTo: view.centerYAnchor)
     }
 
     override func viewDidAppear(_ animated: Bool) {

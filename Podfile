@@ -6,9 +6,9 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'FinerioConnectWidget' do
-  pod 'Firebase/Analytics', '~> 8.0.0'
-  pod 'Firebase/Database', '~> 8.0.0'
-  pod 'SwiftyRSA', '1.6.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
+  pod 'SwiftyRSA', '1.7.0'
   pod 'lottie-ios', '3.2.3'
 end
 
