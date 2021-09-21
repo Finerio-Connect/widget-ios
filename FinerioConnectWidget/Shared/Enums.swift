@@ -21,7 +21,7 @@ enum ServiceStatus {
 enum FieldType: String {
     case text = "TEXT"
     case password = "PASSWORD"
-    case securityCode = "SECURITYCODE"
+    case select = "SELECT"
 }
 
 public enum LogLevel: Int {

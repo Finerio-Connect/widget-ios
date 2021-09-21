@@ -102,3 +102,4 @@ internal class GenericDialog: UIView {
 
     open func setupView() {}
 }
+ 

@@ -36,7 +36,6 @@ internal class BankViewController: BaseViewController {
     private func configureView() {
         title = bankViewModel.getTitle()
 
-        countryPickerDialog.delegate = self
         countryPickerDialog.countryDelegate = self
 
         [bankTypeSegment, collectionViewBanks, countryPickerDialog, loadingIndicator].forEach {
@@ -131,11 +130,7 @@ extension BankViewController {
 
 // MARK: Dialog Country Delegate
 
-extension BankViewController: GenericDialogDelegate, BankPickerDialogDelegate {
-    func didHide() {
-        countryPickerDialog.setCountry()
-    }
-
+extension BankViewController: BankPickerDialogDelegate {
     func didSelectCountry(country: Country) {
         Configuration.shared.countryCode = country.code
         Configuration.shared.bankType = Constants.Country.bankType.personal

@@ -1,19 +1,19 @@
 //
-//  BankCountryPickerDialog.swift
+//  ExtraDataDialog.swift
 //  FinerioConnectWidget
 //
-//  Created by René Sandoval on 09/09/21.
+//  Created by René Sandoval on 20/09/21.
 //  Copyright © 2021 Finerio Connect. All rights reserved.
 //
 
 import UIKit
 
-protocol BankPickerDialogDelegate {
-    func didSelectCountry(country: Country)
+protocol ExtraDataPickerDialogDelegate {
+    func didSelectExtraData(extraData: ExtraData)
 }
 
-internal class BankCountryPickerDialog: GenericDialog {
-    public var countryDelegate: BankPickerDialogDelegate?
+internal class ExtraDataPickerDialog: GenericDialog {
+    public var extraDataDelegate: ExtraDataPickerDialogDelegate?
 
     private lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -34,7 +34,7 @@ internal class BankCountryPickerDialog: GenericDialog {
         return button
     }()
 
-    var countries: [Country] = [] {
+    var extraData: [ExtraData] = [] {
         didSet {
             pickerView.reloadComponent(0)
         }
@@ -65,17 +65,17 @@ internal class BankCountryPickerDialog: GenericDialog {
         acceptButton.topAnchor(equalTo: pickerView.bottomAnchor, constant: 25)
         acceptButton.trailingAnchor(equalTo: pickerView.trailingAnchor, constant: -25)
         acceptButton.bottomAnchor(equalTo: containerView.bottomAnchor, constant: -25)
-        acceptButton.addTarget(self, action: #selector(didSelectCountry), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(didSelectExtraData), for: .touchUpInside)
     }
 
-    @objc private func didSelectCountry() {
-        countryDelegate?.didSelectCountry(country: countries[currentSelectedIndex])
-        setCountry(byCode: countries[currentSelectedIndex].code)
+    @objc private func didSelectExtraData() {
+        extraDataDelegate?.didSelectExtraData(extraData: extraData[currentSelectedIndex])
+        setExtraData(byName: extraData[currentSelectedIndex].name)
         hide()
     }
 
-    public func setCountry(byCode code: String = Configuration.shared.countryCode) {
-        if let index = countries.firstIndex(where: { $0.code.lowercased() == code.lowercased() }) {
+    private func setExtraData(byName name: String) {
+        if let index = extraData.firstIndex(where: { $0.name.lowercased() == name.lowercased() }) {
             pickerView.selectRow(index, inComponent: 0, animated: true)
         }
     }
@@ -83,21 +83,34 @@ internal class BankCountryPickerDialog: GenericDialog {
 
 // MARK: - Picker Delegate and Datasource methods
 
-extension BankCountryPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
+extension ExtraDataPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countries.count
+        return extraData.count
     }
 
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
     }
 
-    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        return BankCountryPickerRowView(country: countries[row])
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return extraData[row].value
+//    }
+//
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = .fcRegularFont(ofSize: 16)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = extraData[row].value
+        pickerLabel?.textColor = Configuration.shared.palette.mainTextColor
+
+        return pickerLabel!
     }
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

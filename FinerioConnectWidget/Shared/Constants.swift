@@ -32,7 +32,7 @@ internal struct Constants {
                 """
             static let titleButton = "Continuar"
         }
-        
+
         struct BankSection {
             static let titleButton = "Seleccionar"
             static let labelEmpty = "No hay bancos disponibles"
@@ -77,6 +77,14 @@ internal struct Constants {
         static var securityCode = "securityCode"
     }
 
+    /// Tags
+    struct Tags {
+        static let loader = 200
+        static let fieldSecurityCode = 33
+        static let fieldPassword = 66
+        static let fieldSelect = 99
+    }
+
     /// URLS
     struct URLS {
         static let privacyTerms = "https://finerioconnect.com/privacy"
@@ -85,13 +93,6 @@ internal struct Constants {
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_on.png"
         static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
-    }
-
-    /// Tags
-    struct Tags {
-        static let loader = 200
-        static let fieldSecurityCode = 33
-        static let fieldPassword = 66
     }
 
     /// Keys
@@ -133,7 +134,7 @@ internal struct Constants {
         static let name = "México"
         static let code = "MX"
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
-        
+
         struct bankType {
             static let personal = "personal"
             static let business = "business"

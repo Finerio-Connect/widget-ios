@@ -18,10 +18,12 @@ internal class CredentialViewController: BaseViewController {
     private lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
     private lazy var helpDialog = CredentialHelpDialog()
+    private lazy var extraDataDialog = ExtraDataPickerDialog()
 
-    let datePicker = DatePickerDialog()
-    var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
-    var securityCodeTextField: UITextField?
+    private let datePicker = DatePickerDialog()
+    private var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
+    private var securityCodeTextField: UITextField?
+    private var extraData: ExtraData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,9 @@ internal class CredentialViewController: BaseViewController {
     private func configureView() {
         title = credentialViewModel.getTitle()
 
-        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton, helpDialog].forEach {
+        extraDataDialog.extraDataDelegate = self
+
+        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton, helpDialog, extraDataDialog].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
@@ -76,6 +80,21 @@ internal class CredentialViewController: BaseViewController {
         helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
         helpDialog.heightAnchor(equalTo: view.bounds.height)
         helpDialog.widthAnchor(equalTo: view.bounds.width)
+
+        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
+        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
+        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
+    }
+}
+
+// MARK: Dialog Country Delegate
+
+extension CredentialViewController: ExtraDataPickerDialogDelegate {
+    func didSelectExtraData(extraData: ExtraData) {
+        self.extraData = extraData
+        securityCodeTextField?.text = extraData.value
+        buttonValidation(securityCodeTextField!)
     }
 }
 
@@ -190,7 +209,7 @@ extension CredentialViewController {
             }
 
             if textfield.name == Constants.TexfieldsName.securityCode {
-                credential.securityCode = HelperEncrypt().encrypted(textfield.value)
+                credential.securityCode = HelperEncrypt().encrypted(extraData != nil ? extraData!.name : textfield.value)
             }
 
             if textfield.name == Constants.TexfieldsName.password {
@@ -303,6 +322,16 @@ extension CredentialViewController: UITextFieldDelegate {
             securityCodeTextField = textField
             datePickerTapped(textField)
             return false
+        }
+
+        if textField.tag == Constants.Tags.fieldSelect {
+            securityCodeTextField = textField
+
+            if let bankField = credentialViewModel.bankFields.first(where: { $0.name == textField.id }) {
+                extraDataDialog.extraData = bankField.extraData ?? []
+                extraDataDialog.show()
+                return false
+            }
         }
 
         return true
