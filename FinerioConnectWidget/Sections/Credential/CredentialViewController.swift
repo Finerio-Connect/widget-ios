@@ -88,6 +88,31 @@ internal class CredentialViewController: BaseViewController {
     }
 }
 
+// MARK: - Private methods
+
+extension CredentialViewController {
+    private func setupExtraData() {
+        for (index, _) in credentialViewModel.bankFields.enumerated() {
+            guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
+                return
+            }
+
+            if cell.inputTexfield.id?.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
+                securityCodeTextField = cell.inputTexfield
+            }
+
+            if cell.inputTexfield.tag == Constants.Tags.fieldSelect {
+                if let bankField = credentialViewModel.bankFields.first(where: { $0.name == cell.inputTexfield.id }) {
+                    extraDataDialog.extraData = bankField.extraData ?? []
+
+                    cell.inputTexfield.text = bankField.extraData?.first?.value
+                    extraDataDialog.setExtraData(byName: bankField.extraData?.first?.name ?? "")
+                }
+            }
+        }
+    }
+}
+
 // MARK: Dialog Country Delegate
 
 extension CredentialViewController: ExtraDataPickerDialogDelegate {
@@ -222,8 +247,7 @@ extension CredentialViewController {
 
     func getTextFeildValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
-            let indexPath = IndexPath(row: index, section: 0)
-            guard let cell = textFieldsTableView.cellForRow(at: indexPath) as? CredentialTableViewCell else {
+            guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
             }
 
@@ -277,6 +301,7 @@ extension CredentialViewController {
                 self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 230 : 150)
                 self.textFieldsTableView.reloadData()
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
+                self.setupExtraData()
             case .failure:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure))
             case .error:
@@ -325,13 +350,8 @@ extension CredentialViewController: UITextFieldDelegate {
         }
 
         if textField.tag == Constants.Tags.fieldSelect {
-            securityCodeTextField = textField
-
-            if let bankField = credentialViewModel.bankFields.first(where: { $0.name == textField.id }) {
-                extraDataDialog.extraData = bankField.extraData ?? []
-                extraDataDialog.show()
-                return false
-            }
+            extraDataDialog.show()
+            return false
         }
 
         return true

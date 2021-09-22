@@ -72,7 +72,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
             inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
         }
- 
+
         inputTexfield.isSecureTextEntry = field.type.uppercased() == FieldType.password.rawValue ? true : false
 
         if inputTexfield.isSecureTextEntry {

@@ -74,7 +74,7 @@ internal class ExtraDataPickerDialog: GenericDialog {
         hide()
     }
 
-    private func setExtraData(byName name: String) {
+    func setExtraData(byName name: String) {
         if let index = extraData.firstIndex(where: { $0.name.lowercased() == name.lowercased() }) {
             pickerView.selectRow(index, inComponent: 0, animated: true)
         }
@@ -95,11 +95,7 @@ extension ExtraDataPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
     }
-
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return extraData[row].value
-//    }
-//
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
