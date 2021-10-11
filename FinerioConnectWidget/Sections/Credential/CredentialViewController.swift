@@ -9,18 +9,21 @@
 import UIKit
 
 internal class CredentialViewController: BaseViewController {
-    internal var credentialViewModel: CredentialViewModel!
+    private var credentialViewModel: CredentialViewModel!
 
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
-    fileprivate lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
-    fileprivate lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
-    fileprivate lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
-    fileprivate lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var titleLabel: UILabel = setupTitleLabel()
+    private lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
+    private lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
+    private lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
+    private lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
+    private lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var helpDialog = CredentialHelpDialog()
+    private lazy var extraDataDialog = ExtraDataPickerDialog()
 
-    let datePicker = DatePickerDialog()
-    var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
-    var securityCodeTextField: UITextField?
+    private let datePicker = DatePickerDialog()
+    private var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
+    private var securityCodeTextField: UITextField?
+    private var extraData: ExtraData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,9 @@ internal class CredentialViewController: BaseViewController {
     private func configureView() {
         title = credentialViewModel.getTitle()
 
-        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton].forEach {
+        extraDataDialog.extraDataDelegate = self
+
+        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton, helpDialog, extraDataDialog].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
@@ -44,20 +49,20 @@ internal class CredentialViewController: BaseViewController {
         let generalWidth = view.layer.frame.width - 100
 
         titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 20.0, secondValue: 50.0))
+        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
-        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
-        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2)
-        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35.0, secondValue: 25.0)) / 2) / 2)
+        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)), defaultImage: Images.otherBanksOn.image())
+        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
+        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
         logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
         logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
 
-        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
+        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
         helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
 
-        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10.0, secondValue: 20.0))
+        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
         textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
 
@@ -66,10 +71,55 @@ internal class CredentialViewController: BaseViewController {
         tyCLabel.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: 10)
         tyCLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
-        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40.0, secondValue: 50.0))
+        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40, secondValue: 50))
         continueButton.widthAnchor(equalTo: generalWidth)
-        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20.0, secondValue: -30.0))
+        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20, secondValue: -30))
         continueButton.centerXAnchor(equalTo: view.centerXAnchor)
+
+        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
+        helpDialog.heightAnchor(equalTo: view.bounds.height)
+        helpDialog.widthAnchor(equalTo: view.bounds.width)
+
+        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
+        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
+        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
+    }
+}
+
+// MARK: - Private methods
+
+extension CredentialViewController {
+    private func setupExtraData() {
+        for (index, _) in credentialViewModel.bankFields.enumerated() {
+            guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
+                return
+            }
+
+            if cell.inputTexfield.id?.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
+                securityCodeTextField = cell.inputTexfield
+            }
+
+            if cell.inputTexfield.tag == Constants.Tags.fieldSelect {
+                if let bankField = credentialViewModel.bankFields.first(where: { $0.name == cell.inputTexfield.id }) {
+                    extraDataDialog.extraData = bankField.extraData ?? []
+
+                    cell.inputTexfield.text = bankField.extraData?.first?.value
+                    extraDataDialog.setExtraData(byName: bankField.extraData?.first?.name ?? "")
+                }
+            }
+        }
+    }
+}
+
+// MARK: Dialog Country Delegate
+
+extension CredentialViewController: ExtraDataPickerDialogDelegate {
+    func didSelectExtraData(extraData: ExtraData) {
+        self.extraData = extraData
+        securityCodeTextField?.text = extraData.value
+        buttonValidation(securityCodeTextField!)
     }
 }
 
@@ -80,8 +130,8 @@ extension CredentialViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = Configuration.shared.texts.createCredentialTitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
-        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
+        label.text = literal(.createCredentialTitle)!.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
+        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16, secondValue: 18))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -98,7 +148,7 @@ extension CredentialViewController {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
         button.setTitleColor(Configuration.shared.palette.mainTextColor, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13.0 : 15.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13 : 15)
         button.setAttributedTitle(NSAttributedString(string: button.titleLabel!.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
         button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
         return button
@@ -121,17 +171,17 @@ extension CredentialViewController {
         let label = InteractiveLinkLabel()
         label.numberOfLines = 0
         label.text = Constants.Texts.CredentialSection.tyCLabel
-        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12.0 : 14.0)
+        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.textAlignment = .center
         label.textColor = Configuration.shared.palette.termsTextColor
 
         let plainAttributedString = NSMutableAttributedString(string: "Al dar clic en Enviar información aceptas expresamente nuestros ", attributes: nil)
         let string = "Términos de servicio"
-        let attributedLinkString = NSMutableAttributedString(string: string, attributes: [NSAttributedString.Key.link: URL(string: Configuration.shared.texts.termsAndConditionsUrl)!])
+        let attributedLinkString = NSMutableAttributedString(string: string, attributes: [NSAttributedString.Key.link: URL(string: literal(.termsAndConditionsUrl)!)!])
 
         let plainAttributedString2 = NSMutableAttributedString(string: " así como nuestro ", attributes: nil)
         let string2 = "Aviso de privacidad"
-        let attributedLinkString2 = NSMutableAttributedString(string: string2, attributes: [NSAttributedString.Key.link: URL(string: Configuration.shared.texts.privacyTermsUrl)!])
+        let attributedLinkString2 = NSMutableAttributedString(string: string2, attributes: [NSAttributedString.Key.link: URL(string: literal(.privacyTermsUrl)!)!])
 
         let fullAttributedString = NSMutableAttributedString()
         fullAttributedString.append(plainAttributedString)
@@ -147,10 +197,10 @@ extension CredentialViewController {
 
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(Configuration.shared.texts.submitLabel, for: .normal)
+        button.setTitle(literal(.submitLabel), for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
         button.alpha = 0.5
         button.isEnabled = false
         button.layer.masksToBounds = true
@@ -164,14 +214,10 @@ extension CredentialViewController {
 
 extension CredentialViewController {
     @objc private func didButtonHelp() {
-        let popup = Popup()
-        popup.setImage(UIImage.gifImageWithURL(Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)))
-
-        view.addSubview(popup)
-        popup.centerXAnchor(equalTo: view.centerXAnchor)
-        popup.centerYAnchor(equalTo: view.centerYAnchor)
-        popup.heightAnchor(equalTo: view.bounds.height)
-        popup.widthAnchor(equalTo: view.bounds.width)
+        DispatchQueue.main.async {
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: self.credentialViewModel.bank.id)
+            self.helpDialog.show()
+        }
     }
 
     @objc private func createCredential() {
@@ -188,7 +234,7 @@ extension CredentialViewController {
             }
 
             if textfield.name == Constants.TexfieldsName.securityCode {
-                credential.securityCode = HelperEncrypt().encrypted(textfield.value)
+                credential.securityCode = HelperEncrypt().encrypted(extraData != nil ? extraData!.name : textfield.value)
             }
 
             if textfield.name == Constants.TexfieldsName.password {
@@ -201,8 +247,7 @@ extension CredentialViewController {
 
     func getTextFeildValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
-            let indexPath = IndexPath(row: index, section: 0)
-            guard let cell = textFieldsTableView.cellForRow(at: indexPath) as? CredentialTableViewCell else {
+            guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
             }
 
@@ -247,6 +292,7 @@ extension CredentialViewController {
             guard let `self` = self else { return }
             self.stopLoader()
             switch status {
+            case .updated, .interactive: break
             case .active:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
             case .success:
@@ -255,10 +301,9 @@ extension CredentialViewController {
                 self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 230 : 150)
                 self.textFieldsTableView.reloadData()
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
+                self.setupExtraData()
             case .failure:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure))
-            case .updated: break
-            case .interactive: break
             case .error:
                 self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }
@@ -301,6 +346,11 @@ extension CredentialViewController: UITextFieldDelegate {
         if textField.tag == Constants.Tags.fieldSecurityCode {
             securityCodeTextField = textField
             datePickerTapped(textField)
+            return false
+        }
+
+        if textField.tag == Constants.Tags.fieldSelect {
+            extraDataDialog.show()
             return false
         }
 

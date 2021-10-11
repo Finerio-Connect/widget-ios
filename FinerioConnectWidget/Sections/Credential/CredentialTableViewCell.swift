@@ -15,7 +15,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
+        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14 : 16)
         label.textColor = Configuration.shared.palette.mainColor
         return label
     }()
@@ -31,7 +31,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         textField.layer.borderColor = Configuration.shared.palette.mainColor.cgColor
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
-        textField.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
+        textField.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14 : 16)
         return textField
     }()
 
@@ -54,12 +54,12 @@ internal class CredentialTableViewCell: UITableViewCell {
         let generalWidth = contentView.layer.frame.width - 100
 
         titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 20.0 : 25.0)
+        titleLabel.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 20 : 25)
         titleLabel.topAnchor(equalTo: contentView.topAnchor)
         titleLabel.centerXAnchor(equalTo: contentView.centerXAnchor)
 
         inputTexfield.widthAnchor(equalTo: generalWidth)
-        inputTexfield.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0)
+        inputTexfield.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35 : 40)
         inputTexfield.topAnchor(equalTo: titleLabel.bottomAnchor)
         inputTexfield.centerXAnchor(equalTo: contentView.centerXAnchor)
     }
@@ -68,7 +68,11 @@ internal class CredentialTableViewCell: UITableViewCell {
         titleLabel.text = field.friendlyName
         inputTexfield.placeholder = field.friendlyName
         inputTexfield.id = field.name
-        inputTexfield.tag = field.name.uppercased() == FieldType.securityCode.rawValue ? Constants.Tags.fieldSecurityCode : 0
+
+        if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
+            inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
+        }
+
         inputTexfield.isSecureTextEntry = field.type.uppercased() == FieldType.password.rawValue ? true : false
 
         if inputTexfield.isSecureTextEntry {

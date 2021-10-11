@@ -10,13 +10,13 @@ import Lottie
 import UIKit
 
 internal class AccountStatusViewController: BaseViewController {
-    internal var accountStatusViewModel: AccountStatusViewModel!
+    private var accountStatusViewModel: AccountStatusViewModel!
 
-    fileprivate lazy var animationView: AnimationView = setupAnimationView()
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var subtitleLabel: UILabel = setupSubtitleLabel()
-    fileprivate lazy var continueButton: UIButton = setupButton()
-    fileprivate lazy var exitButton: UIButton = setupButton(color: Configuration.shared.palette.mainTextColor)
+    private lazy var animationView: AnimationView = setupAnimationView()
+    private lazy var titleLabel: UILabel = setupTitleLabel()
+    private lazy var subtitleLabel: UILabel = setupSubtitleLabel()
+    private lazy var continueButton: UIButton = setupButton()
+    private lazy var exitButton: UIButton = setupButton(color: Configuration.shared.palette.mainTextColor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ internal class AccountStatusViewController: BaseViewController {
 
     private func configureView() {
         title = accountStatusViewModel.getTitle()
-
+        
         [animationView, titleLabel, subtitleLabel, continueButton, exitButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
@@ -176,6 +176,7 @@ extension AccountStatusViewController {
 
 extension AccountStatusViewController {
     @objc private func backToBanks() {
+        navigationController?.navigationBar.isHidden = false
         navigationController?.backToViewController(BankViewController.self)
     }
 

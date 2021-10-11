@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0C4DAA26EB2FFC00F6647C /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C4DA926EB2FFC00F6647C /* UICollectionView+Extensions.swift */; };
+		0F5E462726EAC19200A9CB63 /* CredentialHelpDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E462626EAC19200A9CB63 /* CredentialHelpDialog.swift */; };
 		0F6585D72613B06400D1BBA6 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6585D62613B06400D1BBA6 /* UIImage+Extensions.swift */; };
 		0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6586302614EF7B00D1BBA6 /* ImageCaching.swift */; };
-		0F6586C32614F3F500D1BBA6 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6586C22614F3F500D1BBA6 /* Popup.swift */; };
+		0F6586C32614F3F500D1BBA6 /* GenericDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */; };
 		0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */; };
+		0FA6A1A926E95491008F8A7A /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6A1A826E95491008F8A7A /* CountryModel.swift */; };
+		0FA6A1AE26E9D41F008F8A7A /* BankCountryPickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */; };
 		0FCBAF7625F1795D00DA2D18 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEF725F1795C00DA2D18 /* Palette.swift */; };
 		0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEFA25F1795C00DA2D18 /* SessionManager.swift */; };
 		0FCBAF7925F1795D00DA2D18 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEFB25F1795C00DA2D18 /* Animations.swift */; };
@@ -103,15 +107,21 @@
 		0FCBAFD825F1795D00DA2D18 /* account_ready.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF7325F1795D00DA2D18 /* account_ready.json */; };
 		0FCBAFD925F1795D00DA2D18 /* syncing_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF7425F1795D00DA2D18 /* syncing_success.json */; };
 		0FCBAFDA25F1795D00DA2D18 /* syncing_loop.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF7525F1795D00DA2D18 /* syncing_loop.json */; };
+		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */; };
 		6303464F4B33FC9C8B651103 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79E82E06F571C0222F64F10 /* Pods_FinerioConnectWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0C4DA926EB2FFC00F6647C /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		0F5E462626EAC19200A9CB63 /* CredentialHelpDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialHelpDialog.swift; sourceTree = "<group>"; };
 		0F6585D62613B06400D1BBA6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		0F6586302614EF7B00D1BBA6 /* ImageCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaching.swift; sourceTree = "<group>"; };
-		0F6586C22614F3F500D1BBA6 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDialog.swift; sourceTree = "<group>"; };
 		0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		0FA6A1A826E95491008F8A7A /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerDialog.swift; sourceTree = "<group>"; };
 		0FCBAEF725F1795C00DA2D18 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		0FCBAEFA25F1795C00DA2D18 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		0FCBAEFB25F1795C00DA2D18 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -204,9 +214,11 @@
 		0FCBAF7325F1795D00DA2D18 /* account_ready.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = account_ready.json; sourceTree = "<group>"; };
 		0FCBAF7425F1795D00DA2D18 /* syncing_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = syncing_success.json; sourceTree = "<group>"; };
 		0FCBAF7525F1795D00DA2D18 /* syncing_loop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = syncing_loop.json; sourceTree = "<group>"; };
+		0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraDataDialog.swift; sourceTree = "<group>"; };
 		0FD2720325F1719600E052F7 /* FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerRowView.swift; sourceTree = "<group>"; };
 		112DD69B695D3D8ED871E777 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
 		A47BB2FF6408212871CC07E9 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		C79E82E06F571C0222F64F10 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +293,7 @@
 			children = (
 				0FCBAF0325F1795C00DA2D18 /* Bank.swift */,
 				0FCBAF0425F1795C00DA2D18 /* BankField.swift */,
+				0FA6A1A826E95491008F8A7A /* CountryModel.swift */,
 				0FCBAF0225F1795C00DA2D18 /* CredentialResponse.swift */,
 				0FCBAF0125F1795C00DA2D18 /* CredentialStatus.swift */,
 				0FCBAF0525F1795C00DA2D18 /* TransactionStatus.swift */,
@@ -339,9 +352,11 @@
 			isa = PBXGroup;
 			children = (
 				0FCBAF2425F1795D00DA2D18 /* CredentialCoordinator.swift */,
+				0F5E462626EAC19200A9CB63 /* CredentialHelpDialog.swift */,
 				0FCBAF2125F1795D00DA2D18 /* CredentialTableViewCell.swift */,
 				0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */,
 				0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */,
+				0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -351,6 +366,8 @@
 			children = (
 				0FCBAF2825F1795D00DA2D18 /* BankCollectionViewCell.swift */,
 				0FCBAF2925F1795D00DA2D18 /* BankCoordinator.swift */,
+				0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */,
+				0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */,
 				0FCBAF2725F1795D00DA2D18 /* BankViewController.swift */,
 				0FCBAF2625F1795D00DA2D18 /* BankViewModel.swift */,
 			);
@@ -402,16 +419,17 @@
 				0FCBAF4225F1795D00DA2D18 /* Bundle+Extensions.swift */,
 				0FCBAF3A25F1795D00DA2D18 /* Notification+Extensions.swift */,
 				0FCBAF3B25F1795D00DA2D18 /* String+Extensions.swift */,
+				0F0C4DA926EB2FFC00F6647C /* UICollectionView+Extensions.swift */,
 				0FCBAF3D25F1795D00DA2D18 /* UIColor+Extensions.swift */,
 				0FCBAF3E25F1795D00DA2D18 /* UIDevice+Extensions.swift */,
 				0FCBAF3C25F1795D00DA2D18 /* UIFont+Extensions.swift */,
 				0F6585D62613B06400D1BBA6 /* UIImage+Extensions.swift */,
 				0FCBAF3825F1795D00DA2D18 /* UIImageView+Extensions.swift */,
 				0FCBAF4025F1795D00DA2D18 /* UINavigationController+Extensions.swift */,
+				0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */,
 				0FCBAF3925F1795D00DA2D18 /* UIView+Extensions.swift */,
 				0FCBAF3F25F1795D00DA2D18 /* UIViewController+Extension.swift */,
 				0FCBAF4125F1795D00DA2D18 /* URL+Extensions.swift */,
-				0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,9 +477,9 @@
 		0FCBAF5925F1795D00DA2D18 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */,
 				0FCBAF5A25F1795D00DA2D18 /* InteractiveLinkLabel.swift */,
 				0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */,
-				0F6586C22614F3F500D1BBA6 /* Popup.swift */,
 				0FCBAF6325F1795D00DA2D18 /* ActivityIndicatorAnimator */,
 				0FCBAF6125F1795D00DA2D18 /* DatePickerDialog */,
 			);
@@ -692,7 +710,7 @@
 				0FCBAFCD25F1795D00DA2D18 /* CAPropertyAnimation+Key.swift in Sources */,
 				0FCBAF8525F1795D00DA2D18 /* FinerioConnectWidgetAPI.swift in Sources */,
 				0FCBAF8425F1795D00DA2D18 /* ApiV2FinerioAPIError.swift in Sources */,
-				0F6586C32614F3F500D1BBA6 /* Popup.swift in Sources */,
+				0F6586C32614F3F500D1BBA6 /* GenericDialog.swift in Sources */,
 				0FCBAF8125F1795D00DA2D18 /* FAANavigationController.swift in Sources */,
 				0FCBAF9B25F1795D00DA2D18 /* BankViewController.swift in Sources */,
 				0FCBAFA825F1795D00DA2D18 /* UIView+Extensions.swift in Sources */,
@@ -709,6 +727,7 @@
 				0FCBAFA125F1795D00DA2D18 /* AccountStatusViewModel.swift in Sources */,
 				0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */,
 				0FCBAFB025F1795D00DA2D18 /* URL+Extensions.swift in Sources */,
+				0FA6A1A926E95491008F8A7A /* CountryModel.swift in Sources */,
 				0FCBAFC425F1795D00DA2D18 /* ProgressShapeLayer.swift in Sources */,
 				0FCBAFB825F1795D00DA2D18 /* FontBlaster.swift in Sources */,
 				0FCBAFAD25F1795D00DA2D18 /* UIDevice+Extensions.swift in Sources */,
@@ -733,9 +752,11 @@
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,
 				0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */,
+				0FA6A1AE26E9D41F008F8A7A /* BankCountryPickerDialog.swift in Sources */,
 				0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */,
 				0FCBAF9525F1795D00DA2D18 /* LoadingViewController.swift in Sources */,
 				0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */,
+				0F5E462726EAC19200A9CB63 /* CredentialHelpDialog.swift in Sources */,
 				0FCBAF9D25F1795D00DA2D18 /* BankCoordinator.swift in Sources */,
 				0FCBAFB325F1795D00DA2D18 /* Context.swift in Sources */,
 				0FCBAF7D25F1795D00DA2D18 /* CredentialResponse.swift in Sources */,
@@ -750,6 +771,7 @@
 				0FCBAFC025F1795D00DA2D18 /* StrokeColorAnimation.swift in Sources */,
 				0FCBAFA025F1795D00DA2D18 /* AccountStatusViewController.swift in Sources */,
 				0FCBAF8D25F1795D00DA2D18 /* FinerioConnectWidget.swift in Sources */,
+				0F0C4DAA26EB2FFC00F6647C /* UICollectionView+Extensions.swift in Sources */,
 				0FCBAF9F25F1795D00DA2D18 /* StartViewController.swift in Sources */,
 				0FCBAFB925F1795D00DA2D18 /* Localize.swift in Sources */,
 				0FCBAF8B25F1795D00DA2D18 /* APIRoute.swift in Sources */,
@@ -759,6 +781,7 @@
 				0FCBAFBE25F1795D00DA2D18 /* Images.swift in Sources */,
 				0FCBAF9725F1795D00DA2D18 /* CredentialViewModel.swift in Sources */,
 				0FCBAF7B25F1795D00DA2D18 /* Credential.swift in Sources */,
+				0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */,
 				0FCBAFB225F1795D00DA2D18 /* AppCoordinator.swift in Sources */,
 				0FCBAFB525F1795D00DA2D18 /* HelperEncrypt.swift in Sources */,
 				0FCBAF8025F1795D00DA2D18 /* TransactionStatus.swift in Sources */,
@@ -767,6 +790,7 @@
 				0FCBAF9C25F1795D00DA2D18 /* BankCollectionViewCell.swift in Sources */,
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,
+				0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */,
 				0FCBAF8825F1795D00DA2D18 /* HTTPClient.swift in Sources */,
 				0FCBAF9E25F1795D00DA2D18 /* StartViewModel.swift in Sources */,
 				0FCBAF7A25F1795D00DA2D18 /* CredentialToken.swift in Sources */,
@@ -947,7 +971,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

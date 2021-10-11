@@ -47,4 +47,15 @@ extension UITextField {
 
         setPasswordToggleImage(sender as! UIButton)
     }
+
+    func setupRightImage(image: UIImage) {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        imageView.image = image
+        let imageContainerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        imageContainerView.contentMode = .center
+        imageContainerView.addSubview(imageView)
+        rightView = imageContainerView
+        rightViewMode = .always
+        tintColor = .lightGray
+    }
 }

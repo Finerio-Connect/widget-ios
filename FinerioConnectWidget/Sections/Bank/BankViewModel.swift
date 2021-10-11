@@ -9,6 +9,7 @@
 import Foundation
 
 internal class BankViewModel {
+    var countries: [Country]!
     var banks: [Bank]!
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
@@ -16,16 +17,36 @@ internal class BankViewModel {
     func getTitle() -> String {
         return Constants.Titles.bankSection
     }
-    
-    func loadBanks() {
-        FinerioConnectWidgetAPI.banks { [weak self] result in
+
+    func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
+        if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
+            return countries[index]
+        }
+
+        return nil
+    }
+
+    func loadCountries() {
+        FinerioConnectWidgetAPI.countries { [weak self] result in
             if let error = result.error {
                 self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
                 self?.serviceStatusHandler(.failure)
             }
 
-            self?.banks = result.value
+            self?.countries = result.value
             self?.serviceStatusHandler(.loaded)
+        }
+    }
+
+    func loadBanks(country: String = Configuration.shared.countryCode, type: String = Configuration.shared.bankType) {
+        FinerioConnectWidgetAPI.banks(country: country, type: type) { [weak self] result in
+            if let error = result.error {
+                self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
+                self?.serviceStatusHandler(.failure)
+            }
+            
+            self?.banks = result.value
+            self?.serviceStatusHandler(.success)
         }
     }
 }

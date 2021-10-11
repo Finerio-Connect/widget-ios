@@ -19,6 +19,10 @@
 
 // Banks Section
 "banks_title" = "Selecciona tu banco:";
+"countries_title" = "Selecciona tu país";
+"personal_bank_title" = "Banca Personal";
+"business_bank_title" = "Empresarial";
+"fiscal_title" = "Impuestos";
 
 /*
    Credential Section

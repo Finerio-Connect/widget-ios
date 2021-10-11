@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 public class ActivityIndicatorView: UIView {
     @IBInspectable
-    public var color: UIColor = .red {
+    public var color: UIColor = Configuration.shared.palette.mainColor {
         didSet {
             indicator.strokeColor = color.cgColor
         }

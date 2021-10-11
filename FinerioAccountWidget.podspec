@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
     default.resource_bundles      = {'FinerioConnectWidget' => ['FinerioConnectWidget/Resources/**/*.{lproj,json,png,xcassets,plist,strings}']}
   end
   
-  s.dependency 'Firebase/Analytics', '~> 8.0.0'
-  s.dependency 'Firebase/Database', '~> 8.0.0'
-  s.dependency 'SwiftyRSA', '1.6.0'
+  s.dependency 'Firebase/Analytics'
+  s.dependency 'Firebase/Database'
+  s.dependency 'SwiftyRSA', '1.7.0'
   s.dependency 'lottie-ios', '3.2.3'
   
   s.requires_arc          = true

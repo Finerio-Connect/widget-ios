@@ -57,6 +57,19 @@ public final class FinerioConnectWidget: NSObject {
         }
     }
 
+    public var countryCode: String = "" {
+        didSet {
+            configuration.countryCode = countryCode
+        }
+    }
+    
+    public var showCountryOptions: Bool = true {
+        didSet {
+            configuration.showCountryOptions = showCountryOptions
+        }
+    }
+
+
     // MARK: - Private properties
 
     private let configuration: Configuration

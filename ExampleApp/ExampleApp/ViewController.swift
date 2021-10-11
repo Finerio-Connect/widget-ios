@@ -5,8 +5,8 @@
 //  Created by René Sandoval on 04/03/21.
 //
 
-import UIKit
 import FinerioAccountWidget
+import UIKit
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
         finerioConnectWidget.font = "Ubuntu"
+//        finerioConnectWidget.countryCode = "CO"
+//        finerioConnectWidget.showCountryOptions = false
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")
 

@@ -56,7 +56,7 @@ finerioConnectWidget.start(
 
 ### Environment
 
-The default environment is sandbox, you can do this:
+The default environment is `sandbox`, you can do this:
 ``` swift
 finerioConnectWidget.environment = .production
 ```
@@ -69,6 +69,20 @@ In some cases you'll find usefull to see what is happening inside FinerioConnect
 
 ``` swift
 finerioConnectWidget.logLevel = .info
+```
+
+### Country
+
+You can configure the list of banks based on a country, the available countries are: Mexico, Colombia and Chile.
+The default country is Mexico (MX), you can
+do this to assign a country based on its codes (`MX, CO, CH`)
+``` swift
+finerioConnectWidget.countryCode = "CO"
+```
+
+You can also choose if you want to hide the options to choose country, the default value is `true`, you can do this:
+``` swift
+finerioConnectWidget.showCountryOptions = false
 ```
 
 ### Custom fonts
@@ -142,6 +156,6 @@ FinerioConnectWidget.shared.animations = Animations(
 ```
 
 ## Dependency
-  - Firebase iOS SDK with v8.0.0
-  - SwiftyRSA with v1.6.0
-  - Lottie iOS SDK with 3.2.3
+  - Firebase iOS SDK
+  - SwiftyRSA
+  - Lottie iOS SDK
