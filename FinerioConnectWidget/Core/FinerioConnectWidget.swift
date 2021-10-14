@@ -7,6 +7,7 @@
 //
 
 import FirebaseCore
+import Mixpanel
 import UIKit
 
 public final class FinerioConnectWidget: NSObject {
@@ -62,13 +63,12 @@ public final class FinerioConnectWidget: NSObject {
             configuration.countryCode = countryCode
         }
     }
-    
+
     public var showCountryOptions: Bool = true {
         didSet {
             configuration.showCountryOptions = showCountryOptions
         }
     }
-
 
     // MARK: - Private properties
 
@@ -125,6 +125,13 @@ public final class FinerioConnectWidget: NSObject {
         }
 
         firebaseConfigure()
+
+        Mixpanel.initialize(token: Constants.Keys.mixpanelToken)
+        Mixpanel.mainInstance().registerSuperProperties([
+            Constants.Events.environment: Configuration.shared.environment.rawValue,
+            Constants.Events.widgetId: Configuration.shared.widgetId
+        ])
+        if logLevel == .debug { Mixpanel.mainInstance().loggingEnabled = true }
 
         context = Context(with: navigationController)
         context?.initialize(coordinator: AppCoordinator(context: context!))

@@ -27,13 +27,14 @@ internal class CredentialViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         startLoader()
         credentialViewModel = viewModel as? CredentialViewModel
         hideKeyboardWhenTappedAround()
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
+        
+        trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
     }
 
     private func configureView() {

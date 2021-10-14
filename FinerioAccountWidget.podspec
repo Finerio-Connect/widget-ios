@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
   
   s.dependency 'Firebase/Analytics'
   s.dependency 'Firebase/Database'
-  s.dependency 'SwiftyRSA', '1.7.0'
-  s.dependency 'lottie-ios', '3.2.3'
+  s.dependency 'SwiftyRSA'
+  s.dependency 'lottie-ios'
+  s.dependency 'Mixpanel-swift'
   
   s.requires_arc          = true
   s.pod_target_xcconfig   = {

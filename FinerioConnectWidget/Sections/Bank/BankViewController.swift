@@ -23,6 +23,8 @@ internal class BankViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        trackEvent(eventName: Constants.Events.banks)
+        
         startLoader()
         bankViewModel = viewModel as? BankViewModel
         configureView()
@@ -32,6 +34,7 @@ internal class BankViewController: BaseViewController {
         }
         bankViewModel.loadBanks()
     }
+    
 
     private func configureView() {
         title = bankViewModel.getTitle()
