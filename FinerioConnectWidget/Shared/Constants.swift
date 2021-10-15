@@ -99,7 +99,8 @@ internal struct Constants {
     struct Keys {
         static let publicKey = "MIIBCgKCAQEAv1STVY1D8uelL+j4Tm0zsgOsgof3KMsmWUIyvLtKUnH5SBrcPqEbjI5+gwRTwc1d5QcGWqEgx2uSUSaOdDWyTR6mKG8iSMYWEtEeCI/LmwAKGapGDB/ciguhXzsjVa9dZThlHvW4XiHWEIenxzbahXexBuEQfSP9DiJuM9yRqHX60+aCJxupRtLgaWQkTtFGI5tGQ1tMN0qZW7eat//rvzHrp4MU2EOVXiRE06ypWRQhni8zY+VaNPjXHybPC+dIiXspBqwaySKBKqNVZCXtqVa7ouJfXs3HUrpthJqQ30cPefEt0jAFj6QRJDsGwKTXS3gq7mGz3AYq0Be2LuTD1wIDAQAB"
         static let firebaseNode = "CtkFJ3subunSceVh7vUAPMB4TckRSv"
-        static let mixpanelToken = "849778938cdb0486c91d953502082582"
+        static let productionMixpanelToken = "849778938cdb0486c91d953502082582"
+        static let sandboxMixpanelToken = "86830d7eeedf9117694afc6e85d94f56"
     }
 
     struct ErrorCodes {
@@ -149,7 +150,6 @@ internal struct Constants {
     }
 
     struct Events {
-        static let environment = "Environment"
         static let widgetId = "Widget ID"
         static let banks = "View: Banks"
         static let bankSelected = "Bank selected"
