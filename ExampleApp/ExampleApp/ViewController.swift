@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         finerioConnectWidget.logLevel = .debug
         finerioConnectWidget.font = "Ubuntu"
 //        finerioConnectWidget.countryCode = "CO"
-//        finerioConnectWidget.showCountryOptions = false
+        finerioConnectWidget.showCountryOptions = false
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")
 
