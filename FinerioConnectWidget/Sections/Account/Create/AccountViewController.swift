@@ -20,6 +20,8 @@ internal class AccountViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        trackEvent(eventName: Constants.Events.createCredential)
+
         accountViewModel = viewModel as? AccountViewModel
         configureView()
         observerServiceStatus()
@@ -33,7 +35,7 @@ internal class AccountViewController: BaseViewController {
 
     private func configureView() {
         title = accountViewModel.getTitle()
-        
+
         navigationController?.navigationBar.isHidden = true
 
         [titleLabel, animationView, accountsTableView].forEach {
@@ -165,6 +167,7 @@ extension AccountViewController {
             case .active, .loaded, .error: break
             case .success:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
+                self.trackEvent(eventName: Constants.Events.credentialCreated)
             case .failure:
                 self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, errorMessage: self.accountViewModel.errorMessage))
             case .updated:

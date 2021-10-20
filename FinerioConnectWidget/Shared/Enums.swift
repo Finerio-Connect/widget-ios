@@ -31,7 +31,7 @@ public enum LogLevel: Int {
     case debug = 3
 }
 
-public enum Environment {
+public enum Environment: String {
     case sandbox
     case production
 }

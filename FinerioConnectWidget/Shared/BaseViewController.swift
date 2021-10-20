@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Mixpanel
 import UIKit
 
 internal class BaseViewController: UIViewController {
@@ -19,15 +20,15 @@ internal class BaseViewController: UIViewController {
     let currentLoadingView = LoadingViewController()
 
     override open func viewDidLoad() {
-        if #available(iOS 13.0, *) { 
+        if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
 
         view.backgroundColor = Configuration.shared.palette.backgroundColor
-        
+
         if reachability?.connection == Reachability.Connection.none {
             let error = NSError.faaError(Constants.Texts.Errors.reachabilityError)
-            self.app.showAlert(Constants.Texts.Errors.reachabilityError, viewController: self)
+            app.showAlert(Constants.Texts.Errors.reachabilityError, viewController: self)
             logError(error)
             return
         }
@@ -35,6 +36,10 @@ internal class BaseViewController: UIViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    func trackEvent(eventName: String, _ properties: Properties? = nil) {
+        Mixpanel.mainInstance().track(event: eventName, properties: properties)
     }
 
     func startLoader() {
