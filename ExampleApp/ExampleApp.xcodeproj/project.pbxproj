@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F7FAC5327235B74007BC055 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */; };
+		0F7FAC5427235B74007BC055 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */; };
+		0F7FAC5527235B74007BC055 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */; };
 		0F8D518525F17B5A00BA51C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D518425F17B5A00BA51C2 /* AppDelegate.swift */; };
 		0F8D518725F17B5A00BA51C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D518625F17B5A00BA51C2 /* SceneDelegate.swift */; };
 		0F8D518925F17B5A00BA51C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D518825F17B5A00BA51C2 /* ViewController.swift */; };
 		0F8D518C25F17B5A00BA51C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F8D518A25F17B5A00BA51C2 /* Main.storyboard */; };
 		0F8D518E25F17B5B00BA51C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F8D518D25F17B5B00BA51C2 /* Assets.xcassets */; };
 		0F8D519125F17B5B00BA51C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F8D518F25F17B5B00BA51C2 /* LaunchScreen.storyboard */; };
-		0FA6A0522677DA7200EB5952 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FA6A04F2677DA7200EB5952 /* Ubuntu-Bold.ttf */; };
-		0FA6A0532677DA7200EB5952 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FA6A0502677DA7200EB5952 /* Ubuntu-Medium.ttf */; };
-		0FA6A0542677DA7200EB5952 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FA6A0512677DA7200EB5952 /* Ubuntu-Regular.ttf */; };
 		4BD406F3E4156146DC488FDC /* Pods_ExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075B582A0F5D2AA12C2116B1 /* Pods_ExampleApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		075B582A0F5D2AA12C2116B1 /* Pods_ExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		0F8D518125F17B5A00BA51C2 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8D518425F17B5A00BA51C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F8D518625F17B5A00BA51C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,9 +32,6 @@
 		0F8D518D25F17B5B00BA51C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F8D519025F17B5B00BA51C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F8D519225F17B5B00BA51C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0FA6A04F2677DA7200EB5952 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Bold.ttf"; path = "../../../finerio-ios/finerio/finerio/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
-		0FA6A0502677DA7200EB5952 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Medium.ttf"; path = "../../../finerio-ios/finerio/finerio/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
-		0FA6A0512677DA7200EB5952 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Regular.ttf"; path = "../../../finerio-ios/finerio/finerio/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		41E69C27BB813634880C5D17 /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		8CAEA19CA2DBE196C2FF8CBB /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,9 +69,9 @@
 		0F8D518325F17B5A00BA51C2 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				0FA6A04F2677DA7200EB5952 /* Ubuntu-Bold.ttf */,
-				0FA6A0502677DA7200EB5952 /* Ubuntu-Medium.ttf */,
-				0FA6A0512677DA7200EB5952 /* Ubuntu-Regular.ttf */,
+				0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */,
+				0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */,
+				0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */,
 				0F8D518425F17B5A00BA51C2 /* AppDelegate.swift */,
 				0F8D518625F17B5A00BA51C2 /* SceneDelegate.swift */,
 				0F8D518825F17B5A00BA51C2 /* ViewController.swift */,
@@ -159,9 +159,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA6A0542677DA7200EB5952 /* Ubuntu-Regular.ttf in Resources */,
-				0FA6A0522677DA7200EB5952 /* Ubuntu-Bold.ttf in Resources */,
-				0FA6A0532677DA7200EB5952 /* Ubuntu-Medium.ttf in Resources */,
+				0F7FAC5327235B74007BC055 /* Ubuntu-Regular.ttf in Resources */,
+				0F7FAC5427235B74007BC055 /* Ubuntu-Medium.ttf in Resources */,
+				0F7FAC5527235B74007BC055 /* Ubuntu-Bold.ttf in Resources */,
 				0F8D519125F17B5B00BA51C2 /* LaunchScreen.storyboard in Resources */,
 				0F8D518E25F17B5B00BA51C2 /* Assets.xcassets in Resources */,
 				0F8D518C25F17B5A00BA51C2 /* Main.storyboard in Resources */,
