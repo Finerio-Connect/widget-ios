@@ -67,6 +67,7 @@ internal struct Constants {
     /// Placeholders
     struct Placeholders {
         static var bankId = "@bankId"
+        static var bankCode = "@bankCode"
         static var bankName = "?"
     }
 
@@ -90,8 +91,8 @@ internal struct Constants {
         static let privacyTerms = "https://finerioconnect.com/privacy"
         static let termsAndConditions = "https://finerioconnect.com/license"
         static let cdnWidget = "https://cdn.finerio.mx/widget"
-        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_off.png"
-        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_on.png"
+        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
+        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
         static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
     }
 
