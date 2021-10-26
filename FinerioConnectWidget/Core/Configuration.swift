@@ -22,6 +22,7 @@ internal final class Configuration {
     var customerName: String = ""
     var countryCode: String = Constants.Country.code
     var showCountryOptions: Bool = true
+    var showBankTypeOptions: Bool = true
     var bankType: String = ""
     var automaticFetching: Bool!
     var state: String!

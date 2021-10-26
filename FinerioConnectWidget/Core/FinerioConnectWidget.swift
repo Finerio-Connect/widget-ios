@@ -69,6 +69,12 @@ public final class FinerioConnectWidget: NSObject {
             configuration.showCountryOptions = showCountryOptions
         }
     }
+    
+    public var showBankTypeOptions: Bool = true {
+        didSet {
+            configuration.showBankTypeOptions = showBankTypeOptions
+        }
+    }
 
     // MARK: - Private properties
 
