@@ -216,7 +216,7 @@ extension CredentialViewController {
 extension CredentialViewController {
     @objc private func didButtonHelp() {
         DispatchQueue.main.async {
-            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: self.credentialViewModel.bank.id)
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
             self.helpDialog.show()
         }
     }

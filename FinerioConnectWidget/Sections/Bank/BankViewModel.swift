@@ -38,8 +38,8 @@ internal class BankViewModel {
         }
     }
 
-    func loadBanks(country: String = Configuration.shared.countryCode, type: String = Configuration.shared.bankType) {
-        FinerioConnectWidgetAPI.banks(country: country, type: type) { [weak self] result in
+    func loadBanks(country: String = Configuration.shared.countryCode, type: BankType = Configuration.shared.bankType) {
+        FinerioConnectWidgetAPI.banks(country: country, type: type.rawValue) { [weak self] result in
             if let error = result.error {
                 self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
                 self?.serviceStatusHandler(.failure)

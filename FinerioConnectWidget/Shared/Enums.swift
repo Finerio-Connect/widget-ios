@@ -35,3 +35,9 @@ public enum Environment: String {
     case sandbox
     case production
 }
+
+public enum BankType: String, CaseIterable {
+    case personal = "personal"
+    case business = "business"
+    case fiscal = "fiscal"
+}

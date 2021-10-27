@@ -93,7 +93,7 @@ internal struct Constants {
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
-        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
+        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
     }
 
     /// Keys
@@ -138,11 +138,11 @@ internal struct Constants {
         static let code = "MX"
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
 
-        struct bankType {
-            static let personal = "personal"
-            static let business = "business"
-            static let fiscal = "fiscal"
-        }
+#warning("HOW TO HANDLE THIS?")
+//        struct bankType {
+//            static let personal = "personal"
+//            static let business = "business"
+//            static let fiscal = "fiscal"
     }
 
     struct Color {

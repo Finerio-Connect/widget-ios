@@ -17,6 +17,7 @@ internal class BankViewController: BaseViewController {
     private lazy var countryLabel: UILabel = setupCountryLabel()
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
     private lazy var collectionViewBanks: UICollectionView = setupCollectionViewBanks()
+    private lazy var mainStackView: UIStackView = setupMainStackView()
 
     private lazy var countryPickerDialog = BankCountryPickerDialog()
     private let loadingIndicator = ActivityIndicatorView()
@@ -35,83 +36,28 @@ internal class BankViewController: BaseViewController {
         bankViewModel.loadBanks()
     }
     
-    private func configureView() {
+    private func configureView() -> Void {
         title = bankViewModel.getTitle()
         countryPickerDialog.countryDelegate = self
         
-        // Main Stack
-        let mainBorderSpacing:CGFloat = 30
-        let mainTopSpacing: CGFloat = 20
-        
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        mainStackView.spacing = mainTopSpacing
-        
-        view.addSubview(mainStackView)
-        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: mainTopSpacing)
-        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: mainBorderSpacing)
-        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -mainBorderSpacing)
-        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor)
-        
-        let countryStackView = setupCountriesSelectorView()
-        
-//        // Countries Container Selector
-//        let containerHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
-//        selectCountriesContainerView.heightAnchor(equalTo: containerHeight)
-//
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCountrySelector))
-//        selectCountriesContainerView.addGestureRecognizer(tap)
-//
-//        // Flag and country name stack
-//        let flagBorderSpacing: CGFloat = 12
-//        let flagSize: CGFloat = 25
-//
-//        let flagNameStack = UIStackView(arrangedSubviews: [countryImage, countryLabel])
-//        flagNameStack.axis = .horizontal
-//        flagNameStack.spacing = flagBorderSpacing
-//
-//        countryImage.heightAnchor(equalTo: flagSize)
-//        countryImage.widthAnchor(equalTo: flagSize)
-//
-//        selectCountriesContainerView.addSubview(flagNameStack)
-//        flagNameStack.centerYAnchor(equalTo: selectCountriesContainerView.centerYAnchor)
-//        flagNameStack.leadingAnchor(equalTo: selectCountriesContainerView.leadingAnchor,
-//                                    constant: flagBorderSpacing)
-//        flagNameStack.trailingAnchor(equalTo: selectCountriesContainerView.trailingAnchor,
-//                                     constant: -flagBorderSpacing)
-//
-//
-//        // Countries Selector and Label
-//        let views = [countriesLabel, selectCountriesContainerView]
-//        let countryStackView = UIStackView(arrangedSubviews: views)
-//        countryStackView.axis = .vertical
-//        countryStackView.spacing = 8
-        
-        // Bank type segment
-        let containerHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
-        bankTypeSegment.heightAnchor(equalTo: containerHeight)
-        
+        // Add main stack
+        setLayoutMainStackView()
+
+        // Show or hide components
         if Configuration.shared.showCountryOptions {
+            let countryStackView = setupCountriesSelectorView()
             mainStackView.addArrangedSubview(countryStackView)
         }
         if Configuration.shared.showBankTypeOptions {
+            let bankSegmentedHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
+            bankTypeSegment.heightAnchor(equalTo: bankSegmentedHeight)
             mainStackView.addArrangedSubview(bankTypeSegment)
         }
         mainStackView.addArrangedSubview(collectionViewBanks)
         
         // Dialog components
-        let loadingViewSize: CGFloat = 60
-        view.addSubview(loadingIndicator)
-        loadingIndicator.widthAnchor(equalTo: loadingViewSize)
-        loadingIndicator.heightAnchor(equalTo: loadingViewSize)
-        loadingIndicator.centerYAnchor(equalTo: view.centerYAnchor)
-        loadingIndicator.centerXAnchor(equalTo: view.centerXAnchor)
-
-        view.addSubview(countryPickerDialog)
-        countryPickerDialog.heightAnchor(equalTo: view.bounds.height)
-        countryPickerDialog.widthAnchor(equalTo: view.bounds.width)
-        countryPickerDialog.centerXAnchor(equalTo: view.centerXAnchor)
-        countryPickerDialog.centerYAnchor(equalTo: view.centerYAnchor)
+        setLayoutLoadingIndicator()
+        setLayoutCountryPickerDialog()
     }
     
     private func setupCountriesSelectorView() -> UIView {
@@ -119,7 +65,8 @@ internal class BankViewController: BaseViewController {
         let containerHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
         selectCountriesContainerView.heightAnchor(equalTo: containerHeight)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCountrySelector))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(didTapCountrySelector))
         selectCountriesContainerView.addGestureRecognizer(tap)
         
         // Flag and country name stack
@@ -141,7 +88,7 @@ internal class BankViewController: BaseViewController {
                                      constant: -flagBorderSpacing)
         
         
-        // Countries Selector and Label
+        // Countries Selector and Description label
         let views = [countriesLabel, selectCountriesContainerView]
         let countryStackView = UIStackView(arrangedSubviews: views)
         countryStackView.axis = .vertical
@@ -149,63 +96,41 @@ internal class BankViewController: BaseViewController {
         
         return countryStackView
     }
-
-    private func OLDconfigureView() {
-        title = bankViewModel.getTitle()
-
-        countryPickerDialog.countryDelegate = self
-
-        [bankTypeSegment, collectionViewBanks, countryPickerDialog, loadingIndicator].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
-
-        if Configuration.shared.showCountryOptions {
-            [countriesLabel, selectCountriesContainerView].forEach {
-                $0.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview($0)
-            }
-
-            countriesLabel.topAnchor(equalTo: view.safeTopAnchor, constant: 20)
-            countriesLabel.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
-            countriesLabel.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
-
-            selectCountriesContainerView.topAnchor(equalTo: countriesLabel.bottomAnchor, constant: 8)
-            selectCountriesContainerView.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0)
-            selectCountriesContainerView.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
-            selectCountriesContainerView.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
-
-            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCountrySelector))
-            selectCountriesContainerView.addGestureRecognizer(tap)
-
-            countryImage.widthAnchor(equalTo: 25)
-            countryImage.heightAnchor(equalTo: 25)
-            countryImage.centerYAnchor(equalTo: selectCountriesContainerView.centerYAnchor)
-            countryImage.leadingAnchor(equalTo: selectCountriesContainerView.leadingAnchor, constant: 12)
-
-            countryLabel.centerYAnchor(equalTo: selectCountriesContainerView.centerYAnchor)
-            countryLabel.leadingAnchor(equalTo: countryImage.trailingAnchor, constant: 12)
-        }
-
-        bankTypeSegment.topAnchor(equalTo: Configuration.shared.showCountryOptions ? selectCountriesContainerView.bottomAnchor : view.safeTopAnchor, constant: 20)
-        bankTypeSegment.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0)
-        bankTypeSegment.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
-        bankTypeSegment.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
-
-        collectionViewBanks.topAnchor(equalTo: bankTypeSegment.bottomAnchor, constant: 20)
-        collectionViewBanks.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
-        collectionViewBanks.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
-        collectionViewBanks.bottomAnchor(equalTo: view.safeBottomAnchor, constant: -30)
-
-        loadingIndicator.widthAnchor(equalTo: 60)
-        loadingIndicator.heightAnchor(equalTo: 60)
-        loadingIndicator.topAnchor(equalTo: bankTypeSegment.bottomAnchor, constant: 25)
+    
+    private func setupMainStackView() -> UIStackView {
+        let mainStackView = UIStackView()
+        mainStackView.axis = .vertical
+        mainStackView.spacing = CGFloat(20)
+        return mainStackView
+    }
+    
+    private func setLayoutMainStackView() -> Void {
+        let mainBorderSpacing:CGFloat = 30
+        let mainTopSpacing: CGFloat = 20
+        
+        view.addSubview(mainStackView)
+        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: mainTopSpacing)
+        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: mainBorderSpacing)
+        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -mainBorderSpacing)
+        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor)
+    }
+    
+    private func setLayoutLoadingIndicator() -> Void {
+        let loadingViewSize: CGFloat = 60
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.widthAnchor(equalTo: loadingViewSize)
+        loadingIndicator.heightAnchor(equalTo: loadingViewSize)
+        loadingIndicator.centerYAnchor(equalTo: view.centerYAnchor)
         loadingIndicator.centerXAnchor(equalTo: view.centerXAnchor)
-
-        countryPickerDialog.centerXAnchor(equalTo: view.centerXAnchor)
-        countryPickerDialog.centerYAnchor(equalTo: view.centerYAnchor)
+    }
+    
+    private func setLayoutCountryPickerDialog() -> Void {
+        view.addSubview(countryPickerDialog)
         countryPickerDialog.heightAnchor(equalTo: view.bounds.height)
         countryPickerDialog.widthAnchor(equalTo: view.bounds.width)
+        countryPickerDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        countryPickerDialog.centerYAnchor(equalTo: view.centerYAnchor)
     }
 
     private func configureData() {
@@ -218,7 +143,6 @@ internal class BankViewController: BaseViewController {
 
 extension BankViewController {
     @objc private func didTapCountrySelector() {
-        print("DID TAP COUNTRY SELECTOR")
         countryPickerDialog.show()
     }
 
@@ -230,16 +154,10 @@ extension BankViewController {
         countryImage.setImage(with: URL(string: country!.imageUrl))
         countryLabel.text = country?.name
     }
-
+    
     @objc private func typeBankSelected(_ segmentedControl: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            Configuration.shared.bankType = Constants.Country.bankType.personal
-        case 1:
-            Configuration.shared.bankType = Constants.Country.bankType.business
-        default:
-            Configuration.shared.bankType = Constants.Country.bankType.fiscal
-        }
+        let bankTypeSelected = BankType.allCases[segmentedControl.selectedSegmentIndex]
+        Configuration.shared.bankType = bankTypeSelected
 
         loadingIndicator.startAnimating()
         bankViewModel.loadBanks()
@@ -251,12 +169,20 @@ extension BankViewController {
 extension BankViewController: BankPickerDialogDelegate {
     func didSelectCountry(country: Country) {
         Configuration.shared.countryCode = country.code
-        Configuration.shared.bankType = Constants.Country.bankType.personal
+        
+        #warning("Qué valor debe llevar? Uno predefinido(.personal) o el que venga en el Shared?")
+        #warning("Habrá ocasiones en que se venga de una consulta en Shared, que no tenga bancos disponibles y si el selector de tipo está oculto, no se podrá cambiar a otros tipos de banco")
+//        Configuration.shared.bankType = .personal
+        
         countryImage.setImage(with: URL(string: country.imageUrl))
         countryLabel.text = country.name
         startLoader()
         bankViewModel.loadBanks()
-        bankTypeSegment.selectedSegmentIndex = 0
+        
+        
+        #warning("Se podría añadir una validación, para saber si la combinacion de Pais/TipoBanco tiene bancos por mostrar y si no, hacer de nuevo la carga de bancos por otro tipo default (.personal)")
+        let selectedBankType = BankType.allCases.firstIndex(of: Configuration.shared.bankType)
+        bankTypeSegment.selectedSegmentIndex = selectedBankType ?? 0
     }
 }
 
@@ -313,7 +239,11 @@ extension BankViewController {
         let segmentControl = UISegmentedControl(items: [literal(.personalBankTitle)!, literal(.businessBankTitle)!, literal(.fiscalTitle)!])
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14)], for: .normal)
         segmentControl.addTarget(self, action: #selector(typeBankSelected(_:)), for: .valueChanged)
-        segmentControl.selectedSegmentIndex = 0
+        
+        let bankTypeSelected = Configuration.shared.bankType
+        let indexBankType = BankType.allCases.firstIndex(of: bankTypeSelected)
+        
+        segmentControl.selectedSegmentIndex = indexBankType ?? 0
         segmentControl.backgroundColor = UIColor(hex: Constants.Color.segmentColor)
         return segmentControl
     }

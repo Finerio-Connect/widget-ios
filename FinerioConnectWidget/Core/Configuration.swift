@@ -23,7 +23,7 @@ internal final class Configuration {
     var countryCode: String = Constants.Country.code
     var showCountryOptions: Bool = true
     var showBankTypeOptions: Bool = true
-    var bankType: String = ""
+    var bankType: BankType = .personal
     var automaticFetching: Bool!
     var state: String!
     var logLevel: LogLevel = .info
