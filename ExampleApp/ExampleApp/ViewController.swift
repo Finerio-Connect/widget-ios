@@ -20,8 +20,8 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.countryCode = "CO"
         finerioConnectWidget.showCountryOptions = true
         /// Bank settings
-        finerioConnectWidget.showBankTypeOptions = true
-        finerioConnectWidget.bankType = .business
+        finerioConnectWidget.showBankTypeOptions = false
+        finerioConnectWidget.bankType = .fiscal
         
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")

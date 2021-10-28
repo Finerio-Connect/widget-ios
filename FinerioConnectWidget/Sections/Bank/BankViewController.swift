@@ -170,19 +170,23 @@ extension BankViewController: BankPickerDialogDelegate {
     func didSelectCountry(country: Country) {
         Configuration.shared.countryCode = country.code
         
-        #warning("Qué valor debe llevar? Uno predefinido(.personal) o el que venga en el Shared?")
-        #warning("Habrá ocasiones en que se venga de una consulta en Shared, que no tenga bancos disponibles y si el selector de tipo está oculto, no se podrá cambiar a otros tipos de banco")
-//        Configuration.shared.bankType = .personal
+        // If the bankTypeOptions is visible will reset to 'personal' bankType
+        // Otherwise, will use the configured bankType.
+        var bankType: BankType = .personal
+        if !Configuration.shared.showBankTypeOptions {
+            bankType = Configuration.shared.bankType
+        }
+        
+        // Updates the banktype
+        Configuration.shared.bankType = bankType
         
         countryImage.setImage(with: URL(string: country.imageUrl))
         countryLabel.text = country.name
         startLoader()
-        bankViewModel.loadBanks()
+        bankViewModel.loadBanks()        
         
-        
-        #warning("Se podría añadir una validación, para saber si la combinacion de Pais/TipoBanco tiene bancos por mostrar y si no, hacer de nuevo la carga de bancos por otro tipo default (.personal)")
-        let selectedBankType = BankType.allCases.firstIndex(of: Configuration.shared.bankType)
-        bankTypeSegment.selectedSegmentIndex = selectedBankType ?? 0
+        let selectedBankType = BankType.allCases.firstIndex(of: bankType)
+        bankTypeSegment.selectedSegmentIndex = selectedBankType!
     }
 }
 
