@@ -52,8 +52,8 @@ internal class CredentialViewController: BaseViewController {
         titleLabel.widthAnchor(equalTo: generalWidth)
         titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
-
-        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankId, with: credentialViewModel.bank.id)), defaultImage: Images.otherBanksOn.image())
+        
+        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankCode, with: credentialViewModel.bank.code)), defaultImage: Images.otherBanksOn.image())
         logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
         logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
         logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
@@ -216,7 +216,7 @@ extension CredentialViewController {
 extension CredentialViewController {
     @objc private func didButtonHelp() {
         DispatchQueue.main.async {
-            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankId, with: self.credentialViewModel.bank.id)
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
             self.helpDialog.show()
         }
     }

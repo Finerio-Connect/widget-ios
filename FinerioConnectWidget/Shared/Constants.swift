@@ -67,6 +67,7 @@ internal struct Constants {
     /// Placeholders
     struct Placeholders {
         static var bankId = "@bankId"
+        static var bankCode = "@bankCode"
         static var bankName = "?"
     }
 
@@ -90,9 +91,9 @@ internal struct Constants {
         static let privacyTerms = "https://finerioconnect.com/privacy"
         static let termsAndConditions = "https://finerioconnect.com/license"
         static let cdnWidget = "https://cdn.finerio.mx/widget"
-        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_off.png"
-        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_on.png"
-        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
+        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
+        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
+        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
     }
 
     /// Keys
@@ -137,11 +138,11 @@ internal struct Constants {
         static let code = "MX"
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
 
-        struct bankType {
-            static let personal = "personal"
-            static let business = "business"
-            static let fiscal = "fiscal"
-        }
+#warning("HOW TO HANDLE THIS?")
+//        struct bankType {
+//            static let personal = "personal"
+//            static let business = "business"
+//            static let fiscal = "fiscal"
     }
 
     struct Color {

@@ -63,10 +63,22 @@ public final class FinerioConnectWidget: NSObject {
             configuration.countryCode = countryCode
         }
     }
+    
+    public var bankType: BankType = .personal {
+        didSet {
+            configuration.bankType = bankType
+        }
+    }
 
     public var showCountryOptions: Bool = true {
         didSet {
             configuration.showCountryOptions = showCountryOptions
+        }
+    }
+    
+    public var showBankTypeOptions: Bool = true {
+        didSet {
+            configuration.showBankTypeOptions = showBankTypeOptions
         }
     }
 
