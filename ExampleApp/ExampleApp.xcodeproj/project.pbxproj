@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F22316C2734FA7E002DE083 /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F22316B2734FA7E002DE083 /* FontBlaster.swift */; };
 		0F7FAC5327235B74007BC055 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */; };
 		0F7FAC5427235B74007BC055 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */; };
 		0F7FAC5527235B74007BC055 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		075B582A0F5D2AA12C2116B1 /* Pods_ExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F22316B2734FA7E002DE083 /* FontBlaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
 		0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
@@ -69,16 +71,17 @@
 		0F8D518325F17B5A00BA51C2 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				0F8D519225F17B5B00BA51C2 /* Info.plist */,
 				0F7FAC5227235B74007BC055 /* Ubuntu-Bold.ttf */,
 				0F7FAC5127235B74007BC055 /* Ubuntu-Medium.ttf */,
 				0F7FAC5027235B74007BC055 /* Ubuntu-Regular.ttf */,
+				0F8D518D25F17B5B00BA51C2 /* Assets.xcassets */,
 				0F8D518425F17B5A00BA51C2 /* AppDelegate.swift */,
+				0F22316B2734FA7E002DE083 /* FontBlaster.swift */,
 				0F8D518625F17B5A00BA51C2 /* SceneDelegate.swift */,
 				0F8D518825F17B5A00BA51C2 /* ViewController.swift */,
-				0F8D518A25F17B5A00BA51C2 /* Main.storyboard */,
-				0F8D518D25F17B5B00BA51C2 /* Assets.xcassets */,
 				0F8D518F25F17B5B00BA51C2 /* LaunchScreen.storyboard */,
-				0F8D519225F17B5B00BA51C2 /* Info.plist */,
+				0F8D518A25F17B5A00BA51C2 /* Main.storyboard */,
 			);
 			path = ExampleApp;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F22316C2734FA7E002DE083 /* FontBlaster.swift in Sources */,
 				0F8D518925F17B5A00BA51C2 /* ViewController.swift in Sources */,
 				0F8D518525F17B5A00BA51C2 /* AppDelegate.swift in Sources */,
 				0F8D518725F17B5A00BA51C2 /* SceneDelegate.swift in Sources */,
@@ -378,7 +382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -399,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

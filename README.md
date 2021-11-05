@@ -1,9 +1,6 @@
 # Finerio Connect iOS Widget
-
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 ![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
-
 
 Finerio Connect iOS Widget for the API Finerio Connect 2.0 reduces friction in the process of requesting their online banking credentials from your users, by taking care of the implementation and improving user experience.
 
@@ -22,14 +19,14 @@ Edit your `Podfile` and specify the dependency:
 pod 'FinerioAccountWidget'
 ```
 
-...or for spesific version
+...or for a specific version
 
 
 ```ruby
-pod 'FinerioAccountWidget', '~> 1.2'
+pod 'FinerioAccountWidget', '~> 1.5'
 ```
 
-and then run `pod install`. More info about CocoaPods [here](https://cocoapods.org)
+and then run `pod install --repo-update`. More info about CocoaPods [here](https://cocoapods.org)
 
 ## ⚙️ Use
 
@@ -64,7 +61,7 @@ finerioConnectWidget.environment = .production
 ### Logs and debugging
 
 Logs and debugging
-In some cases you'll find usefull to see what is happening inside FinerioConnectWidget. If so, you can enable logs for debugging purposes.
+In some cases, you'll find it useful to see what is happening inside FinerioConnectWidget. If so, you can enable logs for debugging purposes.
 
 
 ``` swift
@@ -73,7 +70,7 @@ finerioConnectWidget.logLevel = .info
 
 ### Country
 
-You can configure the list of banks based on a country, the available countries are: Mexico, Colombia and Chile.
+You can configure the list of banks based on a country, the available countries are Mexico, Colombia, and Chile.
 The default country is Mexico (MX), you can
 do this to assign a country based on its codes (`MX, CO, CH`)
 ``` swift
@@ -85,17 +82,30 @@ You can also choose if you want to hide the options to choose country, the defau
 finerioConnectWidget.showCountryOptions = false
 ```
 
+### Banks Type
+
+You can configure the default load of a bank type, the available types are: Personal, Business, and Fiscal. The default type is personal (.personal), you can do this to assign a type based on the enumerable (.personal, .business, .fiscal)
+
+``` swift
+finerioConnectWidget.bankType = .business
+```
+
+You can also choose if you want to hide the options to choose the bank type, the default is `true`, you can do this:
+``` swift
+finerioConnectWidget.showBankTypeOptions = false
+```
+
 ### Custom fonts
 
 You can customize the default SDK font by adding the font name, keeping the following convention in mind:
 
-- Ubuntu**-Light**
+- Ubuntu[-Light]
 
-- Ubuntu**-Regular**
+- Ubuntu[-Regular]
 
-- Ubuntu**-Bold**
+- Ubunt[-Bold]
 
-- Ubuntu**-Italic**
+- Ubuntu[-Italic]
 
 ``` swift
 finerioConnectWidget.font = "Ubuntu"
@@ -103,7 +113,7 @@ finerioConnectWidget.font = "Ubuntu"
 
 ### Customize colors
 
-You can create a new instance of `Palette` class and assign it to `FinerioConnectWidget.shared.palette`
+You can create a new instance of the `Palette` class and assign it to `FinerioConnectWidget.shared.palette`
 
 ```swift
 FinerioConnectWidget.shared.palette = Palette(
@@ -143,7 +153,7 @@ FinerioConnectWidget.shared.texts = Texts(
 ```
 ### Customize animations
 
-The SDK has animations by default with [Lottie](https://github.com/airbnb/lottie-ios) so , if you only need to change the animations by files or URL, yo can do this:
+The SDK has animations by default with [Lottie](https://github.com/airbnb/lottie-ios) so, if you only need to change the animations by files or URL, you can do this:
 
 ```swift
 FinerioConnectWidget.shared.animations = Animations(

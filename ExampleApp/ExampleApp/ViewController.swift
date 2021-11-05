@@ -13,16 +13,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Example FinerioConnectWidget"
+
+        FontBlaster.debugEnabled = true
+        FontBlaster.blast { fonts -> Void in
+            print("Loaded Fonts: \(fonts)")
+        }
+
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        button.setTitle("Open SDK Account Aggregation", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
+        button.layer.masksToBounds = true
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
+
+        view.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
+            button.heightAnchor.constraint(equalToConstant: 60),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+
+    @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
         finerioConnectWidget.font = "Ubuntu"
         /// Country settings
 //        finerioConnectWidget.countryCode = "CO"
-        finerioConnectWidget.showCountryOptions = true
+//        finerioConnectWidget.showCountryOptions = false
         /// Bank settings
-        finerioConnectWidget.showBankTypeOptions = false
-        finerioConnectWidget.bankType = .fiscal
-        
+//        finerioConnectWidget.showBankTypeOptions = false
+//        finerioConnectWidget.bankType = .fiscal
+
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank")
 

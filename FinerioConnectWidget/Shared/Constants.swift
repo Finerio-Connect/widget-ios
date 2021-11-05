@@ -137,12 +137,6 @@ internal struct Constants {
         static let name = "México"
         static let code = "MX"
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
-
-#warning("HOW TO HANDLE THIS?")
-//        struct bankType {
-//            static let personal = "personal"
-//            static let business = "business"
-//            static let fiscal = "fiscal"
     }
 
     struct Color {

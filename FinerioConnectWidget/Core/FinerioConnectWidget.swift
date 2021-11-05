@@ -63,7 +63,7 @@ public final class FinerioConnectWidget: NSObject {
             configuration.countryCode = countryCode
         }
     }
-    
+
     public var bankType: BankType = .personal {
         didSet {
             configuration.bankType = bankType
@@ -75,12 +75,14 @@ public final class FinerioConnectWidget: NSObject {
             configuration.showCountryOptions = showCountryOptions
         }
     }
-    
+
     public var showBankTypeOptions: Bool = true {
         didSet {
             configuration.showBankTypeOptions = showBankTypeOptions
         }
     }
+
+    private(set) var isReadySDK: Bool = false
 
     // MARK: - Private properties
 
@@ -124,28 +126,27 @@ public final class FinerioConnectWidget: NSObject {
     }
 
     public func start(widgetId: String, customerName: String, customerId: String? = nil, automaticFetching: Bool = true, state: String = "stateEncrypted", presentingViewController: UIViewController) {
-        logInfo("FinerioConnectWidget is starting...")
-        logInfo("SDK Version: \(Configuration.shared.app.getSDKVersion())")
-        configuration.widgetId = widgetId
-        configuration.customerName = customerName
-        configuration.customerId = customerId
-        configuration.automaticFetching = automaticFetching
-        configuration.state = state
+        if !isReadySDK {
+            logInfo("FinerioConnectWidget is starting...")
+            logInfo("SDK Version: \(Configuration.shared.app.getSDKVersion())")
+            configuration.widgetId = widgetId
+            configuration.customerName = customerName
+            configuration.customerId = customerId
+            configuration.automaticFetching = automaticFetching
+            configuration.state = state
 
-        self.presentingViewController = presentingViewController
+            self.presentingViewController = presentingViewController
 
+            firebaseConfigure()
+            mixpanelConfigure()
+
+            isReadySDK = true
+        }
+        
         guard let navigationController = presentingViewController.navigationController else {
             logWarn("Couldn't initialize view controller")
             return
         }
-
-        FontBlaster.debugEnabled = logLevel == .debug ? true : false
-        FontBlaster.blast { fonts -> Void in
-            logInfo("Loaded Fonts: \(fonts)")
-        }
-
-        firebaseConfigure()
-        mixpanelConfigure()
 
         context = Context(with: navigationController)
         context?.initialize(coordinator: AppCoordinator(context: context!))

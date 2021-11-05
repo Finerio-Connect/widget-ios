@@ -77,7 +77,6 @@
 		0FCBAFB425F1795D00DA2D18 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4625F1795D00DA2D18 /* Coordinator.swift */; };
 		0FCBAFB525F1795D00DA2D18 /* HelperEncrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4825F1795D00DA2D18 /* HelperEncrypt.swift */; };
 		0FCBAFB725F1795D00DA2D18 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4A25F1795D00DA2D18 /* Log.swift */; };
-		0FCBAFB825F1795D00DA2D18 /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4B25F1795D00DA2D18 /* FontBlaster.swift */; };
 		0FCBAFB925F1795D00DA2D18 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4C25F1795D00DA2D18 /* Localize.swift */; };
 		0FCBAFBA25F1795D00DA2D18 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4D25F1795D00DA2D18 /* Background.swift */; };
 		0FCBAFBC25F1795D00DA2D18 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF4F25F1795D00DA2D18 /* JSON.swift */; };
@@ -184,7 +183,6 @@
 		0FCBAF4625F1795D00DA2D18 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0FCBAF4825F1795D00DA2D18 /* HelperEncrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperEncrypt.swift; sourceTree = "<group>"; };
 		0FCBAF4A25F1795D00DA2D18 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		0FCBAF4B25F1795D00DA2D18 /* FontBlaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
 		0FCBAF4C25F1795D00DA2D18 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0FCBAF4D25F1795D00DA2D18 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		0FCBAF4F25F1795D00DA2D18 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 			children = (
 				0FCBAF4D25F1795D00DA2D18 /* Background.swift */,
 				0FCBAF5225F1795D00DA2D18 /* FAAError.swift */,
-				0FCBAF4B25F1795D00DA2D18 /* FontBlaster.swift */,
 				0FCBAF4825F1795D00DA2D18 /* HelperEncrypt.swift */,
 				0F6586302614EF7B00D1BBA6 /* ImageCaching.swift */,
 				0FCBAF5125F1795D00DA2D18 /* Images.swift */,
@@ -729,7 +726,6 @@
 				0FCBAFB025F1795D00DA2D18 /* URL+Extensions.swift in Sources */,
 				0FA6A1A926E95491008F8A7A /* CountryModel.swift in Sources */,
 				0FCBAFC425F1795D00DA2D18 /* ProgressShapeLayer.swift in Sources */,
-				0FCBAFB825F1795D00DA2D18 /* FontBlaster.swift in Sources */,
 				0FCBAFAD25F1795D00DA2D18 /* UIDevice+Extensions.swift in Sources */,
 				0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */,
 				0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */,
@@ -930,6 +926,7 @@
 			baseConfigurationReference = 32BEF7AF543FF03399CAE2DF /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -943,7 +940,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -958,6 +955,7 @@
 			baseConfigurationReference = 70B482BB675654826E6B9879 /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -971,7 +969,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
