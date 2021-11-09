@@ -107,6 +107,9 @@ extension CredentialViewController {
                     extraDataDialog.extraData = bankField.extraData ?? []
 
                     cell.inputTexfield.text = bankField.extraData?.first?.value
+                    extraData = bankField.extraData?.first
+                    securityCodeTextField?.text = extraData?.value
+                    buttonValidation(securityCodeTextField!)
                     extraDataDialog.setExtraData(byName: bankField.extraData?.first?.name ?? "")
                 }
             }
