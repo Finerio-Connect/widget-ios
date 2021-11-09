@@ -107,6 +107,9 @@ extension CredentialViewController {
                     extraDataDialog.extraData = bankField.extraData ?? []
 
                     cell.inputTexfield.text = bankField.extraData?.first?.value
+                    extraData = bankField.extraData?.first
+                    securityCodeTextField?.text = extraData?.value
+                    buttonValidation(securityCodeTextField!)
                     extraDataDialog.setExtraData(byName: bankField.extraData?.first?.name ?? "")
                 }
             }
@@ -246,7 +249,7 @@ extension CredentialViewController {
         credentialViewModel.createCredential(credential: credential)
     }
 
-    func getTextFeildValuesFromTableView() {
+    func getTextFieldValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
             guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
