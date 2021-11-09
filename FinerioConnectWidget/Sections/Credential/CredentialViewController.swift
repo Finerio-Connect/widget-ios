@@ -249,7 +249,7 @@ extension CredentialViewController {
         credentialViewModel.createCredential(credential: credential)
     }
 
-    func getTextFeildValuesFromTableView() {
+    func getTextFieldValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
             guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
