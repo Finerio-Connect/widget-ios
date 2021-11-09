@@ -142,7 +142,7 @@ public final class FinerioConnectWidget: NSObject {
 
             isReadySDK = true
         }
-        
+
         guard let navigationController = presentingViewController.navigationController else {
             logWarn("Couldn't initialize view controller")
             return

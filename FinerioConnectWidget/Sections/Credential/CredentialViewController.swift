@@ -33,7 +33,7 @@ internal class CredentialViewController: BaseViewController {
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
-        
+
         trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
     }
 
@@ -52,7 +52,7 @@ internal class CredentialViewController: BaseViewController {
         titleLabel.widthAnchor(equalTo: generalWidth)
         titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
         titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
-        
+
         logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankCode, with: credentialViewModel.bank.code)), defaultImage: Images.otherBanksOn.image())
         logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
         logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
@@ -226,7 +226,7 @@ extension CredentialViewController {
 
     @objc private func createCredential() {
         startLoader()
-        getTextFeildValuesFromTableView()
+        getTextFieldValuesFromTableView()
 
         credential.bankId = credentialViewModel.bank.id
         credential.customerName = Configuration.shared.customerName
