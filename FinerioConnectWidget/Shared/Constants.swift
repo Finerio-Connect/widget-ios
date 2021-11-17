@@ -77,6 +77,11 @@ internal struct Constants {
         static var password = "password"
         static var securityCode = "securityCode"
     }
+    
+    /// Texfields Name
+    struct TexfieldsFriendlyName {
+        static var user = "Usuario"
+    }
 
     /// Tags
     struct Tags {
