@@ -12,6 +12,7 @@
 "alert_button_error" = "Aceptar";
 "alert_button_ok" = "OK";
 "submit_label" = "Enviar información";
+"continue_button_title" = "Continuar";
 
 // Init Section
 "init_title" = "¡Hola René!";

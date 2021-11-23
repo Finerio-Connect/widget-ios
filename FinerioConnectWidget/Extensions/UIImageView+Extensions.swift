@@ -50,7 +50,9 @@ internal extension UIImageView {
                 } else {
                     mainAsync { [weak self] in
                         guard let self = self else { return }
-                        self.replaceImage(defaultImage!, animated: animated)
+                        if let defaultImage = defaultImage {
+                            self.replaceImage(defaultImage, animated: animated)
+                        }
                     }
                 }
             }

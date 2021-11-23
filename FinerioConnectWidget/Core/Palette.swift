@@ -12,15 +12,30 @@ final public class Palette: NSObject {
     public var mainColor: UIColor
     public var backgroundColor: UIColor
     public var mainTextColor: UIColor
+    public var mainSubTextColor: UIColor
+    public var bankCellDetailColor: UIColor
+    public var bankCellSeparatorColor: UIColor
     public var termsTextColor: UIColor
+    public var borderTextField: UIColor
+    public var grayBackgroundColor: UIColor
 
     public init(mainColor: UIColor = Colors.mainColor,
                 backgroundColor: UIColor = Colors.backgroundColor,
                 mainTextColor: UIColor = Colors.mainTextColor,
-                termsTextColor: UIColor = Colors.termsTextColor) {
+                mainSubTextColor: UIColor = Colors.mainSubTextColor,
+                bankCellDetailColor: UIColor = Colors.bankCellDetailTextColor,
+                bankCellSeparatorColor: UIColor = Colors.bankCellSeparatorColor,
+                termsTextColor: UIColor = Colors.termsTextColor,
+                borderTextField: UIColor = Colors.borderTextField,
+                grayBackgroundColor: UIColor = Colors.grayBackgroundColor) {
         self.mainColor = mainColor
         self.backgroundColor = backgroundColor
         self.mainTextColor = mainTextColor
+        self.mainSubTextColor = mainSubTextColor
+        self.bankCellDetailColor = bankCellDetailColor
+        self.bankCellSeparatorColor = bankCellSeparatorColor
         self.termsTextColor = termsTextColor
+        self.borderTextField = borderTextField
+        self.grayBackgroundColor = grayBackgroundColor
     }
 }

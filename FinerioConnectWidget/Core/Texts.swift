@@ -18,7 +18,7 @@ public final class Texts: NSObject {
     public var synchronizationTitle: String
     public var privacyTermsUrl: String
     public var termsAndConditionsUrl: String
-
+    
     @objc public init(
         companyName: String = fLocaleCompanyName,
         banksTitle: String = fLocaleBanksTitle,
@@ -31,18 +31,18 @@ public final class Texts: NSObject {
         synchronizationTitle: String = fLocaleSynchronizationTitle,
         privacyTermsUrl: String = fLocalePrivacyTermsUrl,
         termsAndConditionsUrl: String = fLocaletermsAndConditionsUrl) {
-        self.companyName = companyName
-        self.banksTitle = banksTitle
-        self.countriesTitle = countriesTitle
-        self.personalBankTitle = personalBankTitle
-        self.businessBankTitle = businessBankTitle
-        self.fiscalTitle = fiscalTitle
-        self.createCredentialTitle = createCredentialTitle
-        self.submitLabel = submitLabel
-        self.synchronizationTitle = synchronizationTitle
-        self.privacyTermsUrl = privacyTermsUrl
-        self.termsAndConditionsUrl = termsAndConditionsUrl
-    }
+            self.companyName = companyName
+            self.banksTitle = banksTitle
+            self.countriesTitle = countriesTitle
+            self.personalBankTitle = personalBankTitle
+            self.businessBankTitle = businessBankTitle
+            self.fiscalTitle = fiscalTitle
+            self.createCredentialTitle = createCredentialTitle
+            self.submitLabel = submitLabel
+            self.synchronizationTitle = synchronizationTitle
+            self.privacyTermsUrl = privacyTermsUrl
+            self.termsAndConditionsUrl = termsAndConditionsUrl
+        }
 }
 
 enum Literal: CustomStringConvertible {
@@ -57,7 +57,7 @@ enum Literal: CustomStringConvertible {
     case synchronizationTitle
     case privacyTermsUrl
     case termsAndConditionsUrl
-
+    
     var description: String {
         return literal(self) ?? String(hashValue)
     }
@@ -65,7 +65,7 @@ enum Literal: CustomStringConvertible {
 
 func literal(_ literal: Literal) -> String? {
     let literals = Configuration.shared.texts
-
+    
     switch literal {
     case .companyName: return literals.companyName
     case .banksTitle: return literals.banksTitle

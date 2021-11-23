@@ -9,18 +9,17 @@
 import UIKit
 
 internal class CredentialViewController: BaseViewController {
-    private var credentialViewModel: CredentialViewModel!
-
-    private lazy var titleLabel: UILabel = setupTitleLabel()
-    private lazy var logoBankImageView: UIImageView = setupLogoBankImageView()
-    private lazy var helpWithCredentialsButton: UIButton = setupHelpWithCredentialsButton()
+    // Components
     private lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
-    private lazy var tyCLabel: InteractiveLinkLabel = setupTyCLabel()
+    private lazy var tyCLabel: UITextView = setupTyCLabel()
+    private lazy var toggleSwitch: UISwitch = setupToggleSwitch()
     private lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var helpButton: UIButton = setupHelpButton()
     private lazy var helpDialog = CredentialHelpDialog()
     private lazy var extraDataDialog = ExtraDataPickerDialog()
-
     private let datePicker = DatePickerDialog()
+    // Vars
+    private var credentialViewModel: CredentialViewModel!
     private var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
     private var securityCodeTextField: UITextField?
     private var extraData: ExtraData?
@@ -36,57 +35,143 @@ internal class CredentialViewController: BaseViewController {
 
         trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
     }
-
-    private func configureView() {
+    
+    private func configureView() -> Void {
         title = credentialViewModel.getTitle()
-
         extraDataDialog.extraDataDelegate = self
+                
+        let mainStackView = UIStackView()
+        mainStackView.axis = .vertical
+        mainStackView.distribution = .equalSpacing
 
-        [titleLabel, logoBankImageView, helpWithCredentialsButton, textFieldsTableView, tyCLabel, continueButton, helpDialog, extraDataDialog].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
+        let headerSectionView = HeaderSectionView()
+        headerSectionView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
+        headerSectionView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
+        
+        mainStackView.addArrangedSubview(headerSectionView)
+        mainStackView.addArrangedSubview(textFieldsTableView)
+        
+        // Terms & Conditions
+        let switchAndTermsViews = [toggleSwitch, tyCLabel]
+        let switchTermsStack = UIStackView(arrangedSubviews: switchAndTermsViews)
+        switchTermsStack.axis = .horizontal
+        switchTermsStack.spacing = 8
+        mainStackView.addArrangedSubview(switchTermsStack)
+        
+        // Buttons
+        let buttons = [continueButton, helpButton]
+        let buttonsStack = UIStackView(arrangedSubviews: buttons)
+        buttonsStack.axis = .vertical
+        buttonsStack.spacing = 12
+        mainStackView.addArrangedSubview(buttonsStack)
+        
+        // Banner
+        let bannerStack = UIStackView()
+        bannerStack.axis = .horizontal
+        bannerStack.alignment = .center
+        bannerStack.spacing = 8
+        
+        let lockImageView = UIImageView(image: Images.lockIcon.image())
+        lockImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        lockImageView.tintColor = Configuration.shared.palette.termsTextColor
+        bannerStack.addArrangedSubview(lockImageView)
+        
+        let bannerLabel = UILabel()
+        bannerLabel.text = Constants.Texts.CredentialSection.bannerText
+        bannerLabel.numberOfLines = 0
+        bannerLabel.lineBreakMode = .byWordWrapping
+        bannerLabel.textColor = Configuration.shared.palette.termsTextColor
+        let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
+        bannerLabel.font = .fcRegularFont(ofSize: CGFloat(fontSize))
 
-        let generalWidth = view.layer.frame.width - 100
-
-        titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
-
-        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankCode, with: credentialViewModel.bank.code)), defaultImage: Images.otherBanksOn.image())
-        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
-        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
-        logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
-        logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
-
-        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-        helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
-        helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
-
-        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-        textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
-        textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
-
-        tyCLabel.widthAnchor(equalTo: generalWidth)
-        tyCLabel.heightAnchor(equalTo: 100)
-        tyCLabel.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: 10)
-        tyCLabel.centerXAnchor(equalTo: view.centerXAnchor)
-
-        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40, secondValue: 50))
-        continueButton.widthAnchor(equalTo: generalWidth)
-        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20, secondValue: -30))
-        continueButton.centerXAnchor(equalTo: view.centerXAnchor)
-
+        bannerStack.addArrangedSubview(bannerLabel)
+        
+        let tapeBannerImg = Images.tapeBanner.image()
+        let imageView = UIImageView(image: tapeBannerImg)
+        imageView.addSubview(bannerStack)
+        bannerStack.topAnchor(equalTo: imageView.topAnchor, constant: 5)
+        bannerStack.leadingAnchor(equalTo: imageView.leadingAnchor, constant: 30)
+        bannerStack.trailingAnchor(equalTo: imageView.trailingAnchor, constant: -30)
+        bannerStack.bottomAnchor(equalTo: imageView.bottomAnchor, constant: -5)
+        
+        mainStackView.addArrangedSubview(imageView)
+        
+        // Separator
+        let separatorView = UIView()
+        separatorView.backgroundColor = .clear
+        separatorView.heightAnchor(equalTo: 25)
+        mainStackView.addArrangedSubview(separatorView)
+        
+        view.addSubview(mainStackView)
+        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: 20)
+        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: 20)
+        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -20)
+        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor, constant: -20)
+        
+        // DIALOGS
+        view.addSubview(helpDialog)
         helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
         helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
         helpDialog.heightAnchor(equalTo: view.bounds.height)
         helpDialog.widthAnchor(equalTo: view.bounds.width)
 
+        view.addSubview(extraDataDialog)
         extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
         extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
         extraDataDialog.heightAnchor(equalTo: view.bounds.height)
         extraDataDialog.widthAnchor(equalTo: view.bounds.width)
     }
+
+//    private func OLDconfigureView() {
+//        title = credentialViewModel.getTitle()
+//
+//        extraDataDialog.extraDataDelegate = self
+//
+//        [textFieldsTableView, tyCLabel, continueButton, helpDialog, extraDataDialog].forEach {
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//            view.addSubview($0)
+//        }
+//
+//        let generalWidth = view.layer.frame.width - 100
+//
+////        titleLabel.widthAnchor(equalTo: generalWidth)
+////        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
+////        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
+////
+////        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankCode, with: credentialViewModel.bank.code)), defaultImage: Images.otherBanksOn.image())
+////        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
+////        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
+////        logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
+////        logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
+//
+////        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
+////        helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
+////        helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
+//
+////        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
+////        textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
+////        textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
+////
+////        tyCLabel.widthAnchor(equalTo: generalWidth)
+////        tyCLabel.heightAnchor(equalTo: 100)
+////        tyCLabel.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: 10)
+////        tyCLabel.centerXAnchor(equalTo: view.centerXAnchor)
+//
+//        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40, secondValue: 50))
+//        continueButton.widthAnchor(equalTo: generalWidth)
+//        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20, secondValue: -30))
+//        continueButton.centerXAnchor(equalTo: view.centerXAnchor)
+//
+//        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
+//        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
+//        helpDialog.heightAnchor(equalTo: view.bounds.height)
+//        helpDialog.widthAnchor(equalTo: view.bounds.width)
+//
+//        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
+//        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
+//        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
+//        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
+//    }
 }
 
 // MARK: - Private methods
@@ -117,7 +202,7 @@ extension CredentialViewController {
     }
 }
 
-// MARK: Dialog Country Delegate
+// MARK: - Dialog Country Delegate
 
 extension CredentialViewController: ExtraDataPickerDialogDelegate {
     func didSelectExtraData(extraData: ExtraData) {
@@ -130,34 +215,6 @@ extension CredentialViewController: ExtraDataPickerDialogDelegate {
 // MARK: - UI
 
 extension CredentialViewController {
-    private func setupTitleLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.text = literal(.createCredentialTitle)!.replacingOccurrences(of: Constants.Placeholders.bankName, with: credentialViewModel.bank.name)
-        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16, secondValue: 18))
-        label.textColor = Configuration.shared.palette.mainTextColor
-        return label
-    }
-
-    private func setupLogoBankImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }
-
-    private func setupHelpWithCredentialsButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
-        button.setTitleColor(Configuration.shared.palette.mainTextColor, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 13 : 15)
-        button.setAttributedTitle(NSAttributedString(string: button.titleLabel!.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
-        button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
-        return button
-    }
-
     private func setupTextFieldTableView() -> UITableView {
         let tableView = UITableView()
         tableView.register(CredentialTableViewCell.self, forCellReuseIdentifier: CredentialTableViewCell.id)
@@ -167,42 +224,50 @@ extension CredentialViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = view.backgroundColor
         tableView.dataSource = self
-        tableView.delegate = self
         return tableView
     }
-
-    private func setupTyCLabel() -> InteractiveLinkLabel {
-        let label = InteractiveLinkLabel()
-        label.numberOfLines = 0
-        label.text = Constants.Texts.CredentialSection.tyCLabel
-        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.textAlignment = .center
-        label.textColor = Configuration.shared.palette.termsTextColor
-
-        let plainAttributedString = NSMutableAttributedString(string: "Al dar clic en Enviar información aceptas expresamente nuestros ", attributes: nil)
-        let string = "Términos de servicio"
-        let attributedLinkString = NSMutableAttributedString(string: string, attributes: [NSAttributedString.Key.link: URL(string: literal(.termsAndConditionsUrl)!)!])
-
-        let plainAttributedString2 = NSMutableAttributedString(string: " así como nuestro ", attributes: nil)
-        let string2 = "Aviso de privacidad"
-        let attributedLinkString2 = NSMutableAttributedString(string: string2, attributes: [NSAttributedString.Key.link: URL(string: literal(.privacyTermsUrl)!)!])
-
-        let fullAttributedString = NSMutableAttributedString()
-        fullAttributedString.append(plainAttributedString)
-        fullAttributedString.append(attributedLinkString)
-        fullAttributedString.append(plainAttributedString2)
-        fullAttributedString.append(attributedLinkString2)
-        fullAttributedString.append(NSMutableAttributedString(string: ".", attributes: nil))
-
-        label.attributedText = fullAttributedString
-
-        return label
+    
+    private func setupTyCLabel() -> UITextView {
+        let textView = UITextView()
+        let plainAttributes: [NSAttributedString.Key: Any]
+        let linkAttributes: [NSAttributedString.Key : Any]
+        
+        let plainText = Constants.Texts.CredentialSection.plainTyCText
+        let termsColor = Configuration.shared.palette.termsTextColor
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
+        let fontType = UIFont.fcRegularFont(ofSize: fontSize)
+        
+        plainAttributes = [.foregroundColor: termsColor, .font: fontType]
+        let attributedString = NSMutableAttributedString(string: plainText,
+                                                         attributes: plainAttributes)
+        
+        let linkedText = Constants.Texts.CredentialSection.linkedTyCText
+        let linkRange = (attributedString.string as NSString).range(of: linkedText)
+        
+        let urlWebSite = Constants.URLS.termsAndConditions
+        attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
+        
+        let linkColor = Configuration.shared.palette.mainTextColor
+        linkAttributes = [.foregroundColor: linkColor, .font: fontType]
+        
+        textView.linkTextAttributes = linkAttributes
+        textView.attributedText = attributedString
+        textView.isEditable = false
+        return textView
+    }
+    
+    private func setupToggleSwitch() -> UISwitch {
+        let toggleSwitch = UISwitch()
+        toggleSwitch.onTintColor = Configuration.shared.palette.mainColor
+        toggleSwitch.addTarget(self, action: #selector(toggleSwitchChanged), for: .valueChanged)
+        return toggleSwitch
     }
 
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(literal(.submitLabel), for: .normal)
+        button.setTitle(Constants.Texts.CredentialSection.continueButtonTitle, for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
+        button.heightAnchor(equalTo: 46)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcRegularFont(ofSize: 18)
         button.alpha = 0.5
@@ -210,6 +275,20 @@ extension CredentialViewController {
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
+        return button
+    }
+    
+    private func setupHelpButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
+        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
+        button.heightAnchor(equalTo: 46)
+        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
+        button.layer.masksToBounds = true
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(didButtonHelp), for: .touchUpInside)
         return button
     }
 }
@@ -286,6 +365,12 @@ extension CredentialViewController {
         continueButton.alpha = credentialViewModel.validForm ? 1.0 : 0.5
         continueButton.isEnabled = credentialViewModel.validForm ? true : false
     }
+    
+    @objc private func toggleSwitchChanged() {
+        credentialViewModel.isAcceptingTerms = toggleSwitch.isOn
+        continueButton.alpha = credentialViewModel.validForm ? 1.0 : 0.5
+        continueButton.isEnabled = credentialViewModel.validForm ? true : false
+    }
 }
 
 // MARK: - Observers View Model
@@ -302,7 +387,7 @@ extension CredentialViewController {
             case .success:
                 self.context?.initialize(coordinator: AccountCoordinator(context: self.context!, credentialId: self.credentialViewModel.credentialResponse.id))
             case .loaded:
-                self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 230 : 150)
+                self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 270 : 190)
                 self.textFieldsTableView.reloadData()
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
                 self.setupExtraData()
@@ -315,7 +400,7 @@ extension CredentialViewController {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension CredentialViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -335,15 +420,7 @@ extension CredentialViewController: UITableViewDataSource {
     }
 }
 
-// MARK: UITableViewDelegate
-
-extension CredentialViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 65.0 : 75.0
-    }
-}
-
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension CredentialViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

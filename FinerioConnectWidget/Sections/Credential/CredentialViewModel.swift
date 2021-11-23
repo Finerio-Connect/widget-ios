@@ -16,6 +16,7 @@ internal class CredentialViewModel {
     var credentialResponse: CredentialResponse!
     var errorMessage: String!
     var totalValidationTextfields: [String] = []
+    var isAcceptingTerms: Bool = false
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 
@@ -75,6 +76,11 @@ internal class CredentialViewModel {
     }
 
     var validForm: Bool {
-        return bankFields.count == totalValidationTextfields.count
+        if bankFields.count == totalValidationTextfields.count && isAcceptingTerms {
+            return true
+        } else {
+            return false
+        }
+//        return bankFields.count == totalValidationTextfields.count
     }
 }

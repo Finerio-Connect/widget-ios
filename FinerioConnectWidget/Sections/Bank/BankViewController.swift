@@ -9,18 +9,42 @@
 import UIKit
 
 internal class BankViewController: BaseViewController {
-    private var bankViewModel: BankViewModel!
+    // Components
+//    private lazy var headerAvatarView: UIView = setupHeaderAvatarView()
+//    private lazy var headerTitleLabel: UILabel =  {
+//        let label = UILabel()
+//        label.text = "Conecta de manera segura con tu institución"
+//        label.numberOfLines = 0
+//        label.lineBreakMode = .byWordWrapping
+//        label.textAlignment = .left
+//        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
+//        label.textColor = Configuration.shared.palette.mainTextColor
+//        return label
+//    }()
+//    private lazy var headerDescriptionLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Selecciona tu banco y autoriza la conexión"
+//        label.numberOfLines = 0
+//        label.lineBreakMode = .byWordWrapping
+//        label.textAlignment = .left
+//        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14)
+//        label.textColor = Configuration.shared.palette.mainSubTextColor
+//        return label
+//    }()
 
     private lazy var countriesLabel: UILabel = setupTitleLabel()
     private lazy var selectCountriesContainerView: UIView = setupSelectCountriesContainer()
     private lazy var countryImage: UIImageView = setupCountryImage()
     private lazy var countryLabel: UILabel = setupCountryLabel()
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
-    private lazy var collectionViewBanks: UICollectionView = setupCollectionViewBanks()
+//    private lazy var collectionViewBanks: UICollectionView = setupCollectionViewBanks()
+    private lazy var tableView: UITableView = setupTableView()
     private lazy var mainStackView: UIStackView = setupMainStackView()
-
     private lazy var countryPickerDialog = BankCountryPickerDialog()
     private let loadingIndicator = ActivityIndicatorView()
+    
+    // Vars
+    private var bankViewModel: BankViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +59,81 @@ internal class BankViewController: BaseViewController {
         }
         bankViewModel.loadBanks()
     }
+}
+
+// MARK: - Private methods
+
+extension BankViewController {
+    @objc private func didTapCountrySelector() {
+        countryPickerDialog.show()
+    }
+
+    private func setupCountry() {
+        countryPickerDialog.countries = bankViewModel.countries
+        countryPickerDialog.setCountry()
+
+        let country = bankViewModel.getCurrentCountry()
+        countryImage.setImage(with: URL(string: country!.imageUrl))
+        countryLabel.text = country?.name
+    }
     
+    @objc private func typeBankSelected(_ segmentedControl: UISegmentedControl) {
+        let bankTypeSelected = BankType.allCases[segmentedControl.selectedSegmentIndex]
+        Configuration.shared.bankType = bankTypeSelected
+
+        loadingIndicator.startAnimating()
+        bankViewModel.loadBanks()
+    }
+}
+
+// MARK: - Dialog Country Delegate
+
+extension BankViewController: BankPickerDialogDelegate {
+    func didSelectCountry(country: Country) {
+        Configuration.shared.countryCode = country.code
+        
+        // If the bankTypeOptions is visible will reset to 'personal' bankType
+        // Otherwise, will use the configured bankType.
+        var bankType: BankType = .personal
+        if !Configuration.shared.showBankTypeOptions {
+            bankType = Configuration.shared.bankType
+        }
+        
+        // Updates the banktype
+        Configuration.shared.bankType = bankType
+        
+        countryImage.setImage(with: URL(string: country.imageUrl))
+        countryLabel.text = country.name
+        startLoader()
+        bankViewModel.loadBanks()        
+        
+        let selectedBankType = BankType.allCases.firstIndex(of: bankType)
+        bankTypeSegment.selectedSegmentIndex = selectedBankType!
+    }
+}
+
+// MARK: - Data
+extension BankViewController {
+    private func configureData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - UI
+extension BankViewController {
     private func configureView() -> Void {
         title = bankViewModel.getTitle()
         countryPickerDialog.countryDelegate = self
+        
+        // Header section
+        let headerView = HeaderSectionView()
+        headerView.titleLabel.text = Constants.Texts.BankSection.headerTitle
+        headerView.descriptionLabel.text = Constants.Texts.BankSection.headerDescription
+        headerView.setLockAvatarView()
+        mainStackView.addArrangedSubview(headerView)
         
         // Add main stack
         setLayoutMainStackView()
@@ -53,12 +148,49 @@ internal class BankViewController: BaseViewController {
             bankTypeSegment.heightAnchor(equalTo: bankSegmentedHeight)
             mainStackView.addArrangedSubview(bankTypeSegment)
         }
-        mainStackView.addArrangedSubview(collectionViewBanks)
+        
+        let separatorView = setupSeparatorView()
+        let tableAndSeparatorViews = [separatorView, tableView]
+        let tableStackView = UIStackView(arrangedSubviews: tableAndSeparatorViews)
+        tableStackView.axis = .vertical
+        
+        mainStackView.addArrangedSubview(tableStackView)
         
         // Dialog components
         setLayoutLoadingIndicator()
         setLayoutCountryPickerDialog()
     }
+    
+    private func setupSeparatorView() -> UIView {
+        let separatorView = UIView()
+        separatorView.heightAnchor(equalTo: 1)
+        separatorView.backgroundColor = Configuration.shared.palette.bankCellSeparatorColor
+        return separatorView
+    }
+    
+//    private func setupHeaderSection() -> Void {
+//        let headerMainStack = UIStackView()
+//        headerMainStack.axis = .vertical
+//        headerMainStack.spacing = 12
+////        headerMainStack.layer.borderWidth = 1
+////        headerMainStack.layer.borderColor = UIColor.blue.cgColor
+//
+//        let avatarStack = UIStackView()
+//        avatarStack.addArrangedSubview(headerAvatarView)
+//        avatarStack.axis = .vertical
+//        avatarStack.alignment = .center
+//        headerMainStack.addArrangedSubview(avatarStack)
+//
+//        let descriptionViews = [headerTitleLabel, headerDescriptionLabel]
+//        let descriptionsStack = UIStackView(arrangedSubviews: descriptionViews)
+//        descriptionsStack.axis = .vertical
+//        descriptionsStack.alignment = .center
+//        descriptionsStack.spacing = 4
+////        descriptionsStack.backgroundColor = .systemPink
+//        headerMainStack.addArrangedSubview(descriptionsStack)
+//
+//        mainStackView.addArrangedSubview(headerMainStack)
+//    }
     
     private func setupCountriesSelectorView() -> UIView {
         // Countries Container Selector
@@ -104,95 +236,6 @@ internal class BankViewController: BaseViewController {
         return mainStackView
     }
     
-    private func setLayoutMainStackView() -> Void {
-        let mainBorderSpacing:CGFloat = 30
-        let mainTopSpacing: CGFloat = 20
-        
-        view.addSubview(mainStackView)
-        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: mainTopSpacing)
-        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: mainBorderSpacing)
-        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -mainBorderSpacing)
-        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor)
-    }
-    
-    private func setLayoutLoadingIndicator() -> Void {
-        let loadingViewSize: CGFloat = 60
-        
-        view.addSubview(loadingIndicator)
-        loadingIndicator.widthAnchor(equalTo: loadingViewSize)
-        loadingIndicator.heightAnchor(equalTo: loadingViewSize)
-        loadingIndicator.centerYAnchor(equalTo: view.centerYAnchor)
-        loadingIndicator.centerXAnchor(equalTo: view.centerXAnchor)
-    }
-    
-    private func setLayoutCountryPickerDialog() -> Void {
-        view.addSubview(countryPickerDialog)
-        countryPickerDialog.heightAnchor(equalTo: view.bounds.height)
-        countryPickerDialog.widthAnchor(equalTo: view.bounds.width)
-        countryPickerDialog.centerXAnchor(equalTo: view.centerXAnchor)
-        countryPickerDialog.centerYAnchor(equalTo: view.centerYAnchor)
-    }
-
-    private func configureData() {
-        loadingIndicator.stopAnimating()
-        collectionViewBanks.reloadData()
-    }
-}
-
-// MARK: - Private methods
-
-extension BankViewController {
-    @objc private func didTapCountrySelector() {
-        countryPickerDialog.show()
-    }
-
-    private func setupCountry() {
-        countryPickerDialog.countries = bankViewModel.countries
-        countryPickerDialog.setCountry()
-
-        let country = bankViewModel.getCurrentCountry()
-        countryImage.setImage(with: URL(string: country!.imageUrl))
-        countryLabel.text = country?.name
-    }
-    
-    @objc private func typeBankSelected(_ segmentedControl: UISegmentedControl) {
-        let bankTypeSelected = BankType.allCases[segmentedControl.selectedSegmentIndex]
-        Configuration.shared.bankType = bankTypeSelected
-
-        loadingIndicator.startAnimating()
-        bankViewModel.loadBanks()
-    }
-}
-
-// MARK: Dialog Country Delegate
-
-extension BankViewController: BankPickerDialogDelegate {
-    func didSelectCountry(country: Country) {
-        Configuration.shared.countryCode = country.code
-        
-        // If the bankTypeOptions is visible will reset to 'personal' bankType
-        // Otherwise, will use the configured bankType.
-        var bankType: BankType = .personal
-        if !Configuration.shared.showBankTypeOptions {
-            bankType = Configuration.shared.bankType
-        }
-        
-        // Updates the banktype
-        Configuration.shared.bankType = bankType
-        
-        countryImage.setImage(with: URL(string: country.imageUrl))
-        countryLabel.text = country.name
-        startLoader()
-        bankViewModel.loadBanks()        
-        
-        let selectedBankType = BankType.allCases.firstIndex(of: bankType)
-        bankTypeSegment.selectedSegmentIndex = selectedBankType!
-    }
-}
-
-// MARK: - UI
-
-extension BankViewController {
     private func setupTitleLabel() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0
@@ -251,18 +294,99 @@ extension BankViewController {
         segmentControl.backgroundColor = UIColor(hex: Constants.Color.segmentColor)
         return segmentControl
     }
+    
+    private func setupTableView() -> UITableView {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = Configuration.shared.palette.bankCellSeparatorColor
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInsetReference = .fromCellEdges
+        tableView.register(BankTableViewCell.self,
+                           forCellReuseIdentifier: BankTableViewCell.cellIdentifier)
+        return tableView
+    }
+    
+    private func setupHeaderAvatarView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(hex: "#F1F2F5")
+        
+        let sizeView = CGFloat(33)
+        view.heightAnchor(equalTo: sizeView)
+        view.widthAnchor(equalTo: sizeView)
+        view.layer.cornerRadius = sizeView / 2
+        
+        let frameImg = CGRect(x: 0, y: 0, width: 12, height: 12)
+        let imageView = UIImageView(frame: frameImg)
+        imageView.image = Images.lockIcon.image()!
+        
+        view.addSubview(imageView)
+        imageView.centerYAnchor(equalTo: view.centerYAnchor)
+        imageView.centerXAnchor(equalTo: view.centerXAnchor)
+        
+        return view
+    }
+}
 
-    private func setupCollectionViewBanks() -> UICollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+// MARK: - Layouts
+extension BankViewController {
+    private func setLayoutMainStackView() -> Void {
+        let mainBorderSpacing:CGFloat = 20
+        let mainTopSpacing: CGFloat = 20
+        
+        view.addSubview(mainStackView)
+        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: mainTopSpacing)
+        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: mainBorderSpacing)
+        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -mainBorderSpacing)
+        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor)
+    }
+    
+    private func setLayoutLoadingIndicator() -> Void {
+        let loadingViewSize: CGFloat = 60
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.widthAnchor(equalTo: loadingViewSize)
+        loadingIndicator.heightAnchor(equalTo: loadingViewSize)
+        loadingIndicator.centerYAnchor(equalTo: view.centerYAnchor)
+        loadingIndicator.centerXAnchor(equalTo: view.centerXAnchor)
+    }
+    
+    private func setLayoutCountryPickerDialog() -> Void {
+        view.addSubview(countryPickerDialog)
+        countryPickerDialog.heightAnchor(equalTo: view.bounds.height)
+        countryPickerDialog.widthAnchor(equalTo: view.bounds.width)
+        countryPickerDialog.centerXAnchor(equalTo: view.centerXAnchor)
+        countryPickerDialog.centerYAnchor(equalTo: view.centerYAnchor)
+    }
+}
 
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.register(BankCollectionViewCell.self, forCellWithReuseIdentifier: BankCollectionViewCell.id)
-        return collectionView
+// MARK: - TableView Datasource
+extension BankViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        #warning("AÑADIR VALIDACION PARA EMPTY STATE")
+        return bankViewModel.banks?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        if let aCell = tableView.dequeueReusableCell(withIdentifier: BankTableViewCell.cellIdentifier,
+                                                     for: indexPath) as? BankTableViewCell {
+            
+            aCell.setup(with: bankViewModel.banks[indexPath.row])
+            cell = aCell
+        }
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension BankViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coordinator = CredentialCoordinator(context: context!,
+                                                bank: bankViewModel.banks[indexPath.row])
+        context?.initialize(coordinator: coordinator)
     }
 }
 
@@ -289,39 +413,39 @@ extension BankViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension BankViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//extension BankViewController: UICollectionViewDataSource {
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if bankViewModel.banks?.count == 0 {
+//            collectionViewBanks.setEmptyMessage(Constants.Texts.BankSection.labelEmpty)
+//        } else {
+//            collectionViewBanks.restore()
+//        }
+//
+//        return bankViewModel.banks?.count ?? 0
+//    }
+//}
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if bankViewModel.banks?.count == 0 {
-            collectionViewBanks.setEmptyMessage(Constants.Texts.BankSection.labelEmpty)
-        } else {
-            collectionViewBanks.restore()
-        }
+//extension BankViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCollectionViewCell.id, for: indexPath as IndexPath) as! BankCollectionViewCell
+//        cell.setup(with: bankViewModel.banks[indexPath.row])
+//
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        context?.initialize(coordinator: CredentialCoordinator(context: context!, bank: bankViewModel.banks[indexPath.row]))
+//    }
+//}
 
-        return bankViewModel.banks?.count ?? 0
-    }
-}
-
-extension BankViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BankCollectionViewCell.id, for: indexPath as IndexPath) as! BankCollectionViewCell
-        cell.setup(with: bankViewModel.banks[indexPath.row])
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        context?.initialize(coordinator: CredentialCoordinator(context: context!, bank: bankViewModel.banks[indexPath.row]))
-    }
-}
-
-extension BankViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionWidth = collectionView.frame.size.width - 25
-
-        return CGSize(width: collectionWidth / 2, height: 100)
-    }
-}
+//extension BankViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let collectionWidth = collectionView.frame.size.width - 25
+//
+//        return CGSize(width: collectionWidth / 2, height: 100)
+//    }
+//}

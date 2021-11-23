@@ -36,14 +36,21 @@ internal struct Constants {
         struct BankSection {
             static let titleButton = "Seleccionar"
             static let labelEmpty = "No hay bancos disponibles"
+            static let headerTitle = "Conecta de manera segura con tu institución"
+            static let headerDescription = "Selecciona tu banco y autoriza la conexión"
         }
 
         struct CredentialSection {
-            static let helpWithCredentialsLabel = "¿Dónde encuentro mis claves?"
-            static let tyCLabel = "Al dar clic en Enviar información aceptas expresamente nuestros Términos de servicio así como nuestro Aviso de privacidad."
+            static let helpWithCredentialsLabel = "¿Dónde consigo mis credenciales?"
+            static let plainTyCText = "He leído y acepto los términos y condiciones."
+            static let linkedTyCText = "términos y condiciones"
             static let titleDatePicker = "Fecha"
             static let doneButtonTitleDatePicker = "Ok"
             static let cancelButtonTitleDatePicker = "Cancelar"
+            static let headerTitle = "Autenticación"
+            static let headerDescription = "Introduce tus credenciales de banca en línea."
+            static let bannerText = "Conexión encriptada en modo lectura nunca tenemos acceso a tu dinero."
+            static let continueButtonTitle = "Continuar"
         }
 
         struct AccountSection {
@@ -88,11 +95,11 @@ internal struct Constants {
 
     /// URLS
     struct URLS {
-        static let privacyTerms = "https://finerioconnect.com/privacy"
-        static let termsAndConditions = "https://finerioconnect.com/license"
+        static let termsAndConditions = "https://www.finerio.mx/terms"
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
+        static var bankImageShield = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_shield.png"
         static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
     }
 

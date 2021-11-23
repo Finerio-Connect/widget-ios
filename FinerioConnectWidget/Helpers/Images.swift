@@ -27,4 +27,6 @@ extension Images {
     static let eyeClosed = Images("eye_closed")
     static let downArrow = Images("down_arrow")
     static let cancelButton = Images("cancel_button")
+    static let lockIcon = Images("lock_icon")
+    static let tapeBanner = Images("tape_banner")
 }
