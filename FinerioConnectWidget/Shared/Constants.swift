@@ -59,15 +59,23 @@ internal struct Constants {
             static let firstLabelAlertToken = "Por favor, introduce este número en tu token:"
             static let secondLabelAlertToken = "después, escribe aquí el número que salío en tu token:"
             static let titleButton = "Enviar"
+            static let headerTitle = "Espera un momento"
+            static let headerDescription = "Este proceso puede tardar unos minutos"
         }
 
         struct StatusSection {
-            static let successTitleLabel = "¡Vinculación exitosa!"
-            static let successSubtitleLabel = "Tu cuenta se analizó correctamente."
-            static let failureTitleLabel = "¡La vinculación falló!"
-            static let failureSubtitleLabel = "Lo sentimos."
-            static let successTitleButton = "Vincular otra cuenta"
-            static let exitTitleButton = "Cancelar"
+            static let successTitleLabel = "¡Gracias!"
+            static let successSubtitleLabel = "Tu cuenta ha sido correctamente agregada"
+            static let successBodyDescriptionLabel = "¿Tienes cuenta en otro banco? Puedes agregarlas ahora mismo para obtener mayores beneficios."
+            static let failure401BodyDescriptionLabel = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra."
+            static let failure503BodyDescriptionLabel = "Hay una sesión activa de tu banca en línea. Por favor, ciérrala, espera 15 minutos y intenta de nuevo."
+            static let failure403BodyDescriptionLabel = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra."
+            static let failureTitleLabel = "Ups, algo salió mal"
+            static let failureSubtitleLabel = "Tu cuenta no ha podido ser agregada"
+            static let failureContinueTitleButton = "Intentar nuevamente"
+            static let failureExitTitleButton = "Salir"
+            static let successContinueTitleButton = "Agregar otra cuenta"
+            static let successExitTitleButton = "Continuar proceso"
         }
     }
 

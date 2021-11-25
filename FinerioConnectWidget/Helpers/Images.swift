@@ -29,4 +29,6 @@ extension Images {
     static let cancelButton = Images("cancel_button")
     static let lockIcon = Images("lock_icon")
     static let tapeBanner = Images("tape_banner")
+    static let successIcon = Images("success_icon")
+    static let failureIcon = Images("failure_icon")
 }

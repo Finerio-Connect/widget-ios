@@ -12,6 +12,7 @@ import Foundation
 internal class AccountStatusViewModel {
     var errorMessage: String!
     var serviceStatus: ServiceStatus!
+    var bank: Bank!
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 

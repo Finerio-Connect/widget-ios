@@ -7,6 +7,7 @@
 //
 
 import FirebaseDatabase
+import UIKit
 
 internal class AccountViewModel {
     var errorMessage: String!
@@ -14,6 +15,7 @@ internal class AccountViewModel {
     var credentialId: String!
     var accounts: [AccountStatus] = []
     var transactionsCreated: Bool = false
+    var bank: Bank!
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let databaseReference = Database.database().reference()

@@ -8,18 +8,20 @@
 
 import Lottie
 import UIKit
+import nanopb
 
 internal class AccountViewController: BaseViewController {
-    private var accountViewModel: AccountViewModel!
-
-    private lazy var titleLabel: UILabel = setupTitleLabel()
-    private lazy var animationView: AnimationView = setupAnimationView()
+    // Components
     private lazy var accountsTableView: UITableView = setupAccountsTableView()
-
+    private lazy var animationAccountLoadingView: AnimationView = setupAnimationAccountLoadingView()
+    private lazy var statusDescriptionLabel: UILabel = setupStatusDescriptionLabel()
+    // Vars
+    private var accountViewModel: AccountViewModel!
     var credentialToken = CredentialToken(widgetId: Configuration.shared.widgetId)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         trackEvent(eventName: Constants.Events.createCredential)
 
         accountViewModel = viewModel as? AccountViewModel
@@ -32,73 +34,62 @@ internal class AccountViewController: BaseViewController {
         super.viewDidDisappear(animated)
         accountViewModel.databaseReference.removeAllObservers()
     }
-
+    
     private func configureView() {
-        title = accountViewModel.getTitle()
-
         navigationController?.navigationBar.isHidden = true
+        
+        let mainStack = UIStackView()
+        mainStack.axis = .vertical
+        mainStack.alignment = .center
+        mainStack.spacing = 45
+        
+        let headerSectionView = HeaderSectionView()
+        headerSectionView.avatarView.setImage(with: URL(string: Constants.URLS.bankImageShield.replacingOccurrences(of: Constants.Placeholders.bankCode, with: accountViewModel.bank.code)), defaultImage: Images.otherBanksOff.image())
 
-        [titleLabel, animationView, accountsTableView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
-
-        let generalWidth = view.layer.frame.width - 100
-
-        titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 20.0, secondValue: 50.0))
-        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
-
-        animationView.widthAnchor(equalTo: generalWidth)
-        animationView.heightAnchor(equalTo: 150)
-        animationView.topAnchor(equalTo: titleLabel.bottomAnchor)
-        animationView.centerXAnchor(equalTo: view.centerXAnchor)
-
-        accountsTableView.topAnchor(equalTo: animationView.bottomAnchor)
-        accountsTableView.bottomAnchor(equalTo: view.bottomAnchor)
-        accountsTableView.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
-        accountsTableView.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
+        headerSectionView.titleLabel.text = Constants.Texts.AccountSection.headerTitle
+        headerSectionView.descriptionLabel.text = Constants.Texts.AccountSection.headerDescription
+        mainStack.addArrangedSubview(headerSectionView)
+        
+        let animationSize = CGFloat(99)
+        animationAccountLoadingView.heightAnchor(equalTo: animationSize)
+        animationAccountLoadingView.widthAnchor(equalTo: animationSize)
+        mainStack.addArrangedSubview(animationAccountLoadingView)
+        
+        mainStack.addArrangedSubview(statusDescriptionLabel)
+        mainStack.addArrangedSubview(accountsTableView)
+        
+        view.addSubview(mainStack)
+        mainStack.topAnchor(equalTo: view.safeTopAnchor, constant: 20)
+        mainStack.leadingAnchor(equalTo: view.leadingAnchor, constant: 20)
+        mainStack.trailingAnchor(equalTo: view.trailingAnchor, constant: -20)
+        mainStack.bottomAnchor(equalTo: view.safeBottomAnchor)
+        
+//        view.addSubview(headerSectionView)
+//        headerSectionView.topAnchor(equalTo: view.safeTopAnchor)
+//        headerSectionView.leadingAnchor(equalTo: view.leadingAnchor)
+//        headerSectionView.trailingAnchor(equalTo: view.trailingAnchor)
+//
+//        view.addSubview(animationAccountLoadingView)
+//        animationAccountLoadingView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: 70)
+//        animationAccountLoadingView.heightAnchor(equalTo: 99)
+//        animationAccountLoadingView.widthAnchor(equalTo: 99)
+//        animationAccountLoadingView.centerXAnchor(equalTo: headerSectionView.centerXAnchor)
+//
+//        view.addSubview(statusDescriptionLabel)
+//        statusDescriptionLabel.topAnchor(equalTo: animationAccountLoadingView.bottomAnchor)
+//        statusDescriptionLabel.centerXAnchor(equalTo: view.centerXAnchor)
+//
+//        view.addSubview(accountsTableView)
+//        accountsTableView.topAnchor(equalTo: statusDescriptionLabel.bottomAnchor)
+//        accountsTableView.bottomAnchor(equalTo: view.bottomAnchor)
+//        accountsTableView.leadingAnchor(equalTo: view.leadingAnchor, constant: 30)
+//        accountsTableView.trailingAnchor(equalTo: view.trailingAnchor, constant: -30)
     }
 }
 
 // MARK: - UI
 
 extension AccountViewController {
-    private func setupTitleLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.text = literal(.synchronizationTitle)
-        label.font = .fcBoldFont(ofSize: getConstraintConstant(firstValue: 16.0, secondValue: 20.0))
-        label.textColor = Configuration.shared.palette.mainTextColor
-        return label
-    }
-
-    private func setupAnimationView() -> AnimationView {
-        var animationView = AnimationView()
-        animationView.backgroundBehavior = .pauseAndRestore
-        animationView.contentMode = .scaleAspectFit
-
-        if Configuration.shared.animations.syncingAnimation.isURL {
-            if let animationFile = URL(string: Configuration.shared.animations.syncingAnimation) {
-                animationView = AnimationView(url: animationFile, closure: { _ in
-                    DispatchQueue.main.async {
-                        animationView.play()
-                        animationView.loopMode = .loop
-                    }
-                })
-            }
-        } else {
-            if let animation = Bundle.main.path(forResource: Configuration.shared.animations.syncingAnimation, ofType: "json") {
-                animationView.animation = Animation.filepath(animation)
-                animationView.play()
-                animationView.loopMode = .loop
-            }
-        }
-
-        return animationView
-    }
-
     private func setupAccountsTableView() -> UITableView {
         let tableView = UITableView()
         tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: AccountTableViewCell.id)
@@ -110,6 +101,40 @@ extension AccountViewController {
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
+    }
+    
+    private func setupAnimationAccountLoadingView() -> AnimationView {
+        var animationView = AnimationView()
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.contentMode = .scaleAspectFit
+        
+        if Configuration.shared.animations.loadingAccountAnimation.isURL {
+            if let animationFile = URL(string: Configuration.shared.animations.loadingAccountAnimation) {
+                animationView = AnimationView(url: animationFile, closure: { _ in
+                    DispatchQueue.main.async {
+                        animationView.play()
+                        animationView.loopMode = .loop
+                    }
+                })
+            }
+        } else {
+            if let animation = Bundle.main.path(forResource: Configuration.shared.animations.loadingAccountAnimation, ofType: "json") {
+                animationView.animation = Animation.filepath(animation)
+                animationView.play()
+                animationView.loopMode = .loop
+            }
+        }
+        return animationView
+    }
+    
+    private func setupStatusDescriptionLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = Configuration.shared.palette.mainTextColor
+        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
+        label.text = "Encriptando tus datos..."
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
     }
 }
 
@@ -166,11 +191,12 @@ extension AccountViewController {
             switch status {
             case .active, .loaded, .error: break
             case .success:
-                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
+                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success, bank: self.accountViewModel.bank))
                 self.trackEvent(eventName: Constants.Events.credentialCreated)
             case .failure:
-                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, errorMessage: self.accountViewModel.errorMessage))
+                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, errorMessage: self.accountViewModel.errorMessage, bank: self.accountViewModel.bank))
             case .updated:
+                print("UPDATED: \(self.accountViewModel.accounts.map({$0.name}))")
                 self.accountsTableView.reloadData()
             case .interactive:
                 self.showAlertToken()

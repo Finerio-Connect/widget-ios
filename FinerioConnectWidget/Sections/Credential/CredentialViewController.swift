@@ -45,6 +45,7 @@ internal class CredentialViewController: BaseViewController {
         mainStackView.distribution = .equalSpacing
 
         let headerSectionView = HeaderSectionView()
+        headerSectionView.setLockAvatarView()
         headerSectionView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
         headerSectionView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
         
@@ -383,16 +384,16 @@ extension CredentialViewController {
             switch status {
             case .updated, .interactive: break
             case .active:
-                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success))
+                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success, bank: self.credentialViewModel.bank))
             case .success:
-                self.context?.initialize(coordinator: AccountCoordinator(context: self.context!, credentialId: self.credentialViewModel.credentialResponse.id))
+                self.context?.initialize(coordinator: AccountCoordinator(context: self.context!, credentialId: self.credentialViewModel.credentialResponse.id, bank: self.credentialViewModel.bank))
             case .loaded:
                 self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 270 : 190)
                 self.textFieldsTableView.reloadData()
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
                 self.setupExtraData()
             case .failure:
-                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure))
+                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, bank: self.credentialViewModel.bank))
             case .error:
                 self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }

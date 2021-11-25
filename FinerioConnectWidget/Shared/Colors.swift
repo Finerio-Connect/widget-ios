@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public struct Colors {
-    public static let mainColor = UIColor(hex: "#33D9B2")!
+    public static let mainColor = UIColor(hex: "#3FD8AF")!
     public static let backgroundColor = UIColor(hex: "#FFFFFF")!
     public static let mainTextColor = UIColor(hex: "#00113D")!
     public static let mainSubTextColor = UIColor(hex: "#333F65")!

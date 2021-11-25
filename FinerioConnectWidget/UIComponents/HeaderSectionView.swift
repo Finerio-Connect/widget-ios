@@ -15,26 +15,15 @@ class HeaderSectionView: UIView {
     lazy var descriptionLabel: UILabel = setupDescriptionLabel()
     private lazy var mainStack: UIStackView = setupMainStack()
     
-    // Vars
-//    var shouldSetupConstraints = true
-        
-      override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-          setupView()
-      }
-
-      required init?(coder aDecoder: NSCoder) {
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-          setupView()
-      }
-        
-//      override func updateConstraints() {
-//        if(shouldSetupConstraints) {
-//          // AutoLayout constraints
-//          shouldSetupConstraints = false
-//        }
-//        super.updateConstraints()
-//      }
+        setupView()
+    }
 }
 
 extension HeaderSectionView {
@@ -66,6 +55,7 @@ extension HeaderSectionView {
         imageView.heightAnchor(equalTo: sizeView)
         imageView.widthAnchor(equalTo: sizeView)
         imageView.layer.cornerRadius = sizeView / 2
+        imageView.clipsToBounds = true
         imageView.backgroundColor = UIColor(hex: "#F1F2F5")
         
         return imageView
@@ -73,30 +63,11 @@ extension HeaderSectionView {
     
     func setLockAvatarView() {
         let lockIconImage = Images.lockIcon.image()!
-        let edgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let resizedImage = lockIconImage.resizableImage(withCapInsets: edgeInsets, resizingMode: .stretch)
-        avatarView.image = resizedImage
-        
-//        let view = UIView()
-//        view.backgroundColor = UIColor(hex: "#F1F2F5")
-//
-//        let sizeView = CGFloat(33)
-//        view.heightAnchor(equalTo: sizeView)
-//        view.widthAnchor(equalTo: sizeView)
-//        view.layer.cornerRadius = sizeView / 2
-//
-//
-//        let imageView = UIImageView(frame: frameImg)
-//        imageView.image = Images.lockIcon.image()!
-//
-//        view.addSubview(imageView)
-//        imageView.centerYAnchor(equalTo: view.centerYAnchor)
-//        imageView.centerXAnchor(equalTo: view.centerXAnchor)
-//
-//        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
-//        let imageRender = renderer.image { ctx in
-//            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-//        }
+        let capInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        let resizedImg = lockIconImage.resizableImage(withCapInsets: capInsets)
+        avatarView.image = resizedImg
+        avatarView.contentMode = .center
+        avatarView.tintColor = Configuration.shared.palette.mainTextColor
     }
     
     private func setupTitleLabel() -> UILabel {
