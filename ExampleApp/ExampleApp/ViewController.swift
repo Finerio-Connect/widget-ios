@@ -62,7 +62,7 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.animations = Animations(
 //            syncingAnimation: "syncingAnimation",
 //            loadingAccountAnimation: "https://cdn.finerio.mx/widget/account_loading.json",
-//            accountReadyAnimation: "accountReadyAnimation",
+//            accountReadyAnimation: "accountReadyAnimation", //BORRAR
 //            successAnimation: "successAnimation",
 //            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
 

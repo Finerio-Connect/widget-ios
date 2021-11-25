@@ -37,6 +37,7 @@ internal class AccountViewController: BaseViewController {
     
     private func configureView() {
         navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         let mainStack = UIStackView()
         mainStack.axis = .vertical
@@ -227,5 +228,13 @@ extension AccountViewController: UITableViewDataSource {
 extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 25.0
+    }
+}
+
+// MARK: - GestureRecognizerDelegate
+extension AccountViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Disable back swipe
+        return false
     }
 }

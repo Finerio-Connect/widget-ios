@@ -28,6 +28,7 @@ internal class AccountStatusViewController: BaseViewController {
     
     private func configureView() {
         title = accountStatusViewModel.getTitle()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         headerSectionView.titleLabel.text = Constants.Texts.StatusSection.successTitleLabel
         headerSectionView.descriptionLabel.text = Constants.Texts.StatusSection.successSubtitleLabel
@@ -171,5 +172,14 @@ extension AccountStatusViewController {
     
     @objc private func exit() {
         navigationController?.popToRootViewController(animated: true)
+    }
+}
+
+// MARK: - GestureRecognizerDelegate
+extension AccountStatusViewController
+: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Disable back swipe
+        return false
     }
 }
