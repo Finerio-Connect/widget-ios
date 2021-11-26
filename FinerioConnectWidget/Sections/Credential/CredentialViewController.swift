@@ -23,27 +23,27 @@ internal class CredentialViewController: BaseViewController {
     private var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
     private var securityCodeTextField: UITextField?
     private var extraData: ExtraData?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startLoader()
         credentialViewModel = viewModel as? CredentialViewModel
-        hideKeyboardWhenTappedAround()
+        localHideKeyboardWhenTappedAround()
         configureView()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
-
+        
         trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
     }
     
     private func configureView() -> Void {
         title = credentialViewModel.getTitle()
         extraDataDialog.extraDataDelegate = self
-                
+        
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .equalSpacing
-
+        
         let headerSectionView = HeaderSectionView()
         headerSectionView.setLockAvatarView()
         headerSectionView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
@@ -85,7 +85,7 @@ internal class CredentialViewController: BaseViewController {
         bannerLabel.textColor = Configuration.shared.palette.termsTextColor
         let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         bannerLabel.font = .fcRegularFont(ofSize: CGFloat(fontSize))
-
+        
         bannerStack.addArrangedSubview(bannerLabel)
         
         let tapeBannerImg = Images.tapeBanner.image()
@@ -117,64 +117,13 @@ internal class CredentialViewController: BaseViewController {
         helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
         helpDialog.heightAnchor(equalTo: view.bounds.height)
         helpDialog.widthAnchor(equalTo: view.bounds.width)
-
+        
         view.addSubview(extraDataDialog)
         extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
         extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
         extraDataDialog.heightAnchor(equalTo: view.bounds.height)
         extraDataDialog.widthAnchor(equalTo: view.bounds.width)
     }
-
-//    private func OLDconfigureView() {
-//        title = credentialViewModel.getTitle()
-//
-//        extraDataDialog.extraDataDelegate = self
-//
-//        [textFieldsTableView, tyCLabel, continueButton, helpDialog, extraDataDialog].forEach {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            view.addSubview($0)
-//        }
-//
-//        let generalWidth = view.layer.frame.width - 100
-//
-////        titleLabel.widthAnchor(equalTo: generalWidth)
-////        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-////        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
-////
-////        logoBankImageView.setImage(with: URL(string: Constants.URLS.bankImageOn.replacingOccurrences(of: Constants.Placeholders.bankCode, with: credentialViewModel.bank.code)), defaultImage: Images.otherBanksOn.image())
-////        logoBankImageView.widthAnchor(equalTo: (view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2)
-////        logoBankImageView.heightAnchor(equalTo: ((view.layer.frame.width - getConstraintConstant(firstValue: 35, secondValue: 25)) / 2) / 2)
-////        logoBankImageView.topAnchor(equalTo: titleLabel.bottomAnchor, constant: 20)
-////        logoBankImageView.centerXAnchor(equalTo: view.centerXAnchor)
-//
-////        helpWithCredentialsButton.topAnchor(equalTo: logoBankImageView.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-////        helpWithCredentialsButton.leadingAnchor(equalTo: view.leadingAnchor)
-////        helpWithCredentialsButton.trailingAnchor(equalTo: view.trailingAnchor)
-//
-////        textFieldsTableView.topAnchor(equalTo: helpWithCredentialsButton.bottomAnchor, constant: getConstraintConstant(firstValue: 10, secondValue: 20))
-////        textFieldsTableView.leadingAnchor(equalTo: view.leadingAnchor)
-////        textFieldsTableView.trailingAnchor(equalTo: view.trailingAnchor)
-////
-////        tyCLabel.widthAnchor(equalTo: generalWidth)
-////        tyCLabel.heightAnchor(equalTo: 100)
-////        tyCLabel.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: 10)
-////        tyCLabel.centerXAnchor(equalTo: view.centerXAnchor)
-//
-//        continueButton.heightAnchor(equalTo: getConstraintConstant(firstValue: 40, secondValue: 50))
-//        continueButton.widthAnchor(equalTo: generalWidth)
-//        continueButton.bottomAnchor(equalTo: view.safeBottomAnchor, constant: getConstraintConstant(firstValue: -20, secondValue: -30))
-//        continueButton.centerXAnchor(equalTo: view.centerXAnchor)
-//
-//        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
-//        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
-//        helpDialog.heightAnchor(equalTo: view.bounds.height)
-//        helpDialog.widthAnchor(equalTo: view.bounds.width)
-//
-//        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
-//        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
-//        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
-//        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
-//    }
 }
 
 // MARK: - Private methods
@@ -185,15 +134,15 @@ extension CredentialViewController {
             guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
             }
-
+            
             if cell.inputTexfield.id?.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
                 securityCodeTextField = cell.inputTexfield
             }
-
+            
             if cell.inputTexfield.tag == Constants.Tags.fieldSelect {
                 if let bankField = credentialViewModel.bankFields.first(where: { $0.name == cell.inputTexfield.id }) {
                     extraDataDialog.extraData = bankField.extraData ?? []
-
+                    
                     cell.inputTexfield.text = bankField.extraData?.first?.value
                     extraData = bankField.extraData?.first
                     securityCodeTextField?.text = extraData?.value
@@ -266,7 +215,7 @@ extension CredentialViewController {
         toggleSwitch.addTarget(self, action: #selector(toggleSwitchChanged), for: .valueChanged)
         return toggleSwitch
     }
-
+    
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.continueButtonTitle, for: .normal)
@@ -306,55 +255,55 @@ extension CredentialViewController {
             self.helpDialog.show()
         }
     }
-
+    
     @objc private func createCredential() {
         startLoader()
         getTextFieldValuesFromTableView()
-
+        
         credential.bankId = credentialViewModel.bank.id
         credential.customerName = Configuration.shared.customerName
         credential.customerId = Configuration.shared.customerId
-
+        
         credentialViewModel.bankFields.forEach { textfield in
             if textfield.name == Constants.TexfieldsName.username {
                 credential.username = HelperEncrypt().encrypted(textfield.value)
             }
-
+            
             if textfield.name == Constants.TexfieldsName.securityCode {
                 credential.securityCode = HelperEncrypt().encrypted(extraData != nil ? extraData!.name : textfield.value)
             }
-
+            
             if textfield.name == Constants.TexfieldsName.password {
                 credential.password = HelperEncrypt().encrypted(textfield.value)
             }
         }
-
+        
         credentialViewModel.createCredential(credential: credential)
     }
-
+    
     func getTextFieldValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
             guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
             }
-
+            
             if let text = cell.inputTexfield.text, !text.isEmpty {
                 credentialViewModel.bankFields[index].value = text
             }
         }
     }
-
+    
     func datePickerTapped(_ textField: UITextField) {
         let currentDate = Date()
         var dateComponents = DateComponents()
         dateComponents.year = -150
         let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
-
+        
         datePicker.show(Constants.Texts.CredentialSection.titleDatePicker,
                         doneButtonTitle: Constants.Texts.CredentialSection.doneButtonTitleDatePicker,
                         cancelButtonTitle: Constants.Texts.CredentialSection.cancelButtonTitleDatePicker,
                         minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { date in
-
+            
             if let dt = date {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyyMMdd"
@@ -363,7 +312,7 @@ extension CredentialViewController {
             }
         }
     }
-
+    
     @objc private func buttonValidation(_ textField: UITextField) {
         credentialViewModel.textFieldDidChange(textField)
         continueButton.alpha = credentialViewModel.validForm ? 1.0 : 0.5
@@ -410,82 +359,118 @@ extension CredentialViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return credentialViewModel.bankFields?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CredentialTableViewCell.id, for: indexPath) as? CredentialTableViewCell else {
             fatalError("Could not cast CredentialTableViewCell")
         }
-
+        
         cell.setup(with: credentialViewModel.bankFields[indexPath.row])
         cell.inputTexfield.delegate = self
         cell.inputTexfield.addTarget(self, action: #selector(buttonValidation(_:)), for: .editingChanged)
-
+        
         return cell
     }
 }
 
-// MARK: - UITextFieldDelegate
-
+// MARK: - Keyboard Handling
 extension CredentialViewController: UITextFieldDelegate {
+    /// NOTE:
+    /// If the keyboard has a weird behavior, try to use: UINavigationBar.appearance().isTranslucent = true
+    ///
+    open func localHideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    open func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotifications(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
+    }
+    
+    open func removeKeyboardObserver(){
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
+    }
+    
+    // This method will notify when keyboard appears/ dissapears
+    @objc func keyboardNotifications(notification: NSNotification) {
+        
+        var txtFieldY : CGFloat = 0.0  //Using this we will calculate the selected textFields Y Position
+        let spaceBetweenTxtFieldAndKeyboard : CGFloat = 5.0 //Specify the space between textfield and keyboard
+        
+        
+        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        if let activeTextField = UIResponder.currentFirst() as? UITextField ?? UIResponder.currentFirst() as? UITextView {
+            // Here we will get accurate frame of textField which is selected if there are multiple textfields
+            frame = self.view.convert(activeTextField.frame, from: activeTextField.superview)
+            txtFieldY = frame.origin.y + frame.size.height
+        }
+        
+        if let userInfo = notification.userInfo {
+            // here we will get frame of keyBoard (i.e. x, y, width, height)
+            let keyBoardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let keyBoardFrameY = keyBoardFrame!.origin.y
+            let keyBoardFrameHeight = keyBoardFrame!.size.height
+            
+            var viewOriginY: CGFloat = 0.0
+            //Check keyboards Y position and according to that move view up and down
+            if keyBoardFrameY >= UIScreen.main.bounds.size.height {
+                viewOriginY = 0.0
+            } else {
+                // if textfields y is greater than keyboards y then only move View to up
+                if txtFieldY >= keyBoardFrameY {
+                    
+                    viewOriginY = (txtFieldY - keyBoardFrameY) + spaceBetweenTxtFieldAndKeyboard
+                    
+                    //This condition is just to check viewOriginY should not be greator than keyboard height
+                    // if its more than keyboard height then there will be black space on the top of keyboard.
+                    if viewOriginY > keyBoardFrameHeight { viewOriginY = keyBoardFrameHeight }
+                }
+            }
+            
+            //set the Y position of view
+            self.view.frame.origin.y = -viewOriginY
+        }
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.tag == Constants.Tags.fieldSecurityCode {
             securityCodeTextField = textField
             datePickerTapped(textField)
             return false
         }
-
+        
         if textField.tag == Constants.Tags.fieldSelect {
             extraDataDialog.show()
             return false
         }
-
+        
         return true
     }
+}
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+extension UIResponder {
+    static weak var responder: UIResponder?
+    
+    static func currentFirst() -> UIResponder? {
+        responder = nil
+        UIApplication.shared.sendAction(#selector(trap), to: nil, from: nil, for: nil)
+        return responder
     }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let textFieldRect: CGRect = view.window!.convert(textField.bounds, from: textField)
-        let viewRect: CGRect = view.window!.convert(view.bounds, from: view)
-
-        let midline: CGFloat = textFieldRect.origin.y + 0.5 * textFieldRect.size.height
-        let numerator: CGFloat = midline - viewRect.origin.y - Constants.MoveKeyboard.MINIMUM_SCROLL_FRACTION * viewRect.size.height
-        let denominator: CGFloat = (Constants.MoveKeyboard.MAXIMUM_SCROLL_FRACTION - Constants.MoveKeyboard.MINIMUM_SCROLL_FRACTION) * viewRect.size.height
-        var heightFraction: CGFloat = numerator / denominator
-
-        if heightFraction < 0.0 {
-            heightFraction = 0.0
-        } else if heightFraction > 1.0 {
-            heightFraction = 1.0
-        }
-
-        let orientation: UIInterfaceOrientation = UIApplication.shared.statusBarOrientation
-        if orientation == UIInterfaceOrientation.portrait || orientation == UIInterfaceOrientation.portraitUpsideDown {
-            animateDistance = floor(Constants.MoveKeyboard.PORTRAIT_KEYBOARD_HEIGHT * heightFraction)
-        } else {
-            animateDistance = floor(Constants.MoveKeyboard.LANDSCAPE_KEYBOARD_HEIGHT * heightFraction)
-        }
-
-        var viewFrame: CGRect = view.frame
-        viewFrame.origin.y -= animateDistance
-
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(TimeInterval(Constants.MoveKeyboard.KEYBOARD_ANIMATION_DURATION))
-        view.frame = viewFrame
-        UIView.commitAnimations()
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        var viewFrame: CGRect = view.frame
-        viewFrame.origin.y += CGFloat(animateDistance)
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(TimeInterval(Constants.MoveKeyboard.KEYBOARD_ANIMATION_DURATION))
-        view.frame = viewFrame
-        UIView.commitAnimations()
+    
+    @objc private func trap() {
+        UIResponder.responder = self
     }
 }

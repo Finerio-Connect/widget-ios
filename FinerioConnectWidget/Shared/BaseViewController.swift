@@ -52,14 +52,14 @@ internal class BaseViewController: UIViewController {
         currentLoadingView.dismiss(animated: true, completion: nil)
     }
 
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+//    }
 
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    @objc private func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
 
     func getConstraintConstant(firstValue: Double, secondValue: Double, value: Double = 0.0) -> CGFloat {
         if UIDevice.current.screenType == .iPhones_5_5s_5c_SE || UIDevice.current.screenType == .iPhones_6_6s_7_8 {
