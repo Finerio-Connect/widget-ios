@@ -365,7 +365,11 @@ extension BankViewController {
 // MARK: - TableView Datasource
 extension BankViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("AÑADIR VALIDACION PARA EMPTY STATE")
+        if bankViewModel.banks?.count == 0 {
+            tableView.setEmptyMessage(Constants.Texts.BankSection.labelEmpty)
+        } else {
+            tableView.restore()
+        }
         return bankViewModel.banks?.count ?? 0
     }
     
