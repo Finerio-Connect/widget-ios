@@ -109,8 +109,8 @@ extension AccountViewController {
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.contentMode = .scaleAspectFit
         
-        if Configuration.shared.animations.loadingAccountAnimation.isURL {
-            if let animationFile = URL(string: Configuration.shared.animations.loadingAccountAnimation) {
+        if Configuration.shared.animations.loadingAnimation.isURL {
+            if let animationFile = URL(string: Configuration.shared.animations.loadingAnimation) {
                 animationView = AnimationView(url: animationFile, closure: { _ in
                     DispatchQueue.main.async {
                         animationView.play()
@@ -119,7 +119,8 @@ extension AccountViewController {
                 })
             }
         } else {
-            if let animation = Bundle.main.path(forResource: Configuration.shared.animations.loadingAccountAnimation, ofType: "json") {
+            if let animation = Bundle.main.path(forResource: Configuration.shared.animations.loadingAnimation,
+                                                ofType: "json") {
                 animationView.animation = Animation.filepath(animation)
                 animationView.play()
                 animationView.loopMode = .loop

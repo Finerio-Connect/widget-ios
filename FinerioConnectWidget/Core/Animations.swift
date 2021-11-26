@@ -7,17 +7,14 @@
 //
 
 final public class Animations: NSObject {
-    public var loadingAccountAnimation: String
-    public var accountReadyAnimation: String
+    public var loadingAnimation: String
     public var successAnimation: String
     public var failureAnimation: String
 
-    public init(loadingAccountAnimation: String = AnimationsURLS.loadingAccountAnimation,
-                accountReadyAnimation: String = AnimationsURLS.accountReadyAnimation,
+    public init(loadingAnimation: String = AnimationsURLS.loadingAnimation,
                 successAnimation: String = AnimationsURLS.successAnimation,
                 failureAnimation: String = AnimationsURLS.failureAnimation) {
-        self.loadingAccountAnimation = loadingAccountAnimation
-        self.accountReadyAnimation = accountReadyAnimation
+        self.loadingAnimation = loadingAnimation
         self.successAnimation = successAnimation
         self.failureAnimation = failureAnimation
     }

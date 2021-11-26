@@ -10,34 +10,11 @@ import UIKit
 
 internal class BankViewController: BaseViewController {
     // Components
-//    private lazy var headerAvatarView: UIView = setupHeaderAvatarView()
-//    private lazy var headerTitleLabel: UILabel =  {
-//        let label = UILabel()
-//        label.text = "Conecta de manera segura con tu institución"
-//        label.numberOfLines = 0
-//        label.lineBreakMode = .byWordWrapping
-//        label.textAlignment = .left
-//        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
-//        label.textColor = Configuration.shared.palette.mainTextColor
-//        return label
-//    }()
-//    private lazy var headerDescriptionLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Selecciona tu banco y autoriza la conexión"
-//        label.numberOfLines = 0
-//        label.lineBreakMode = .byWordWrapping
-//        label.textAlignment = .left
-//        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14)
-//        label.textColor = Configuration.shared.palette.mainSubTextColor
-//        return label
-//    }()
-
     private lazy var countriesLabel: UILabel = setupTitleLabel()
     private lazy var selectCountriesContainerView: UIView = setupSelectCountriesContainer()
     private lazy var countryImage: UIImageView = setupCountryImage()
     private lazy var countryLabel: UILabel = setupCountryLabel()
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
-//    private lazy var collectionViewBanks: UICollectionView = setupCollectionViewBanks()
     private lazy var tableView: UITableView = setupTableView()
     private lazy var mainStackView: UIStackView = setupMainStackView()
     private lazy var countryPickerDialog = BankCountryPickerDialog()
