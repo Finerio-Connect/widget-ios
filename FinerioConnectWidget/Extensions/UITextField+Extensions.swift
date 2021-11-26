@@ -58,7 +58,7 @@ extension UITextField {
         let imageContainerView = UIView(frame: viewFrame)
         imageContainerView.addSubview(imageView)
         imageView.center = imageContainerView.center
-        
+                
         rightView = imageContainerView
         rightViewMode = .always
         tintColor = Configuration.shared.palette.termsTextColor

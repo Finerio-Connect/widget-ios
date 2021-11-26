@@ -11,7 +11,7 @@ import UIKit
 internal class CredentialViewController: BaseViewController {
     // Components
     private lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
-    private lazy var tyCLabel: UITextView = setupTyCLabel()
+    private lazy var termsTextView: VerticallyCenteredTextView = setupTermsTextView()
     private lazy var toggleSwitch: UISwitch = setupToggleSwitch()
     private lazy var continueButton: UIButton = setupContinueButton()
     private lazy var helpButton: UIButton = setupHelpButton()
@@ -53,10 +53,11 @@ internal class CredentialViewController: BaseViewController {
         mainStackView.addArrangedSubview(textFieldsTableView)
         
         // Terms & Conditions
-        let switchAndTermsViews = [toggleSwitch, tyCLabel]
+        let switchAndTermsViews = [toggleSwitch, termsTextView]
         let switchTermsStack = UIStackView(arrangedSubviews: switchAndTermsViews)
         switchTermsStack.axis = .horizontal
         switchTermsStack.spacing = 8
+        switchTermsStack.alignment = .center
         mainStackView.addArrangedSubview(switchTermsStack)
         
         // Buttons
@@ -89,6 +90,7 @@ internal class CredentialViewController: BaseViewController {
         
         let tapeBannerImg = Images.tapeBanner.image()
         let imageView = UIImageView(image: tapeBannerImg)
+        imageView.tintColor = Configuration.shared.palette.mainColor
         imageView.addSubview(bannerStack)
         bannerStack.topAnchor(equalTo: imageView.topAnchor, constant: 5)
         bannerStack.leadingAnchor(equalTo: imageView.leadingAnchor, constant: 30)
@@ -100,7 +102,7 @@ internal class CredentialViewController: BaseViewController {
         // Separator
         let separatorView = UIView()
         separatorView.backgroundColor = .clear
-        separatorView.heightAnchor(equalTo: 25)
+        separatorView.heightAnchor(equalTo: 20)
         mainStackView.addArrangedSubview(separatorView)
         
         view.addSubview(mainStackView)
@@ -228,8 +230,8 @@ extension CredentialViewController {
         return tableView
     }
     
-    private func setupTyCLabel() -> UITextView {
-        let textView = UITextView()
+    private func setupTermsTextView() -> VerticallyCenteredTextView {
+        let textView = VerticallyCenteredTextView()
         let plainAttributes: [NSAttributedString.Key: Any]
         let linkAttributes: [NSAttributedString.Key : Any]
         
@@ -251,6 +253,7 @@ extension CredentialViewController {
         let linkColor = Configuration.shared.palette.mainTextColor
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
         
+        textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 45).isActive = true
         textView.linkTextAttributes = linkAttributes
         textView.attributedText = attributedString
         textView.isEditable = false
