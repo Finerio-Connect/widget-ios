@@ -1,8 +1,9 @@
 //
-//  VerticallyCenteredTextView.swift
-//  FinerioAccountWidget
+//  VerticallyTextView.swift
+//  FinerioConnectWidget
 //
-//  Created by Jesus G on 25/11/21.
+//  Created by Jesus G on 26/11/21.
+//  Copyright © 2021 Finerio Connect. All rights reserved.
 //
 
 import UIKit

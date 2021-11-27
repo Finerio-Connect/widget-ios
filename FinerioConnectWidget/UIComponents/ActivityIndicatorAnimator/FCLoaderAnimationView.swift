@@ -9,7 +9,7 @@ import Foundation
 import Lottie
 import UIKit
 
-class FCLoaderAnimationView: UIView {
+public class FCLoaderAnimationView: UIView {
     var lottieView: LottieView = LottieView()
         
       override init(frame: CGRect) {
