@@ -43,17 +43,31 @@ class BankCountryPickerRowView: UIView {
     private func layoutViews() {
         backgroundColor = .clear
         countryImage.setImage(with: URL(string: country.imageUrl))
+        countryImage.widthAnchor(equalTo: 30)
+        countryImage.heightAnchor(equalTo: 30)
+        
         countryLabel.text = country.name
         
         let views = [countryImage, countryLabel]
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.axis = .horizontal
+        let innerStackView = UIStackView(arrangedSubviews: views)
+        innerStackView.axis = .horizontal
+        innerStackView.alignment = .center
+        innerStackView.distribution = .fill
+        innerStackView.spacing = 8
+        innerStackView.layer.borderWidth = 1
+        innerStackView.layer.borderColor = UIColor.blue.cgColor
         
-        addSubview(stackView)
-        stackView.topAnchor(equalTo: topAnchor)
-        stackView.leadingAnchor(equalTo: leadingAnchor)
-        stackView.trailingAnchor(equalTo: trailingAnchor)
-        stackView.bottomAnchor(equalTo: bottomAnchor)
+        let mainStackView = UIStackView(arrangedSubviews: [innerStackView])
+        mainStackView.axis = .vertical
+        mainStackView.alignment = .center
+        mainStackView.layer.borderWidth = 1
+        mainStackView.layer.borderColor = UIColor.red.cgColor
+        
+        addSubview(mainStackView)
+        mainStackView.topAnchor(equalTo: topAnchor)
+        mainStackView.leadingAnchor(equalTo: leadingAnchor)
+        mainStackView.trailingAnchor(equalTo: trailingAnchor)
+        mainStackView.bottomAnchor(equalTo: bottomAnchor)
 
 //        [countryImage, countryLabel].forEach {
 //            addSubview($0)

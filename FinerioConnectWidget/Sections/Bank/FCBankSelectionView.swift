@@ -129,7 +129,6 @@ extension FCBankSelectionView {
         
         mainStackView.layer.borderWidth = 1
         mainStackView.layer.borderColor = UIColor.lightGray.cgColor
-        
         return mainStackView
     }
     
@@ -137,20 +136,9 @@ extension FCBankSelectionView {
         let pickerDialog = BankCountryPickerDialog()
         pickerDialog.countryDelegate = self
         
-        addSubview(pickerDialog)
-        
-        print("Bounds: \(bounds)")
-        print("SuperViewBounds: \(superview?.bounds)")
-        
-        pickerDialog.topAnchor(equalTo: topAnchor)
-        pickerDialog.leadingAnchor(equalTo: leadingAnchor)
-        pickerDialog.trailingAnchor(equalTo: trailingAnchor)
-        pickerDialog.bottomAnchor(equalTo: bottomAnchor)
-        
-//        pickerDialog.heightAnchor(equalTo: superview?.bounds.height) //bounds.height)
-//        pickerDialog.widthAnchor(equalTo: superview.bounds.width) //bounds.width)
-//        pickerDialog.centerXAnchor(equalTo: centerXAnchor)
-//        pickerDialog.centerYAnchor(equalTo: centerYAnchor)
+        superview?.addSubview(pickerDialog)
+        let screenSize: CGRect = UIScreen.main.bounds
+        pickerDialog.frame = screenSize
         return pickerDialog
     }
     
