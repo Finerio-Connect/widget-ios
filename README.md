@@ -1,6 +1,5 @@
 # Finerio Connect iOS Widget
-![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
+![Language](https://img.shields.io/badge/Language-Swift-orange.svg) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
 
 Finerio Connect iOS Widget for the API Finerio Connect 2.0 reduces friction in the process of requesting their online banking credentials from your users, by taking care of the implementation and improving user experience.
 
@@ -44,7 +43,7 @@ and then the start:
 ``` swift
 let finerioConnectWidget = FinerioConnectWidget.shared
 finerioConnectWidget.start(
-             widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
+             widgetId: "your_widget_id",
              customerName: "René Sandoval",
              presentingViewController: self)
 ```
@@ -164,8 +163,3 @@ FinerioConnectWidget.shared.animations = Animations(
     failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json"
 )
 ```
-
-## Dependency
-  - Firebase iOS SDK
-  - SwiftyRSA
-  - Lottie iOS SDK

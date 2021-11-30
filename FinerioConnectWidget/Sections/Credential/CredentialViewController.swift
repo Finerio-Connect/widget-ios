@@ -163,7 +163,7 @@ extension CredentialViewController {
         tableView.register(CredentialTableViewCell.self, forCellReuseIdentifier: CredentialTableViewCell.id)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.showsVerticalScrollIndicator = false
-        tableView.isScrollEnabled = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? true : false
+        tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.backgroundColor = view.backgroundColor
         tableView.dataSource = self
@@ -302,7 +302,17 @@ extension CredentialViewController {
             case .success:
                 self.context?.initialize(coordinator: AccountCoordinator(context: self.context!, credentialId: self.credentialViewModel.credentialResponse.id))
             case .loaded:
-                self.textFieldsTableView.heightAnchor(equalTo: self.credentialViewModel.bankFields?.count == 3 ? 230 : 150)
+                var textFieldsTableViewHeight: CGFloat = 0
+
+                switch self.credentialViewModel.bankFields?.count {
+                case 3, 4:
+                    textFieldsTableViewHeight = 250
+                default:
+                    textFieldsTableViewHeight = 150
+                }
+
+                self.textFieldsTableView.heightAnchor(equalTo: textFieldsTableViewHeight)
+                self.textFieldsTableView.isScrollEnabled = self.credentialViewModel.bankFields?.count ?? 0 > 3 ? true : false
                 self.textFieldsTableView.reloadData()
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
                 self.setupExtraData()
