@@ -9,43 +9,44 @@ import FinerioAccountWidget
 import UIKit
 
 class ViewController: UIViewController {
+
+    #warning("LOADING VIEW TEST")
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        let loaderView = FCLoaderAnimationView()
+//        view = loaderView
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loaderView = FCLoaderAnimationView()
-        view = loaderView
+
+        title = "Example FinerioConnectWidget"
+
+        FontBlaster.debugEnabled = true
+        FontBlaster.blast { fonts -> Void in
+            print("Loaded Fonts: \(fonts)")
+        }
+
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        button.setTitle("Open SDK Account Aggregation", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
+        button.layer.masksToBounds = true
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
+
+        view.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
+            button.heightAnchor.constraint(equalToConstant: 60),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
-    
-//    override func OLDviewDidLoad() {
-//        super.viewDidLoad()
-//
-//        title = "Example FinerioConnectWidget"
-//
-//        FontBlaster.debugEnabled = true
-//        FontBlaster.blast { fonts -> Void in
-//            print("Loaded Fonts: \(fonts)")
-//        }
-//
-//        let button = UIButton(type: .system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
-//        button.setTitle("Open SDK Account Aggregation", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
-//        button.layer.masksToBounds = true
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 5
-//        button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
-//
-//        view.addSubview(button)
-//        NSLayoutConstraint.activate([
-//            button.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
-//            button.heightAnchor.constraint(equalToConstant: 60),
-//            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//        ])
-//    }
 
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared

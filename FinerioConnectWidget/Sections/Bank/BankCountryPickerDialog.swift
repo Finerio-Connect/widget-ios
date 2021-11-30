@@ -27,7 +27,8 @@ internal class BankCountryPickerDialog: GenericDialog {
         button.setTitle(Constants.Texts.BankSection.titleButton, for: .normal)
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16
+        button.titleLabel?.font = .fcRegularFont(ofSize: fontSize)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

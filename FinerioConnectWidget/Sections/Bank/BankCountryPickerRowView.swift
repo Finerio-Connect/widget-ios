@@ -44,18 +44,28 @@ class BankCountryPickerRowView: UIView {
         backgroundColor = .clear
         countryImage.setImage(with: URL(string: country.imageUrl))
         countryLabel.text = country.name
+        
+        let views = [countryImage, countryLabel]
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .horizontal
+        
+        addSubview(stackView)
+        stackView.topAnchor(equalTo: topAnchor)
+        stackView.leadingAnchor(equalTo: leadingAnchor)
+        stackView.trailingAnchor(equalTo: trailingAnchor)
+        stackView.bottomAnchor(equalTo: bottomAnchor)
 
-        [countryImage, countryLabel].forEach {
-            addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-
-        countryImage.leadingAnchor(equalTo: leadingAnchor, constant: 20)
-        countryImage.centerYAnchor(equalTo: centerYAnchor)
-        countryImage.widthAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 30 : 40)
-
-        countryLabel.leadingAnchor(equalTo: countryImage.trailingAnchor, constant: 20)
-        countryLabel.trailingAnchor(equalTo: trailingAnchor, constant: -20)
-        countryLabel.centerYAnchor(equalTo: centerYAnchor)
+//        [countryImage, countryLabel].forEach {
+//            addSubview($0)
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//        }
+//
+//        countryImage.leadingAnchor(equalTo: leadingAnchor, constant: 20)
+//        countryImage.centerYAnchor(equalTo: centerYAnchor)
+//        countryImage.widthAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 30 : 40)
+//
+//        countryLabel.leadingAnchor(equalTo: countryImage.trailingAnchor, constant: 20)
+//        countryLabel.trailingAnchor(equalTo: trailingAnchor, constant: -20)
+//        countryLabel.centerYAnchor(equalTo: centerYAnchor)
     }
 }
