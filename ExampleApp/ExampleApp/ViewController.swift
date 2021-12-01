@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    #warning("LOADING VIEW TEST")
+    #warning("LOADING VIEW TEST UNFINISHED")
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //

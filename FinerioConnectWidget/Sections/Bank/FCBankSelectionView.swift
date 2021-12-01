@@ -8,19 +8,17 @@
 import UIKit
 
 protocol FCBankSelectionViewDelegate: AnyObject {
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) // Optional
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) // Optional
+    // Optional
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType)
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country)
+    // Required
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank)
 }
 
 extension FCBankSelectionViewDelegate {
     // To avoid the implementation of this methods in case they're not used
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) {
-#warning("Default implementation")
-    }
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) {
-#warning("Default implementation")
-    }
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) { }
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) { }
 }
 
 class FCBankSelectionView: UIView {
@@ -52,40 +50,15 @@ class FCBankSelectionView: UIView {
         addComponents()
         setMainStackViewLayout()
     }
-    
-    //    func configureView() {
-    //        title = bankViewModel.getTitle()
-    //        countryPickerDialog.countryDelegate = self
-    //
-    //        // Add main stack
-    //        setLayoutMainStackView()
-    //
-    //        // Show or hide components
-    //        if Configuration.shared.showCountryOptions {
-    //            let countryStackView = setupCountriesSelectorView()
-    //            mainStackView.addArrangedSubview(countryStackView)
-    //        }
-    //        if Configuration.shared.showBankTypeOptions {
-    //            let bankSegmentedHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
-    //            bankTypeSegment.heightAnchor(equalTo: bankSegmentedHeight)
-    //            mainStackView.addArrangedSubview(bankTypeSegment)
-    //        }
-    //
-    //        let separatorView = setupSeparatorView()
-    //        let tableAndSeparatorViews = [separatorView, tableView]
-    //        let tableStackView = UIStackView(arrangedSubviews: tableAndSeparatorViews)
-    //        tableStackView.axis = .vertical
-    //
-    //        mainStackView.addArrangedSubview(tableStackView)
-    //
-    //        // Dialog components
-    //        setLayoutLoadingIndicator()
-    //        setLayoutCountryPickerDialog()
-    //    }
 }
 
 // MARK: - Data
 extension FCBankSelectionView {
+    func setCurrentCountry(_ country: Country) {
+        countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
+        countriesSelectorView.countryNameLabel.text = country.name
+    }
+    
     func setCountries(_ countries: [Country]) {
         countryPickerDialog.countries = countries
         countryPickerDialog.setCountry()
@@ -93,26 +66,6 @@ extension FCBankSelectionView {
     
     func setBanks(_ banks: [Bank]) {
         self.banks = banks
-        DispatchQueue.main.async { [weak self] in
-            //            self?.loadingIndicator.stopAnimating()
-            self?.tableView.reloadData()
-        }
-    }
-    
-    //    func setupCountry() {
-    //        // Fill country picker with data
-    //        if let countries = bankViewModel?.countries {
-    //            countryPickerDialog.countries = countries
-    //            countryPickerDialog.setCountry()
-    //        }
-    //
-    //        // Set initial values
-    //        if let country = bankViewModel?.getCurrentCountry() {
-    //            countriesSelectorView.setCountry(country)
-    //        }
-    //    }
-    
-    func configureData() {
         DispatchQueue.main.async { [weak self] in
             //            self?.loadingIndicator.stopAnimating()
             self?.tableView.reloadData()
@@ -127,8 +80,8 @@ extension FCBankSelectionView {
         mainStackView.axis = .vertical
         mainStackView.spacing = CGFloat(20)
         
-        mainStackView.layer.borderWidth = 1
-        mainStackView.layer.borderColor = UIColor.lightGray.cgColor
+//        mainStackView.layer.borderWidth = 1
+//        mainStackView.layer.borderColor = UIColor.lightGray.cgColor
         return mainStackView
     }
     
@@ -294,13 +247,15 @@ extension FCBankSelectionView: BankPickerDialogDelegate {
         
         // Updates the banktype
         Configuration.shared.bankType = bankType
-//
-//        countryImage.setImage(with: URL(string: country.imageUrl))
-//        countryLabel.text = country.name
-//        startLoader()
-//        bankViewModel.loadBanks()
         
+        // Updates the Current Country
+        countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
+        countriesSelectorView.countryNameLabel.text = country.name
+        
+        // Updates the Segmented Control
         let selectedBankType = BankType.allCases.firstIndex(of: bankType)
         bankTypeSegment.selectedSegmentIndex = selectedBankType!
+        
+        delegate?.bankSelectionView(self, didSelect: country)
     }
 }

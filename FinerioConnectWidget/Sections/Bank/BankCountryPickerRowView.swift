@@ -12,6 +12,10 @@ class BankCountryPickerRowView: UIView {
     lazy var countryImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
+        
+        let imageSize: CGFloat =  UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 30 : 40
+        image.widthAnchor(equalTo: imageSize)
+        image.heightAnchor(equalTo: imageSize)
         return image
     }()
 
@@ -43,43 +47,19 @@ class BankCountryPickerRowView: UIView {
     private func layoutViews() {
         backgroundColor = .clear
         countryImage.setImage(with: URL(string: country.imageUrl))
-        countryImage.widthAnchor(equalTo: 30)
-        countryImage.heightAnchor(equalTo: 30)
-        
         countryLabel.text = country.name
         
         let views = [countryImage, countryLabel]
-        let innerStackView = UIStackView(arrangedSubviews: views)
-        innerStackView.axis = .horizontal
-        innerStackView.alignment = .center
-        innerStackView.distribution = .fill
-        innerStackView.spacing = 8
-        innerStackView.layer.borderWidth = 1
-        innerStackView.layer.borderColor = UIColor.blue.cgColor
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 8
         
-        let mainStackView = UIStackView(arrangedSubviews: [innerStackView])
-        mainStackView.axis = .vertical
-        mainStackView.alignment = .center
-        mainStackView.layer.borderWidth = 1
-        mainStackView.layer.borderColor = UIColor.red.cgColor
-        
-        addSubview(mainStackView)
-        mainStackView.topAnchor(equalTo: topAnchor)
-        mainStackView.leadingAnchor(equalTo: leadingAnchor)
-        mainStackView.trailingAnchor(equalTo: trailingAnchor)
-        mainStackView.bottomAnchor(equalTo: bottomAnchor)
-
-//        [countryImage, countryLabel].forEach {
-//            addSubview($0)
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//        }
-//
-//        countryImage.leadingAnchor(equalTo: leadingAnchor, constant: 20)
-//        countryImage.centerYAnchor(equalTo: centerYAnchor)
-//        countryImage.widthAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 30 : 40)
-//
-//        countryLabel.leadingAnchor(equalTo: countryImage.trailingAnchor, constant: 20)
-//        countryLabel.trailingAnchor(equalTo: trailingAnchor, constant: -20)
-//        countryLabel.centerYAnchor(equalTo: centerYAnchor)
+        addSubview(stackView)
+        let sideSpacing: CGFloat = 20
+        stackView.topAnchor(equalTo: topAnchor)
+        stackView.leadingAnchor(equalTo: leadingAnchor, constant: sideSpacing)
+        stackView.trailingAnchor(equalTo: trailingAnchor, constant: -sideSpacing)
+        stackView.bottomAnchor(equalTo: bottomAnchor)
     }
 }

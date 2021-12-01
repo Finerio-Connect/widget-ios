@@ -32,6 +32,8 @@ internal class BankCountryPickerDialog: GenericDialog {
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
+        button.heightAnchor(equalTo: 44)
+        button.addTarget(self, action: #selector(didSelectCountry), for: .touchUpInside)
         return button
     }()
 
@@ -52,21 +54,17 @@ internal class BankCountryPickerDialog: GenericDialog {
     }
 
     override func setupView() {
-        [pickerView, acceptButton].forEach {
-            addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-
-        pickerView.leadingAnchor(equalTo: containerView.leadingAnchor, constant: 25)
-        pickerView.topAnchor(equalTo: containerView.topAnchor, constant: 50)
-        pickerView.trailingAnchor(equalTo: containerView.trailingAnchor, constant: -25)
-
-        acceptButton.heightAnchor(equalTo: 40)
-        acceptButton.leadingAnchor(equalTo: pickerView.leadingAnchor, constant: 25)
-        acceptButton.topAnchor(equalTo: pickerView.bottomAnchor, constant: 25)
-        acceptButton.trailingAnchor(equalTo: pickerView.trailingAnchor, constant: -25)
-        acceptButton.bottomAnchor(equalTo: containerView.bottomAnchor, constant: -25)
-        acceptButton.addTarget(self, action: #selector(didSelectCountry), for: .touchUpInside)
+        let views = [pickerView, acceptButton]
+        let spacing: CGFloat = 25
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .vertical
+        stackView.spacing = spacing
+        
+        addSubview(stackView)
+        stackView.topAnchor(equalTo: containerView.topAnchor, constant: spacing * 2)
+        stackView.leadingAnchor(equalTo: containerView.leadingAnchor, constant: spacing)
+        stackView.trailingAnchor(equalTo: containerView.trailingAnchor, constant: -spacing)
+        stackView.bottomAnchor(equalTo: containerView.bottomAnchor, constant: -spacing)
     }
 
     @objc private func didSelectCountry() {

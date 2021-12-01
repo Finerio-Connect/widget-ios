@@ -390,9 +390,10 @@ extension BankViewController {
                     self.bankSelectionView.setBanks(banks)
                 }
             case .loaded:
-                if let countries = self.bankViewModel.countries {
+                if let countries = self.bankViewModel.countries,
+                   let currentCountry = self.bankViewModel.getCurrentCountry() {
                     self.bankSelectionView.setCountries(countries)
-//                    self.setupCountry()
+                    self.bankSelectionView.setCurrentCountry(currentCountry)
                 }
             case .failure:
                 self.stopLoader()
@@ -405,25 +406,8 @@ extension BankViewController {
 //MARK: - NEW FCBankSelectionView Delegate
 extension BankViewController: FCBankSelectionViewDelegate {
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) {
-        Configuration.shared.countryCode = country.code
-        
-        // If the bankTypeOptions is visible will reset to 'personal' bankType
-        // Otherwise, will use the configured bankType.
-        var bankType: BankType = .personal
-        if !Configuration.shared.showBankTypeOptions {
-            bankType = Configuration.shared.bankType
-        }
-        
-        // Updates the banktype
-        Configuration.shared.bankType = bankType
-//
-//        countryImage.setImage(with: URL(string: country.imageUrl))
-//        countryLabel.text = country.name
         startLoader()
         bankViewModel.loadBanks()
-        
-//        let selectedBankType = BankType.allCases.firstIndex(of: bankType)
-//        bankTypeSegment.selectedSegmentIndex = selectedBankType!
     }
     
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) {
