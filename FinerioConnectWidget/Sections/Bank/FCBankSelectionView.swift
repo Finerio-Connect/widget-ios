@@ -20,7 +20,7 @@ class FCBankSelectionView: FCBaseView {
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
     private lazy var separatorView: UIView = setupSeparatorView()
     private lazy var tableView: UITableView = setupTableView()
-    private let loadingIndicator = ActivityIndicatorView()
+    private lazy var loadingIndicator: FCLoaderAnimationView = setupLoaderAnimationView()
     
     // Vars
     private var bankViewModel: BankViewModel = BankViewModel()
@@ -38,9 +38,10 @@ class FCBankSelectionView: FCBaseView {
     
     override func configureView() {
         super.configureView()
-        //OLD
+        
         trackEvent(eventName: Constants.Events.banks)
         self.loadingView.start()
+        
         observerServiceStatus()
         
         if Configuration.shared.showCountryOptions {
@@ -62,8 +63,6 @@ extension FCBankSelectionView {
         mainStackView.axis = .vertical
         mainStackView.spacing = CGFloat(20)
         
-        //        mainStackView.layer.borderWidth = 1
-        //        mainStackView.layer.borderColor = UIColor.lightGray.cgColor
         return mainStackView
     }
     
@@ -134,6 +133,13 @@ extension FCBankSelectionView {
         return separatorView
     }
     
+    private func setupLoaderAnimationView() -> FCLoaderAnimationView {
+        let loaderView = FCLoaderAnimationView()
+        loaderView.animationSize = 100
+        loaderView.backgroundColor = .clear
+        return loaderView
+    }
+    
     func addComponents() {
         mainStackView.addArrangedSubview(headerSectionView)
         
@@ -182,7 +188,7 @@ extension FCBankSelectionView {
         let bankTypeSelected = BankType.allCases[segmentedControl.selectedSegmentIndex]
         Configuration.shared.bankType = bankTypeSelected
         
-        loadingIndicator.startAnimating()
+        loadingIndicator.start()
         bankViewModel.loadBanks()
     }
 }
@@ -197,7 +203,7 @@ extension FCBankSelectionView {
             case .success:
                 self.loadingView.stop()
                 DispatchQueue.main.async { [weak self] in
-                    self?.loadingIndicator.stopAnimating()
+                    self?.loadingIndicator.stop()
                     self?.tableView.reloadData()
                 }
             case .loaded:
@@ -213,6 +219,7 @@ extension FCBankSelectionView {
             case .failure:
                 print("Failure case, not implemented")
                 self.loadingView.stop()
+#warning("Revisar con René donde viviría la propiedad App o en su defecto la funcion ShowAlert")
                 //                self.app.showAlert(self.bankViewModel.errorMessage, viewController: self)
             }
         }

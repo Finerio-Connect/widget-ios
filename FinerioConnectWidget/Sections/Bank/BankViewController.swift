@@ -393,17 +393,6 @@ extension BankViewController {
 
 //MARK: - NEW FCBankSelectionView Delegate
 extension BankViewController: FCBankSelectionViewDelegate {
-//    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) {
-//        startLoader()
-//        bankViewModel.loadBanks()
-//    }
-    
-//    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) {
-//        Configuration.shared.bankType = bankType
-////        loadingIndicator.startAnimating()
-//        bankViewModel.loadBanks()
-//    }
-    
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank) {
         let coordinator = CredentialCoordinator(context: context!, bank: bank)
         context?.initialize(coordinator: coordinator)
