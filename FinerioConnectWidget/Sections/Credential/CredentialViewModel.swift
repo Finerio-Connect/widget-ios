@@ -20,9 +20,9 @@ internal class CredentialViewModel {
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 
-    func getTitle() -> String {
-        return Constants.Titles.bankSection
-    }
+//    func getTitle() -> String {
+//        return Constants.Titles.bankSection
+//    }
 
     func loadBankFields() {
         FinerioConnectWidgetAPI.bankFields(by: bank.id) { [weak self] result in

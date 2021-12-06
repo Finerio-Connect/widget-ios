@@ -12,7 +12,7 @@ internal class StartViewModel {
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 
-    func getTitle() -> String {
-        return Constants.Titles.initSection
-    }
+//    func getTitle() -> String {
+//        return Constants.Titles.initSection
+//    }
 }

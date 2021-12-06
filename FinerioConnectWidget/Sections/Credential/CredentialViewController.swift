@@ -37,7 +37,7 @@ internal class CredentialViewController: BaseViewController {
     }
     
     private func configureView() -> Void {
-        title = credentialViewModel.getTitle()
+//        title = credentialViewModel.getTitle()
         extraDataDialog.extraDataDelegate = self
         
         let mainStackView = UIStackView()

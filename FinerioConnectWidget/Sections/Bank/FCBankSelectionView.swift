@@ -8,20 +8,10 @@
 import UIKit
 
 protocol FCBankSelectionViewDelegate: AnyObject {
-    // Optional
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType)
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country)
-    // Required
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank)
 }
 
-extension FCBankSelectionViewDelegate {
-    // To avoid the implementation of this methods in case they're not used
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didChange bankType: BankType) { }
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect country: Country) { }
-}
-
-class FCBankSelectionView: UIView {
+class FCBankSelectionView: FCBaseView {
     // Components
     private lazy var mainStackView: UIStackView = setupMainStackView()
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
@@ -30,10 +20,10 @@ class FCBankSelectionView: UIView {
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
     private lazy var separatorView: UIView = setupSeparatorView()
     private lazy var tableView: UITableView = setupTableView()
+    private let loadingIndicator = ActivityIndicatorView()
     
     // Vars
-    private var banks: [Bank] = [Bank]()
-    private var countries: [Country] = [Country]()
+    private var bankViewModel: BankViewModel = BankViewModel()
     weak var delegate: FCBankSelectionViewDelegate?
     
     override init(frame: CGRect) {
@@ -46,30 +36,22 @@ class FCBankSelectionView: UIView {
         configureView()
     }
     
-    func configureView() {
+    override func configureView() {
+        super.configureView()
+        //OLD
+        trackEvent(eventName: Constants.Events.banks)
+        self.loadingView.start()
+        observerServiceStatus()
+        
+        if Configuration.shared.showCountryOptions {
+            bankViewModel.loadCountries()
+        }
+        bankViewModel.loadBanks()
+        
+        //NEW
         addComponents()
         setMainStackViewLayout()
-    }
-}
-
-// MARK: - Data
-extension FCBankSelectionView {
-    func setCurrentCountry(_ country: Country) {
-        countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
-        countriesSelectorView.countryNameLabel.text = country.name
-    }
-    
-    func setCountries(_ countries: [Country]) {
-        countryPickerDialog.countries = countries
-        countryPickerDialog.setCountry()
-    }
-    
-    func setBanks(_ banks: [Bank]) {
-        self.banks = banks
-        DispatchQueue.main.async { [weak self] in
-            //            self?.loadingIndicator.stopAnimating()
-            self?.tableView.reloadData()
-        }
+        setLayoutLoadingIndicator()
     }
 }
 
@@ -80,8 +62,8 @@ extension FCBankSelectionView {
         mainStackView.axis = .vertical
         mainStackView.spacing = CGFloat(20)
         
-//        mainStackView.layer.borderWidth = 1
-//        mainStackView.layer.borderColor = UIColor.lightGray.cgColor
+        //        mainStackView.layer.borderWidth = 1
+        //        mainStackView.layer.borderColor = UIColor.lightGray.cgColor
         return mainStackView
     }
     
@@ -97,7 +79,6 @@ extension FCBankSelectionView {
     
     private func setupCountriesSelectorView() -> CountriesSelectorView {
         let countriesSelectorView = CountriesSelectorView()
-        countriesSelectorView.countryNameLabel.text = "Country name"
         countriesSelectorView.delegate = self
         countriesSelectorView.heightAnchor(equalTo: 70)
         return countriesSelectorView
@@ -153,7 +134,7 @@ extension FCBankSelectionView {
         return separatorView
     }
     
-    private func addComponents() {
+    func addComponents() {
         mainStackView.addArrangedSubview(headerSectionView)
         
         // Show or hide components
@@ -169,7 +150,9 @@ extension FCBankSelectionView {
         tableStackView.axis = .vertical
         
         mainStackView.addArrangedSubview(tableStackView)
+        
         addSubview(mainStackView)
+        addSubview(loadingIndicator)
     }
 }
 
@@ -183,6 +166,14 @@ extension FCBankSelectionView {
         mainStackView.trailingAnchor(equalTo: trailingAnchor, constant: -mainBorderSpacing)
         mainStackView.bottomAnchor(equalTo: safeBottomAnchor)
     }
+    
+    private func setLayoutLoadingIndicator() -> Void {
+        let loadingViewSize: CGFloat = 60
+        loadingIndicator.widthAnchor(equalTo: loadingViewSize)
+        loadingIndicator.heightAnchor(equalTo: loadingViewSize)
+        loadingIndicator.centerYAnchor(equalTo: centerYAnchor)
+        loadingIndicator.centerXAnchor(equalTo: centerXAnchor)
+    }
 }
 
 // MARK: - Actions
@@ -190,8 +181,41 @@ extension FCBankSelectionView {
     @objc private func typeBankSelected(_ segmentedControl: UISegmentedControl) {
         let bankTypeSelected = BankType.allCases[segmentedControl.selectedSegmentIndex]
         Configuration.shared.bankType = bankTypeSelected
+        
+        loadingIndicator.startAnimating()
+        bankViewModel.loadBanks()
+    }
+}
 
-        delegate?.bankSelectionView(self, didChange: bankTypeSelected)
+// MARK: - Observers View Model
+extension FCBankSelectionView {
+    private func observerServiceStatus() {
+        bankViewModel.serviceStatusHandler = { [weak self] status in
+            guard let `self` = self else { return }
+            switch status {
+            case .active, .interactive, .error, .updated: break
+            case .success:
+                self.loadingView.stop()
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadingIndicator.stopAnimating()
+                    self?.tableView.reloadData()
+                }
+            case .loaded:
+                //Set countries
+                self.countryPickerDialog.countries = self.bankViewModel.countries
+                self.countryPickerDialog.setCountry()
+                
+                // Set currentCountry
+                if let currentCountry = self.bankViewModel.getCurrentCountry() {
+                    self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
+                    self.countriesSelectorView.countryNameLabel.text = currentCountry.name
+                }
+            case .failure:
+                print("Failure case, not implemented")
+                self.loadingView.stop()
+                //                self.app.showAlert(self.bankViewModel.errorMessage, viewController: self)
+            }
+        }
     }
 }
 
@@ -205,19 +229,19 @@ extension FCBankSelectionView: CountriesSelectorViewDelegate {
 // MARK: - TableView Datasource
 extension FCBankSelectionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if banks.count == 0 {
+        if bankViewModel.banks.count == 0 {
             tableView.setEmptyMessage(Constants.Texts.BankSection.labelEmpty)
         } else {
             tableView.restore()
         }
-        return banks.count
+        return bankViewModel.banks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if let aCell = tableView.dequeueReusableCell(withIdentifier: BankTableViewCell.cellIdentifier,
                                                      for: indexPath) as? BankTableViewCell {
-            aCell.setup(with: banks[indexPath.row])
+            aCell.setup(with: bankViewModel.banks[indexPath.row])
             cell = aCell
         }
         return cell
@@ -228,7 +252,7 @@ extension FCBankSelectionView: UITableViewDataSource {
 extension FCBankSelectionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("cell selected")
-        let bank = banks[indexPath.row]
+        let bank = bankViewModel.banks[indexPath.row]
         delegate?.bankSelectionView(self, didSelect: bank)
     }
 }
@@ -256,6 +280,7 @@ extension FCBankSelectionView: BankPickerDialogDelegate {
         let selectedBankType = BankType.allCases.firstIndex(of: bankType)
         bankTypeSegment.selectedSegmentIndex = selectedBankType!
         
-        delegate?.bankSelectionView(self, didSelect: country)
+        self.loadingView.start()
+        bankViewModel.loadBanks()
     }
 }

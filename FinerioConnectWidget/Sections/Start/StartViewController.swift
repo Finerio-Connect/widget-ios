@@ -27,7 +27,7 @@ internal class StartViewController: BaseViewController {
     }
 
     private func configureView() {
-        title = startViewModel.getTitle()
+//        title = startViewModel.getTitle()
 
         [countriesLabel, subtitleLabel, bodyLabel, continueButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false

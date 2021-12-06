@@ -6,6 +6,7 @@
 //
 
 import FinerioAccountWidget
+import Foundation
 import UIKit
 
 class ViewController: UIViewController {
@@ -13,9 +14,45 @@ class ViewController: UIViewController {
     #warning("LOADING VIEW TEST UNFINISHED")
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
+//        // View Controller config
+//        view.backgroundColor = .white
 //
 //        let loaderView = FCLoaderAnimationView()
-//        view = loaderView
+//        /// Custom lottie values
+////        loaderView.animationSource = "https://assets5.lottiefiles.com/packages/lf20_lmk0pfms.json"
+////        loaderView.animationSource = "TestLottieLocal"
+////        loaderView.animationSize = 100
+////        loaderView.backgroundColor = .red.withAlphaComponent(0.5)
+//
+//        view.addSubview(loaderView)
+//        loaderView.translatesAutoresizingMaskIntoConstraints = false
+//        loaderView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        loaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        loaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        loaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//
+//        // Buttons view controller
+//        let buttonStart = UIButton(type: .system)
+//        buttonStart.setTitle("START", for: .normal)
+//        buttonStart.backgroundColor = .systemTeal
+//        buttonStart.addTarget(loaderView, action: #selector(loaderView.start), for: .touchUpInside)
+//
+//        let buttonStop = UIButton(type: .system)
+//        buttonStop.setTitle("STOP", for: .normal)
+//        buttonStop.backgroundColor = .systemTeal
+//        buttonStop.addTarget(loaderView, action: #selector(loaderView.stop), for: .touchUpInside)
+//
+//        let stackButtons = UIStackView(arrangedSubviews: [buttonStart, buttonStop])
+//        stackButtons.axis = .vertical
+//        stackButtons.spacing = 10
+//        stackButtons.distribution = .fillEqually
+//
+//        view.addSubview(stackButtons)
+//        stackButtons.translatesAutoresizingMaskIntoConstraints = false
+//        stackButtons.heightAnchor.constraint(equalToConstant: 120).isActive = true
+//        stackButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+//        stackButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        stackButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
 //    }
     
     override func viewDidLoad() {
@@ -69,7 +106,7 @@ class ViewController: UIViewController {
 //            termsTextColor: UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1))
 //
         finerioConnectWidget.animations = Animations(
-            loadingAnimation: "https://assets5.lottiefiles.com/packages/lf20_0vkp4mqe.json",
+            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
             successAnimation: "successAnimation",
             failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
 

@@ -27,7 +27,7 @@ internal class AccountStatusViewController: BaseViewController {
     }
     
     private func configureView() {
-        title = accountStatusViewModel.getTitle()
+//        title = accountStatusViewModel.getTitle()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         headerSectionView.titleLabel.text = Constants.Texts.StatusSection.successTitleLabel
@@ -62,7 +62,7 @@ internal class AccountStatusViewController: BaseViewController {
     }
     
     private func configureViewFailure() {
-        title = accountStatusViewModel.getTitle()
+//        title = accountStatusViewModel.getTitle()
         
         headerSectionView.titleLabel.text = Constants.Texts.StatusSection.failureTitleLabel
         headerSectionView.descriptionLabel.text = Constants.Texts.StatusSection.failureSubtitleLabel

@@ -9,14 +9,14 @@
 import Foundation
 
 internal class BankViewModel {
-    var countries: [Country]!
-    var banks: [Bank]!
+    var countries: [Country] = [Country]()
+    var banks: [Bank] = [Bank]()
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 
-    func getTitle() -> String {
-        return Constants.Titles.bankSection
-    }
+//    func getTitle() -> String {
+//        return Constants.Titles.bankSection
+//    }
 
     func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
         if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
@@ -32,9 +32,10 @@ internal class BankViewModel {
                 self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
                 self?.serviceStatusHandler(.failure)
             }
-
-            self?.countries = result.value
-            self?.serviceStatusHandler(.loaded)
+            if let value = result.value {
+                self?.countries = value
+                self?.serviceStatusHandler(.loaded)
+            }
         }
     }
 
@@ -45,8 +46,10 @@ internal class BankViewModel {
                 self?.serviceStatusHandler(.failure)
             }
             
-            self?.banks = result.value
-            self?.serviceStatusHandler(.success)
+            if let value = result.value {
+                self?.banks = value
+                self?.serviceStatusHandler(.success)
+            }
         }
     }
 }

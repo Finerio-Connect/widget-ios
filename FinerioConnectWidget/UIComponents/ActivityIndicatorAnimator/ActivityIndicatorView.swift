@@ -46,9 +46,7 @@ public class ActivityIndicatorView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .lightGray
-        
-        indicator.strokeColor = UIColor.red.cgColor //color.cgColor
+        indicator.strokeColor = color.cgColor
         indicator.fillColor = nil
         indicator.lineWidth = lineWidth
         indicator.strokeStart = 0.0
