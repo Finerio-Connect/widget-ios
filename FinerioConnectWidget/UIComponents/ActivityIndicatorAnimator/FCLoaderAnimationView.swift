@@ -20,7 +20,8 @@ public final class FCLoaderAnimationView: UIView {
             setupAnimationLoadingView()
         }
     }
-    public var animationSize: CGFloat = 150 {
+
+    internal var animationSize: CGFloat = 150 {
         didSet {
             setAnimationSize()
         }
@@ -60,6 +61,7 @@ extension FCLoaderAnimationView {
         addSubview(animationView)
         setAnimationSize()
         setLayoutAnimationView()
+        self.isHidden = true
     }
     
     private func setupAnimationLoadingView() {

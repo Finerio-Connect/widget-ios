@@ -18,6 +18,10 @@ internal class CredentialViewController: BaseViewController {
     private lazy var helpDialog = CredentialHelpDialog()
     private lazy var extraDataDialog = ExtraDataPickerDialog()
     private let datePicker = DatePickerDialog()
+    
+    //NEW
+    var credentialsFormView: FCCredentialsFormView = FCCredentialsFormView()
+    
     // Vars
     private var credentialViewModel: CredentialViewModel!
     private var credential = Credential(widgetId: Configuration.shared.widgetId, customerName: Configuration.shared.customerName, automaticFetching: Configuration.shared.automaticFetching, state: Configuration.shared.state)
@@ -26,104 +30,113 @@ internal class CredentialViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startLoader()
-        credentialViewModel = viewModel as? CredentialViewModel
-        localHideKeyboardWhenTappedAround()
-        configureView()
-        observerServiceStatus()
-        credentialViewModel.loadBankFields()
         
-        trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
+        view.addSubview(credentialsFormView)
+        credentialsFormView.topAnchor(equalTo: view.safeTopAnchor)
+        credentialsFormView.leadingAnchor(equalTo: view.leadingAnchor)
+        credentialsFormView.trailingAnchor(equalTo: view.trailingAnchor)
+        credentialsFormView.bottomAnchor(equalTo: view.safeBottomAnchor)
     }
     
-    private func configureView() -> Void {
-//        title = credentialViewModel.getTitle()
-        extraDataDialog.extraDataDelegate = self
-        
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        mainStackView.distribution = .equalSpacing
-        
-        let headerSectionView = HeaderSectionView()
-        headerSectionView.setLockAvatarView()
-        headerSectionView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
-        headerSectionView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
-        
-        mainStackView.addArrangedSubview(headerSectionView)
-        mainStackView.addArrangedSubview(textFieldsTableView)
-        
-        // Terms & Conditions
-        let switchAndTermsViews = [toggleSwitch, termsTextView]
-        let switchTermsStack = UIStackView(arrangedSubviews: switchAndTermsViews)
-        switchTermsStack.axis = .horizontal
-        switchTermsStack.spacing = 8
-        switchTermsStack.alignment = .center
-        mainStackView.addArrangedSubview(switchTermsStack)
-        
-        // Buttons
-        let buttons = [continueButton, helpButton]
-        let buttonsStack = UIStackView(arrangedSubviews: buttons)
-        buttonsStack.axis = .vertical
-        buttonsStack.spacing = 12
-        mainStackView.addArrangedSubview(buttonsStack)
-        
-        // Banner
-        let bannerStack = UIStackView()
-        bannerStack.axis = .horizontal
-        bannerStack.alignment = .center
-        bannerStack.spacing = 8
-        
-        let lockImageView = UIImageView(image: Images.lockIcon.image())
-        lockImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-        lockImageView.tintColor = Configuration.shared.palette.termsTextColor
-        bannerStack.addArrangedSubview(lockImageView)
-        
-        let bannerLabel = UILabel()
-        bannerLabel.text = Constants.Texts.CredentialSection.bannerText
-        bannerLabel.numberOfLines = 0
-        bannerLabel.lineBreakMode = .byWordWrapping
-        bannerLabel.textColor = Configuration.shared.palette.termsTextColor
-        let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
-        bannerLabel.font = .fcRegularFont(ofSize: CGFloat(fontSize))
-        
-        bannerStack.addArrangedSubview(bannerLabel)
-        
-        let tapeBannerImg = Images.tapeBanner.image()
-        let imageView = UIImageView(image: tapeBannerImg)
-        imageView.tintColor = Configuration.shared.palette.mainColor
-        imageView.addSubview(bannerStack)
-        bannerStack.topAnchor(equalTo: imageView.topAnchor, constant: 5)
-        bannerStack.leadingAnchor(equalTo: imageView.leadingAnchor, constant: 30)
-        bannerStack.trailingAnchor(equalTo: imageView.trailingAnchor, constant: -30)
-        bannerStack.bottomAnchor(equalTo: imageView.bottomAnchor, constant: -5)
-        
-        mainStackView.addArrangedSubview(imageView)
-        
-        // Separator
-        let separatorView = UIView()
-        separatorView.backgroundColor = .clear
-        separatorView.heightAnchor(equalTo: 20)
-        mainStackView.addArrangedSubview(separatorView)
-        
-        view.addSubview(mainStackView)
-        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: 20)
-        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: 20)
-        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -20)
-        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor, constant: -20)
-        
-        // DIALOGS
-        view.addSubview(helpDialog)
-        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
-        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
-        helpDialog.heightAnchor(equalTo: view.bounds.height)
-        helpDialog.widthAnchor(equalTo: view.bounds.width)
-        
-        view.addSubview(extraDataDialog)
-        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
-        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
-        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
-        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        startLoader()
+//        credentialViewModel = viewModel as? CredentialViewModel
+//        localHideKeyboardWhenTappedAround()
+//        configureView()
+//        observerServiceStatus()
+//        credentialViewModel.loadBankFields()
+//
+//        trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
+//    }
+    
+//    private func configureView() -> Void {
+//        extraDataDialog.extraDataDelegate = self
+//        
+//        let mainStackView = UIStackView()
+//        mainStackView.axis = .vertical
+//        mainStackView.distribution = .equalSpacing
+//        
+//        let headerSectionView = HeaderSectionView()
+//        headerSectionView.setLockAvatarView()
+//        headerSectionView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
+//        headerSectionView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
+//        
+//        mainStackView.addArrangedSubview(headerSectionView)
+//        mainStackView.addArrangedSubview(textFieldsTableView)
+//        
+//        // Terms & Conditions
+//        let switchAndTermsViews = [toggleSwitch, termsTextView]
+//        let switchTermsStack = UIStackView(arrangedSubviews: switchAndTermsViews)
+//        switchTermsStack.axis = .horizontal
+//        switchTermsStack.spacing = 8
+//        switchTermsStack.alignment = .center
+//        mainStackView.addArrangedSubview(switchTermsStack)
+//        
+//        // Buttons
+//        let buttons = [continueButton, helpButton]
+//        let buttonsStack = UIStackView(arrangedSubviews: buttons)
+//        buttonsStack.axis = .vertical
+//        buttonsStack.spacing = 12
+//        mainStackView.addArrangedSubview(buttonsStack)
+//        
+//        // Banner
+//        let bannerStack = UIStackView()
+//        bannerStack.axis = .horizontal
+//        bannerStack.alignment = .center
+//        bannerStack.spacing = 8
+//        
+//        let lockImageView = UIImageView(image: Images.lockIcon.image())
+//        lockImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+//        lockImageView.tintColor = Configuration.shared.palette.termsTextColor
+//        bannerStack.addArrangedSubview(lockImageView)
+//        
+//        let bannerLabel = UILabel()
+//        bannerLabel.text = Constants.Texts.CredentialSection.bannerText
+//        bannerLabel.numberOfLines = 0
+//        bannerLabel.lineBreakMode = .byWordWrapping
+//        bannerLabel.textColor = Configuration.shared.palette.termsTextColor
+//        let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
+//        bannerLabel.font = .fcRegularFont(ofSize: CGFloat(fontSize))
+//        
+//        bannerStack.addArrangedSubview(bannerLabel)
+//        
+//        let tapeBannerImg = Images.tapeBanner.image()
+//        let imageView = UIImageView(image: tapeBannerImg)
+//        imageView.tintColor = Configuration.shared.palette.mainColor
+//        imageView.addSubview(bannerStack)
+//        bannerStack.topAnchor(equalTo: imageView.topAnchor, constant: 5)
+//        bannerStack.leadingAnchor(equalTo: imageView.leadingAnchor, constant: 30)
+//        bannerStack.trailingAnchor(equalTo: imageView.trailingAnchor, constant: -30)
+//        bannerStack.bottomAnchor(equalTo: imageView.bottomAnchor, constant: -5)
+//        
+//        mainStackView.addArrangedSubview(imageView)
+//        
+//        // Separator
+//        let separatorView = UIView()
+//        separatorView.backgroundColor = .clear
+//        separatorView.heightAnchor(equalTo: 20)
+//        mainStackView.addArrangedSubview(separatorView)
+//        
+//        view.addSubview(mainStackView)
+//        mainStackView.topAnchor(equalTo: view.safeTopAnchor, constant: 20)
+//        mainStackView.leadingAnchor(equalTo: view.leadingAnchor, constant: 20)
+//        mainStackView.trailingAnchor(equalTo: view.trailingAnchor, constant: -20)
+//        mainStackView.bottomAnchor(equalTo: view.safeBottomAnchor, constant: -20)
+//        
+//        // DIALOGS
+//        view.addSubview(helpDialog)
+//        helpDialog.centerXAnchor(equalTo: view.centerXAnchor)
+//        helpDialog.centerYAnchor(equalTo: view.centerYAnchor)
+//        helpDialog.heightAnchor(equalTo: view.bounds.height)
+//        helpDialog.widthAnchor(equalTo: view.bounds.width)
+//        
+//        view.addSubview(extraDataDialog)
+//        extraDataDialog.centerXAnchor(equalTo: view.centerXAnchor)
+//        extraDataDialog.centerYAnchor(equalTo: view.centerYAnchor)
+//        extraDataDialog.heightAnchor(equalTo: view.bounds.height)
+//        extraDataDialog.widthAnchor(equalTo: view.bounds.width)
+//    }
 }
 
 // MARK: - Private methods
@@ -458,19 +471,5 @@ extension CredentialViewController: UITextFieldDelegate {
         }
         
         return true
-    }
-}
-
-extension UIResponder {
-    static weak var responder: UIResponder?
-    
-    static func currentFirst() -> UIResponder? {
-        responder = nil
-        UIApplication.shared.sendAction(#selector(trap), to: nil, from: nil, for: nil)
-        return responder
-    }
-    
-    @objc private func trap() {
-        UIResponder.responder = self
     }
 }

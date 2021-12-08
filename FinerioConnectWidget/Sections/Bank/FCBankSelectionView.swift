@@ -40,6 +40,8 @@ class FCBankSelectionView: FCBaseView {
         super.configureView()
         
         trackEvent(eventName: Constants.Events.banks)
+        
+        self.loadingView.backgroundColor = .white
         self.loadingView.start()
         
         observerServiceStatus()

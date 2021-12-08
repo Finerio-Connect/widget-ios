@@ -79,6 +79,7 @@ extension HeaderSectionView {
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16
         label.font = .fcBoldFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainTextColor
+//        label.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         return label
     }
     
@@ -91,6 +92,7 @@ extension HeaderSectionView {
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainSubTextColor
+//        label.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         return label
     }
     
