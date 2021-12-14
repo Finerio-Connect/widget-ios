@@ -10,7 +10,6 @@ import UIKit
 
 final public class Palette: NSObject {
     public var mainColor: UIColor
-    public var backgroundColor: UIColor
     public var mainTextColor: UIColor
     public var mainSubTextColor: UIColor
     public var bankCellDetailColor: UIColor
@@ -20,7 +19,6 @@ final public class Palette: NSObject {
     public var grayBackgroundColor: UIColor
 
     public init(mainColor: UIColor = Colors.mainColor,
-                backgroundColor: UIColor = Colors.backgroundColor,
                 mainTextColor: UIColor = Colors.mainTextColor,
                 mainSubTextColor: UIColor = Colors.mainSubTextColor,
                 bankCellDetailColor: UIColor = Colors.bankCellDetailTextColor,
@@ -29,7 +27,6 @@ final public class Palette: NSObject {
                 borderTextField: UIColor = Colors.borderTextField,
                 grayBackgroundColor: UIColor = Colors.grayBackgroundColor) {
         self.mainColor = mainColor
-        self.backgroundColor = backgroundColor
         self.mainTextColor = mainTextColor
         self.mainSubTextColor = mainSubTextColor
         self.bankCellDetailColor = bankCellDetailColor

@@ -19,7 +19,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        contentView.backgroundColor = Configuration.shared.palette.backgroundColor
+        backgroundColor = .clear
         setupLayoutViews()
     }
     

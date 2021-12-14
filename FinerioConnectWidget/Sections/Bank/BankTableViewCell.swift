@@ -20,6 +20,7 @@ class BankTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        backgroundColor = .clear
         accessoryType = .disclosureIndicator
         setupLayoutViews()
     }

@@ -24,7 +24,7 @@ internal class BaseViewController: UIViewController {
             overrideUserInterfaceStyle = .light
         }
 
-        view.backgroundColor = Configuration.shared.palette.backgroundColor
+        view.backgroundColor = .clear
 
         if reachability?.connection == Reachability.Connection.none {
             let error = NSError.faaError(Constants.Texts.Errors.reachabilityError)

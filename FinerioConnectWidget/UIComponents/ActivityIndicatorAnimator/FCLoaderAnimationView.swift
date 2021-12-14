@@ -97,7 +97,6 @@ extension FCLoaderAnimationView {
 // MARK: - Inputs
 extension FCLoaderAnimationView {
     private func onlineAnimation(with source: String) {
-        print("Will set online animation...")
         isSettingLocalAnimation = false
         
         if let animationURL = URL(string: source) {
@@ -115,7 +114,6 @@ extension FCLoaderAnimationView {
     }
     
     private func localAnimation(with source: String) {
-        print("Will set local animation...")
         isSettingLocalAnimation = true
         
         if let animationSourcePath = Bundle.main.path(forResource: source, ofType: "json") {

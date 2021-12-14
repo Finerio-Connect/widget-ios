@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol FCCredentialsFormViewDelegate: AnyObject {
+    #warning("SON REQUERIDOS TODOS?")
+    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onActive: ServiceStatus, bank: Bank)
+    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onSuccess: ServiceStatus, bank: Bank, credentialId: String)
+    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onFailure: ServiceStatus, bank: Bank)
+    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onError: ServiceStatus, message: String)
+}
+
 class FCCredentialsFormView: FCBaseView {
     // Components
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
@@ -19,7 +27,7 @@ class FCCredentialsFormView: FCBaseView {
     private lazy var extraDataDialog = setupExtraDataPickerDialog()
     private let datePicker = DatePickerDialog()
     private lazy var bannerImageView: FCBannerImageView = setupBannerView()
-
+    
     // Vars
     private var tableHeight: CGFloat = 0 {
         didSet {
@@ -33,7 +41,8 @@ class FCCredentialsFormView: FCBaseView {
                                         state: Configuration.shared.state)
     private var securityCodeTextField: UITextField?
     private var extraData: ExtraData?
-
+    public var delegate: FCCredentialsFormViewDelegate?
+    
     // Inits
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -162,7 +171,7 @@ extension FCCredentialsFormView {
         textFieldsTableView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: spacing / 2)
         textFieldsTableView.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
         textFieldsTableView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
-                
+        
         //Banner
         addSubview(bannerImageView)
         bannerImageView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
@@ -211,7 +220,7 @@ extension FCCredentialsFormView {
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? true : false
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.backgroundColor = backgroundColor
+        tableView.backgroundColor = .clear
         tableView.dataSource = self
         return tableView
     }
@@ -240,6 +249,7 @@ extension FCCredentialsFormView {
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
         
         textView.heightAnchor(equalTo: 40)
+        textView.backgroundColor = .clear
         textView.linkTextAttributes = linkAttributes
         textView.attributedText = attributedString
         textView.isEditable = false
@@ -337,11 +347,16 @@ extension FCCredentialsFormView {
                 
             case .active:
                 print("Active")
-//                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .success, bank: self.credentialViewModel.bank))
+                self.delegate?.credentialsFormView(self,
+                                                   onActive: .success, //success status is correct, not a typo.
+                                                   bank: self.credentialViewModel.bank)
                 
             case .success:
                 print("Success")
-//                self.context?.initialize(coordinator: AccountCoordinator(context: self.context!, credentialId: self.credentialViewModel.credentialResponse.id, bank: self.credentialViewModel.bank))
+                self.delegate?.credentialsFormView(self,
+                                                   onSuccess: .success,
+                                                   bank: self.credentialViewModel.bank,
+                                                   credentialId: self.credentialViewModel.credentialResponse.id)
                 
             case .loaded:
                 self.textFieldsTableView.reloadData()
@@ -352,19 +367,20 @@ extension FCCredentialsFormView {
                     let height = CGFloat(numberOfRows) * rowHeight
                     self.tableHeight = height
                 }
-
+                
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
                 self.setupExtraData()
                 
             case .failure:
                 print("Failure")
-//                self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!, serviceStatus: .failure, bank: self.credentialViewModel.bank))
+                self.delegate?.credentialsFormView(self,
+                                                   onFailure: .failure,
+                                                   bank: self.credentialViewModel.bank)
                 
             case .error:
                 print("Failure case, not implemented")
-                self.loadingView.stop()
 #warning("Revisar con René donde viviría la propiedad App o en su defecto la funcion ShowAlert")
-//                self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
+                //                self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
             }
         }
     }
@@ -481,7 +497,6 @@ extension FCCredentialsFormView: UITextFieldDelegate {
             extraDataDialog.show()
             return false
         }
-        
         return true
     }
 }

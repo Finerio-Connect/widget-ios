@@ -20,10 +20,6 @@ internal class AccountViewModel {
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let databaseReference = Database.database().reference()
 
-//    func getTitle() -> String {
-//        return Constants.Titles.bankSection
-//    }
-
     func updateCredentialToken(credentialToken: CredentialToken) {
         FinerioConnectWidgetAPI.updateCredentialToken(credentialToken: credentialToken) { [weak self] result in
             if let error = result.error {

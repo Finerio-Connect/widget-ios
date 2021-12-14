@@ -27,8 +27,10 @@ internal class BankViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
+        self.view.backgroundColor = .white
         
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         view.addSubview(bankSelectionView)
         bankSelectionView.delegate = self
         bankSelectionView.topAnchor(equalTo: view.safeTopAnchor)

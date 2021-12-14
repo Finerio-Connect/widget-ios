@@ -23,10 +23,13 @@ internal class AccountStatusCoordinator: Coordinator {
 
     func start() {
         let viewController = AccountStatusViewController()
-        viewController.viewModel = AccountStatusViewModel()
-        (viewController.viewModel as! AccountStatusViewModel).serviceStatus = serviceStatus
-        (viewController.viewModel as! AccountStatusViewModel).errorMessage = errorMessage
-        (viewController.viewModel as! AccountStatusViewModel).bank = bank
+        viewController.accountStatusView.setBank(bank)
+        viewController.accountStatusView.setStatus(serviceStatus ?? .failure)
+//        viewController.viewModel = AccountStatusViewModel()
+//        (viewController.viewModel as! AccountStatusViewModel).serviceStatus = serviceStatus
+//        (viewController.viewModel as! AccountStatusViewModel).errorMessage = errorMessage
+//        (viewController.viewModel as! AccountStatusViewModel).bank = bank
+        
         viewController.coordinator = self
         viewController.context = context
         context?.push(viewController: viewController)
