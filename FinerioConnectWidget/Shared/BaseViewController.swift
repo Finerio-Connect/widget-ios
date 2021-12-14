@@ -13,9 +13,9 @@ import UIKit
 internal class BaseViewController: UIViewController {
     weak var coordinator: Coordinator?
     weak var context: Context?
-    var viewModel: Any!
-    let app = Configuration.shared.app
-    let reachability = Reachability()
+//    var viewModel: Any!
+//    let app = Configuration.shared.app
+//    let reachability = Reachability()
     var animateDistance = CGFloat(0.0)
     let currentLoadingView = LoadingViewController()
 
@@ -26,12 +26,12 @@ internal class BaseViewController: UIViewController {
 
         view.backgroundColor = .clear
 
-        if reachability?.connection == Reachability.Connection.none {
-            let error = NSError.faaError(Constants.Texts.Errors.reachabilityError)
-            app.showAlert(Constants.Texts.Errors.reachabilityError, viewController: self)
-            logError(error)
-            return
-        }
+//        if reachability?.connection == Reachability.Connection.none {
+//            let error = NSError.faaError(Constants.Teapp.showAlert(Constants.Texts.Errors.reachabilityError, viewController: topVC)xts.Errors.reachabilityError)
+//            app.showAlert(Constants.Texts.Errors.reachabilityError, viewController: self)
+//            logError(error)
+//            return
+//        }
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -58,5 +58,14 @@ internal class BaseViewController: UIViewController {
         }
 
         return CGFloat(secondValue)
+    }
+    
+    func showAlert(_ message: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: literal(.companyName), message: message, preferredStyle: .alert)
+
+        let actionLater = UIAlertAction(title: fLocaleAlertButtonOk, style: .cancel, handler: nil)
+        alert.addAction(actionLater)
+
+        viewController.present(alert, animated: true, completion: nil)
     }
 }

@@ -395,6 +395,10 @@ extension BankViewController {
 
 //MARK: - NEW FCBankSelectionView Delegate
 extension BankViewController: FCBankSelectionViewDelegate {
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, onFailure: ServiceStatus, message: String) {
+        self.showAlert(message, viewController: self)
+    }
+    
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank) {
         let coordinator = CredentialCoordinator(context: context!, bank: bank)
         context?.initialize(coordinator: coordinator)

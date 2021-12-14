@@ -497,8 +497,6 @@ extension CredentialViewController: FCCredentialsFormViewDelegate {
     }
     
     func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onError: ServiceStatus, message: String) {
-                    print("Failure case, not implemented")
-        #warning("Revisar con René donde viviría la propiedad App o en su defecto la funcion ShowAlert")
-        //                self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
+        self.showAlert(message, viewController: self)
     }
 }

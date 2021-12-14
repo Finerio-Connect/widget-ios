@@ -10,6 +10,8 @@ import Mixpanel
 
 class FCBaseView: UIView {
     //Vars
+    let app = Configuration.shared.app
+    let reachability = Reachability()
     lazy var loadingView: FCLoaderAnimationView = setupLoadingView()
     
     override init(frame: CGRect) {
@@ -26,6 +28,15 @@ class FCBaseView: UIView {
 // MARK: - UI
 extension FCBaseView {
     @objc func configureView() {
+        // Check for network availability
+        if reachability?.connection == Reachability.Connection.none {
+            let error = NSError.faaError(Constants.Texts.Errors.reachabilityError)
+            if let topVC = UIApplication.fcTopViewController() {
+                app.showAlert(Constants.Texts.Errors.reachabilityError, viewController: topVC)
+            }
+            logError(error)
+            return
+        }
         setLoadingViewLayout()
     }
     

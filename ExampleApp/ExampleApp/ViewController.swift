@@ -97,7 +97,7 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.bankType = .fiscal
 
 //        finerioConnectWidget.environment = .production
-        finerioConnectWidget.texts = Texts(companyName: "Super Bank")
+        finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
 
 //        finerioConnectWidget.palette = Palette(
 //            mainColor: UIColor(red: 0 / 255, green: 29 / 255, blue: 255 / 255, alpha: 1),

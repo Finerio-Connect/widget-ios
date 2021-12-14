@@ -9,6 +9,7 @@ import UIKit
 
 protocol FCBankSelectionViewDelegate: AnyObject {
     func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank)
+    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, onFailure: ServiceStatus, message: String)
 }
 
 class FCBankSelectionView: FCBaseView {
@@ -202,12 +203,14 @@ extension FCBankSelectionView {
             guard let `self` = self else { return }
             switch status {
             case .active, .interactive, .error, .updated: break
+                
             case .success:
                 self.loadingView.stop()
                 DispatchQueue.main.async { [weak self] in
                     self?.loadingIndicator.stop()
                     self?.tableView.reloadData()
                 }
+                
             case .loaded:
                 //Set countries
                 self.countryPickerDialog.countries = self.bankViewModel.countries
@@ -218,11 +221,13 @@ extension FCBankSelectionView {
                     self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
                     self.countriesSelectorView.countryNameLabel.text = currentCountry.name
                 }
+                
             case .failure:
-                print("Failure case, not implemented")
                 self.loadingView.stop()
-#warning("Revisar con René donde viviría la propiedad App o en su defecto la funcion ShowAlert")
-                //                self.app.showAlert(self.bankViewModel.errorMessage, viewController: self)
+                
+                self.delegate?.bankSelectionView(self,
+                                                 onFailure: .failure,
+                                                 message: self.bankViewModel.errorMessage)
             }
         }
     }

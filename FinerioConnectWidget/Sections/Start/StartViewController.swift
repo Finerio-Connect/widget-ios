@@ -10,7 +10,7 @@ import FirebaseDatabase
 import UIKit
 
 internal class StartViewController: BaseViewController {
-    private var startViewModel: StartViewModel!
+    private var startViewModel: StartViewModel = StartViewModel()
 
     private lazy var countriesLabel: UILabel = setupTitleLabel()
     private lazy var subtitleLabel: UILabel = setupSubtitleLabel()
@@ -22,7 +22,7 @@ internal class StartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startViewModel = viewModel as? StartViewModel
+//        startViewModel = viewModel as? StartViewModel
         configureView()
     }
 

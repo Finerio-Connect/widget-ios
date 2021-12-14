@@ -346,13 +346,11 @@ extension FCCredentialsFormView {
             case .updated, .interactive: break
                 
             case .active:
-                print("Active")
                 self.delegate?.credentialsFormView(self,
                                                    onActive: .success, //success status is correct, not a typo.
                                                    bank: self.credentialViewModel.bank)
                 
             case .success:
-                print("Success")
                 self.delegate?.credentialsFormView(self,
                                                    onSuccess: .success,
                                                    bank: self.credentialViewModel.bank,
@@ -372,15 +370,14 @@ extension FCCredentialsFormView {
                 self.setupExtraData()
                 
             case .failure:
-                print("Failure")
                 self.delegate?.credentialsFormView(self,
                                                    onFailure: .failure,
                                                    bank: self.credentialViewModel.bank)
                 
             case .error:
-                print("Failure case, not implemented")
-#warning("Revisar con René donde viviría la propiedad App o en su defecto la funcion ShowAlert")
-                //                self.app.showAlert(self.credentialViewModel.errorMessage, viewController: self)
+                self.delegate?.credentialsFormView(self,
+                                                   onError: .error,
+                                                   message: self.credentialViewModel.errorMessage)
             }
         }
     }
@@ -393,7 +390,8 @@ extension FCCredentialsFormView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CredentialTableViewCell.id, for: indexPath) as? CredentialTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CredentialTableViewCell.id,
+                                                       for: indexPath) as? CredentialTableViewCell else {
             fatalError("Could not cast CredentialTableViewCell")
         }
         

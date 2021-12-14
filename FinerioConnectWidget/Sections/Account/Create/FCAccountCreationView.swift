@@ -183,7 +183,6 @@ extension FCAccountCreationView {
                                                    bank: self.accountViewModel.bank)
                 
             case .failure:
-                print("Failure")
                 self.delegate?.accountCreationView(self,
                                                    onFailure: .failure,
                                                    message: self.accountViewModel.errorMessage,
