@@ -195,10 +195,7 @@ extension FCAccountCreationView {
     private func observerServiceStatus() {
         accountViewModel.serviceStatusHandler = { [weak self] status in
             guard let `self` = self else { return }
-            
-            #warning("REVISAR COMO SEGUIR LLAMANDO AL LOADER DESPUES DE INGRESAR EL TOKEN...")
-            self.accountLoaderView.stop()
-            
+                        
             switch status {
             case .active, .loaded, .error: break
                 
