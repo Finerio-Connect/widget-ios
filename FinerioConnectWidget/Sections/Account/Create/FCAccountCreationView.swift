@@ -216,8 +216,10 @@ extension FCAccountCreationView {
                                                    bank: self.accountViewModel.bank)
                 
             case .updated:
-                print("UPDATED: \(self.accountViewModel.accounts.map({$0.name}))")
-#warning("UPDATE SHOW MESSAGES")
+                // Show created account name
+                if let lastAccount = self.accountViewModel.accounts.last {
+                    self.statusDescriptionLabel.text = lastAccount.name
+                }
                 
             case .interactive:
                 self.showAlertToken()
