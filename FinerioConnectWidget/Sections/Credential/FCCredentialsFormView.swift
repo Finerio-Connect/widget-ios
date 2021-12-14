@@ -8,7 +8,6 @@
 import UIKit
 
 protocol FCCredentialsFormViewDelegate: AnyObject {
-    #warning("SON REQUERIDOS TODOS?")
     func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onActive: ServiceStatus, bank: Bank)
     func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onSuccess: ServiceStatus, bank: Bank, credentialId: String)
     func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onFailure: ServiceStatus, bank: Bank)

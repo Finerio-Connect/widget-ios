@@ -12,6 +12,7 @@ internal class CredentialTableViewCell: UITableViewCell {
     // Components
     lazy var titleLabel: UILabel = setupTitleLabel()
     lazy var inputTexfield: PaddedTextField = setupPaddedTextField()
+    
     // Vars
     static let id = "CredentialTableViewCell"
     

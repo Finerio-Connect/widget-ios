@@ -19,11 +19,9 @@ internal class CredentialCoordinator: Coordinator {
 
     func start() {
         let viewController = CredentialViewController()
-//        viewController.viewModel = CredentialViewModel()
         if let bank = self.bank {
             viewController.credentialsFormView.setBank(bank)
         }
-//        (viewController.viewModel as! CredentialViewModel).bank = self.bank
         viewController.coordinator = self
         viewController.context = context
         context?.push(viewController: viewController)
