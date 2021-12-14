@@ -14,15 +14,10 @@ internal class BankViewModel {
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
 
-//    func getTitle() -> String {
-//        return Constants.Titles.bankSection
-//    }
-
     func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
         if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
             return countries[index]
         }
-
         return nil
     }
 

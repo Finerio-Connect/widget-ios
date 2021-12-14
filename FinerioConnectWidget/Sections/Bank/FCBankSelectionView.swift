@@ -27,6 +27,7 @@ class FCBankSelectionView: FCBaseView {
     private var bankViewModel: BankViewModel = BankViewModel()
     weak var delegate: FCBankSelectionViewDelegate?
     
+    // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -52,7 +53,6 @@ class FCBankSelectionView: FCBaseView {
         }
         bankViewModel.loadBanks()
         
-        //NEW
         addComponents()
         setMainStackViewLayout()
         setLayoutLoadingIndicator()
@@ -265,7 +265,6 @@ extension FCBankSelectionView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FCBankSelectionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("cell selected")
         let bank = bankViewModel.banks[indexPath.row]
         delegate?.bankSelectionView(self, didSelect: bank)
     }

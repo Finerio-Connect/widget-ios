@@ -18,9 +18,11 @@ class CountriesSelectorView: UIView {
     lazy var countryNameLabel: UILabel = setupCountryLabel()
     lazy var selectorTitleLabel: UILabel = setupTitleLabel()
     lazy var roundedContainerView: UIView = setupRoundedContainerView()
+    
     // Vars
     weak var delegate: CountriesSelectorViewDelegate?
     
+    // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -137,7 +139,6 @@ extension CountriesSelectorView {
 // MARK: - Actions
 extension CountriesSelectorView {
     @objc private func didTapCountrySelector() {
-        print("Seleccionó control de pais")
         delegate?.countriesPickerView(self, didTapSelector: countryNameLabel)
     }
 }
