@@ -105,10 +105,11 @@ class ViewController: UIViewController {
 //            mainTextColor: UIColor(red: 218 / 255, green: 37 / 255, blue: 221 / 255, alpha: 1),
 //            termsTextColor: UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1))
 //
-        finerioConnectWidget.animations = Animations(
-            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
-            successAnimation: "successAnimation",
-            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
+//        finerioConnectWidget.animations = Animations(
+//            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
+//            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
+//            successAnimation: "successAnimation",
+//            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
 
         finerioConnectWidget.start(
             widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",

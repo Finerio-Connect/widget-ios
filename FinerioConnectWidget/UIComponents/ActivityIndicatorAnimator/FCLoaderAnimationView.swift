@@ -21,7 +21,7 @@ public final class FCLoaderAnimationView: UIView {
         }
     }
 
-    internal var animationSize: CGFloat = 150 {
+    internal var animationSize: CGFloat = 120 {
         didSet {
             setAnimationSize()
         }

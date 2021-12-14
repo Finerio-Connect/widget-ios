@@ -82,6 +82,7 @@ extension FCAccountCreationView {
     
     private func setupLoaderAnimationView() -> FCLoaderAnimationView {
         let loaderView = FCLoaderAnimationView()
+        loaderView.animationSource = Configuration.shared.animations.accountCreationAnimation
         loaderView.backgroundColor = .clear
         loaderView.start()
         return loaderView
@@ -121,26 +122,6 @@ extension FCAccountCreationView {
         statusDescriptionLabel.topAnchor(equalTo: accountLoaderView.bottomAnchor, constant: spacing)
         statusDescriptionLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         statusDescriptionLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-        
-        
-//        let mainStack = UIStackView()
-//        mainStack.axis = .vertical
-//        mainStack.alignment = .center
-//        mainStack.spacing = 45
-//
-//        mainStack.addArrangedSubview(headerSectionView)
-//
-//        let animationSize = accountLoaderView.animationSize
-//        accountLoaderView.heightAnchor(equalTo: animationSize)
-//        accountLoaderView.widthAnchor(equalTo: animationSize)
-//        mainStack.addArrangedSubview(accountLoaderView)
-//
-//        mainStack.addArrangedSubview(statusDescriptionLabel)
-//
-//        addSubview(mainStack)
-//        mainStack.topAnchor(equalTo: safeTopAnchor, constant: 20)
-//        mainStack.leadingAnchor(equalTo: leadingAnchor, constant: 20)
-//        mainStack.trailingAnchor(equalTo: trailingAnchor, constant: -20)
     }
 }
 
@@ -166,12 +147,10 @@ extension FCAccountCreationView {
         alert.addAction(action)
         
         let topVC = UIApplication.fcTopViewController()
-        print("TOPVC: \(topVC)")
         
         if let token = accountViewModel.token {
             alert.message = Constants.Texts.AccountSection.firstLabelAlertToken
             
-#warning("ASK FOR TOKEN")
             topVC?.present(alert, animated: true, completion: {
                             let margin: CGFloat = 5.0
             
@@ -182,10 +161,8 @@ extension FCAccountCreationView {
                             labelToken.minimumScaleFactor = 0.5
                             alert.view.addSubview(labelToken)
                         })
-            
             return
         }
-        
         topVC?.present(alert, animated: true, completion: nil)
     }
 }
