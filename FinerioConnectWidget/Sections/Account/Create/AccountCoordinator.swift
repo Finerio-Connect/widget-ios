@@ -21,12 +21,9 @@ internal class AccountCoordinator: Coordinator {
 
     func start() {
         let viewController = AccountViewController()
-//        viewController.viewModel = AccountViewModel()
         if let credentialId = credentialId {
             viewController.accountCreationView.setBank(bank, credentialId: credentialId)
         }
-//        (viewController.viewModel as! AccountViewModel).credentialId = credentialId
-//        (viewController.viewModel as! AccountViewModel).bank = bank
         viewController.coordinator = self
         viewController.context = context
         context?.push(viewController: viewController)

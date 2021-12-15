@@ -42,10 +42,7 @@ class FCAccountCreationView: FCBaseView {
     
     override func configureView() {
         super.configureView()
-        // OLD
         trackEvent(eventName: Constants.Events.createCredential)
-        
-        // NEW
         setLayoutViews()
     }
 }
