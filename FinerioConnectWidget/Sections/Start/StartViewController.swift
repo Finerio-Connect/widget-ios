@@ -17,7 +17,7 @@ internal class StartViewController: BaseViewController {
     private lazy var bodyLabel: UILabel = setupBodyLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
 
-    private let indicator = ActivityIndicatorView()
+//    private let indicator = ActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

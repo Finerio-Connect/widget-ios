@@ -15,8 +15,4 @@ internal class AccountStatusViewModel {
     var bank: Bank!
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
-
-//    func getTitle() -> String {
-//        return Constants.Titles.bankSection
-//    }
 }

@@ -9,12 +9,6 @@ import Foundation
 import UIKit
 
 internal struct Constants {
-    /// Titles
-//    struct Titles {
-//        static let initSection = "Mejora de servicios"
-//        static let bankSection = "Vincula tu entidad bancaria"
-//    }
-
     /// Texts
     struct Texts {
         struct Errors {
