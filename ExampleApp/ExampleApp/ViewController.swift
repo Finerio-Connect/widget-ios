@@ -11,50 +11,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    #warning("LOADING VIEW TEST UNFINISHED")
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // View Controller config
-//        view.backgroundColor = .white
-//
-//        let loaderView = FCLoaderAnimationView()
-//        /// Custom lottie values
-////        loaderView.animationSource = "https://assets5.lottiefiles.com/packages/lf20_lmk0pfms.json"
-////        loaderView.animationSource = "TestLottieLocal"
-////        loaderView.animationSize = 100
-////        loaderView.backgroundColor = .red.withAlphaComponent(0.5)
-//
-//        view.addSubview(loaderView)
-//        loaderView.translatesAutoresizingMaskIntoConstraints = false
-//        loaderView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        loaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        loaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        loaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//
-//        // Buttons view controller
-//        let buttonStart = UIButton(type: .system)
-//        buttonStart.setTitle("START", for: .normal)
-//        buttonStart.backgroundColor = .systemTeal
-//        buttonStart.addTarget(loaderView, action: #selector(loaderView.start), for: .touchUpInside)
-//
-//        let buttonStop = UIButton(type: .system)
-//        buttonStop.setTitle("STOP", for: .normal)
-//        buttonStop.backgroundColor = .systemTeal
-//        buttonStop.addTarget(loaderView, action: #selector(loaderView.stop), for: .touchUpInside)
-//
-//        let stackButtons = UIStackView(arrangedSubviews: [buttonStart, buttonStop])
-//        stackButtons.axis = .vertical
-//        stackButtons.spacing = 10
-//        stackButtons.distribution = .fillEqually
-//
-//        view.addSubview(stackButtons)
-//        stackButtons.translatesAutoresizingMaskIntoConstraints = false
-//        stackButtons.heightAnchor.constraint(equalToConstant: 120).isActive = true
-//        stackButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
-//        stackButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        stackButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
