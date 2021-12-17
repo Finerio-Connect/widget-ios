@@ -14,6 +14,7 @@ internal class AccountViewModel {
     var token: String!
     var credentialId: String!
     var accounts: [AccountStatus] = []
+    var credentialAccounts: [CredentialAccount] = []
     var transactionsCreated: Bool = false
     var bank: Bank!
 
@@ -37,6 +38,7 @@ internal class AccountViewModel {
 
                     if let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
                         processAccountsStatus(dataSnapshot: dataSnapshot)
+                        serviceStatusHandler(.updated)
                     }
 
                     if let status = values["status"] as? String {
@@ -74,22 +76,32 @@ internal class AccountViewModel {
                 for value in snap.children {
                     let account = value as! DataSnapshot
                     let valueDictionary = account.value as! [String: AnyObject]
-
+                    
                     let accountName = valueDictionary["name"] as? String ?? ""
                     let accountStatus = valueDictionary["status"] as? String ?? ""
-
-                    let transaction = AccountStatus(id: account.key, name: accountName, status: accountStatus)
-
+                    
+                    let transaction = AccountStatus(id: account.key,
+                                                    name: accountName,
+                                                    status: accountStatus)
+                    
+                    if accountStatus == Constants.CredentialStatus.accountCreated {
+                        let credentialAccount = CredentialAccount(credentialId: self.credentialId,
+                                                                  accountId: account.key,
+                                                                  name: accountName,
+                                                                  status: accountStatus)
+                        
+                        credentialAccounts.append(credentialAccount)
+                    }
+                    
                     let filtered = accounts.filter { accountFound in
                         accountFound.id == account.key
                     }
-
+                    
                     if filtered.isEmpty {
                         accounts.append(transaction)
                     }
-
+                    
                     filtered.first?.status = accountStatus
-                    serviceStatusHandler(.updated)
                 }
             }
         }

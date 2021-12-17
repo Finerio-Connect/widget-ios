@@ -62,6 +62,7 @@ extension  FCCredentialsFormView {
         self.loadingView.start()
         trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
         
+        setBankAvatar()
         observerServiceStatus()
         credentialViewModel.loadBankFields()
     }
@@ -157,45 +158,62 @@ extension FCCredentialsFormView {
     }
     
     func addComponents() {
-        let spacing: CGFloat = 20
+        let margin: CGFloat = 20
+        let spacing: CGFloat = 30
+        
+        let scrollView = UIScrollView()
+        addSubview(scrollView)
+        scrollView.topAnchor(equalTo: topAnchor)
+        scrollView.leadingAnchor(equalTo: leadingAnchor)
+        scrollView.trailingAnchor(equalTo: trailingAnchor)
+        scrollView.bottomAnchor(equalTo: bottomAnchor)
+        
+        let contentView = UIView()
+        scrollView.addSubview(contentView)
+        contentView.topAnchor(equalTo: scrollView.topAnchor)
+        contentView.leadingAnchor(equalTo: scrollView.leadingAnchor)
+        contentView.trailingAnchor(equalTo: scrollView.trailingAnchor)
+        contentView.bottomAnchor(equalTo: scrollView.bottomAnchor)
+        contentView.widthAnchor(equalTo: widthAnchor)
         
         // Header
-        addSubview(headerSectionView)
-        headerSectionView.topAnchor(equalTo: topAnchor, constant: spacing / 2)
-        headerSectionView.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
-        headerSectionView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
+        contentView.addSubview(headerSectionView)
+        headerSectionView.topAnchor(equalTo: contentView.topAnchor, constant: margin)
+        headerSectionView.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
+        headerSectionView.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
         
         // Table
-        addSubview(textFieldsTableView)
-        textFieldsTableView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: spacing / 2)
-        textFieldsTableView.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
-        textFieldsTableView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
+        contentView.addSubview(textFieldsTableView)
+        textFieldsTableView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: spacing)
+        textFieldsTableView.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
+        textFieldsTableView.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
         
         //Banner
-        addSubview(bannerImageView)
-        bannerImageView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
-        bannerImageView.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
+        contentView.addSubview(bannerImageView)
+        bannerImageView.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
+        bannerImageView.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
+        bannerImageView.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -margin)
         
         //Buttons
-        addSubview(helpButton)
-        helpButton.bottomAnchor(equalTo: bannerImageView.topAnchor, constant: -spacing)
-        helpButton.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
-        helpButton.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
+        contentView.addSubview(helpButton)
+        helpButton.bottomAnchor(equalTo: bannerImageView.topAnchor, constant: -spacing * 2)
+        helpButton.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
+        helpButton.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
         
-        addSubview(continueButton)
+        contentView.addSubview(continueButton)
         continueButton.bottomAnchor(equalTo: helpButton.topAnchor, constant: -12)
-        continueButton.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
-        continueButton.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
+        continueButton.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
+        continueButton.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
         
         // Terms & Conditions
-        addSubview(termsTextView)
-        termsTextView.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: spacing / 2)
-        termsTextView.bottomAnchor(equalTo: continueButton.topAnchor, constant: -spacing)
-        termsTextView.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
+        contentView.addSubview(termsTextView)
+        termsTextView.bottomAnchor(equalTo: continueButton.topAnchor, constant: -margin)
+        termsTextView.trailingAnchor(equalTo: contentView.trailingAnchor, constant: -margin)
         
-        addSubview(toggleSwitch)
+        contentView.addSubview(toggleSwitch)
+        toggleSwitch.topAnchor(equalTo: textFieldsTableView.bottomAnchor, constant: margin)
         toggleSwitch.centerYAnchor(equalTo: termsTextView.centerYAnchor)
-        toggleSwitch.leadingAnchor(equalTo: leadingAnchor, constant: spacing)
+        toggleSwitch.leadingAnchor(equalTo: contentView.leadingAnchor, constant: margin)
         toggleSwitch.trailingAnchor(equalTo: termsTextView.leadingAnchor, constant: -8)
     }
     
@@ -203,7 +221,6 @@ extension FCCredentialsFormView {
         let headerView = HeaderSectionView()
         headerView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
         headerView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
-        headerView.setLockAvatarView()
         return headerView
     }
     
@@ -330,6 +347,14 @@ extension FCCredentialsFormView {
         let screenSize: CGRect = UIScreen.main.bounds
         pickerDialog.frame = screenSize
         return pickerDialog
+    }
+    
+    private func setBankAvatar() {
+        let defaultImage = Images.otherBanksOff.image()
+        let bankCodePlaceholder = Constants.Placeholders.bankCode
+        let imageName = Constants.URLS.bankImageShield.replacingOccurrences(of: bankCodePlaceholder,
+                                                                            with: credentialViewModel.bank.code)
+        headerSectionView.avatarView.setImage(with: URL(string: imageName), defaultImage: defaultImage)
     }
 }
 

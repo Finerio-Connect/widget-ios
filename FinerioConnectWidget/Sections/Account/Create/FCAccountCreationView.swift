@@ -10,8 +10,13 @@ import nanopb
 import UIKit
 
 protocol FCAccountCreationViewDelegate: AnyObject {
+    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) // Optional
     func accountCreationView(_ accountCreationView: FCAccountCreationView, onSuccess: ServiceStatus, bank: Bank)
     func accountCreationView(_ accountCreationView: FCAccountCreationView, onFailure: ServiceStatus, message: String, bank: Bank)
+}
+
+extension FCAccountCreationViewDelegate {
+    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) {}
 }
 
 class FCAccountCreationView: FCBaseView {
@@ -189,6 +194,12 @@ extension FCAccountCreationView {
                 // Show created account name
                 if let lastAccount = self.accountViewModel.accounts.last {
                     self.statusDescriptionLabel.text = lastAccount.name
+                }
+                
+                // The update gets called many times, this is to delegate only when credentialAccounts has items.
+                if !self.accountViewModel.credentialAccounts.isEmpty {
+                    let credentialAccount = self.accountViewModel.credentialAccounts.removeFirst()
+                        self.delegate?.accountCreationView(self, accountCreated: credentialAccount)
                 }
                 
             case .interactive:

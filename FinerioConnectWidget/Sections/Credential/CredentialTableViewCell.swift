@@ -93,9 +93,9 @@ extension CredentialTableViewCell {
         inputTexfield.heightAnchor(equalTo: textFieldHeight)
         
         contentView.addSubview(mainStack)
-        mainStack.topAnchor(equalTo: contentView.topAnchor, constant: 4)
+        mainStack.topAnchor(equalTo: contentView.topAnchor, constant: 8)
         mainStack.leadingAnchor(equalTo: contentView.leadingAnchor)
         mainStack.trailingAnchor(equalTo: contentView.trailingAnchor)
-        mainStack.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -4)
+        mainStack.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -8)
     }
 }

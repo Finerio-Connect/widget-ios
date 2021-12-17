@@ -44,13 +44,13 @@ class ViewController: UIViewController {
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
-        finerioConnectWidget.font = "Ubuntu"
+//        finerioConnectWidget.font = "Ubuntu"
         /// Country settings
-//        finerioConnectWidget.countryCode = "CO"
+//        finerioConnectWidget.countryCode = "MX"
 //        finerioConnectWidget.showCountryOptions = false
         /// Bank settings
-//        finerioConnectWidget.showBankTypeOptions = false
-//        finerioConnectWidget.bankType = .fiscal
+//        finerioConnectWidget.showBankTypeOptions = true
+//        finerioConnectWidget.bankType = .personal
 
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")

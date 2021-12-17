@@ -51,4 +51,12 @@ extension AccountViewController: FCAccountCreationViewDelegate {
                                                                        errorMessage: message,
                                                                        bank: bank))
     }
+    
+    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) {
+        print("AccountCreated_Delegate_Name: \(accountCreated.name)")
+        print("AccountCreated_Delegate_CredentialId: \(accountCreated.credentialId)")
+        print("AccountCreated_Delegate_Status: \(accountCreated.status)")
+        print("AccountCreated_Delegate_AccountId: \(accountCreated.accountId)")
+        print("\n")
+    }
 }

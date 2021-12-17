@@ -66,7 +66,7 @@ internal struct Constants {
             static let failure403BodyDescriptionLabel = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra."
             static let failureTitleLabel = "Ups, algo salió mal"
             static let failureSubtitleLabel = "Tu cuenta no ha podido ser agregada"
-            static let failureContinueTitleButton = "Intentar nuevamente"
+            static let failureContinueTitleButton = "Aceptar"
             static let failureExitTitleButton = "Salir"
             static let successContinueTitleButton = "Agregar otra cuenta"
             static let successExitTitleButton = "Continuar proceso"
@@ -97,7 +97,7 @@ internal struct Constants {
 
     /// URLS
     struct URLS {
-        static let termsAndConditions = "https://www.finerio.mx/terms"
+        static let termsAndConditions = "https://finerioconnect.com/license"
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"

@@ -14,7 +14,7 @@ protocol FCBankSelectionViewDelegate: AnyObject {
 
 class FCBankSelectionView: FCBaseView {
     // Components
-    private lazy var mainStackView: UIStackView = setupMainStackView()
+//    private lazy var mainStackView: UIStackView = setupMainStackView()
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var countriesSelectorView: CountriesSelectorView = setupCountriesSelectorView()
     private lazy var countryPickerDialog: BankCountryPickerDialog = setupCountryPickerDialog()
@@ -26,6 +26,13 @@ class FCBankSelectionView: FCBaseView {
     // Vars
     private var bankViewModel: BankViewModel = BankViewModel()
     weak var delegate: FCBankSelectionViewDelegate?
+    private var tableHeight: CGFloat = 0 {
+        didSet {
+            // Remove old constraints
+            tableView.removeConstraints(tableView.constraints)
+            tableView.heightAnchor(equalTo: tableHeight)
+        }
+    }
     
     // Inits
     override init(frame: CGRect) {
@@ -54,20 +61,22 @@ class FCBankSelectionView: FCBaseView {
         bankViewModel.loadBanks()
         
         addComponents()
-        setMainStackViewLayout()
+//        setMainStackViewLayout()
         setLayoutLoadingIndicator()
     }
 }
 
 // MARK: - UI
 extension FCBankSelectionView {
-    private func setupMainStackView() -> UIStackView {
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        mainStackView.spacing = CGFloat(20)
-        
-        return mainStackView
-    }
+//    private func setupMainStackView() -> UIStackView {
+//        let mainStackView = UIStackView()
+//        mainStackView.axis = .vertical
+//        mainStackView.alignment = .fill
+//        mainStackView.distribution = .fillProportionally
+//        mainStackView.spacing = CGFloat(20)
+//
+//        return mainStackView
+//    }
     
     private func setupCountryPickerDialog() -> BankCountryPickerDialog {
         let pickerDialog = BankCountryPickerDialog()
@@ -144,37 +153,104 @@ extension FCBankSelectionView {
     }
     
     func addComponents() {
-        mainStackView.addArrangedSubview(headerSectionView)
+        let margin: CGFloat = 20
+        addSubview(headerSectionView)
+        headerSectionView.heightAnchor(equalTo: 95)
+        headerSectionView.topAnchor(equalTo: topAnchor, constant: margin)
+        headerSectionView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+        headerSectionView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         
         // Show or hide components
-        if Configuration.shared.showCountryOptions {
-            mainStackView.addArrangedSubview(countriesSelectorView)
+        let isShowingCountry = Configuration.shared.showCountryOptions
+        let isShowingBankTypes = Configuration.shared.showBankTypeOptions
+        
+        if isShowingCountry && isShowingBankTypes {
+            addSubview(countriesSelectorView)
+            countriesSelectorView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: margin)
+            countriesSelectorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            countriesSelectorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+            
+            addSubview(bankTypeSegment)
+            bankTypeSegment.topAnchor(equalTo: countriesSelectorView.bottomAnchor, constant: margin)
+            bankTypeSegment.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            bankTypeSegment.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+            
+            addSubview(separatorView)
+            separatorView.topAnchor(equalTo: bankTypeSegment.bottomAnchor, constant: margin)
+            separatorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            separatorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        } else if isShowingCountry {
+            addSubview(countriesSelectorView)
+            countriesSelectorView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: margin)
+            countriesSelectorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            countriesSelectorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+            
+            addSubview(separatorView)
+            separatorView.topAnchor(equalTo: countriesSelectorView.bottomAnchor, constant: margin)
+            separatorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            separatorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        } else if isShowingBankTypes {
+            addSubview(bankTypeSegment)
+            bankTypeSegment.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: margin)
+            bankTypeSegment.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            bankTypeSegment.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+            addSubview(separatorView)
+            separatorView.topAnchor(equalTo: bankTypeSegment.bottomAnchor, constant: margin)
+            separatorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            separatorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        } else {
+            addSubview(separatorView)
+            separatorView.topAnchor(equalTo: headerSectionView.bottomAnchor, constant: margin)
+            separatorView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+            separatorView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         }
-        if Configuration.shared.showBankTypeOptions {
-            mainStackView.addArrangedSubview(bankTypeSegment)
-        }
         
-        let tableAndSeparatorViews = [separatorView, tableView]
-        let tableStackView = UIStackView(arrangedSubviews: tableAndSeparatorViews)
-        tableStackView.axis = .vertical
+        addSubview(tableView)
+        tableView.topAnchor(equalTo: separatorView.bottomAnchor)
+        tableView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+        tableView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        tableView.bottomAnchor.constraint(lessThanOrEqualTo: safeBottomAnchor).isActive = true
         
-        mainStackView.addArrangedSubview(tableStackView)
-        
-        addSubview(mainStackView)
+        ///------
+//        mainStackView.addArrangedSubview(headerSectionView)
+//
+//        // Show or hide components
+//        if Configuration.shared.showCountryOptions {
+//            mainStackView.addArrangedSubview(countriesSelectorView)
+//        }
+//        if Configuration.shared.showBankTypeOptions {
+//            mainStackView.addArrangedSubview(bankTypeSegment)
+//        }
+//
+//        let tableAndSeparatorViews = [separatorView, tableView]
+//        let tableStackView = UIStackView(arrangedSubviews: tableAndSeparatorViews)
+//        tableStackView.axis = .vertical
+//
+//        mainStackView.addArrangedSubview(tableStackView)
+//
+//        addSubview(mainStackView)
         addSubview(loadingIndicator)
+    }
+    
+    private func calculateTableHeight() {
+        let numberOfRows = self.tableView.numberOfRows(inSection: 0)
+        if let rowHeight = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.frame.height {
+            let height = CGFloat(numberOfRows) * rowHeight
+            self.tableHeight = height
+        }
     }
 }
 
 // MARK: - Layouts
 extension FCBankSelectionView {
-    private func setMainStackViewLayout() {
-        let mainBorderSpacing:CGFloat = 20
-        let mainTopSpacing: CGFloat = 20
-        mainStackView.topAnchor(equalTo: safeTopAnchor, constant: mainTopSpacing)
-        mainStackView.leadingAnchor(equalTo: leadingAnchor, constant: mainBorderSpacing)
-        mainStackView.trailingAnchor(equalTo: trailingAnchor, constant: -mainBorderSpacing)
-        mainStackView.bottomAnchor(equalTo: safeBottomAnchor)
-    }
+//    private func setMainStackViewLayout() {
+//        let margin: CGFloat = 20
+//        mainStackView.topAnchor(equalTo: safeTopAnchor, constant: margin)
+//        mainStackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+//        mainStackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+//        mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: safeBottomAnchor, constant: -margin).isActive = true
+////        mainStackView.bottomAnchor(equalTo: safeBottomAnchor)
+//    }
     
     private func setLayoutLoadingIndicator() -> Void {
         let loadingViewSize: CGFloat = 60
@@ -209,6 +285,7 @@ extension FCBankSelectionView {
                 DispatchQueue.main.async { [weak self] in
                     self?.loadingIndicator.stop()
                     self?.tableView.reloadData()
+                    self?.calculateTableHeight()
                 }
                 
             case .loaded:
