@@ -159,6 +159,7 @@ internal struct Constants {
         static let bankSelected = "Bank selected"
         static let credentials = "View: Credentials"
         static let createCredential = "Create credential"
-        static let credentialCreated = "Credential created"
+        static let credentialSuccess = "Credential success"
+        static let credentialFailure = "Credential failure"
     }
 }

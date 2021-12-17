@@ -179,12 +179,13 @@ extension FCAccountCreationView {
             case .active, .loaded, .error: break
                 
             case .success:
-                self.trackEvent(eventName: Constants.Events.credentialCreated)
+                self.trackEvent(eventName: Constants.Events.credentialSuccess)
                 self.delegate?.accountCreationView(self,
                                                    onSuccess: .success,
                                                    bank: self.accountViewModel.bank)
                 
             case .failure:
+                self.trackEvent(eventName: Constants.Events.credentialFailure)
                 self.delegate?.accountCreationView(self,
                                                    onFailure: .failure,
                                                    message: self.accountViewModel.errorMessage,
