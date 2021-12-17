@@ -55,6 +55,10 @@ internal struct Constants {
             static let titleButton = "Enviar"
             static let headerTitle = "Espera un momento"
             static let headerDescription = "Este proceso puede tardar unos minutos"
+            static let creationSteps = ["Encriptando tus datos...",
+                                        "Conectando con tu banca...",
+                                        "Validando tu información...",
+                                        "Finalizando tu conexión"]
         }
 
         struct StatusSection {

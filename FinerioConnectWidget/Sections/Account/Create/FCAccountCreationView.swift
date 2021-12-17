@@ -94,11 +94,26 @@ extension FCAccountCreationView {
         let label = UILabel()
         label.textColor = Configuration.shared.palette.mainTextColor
         label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
-        label.text = "Encriptando tus datos..."
+        label.text = Constants.Texts.AccountSection.creationSteps[0]
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         return label
+    }
+    
+    private func showCreationSteps() {
+        let serialQueue = DispatchQueue(label: "serialQueueSteps")
+        let steps = Constants.Texts.AccountSection.creationSteps
+        steps.forEach { step in
+            if step != steps[0] {
+                serialQueue.async {
+                    sleep(for: 5)
+                    DispatchQueue.main.async {
+                        self.statusDescriptionLabel.text = step
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -192,11 +207,6 @@ extension FCAccountCreationView {
                                                    bank: self.accountViewModel.bank)
                 
             case .updated:
-                // Show created account name
-                if let lastAccount = self.accountViewModel.accounts.last {
-                    self.statusDescriptionLabel.text = lastAccount.name
-                }
-                
                 // The update gets called many times, this is to delegate only when credentialAccounts has items.
                 if !self.accountViewModel.credentialAccounts.isEmpty {
                     let credentialAccount = self.accountViewModel.credentialAccounts.removeFirst()
@@ -205,6 +215,7 @@ extension FCAccountCreationView {
                 
             case .interactive:
                 self.showAlertToken()
+                self.showCreationSteps()
             }
         }
     }
