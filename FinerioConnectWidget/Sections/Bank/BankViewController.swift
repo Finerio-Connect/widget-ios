@@ -10,13 +10,14 @@ import UIKit
 
 internal class BankViewController: BaseViewController {
     // Components
-    private lazy var bankSelectionView = FCBankSelectionView()
+    private var bankSelectionView: FCBankSelectionView! // = FCBankSelectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.view.backgroundColor = .white
         
+        bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)
         bankSelectionView.delegate = self
         bankSelectionView.topAnchor(equalTo: view.safeTopAnchor)

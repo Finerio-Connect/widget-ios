@@ -45,12 +45,20 @@ class FCCredentialsFormView: FCBaseView {
     // Inits
     private override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
+    }
+    
+    override func configureView() {
+        super.configureView()
+        self.loadingView.backgroundColor = .white
+        
+        trackEvent(eventName: Constants.Events.credentials)
+        
+        localHideKeyboardWhenTappedAround()
+        addComponents()
     }
 }
 
@@ -149,14 +157,6 @@ extension FCCredentialsFormView {
 
 // MARK: - UI
 extension FCCredentialsFormView {
-    override func configureView() {
-        super.configureView()
-        self.loadingView.backgroundColor = .white
-        
-        localHideKeyboardWhenTappedAround()
-        addComponents()
-    }
-    
     func addComponents() {
         let margin: CGFloat = 20
         let spacing: CGFloat = 30

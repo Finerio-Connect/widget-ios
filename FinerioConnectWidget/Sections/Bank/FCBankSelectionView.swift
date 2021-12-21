@@ -37,12 +37,10 @@ class FCBankSelectionView: FCBaseView {
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
     }
     
     override func configureView() {
@@ -61,7 +59,7 @@ class FCBankSelectionView: FCBaseView {
         bankViewModel.loadBanks()
         
         addComponents()
-//        setMainStackViewLayout()
+        //        setMainStackViewLayout()
         setLayoutLoadingIndicator()
     }
 }

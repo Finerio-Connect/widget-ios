@@ -121,7 +121,6 @@ public final class FinerioConnectWidget: NSObject {
         Mixpanel.initialize(token: environment == .sandbox ? Constants.Keys.sandboxMixpanelToken : Constants.Keys.productionMixpanelToken)
         Mixpanel.mainInstance().registerSuperProperties([Constants.Events.widgetId: Configuration.shared.widgetId])
         if logLevel == .debug { Mixpanel.mainInstance().loggingEnabled = true }
-
         logInfo("Mixpanel Configuration")
     }
 

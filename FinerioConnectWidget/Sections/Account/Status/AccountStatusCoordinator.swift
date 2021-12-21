@@ -25,7 +25,7 @@ internal class AccountStatusCoordinator: Coordinator {
         let viewController = AccountStatusViewController()
         viewController.accountStatusView.setBank(bank)
         viewController.accountStatusView.setStatus(serviceStatus ?? .failure)
-        //Need to pass the error message?
+        //Needs to pass the error message?
         
         viewController.coordinator = self
         viewController.context = context

@@ -32,12 +32,12 @@ class FCAccountCreationView: FCBaseView {
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
+//        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
+//        configureView()
     }
     
     deinit {

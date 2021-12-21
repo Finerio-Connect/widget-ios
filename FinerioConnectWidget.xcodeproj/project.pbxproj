@@ -108,7 +108,7 @@
 		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */; };
-		2149D0E940F3D765447FB971 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D48E9030A5F2347D3DE4D37 /* Pods_FinerioConnectWidget.framework */; };
+		3CC766164EE9BB6CBF8EFDD9 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */; };
 		7A79CB902751AA3900B7F60D /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB8F2751AA3900B7F60D /* FCLoaderAnimationView.swift */; };
 		7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */; };
 		7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */; };
@@ -220,14 +220,14 @@
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerRowView.swift; sourceTree = "<group>"; };
-		1D48E9030A5F2347D3DE4D37 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25E17187148564537E55DA56 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		7A79CB8F2751AA3900B7F60D /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
 		7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		7A8058522744581600F12B80 /* BankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewCell.swift; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
-		FD8DB88C80B35F377306E1F4 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2149D0E940F3D765447FB971 /* Pods_FinerioConnectWidget.framework in Frameworks */,
+				3CC766164EE9BB6CBF8EFDD9 /* Pods_FinerioConnectWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +554,7 @@
 				0FD2720525F1719600E052F7 /* FinerioConnectWidget */,
 				0FD2720425F1719600E052F7 /* Products */,
 				B72BAD0A5444E289A13BF8A5 /* Pods */,
-				A5D03A443534FAB0ABC1E53D /* Frameworks */,
+				141F52DDF0768E008426A01E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -582,10 +582,10 @@
 			path = FinerioConnectWidget;
 			sourceTree = "<group>";
 		};
-		A5D03A443534FAB0ABC1E53D /* Frameworks */ = {
+		141F52DDF0768E008426A01E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D48E9030A5F2347D3DE4D37 /* Pods_FinerioConnectWidget.framework */,
+				31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -593,8 +593,8 @@
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FD8DB88C80B35F377306E1F4 /* Pods-FinerioConnectWidget.debug.xcconfig */,
-				25E17187148564537E55DA56 /* Pods-FinerioConnectWidget.release.xcconfig */,
+				6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */,
+				FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -617,7 +617,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD2720B25F1719600E052F7 /* Build configuration list for PBXNativeTarget "FinerioConnectWidget" */;
 			buildPhases = (
-				B90F570CDE2E511B242EF3A4 /* [CP] Check Pods Manifest.lock */,
+				9B94BE8129EC2AE4EB647325 /* [CP] Check Pods Manifest.lock */,
 				0FD271FE25F1719600E052F7 /* Headers */,
 				0FD271FF25F1719600E052F7 /* Sources */,
 				0FD2720025F1719600E052F7 /* Frameworks */,
@@ -683,7 +683,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B90F570CDE2E511B242EF3A4 /* [CP] Check Pods Manifest.lock */ = {
+		9B94BE8129EC2AE4EB647325 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -939,7 +939,7 @@
 		};
 		0FD2720C25F1719600E052F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD8DB88C80B35F377306E1F4 /* Pods-FinerioConnectWidget.debug.xcconfig */;
+			baseConfigurationReference = 6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -968,7 +968,7 @@
 		};
 		0FD2720D25F1719600E052F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25E17187148564537E55DA56 /* Pods-FinerioConnectWidget.release.xcconfig */;
+			baseConfigurationReference = FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
