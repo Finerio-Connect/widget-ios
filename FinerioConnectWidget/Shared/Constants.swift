@@ -55,10 +55,7 @@ internal struct Constants {
             static let titleButton = "Enviar"
             static let headerTitle = "Espera un momento"
             static let headerDescription = "Este proceso puede tardar unos minutos"
-            static let creationSteps = ["Encriptando tus datos...",
-                                        "Conectando con tu banca...",
-                                        "Validando tu información...",
-                                        "Finalizando tu conexión"]
+            static let creationSteps = ["Encriptando tus datos..."]
         }
 
         struct StatusSection {
@@ -105,7 +102,7 @@ internal struct Constants {
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
-        static var bankImageShield = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_shield.png"
+        static var bankImageShield = "\(cdnWidget)/rounded_logos/bank_\(Constants.Placeholders.bankCode)_shield.png"
         static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
     }
 

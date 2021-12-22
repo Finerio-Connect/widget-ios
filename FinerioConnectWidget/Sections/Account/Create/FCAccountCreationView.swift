@@ -100,21 +100,6 @@ extension FCAccountCreationView {
         label.textAlignment = .center
         return label
     }
-    
-    private func showCreationSteps() {
-        let serialQueue = DispatchQueue(label: "serialQueueSteps")
-        let steps = Constants.Texts.AccountSection.creationSteps
-        steps.forEach { step in
-            if step != steps[0] {
-                serialQueue.async {
-                    sleep(for: 5)
-                    DispatchQueue.main.async {
-                        self.statusDescriptionLabel.text = step
-                    }
-                }
-            }
-        }
-    }
 }
 
 // MARK: - Layouts
@@ -210,12 +195,12 @@ extension FCAccountCreationView {
                 // The update gets called many times, this is to delegate only when credentialAccounts has items.
                 if !self.accountViewModel.credentialAccounts.isEmpty {
                     let credentialAccount = self.accountViewModel.credentialAccounts.removeFirst()
+                    self.statusDescriptionLabel.text = credentialAccount.name
                         self.delegate?.accountCreationView(self, accountCreated: credentialAccount)
                 }
                 
             case .interactive:
                 self.showAlertToken()
-                self.showCreationSteps()
             }
         }
     }

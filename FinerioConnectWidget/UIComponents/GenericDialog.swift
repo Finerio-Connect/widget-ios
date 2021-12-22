@@ -33,8 +33,9 @@ internal class GenericDialog: UIView {
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(Images.cancelButton.image()?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = Configuration.shared.palette.mainColor
+        let crossImage = Images.cancelButton.image()?.withRenderingMode(.alwaysTemplate)
+        button.setImage(crossImage, for: .normal)
+        button.tintColor = UIColor(hex: Constants.Color.segmentColor) //Configuration.shared.palette.mainColor
         button.addTarget(self, action: #selector(hide), for: .touchUpInside)
         button.heightAnchor(equalTo: 25)
         button.widthAnchor(equalTo: 25)
