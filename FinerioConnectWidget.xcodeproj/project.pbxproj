@@ -42,7 +42,6 @@
 		0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1B25F1795D00DA2D18 /* Enums.swift */; };
 		0FCBAF9325F1795D00DA2D18 /* AnimationsURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */; };
 		0FCBAF9425F1795D00DA2D18 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1D25F1795D00DA2D18 /* Colors.swift */; };
-		0FCBAF9525F1795D00DA2D18 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1E25F1795D00DA2D18 /* LoadingViewController.swift */; };
 		0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2125F1795D00DA2D18 /* CredentialTableViewCell.swift */; };
 		0FCBAF9725F1795D00DA2D18 /* CredentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */; };
 		0FCBAF9825F1795D00DA2D18 /* CredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */; };
@@ -58,7 +57,6 @@
 		0FCBAFA225F1795D00DA2D18 /* AccountStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3125F1795D00DA2D18 /* AccountStatusCoordinator.swift */; };
 		0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3325F1795D00DA2D18 /* AccountCoordinator.swift */; };
 		0FCBAFA425F1795D00DA2D18 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3425F1795D00DA2D18 /* AccountViewModel.swift */; };
-		0FCBAFA525F1795D00DA2D18 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3525F1795D00DA2D18 /* AccountTableViewCell.swift */; };
 		0FCBAFA625F1795D00DA2D18 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3625F1795D00DA2D18 /* AccountViewController.swift */; };
 		0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3825F1795D00DA2D18 /* UIImageView+Extensions.swift */; };
 		0FCBAFA825F1795D00DA2D18 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF3925F1795D00DA2D18 /* UIView+Extensions.swift */; };
@@ -90,12 +88,6 @@
 		0FCBAFC525F1795D00DA2D18 /* InteractiveLinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF5A25F1795D00DA2D18 /* InteractiveLinkLabel.swift */; };
 		0FCBAFC625F1795D00DA2D18 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */; };
 		0FCBAFCB25F1795D00DA2D18 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6225F1795D00DA2D18 /* DatePickerDialog.swift */; };
-		0FCBAFCC25F1795D00DA2D18 /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6525F1795D00DA2D18 /* CGRect+Center.swift */; };
-		0FCBAFCD25F1795D00DA2D18 /* CAPropertyAnimation+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6625F1795D00DA2D18 /* CAPropertyAnimation+Key.swift */; };
-		0FCBAFCE25F1795D00DA2D18 /* UIBezierPath+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6725F1795D00DA2D18 /* UIBezierPath+Circle.swift */; };
-		0FCBAFCF25F1795D00DA2D18 /* CGSize+Min.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6825F1795D00DA2D18 /* CGSize+Min.swift */; };
-		0FCBAFD025F1795D00DA2D18 /* ActivityIndicatorAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6925F1795D00DA2D18 /* ActivityIndicatorAnimator.swift */; };
-		0FCBAFD125F1795D00DA2D18 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6A25F1795D00DA2D18 /* ActivityIndicatorView.swift */; };
 		0FCBAFD225F1795D00DA2D18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6C25F1795D00DA2D18 /* GoogleService-Info.plist */; };
 		0FCBAFD325F1795D00DA2D18 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6D25F1795D00DA2D18 /* Localizable.strings */; };
 		0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF6E25F1795D00DA2D18 /* LocalizableConstants.swift */; };
@@ -108,8 +100,18 @@
 		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */; };
-		3CC766164EE9BB6CBF8EFDD9 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */; };
-		7A79CB902751AA3900B7F60D /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB8F2751AA3900B7F60D /* FCLoaderAnimationView.swift */; };
+		74B17309F2914F3FE24D04AF /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */; };
+		7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */; };
+		7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */; };
+		7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */; };
+		7A01BBEB2783C5D500D3DC96 /* FCBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */; };
+		7A01BBED2783C61800D3DC96 /* FCAccountCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBEC2783C61800D3DC96 /* FCAccountCreationView.swift */; };
+		7A01BBEF2783C6A100D3DC96 /* FCAccountStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBEE2783C6A100D3DC96 /* FCAccountStatusView.swift */; };
+		7A01BBF12783C6ED00D3DC96 /* CredentialAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF02783C6ED00D3DC96 /* CredentialAccount.swift */; };
+		7A01BBF32783C72600D3DC96 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF22783C72600D3DC96 /* UIApplication+Extensions.swift */; };
+		7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */; };
+		7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */; };
+		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
 		7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */; };
 		7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */; };
 		7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8058522744581600F12B80 /* BankTableViewCell.swift */; };
@@ -117,6 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F5E462626EAC19200A9CB63 /* CredentialHelpDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialHelpDialog.swift; sourceTree = "<group>"; };
 		0F6585D62613B06400D1BBA6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		0F6586302614EF7B00D1BBA6 /* ImageCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaching.swift; sourceTree = "<group>"; };
@@ -152,7 +155,6 @@
 		0FCBAF1B25F1795D00DA2D18 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsURLS.swift; sourceTree = "<group>"; };
 		0FCBAF1D25F1795D00DA2D18 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		0FCBAF1E25F1795D00DA2D18 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0FCBAF2125F1795D00DA2D18 /* CredentialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialTableViewCell.swift; sourceTree = "<group>"; };
 		0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialViewModel.swift; sourceTree = "<group>"; };
 		0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +170,6 @@
 		0FCBAF3125F1795D00DA2D18 /* AccountStatusCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStatusCoordinator.swift; sourceTree = "<group>"; };
 		0FCBAF3325F1795D00DA2D18 /* AccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		0FCBAF3425F1795D00DA2D18 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		0FCBAF3525F1795D00DA2D18 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		0FCBAF3625F1795D00DA2D18 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0FCBAF3825F1795D00DA2D18 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		0FCBAF3925F1795D00DA2D18 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -200,12 +201,6 @@
 		0FCBAF5A25F1795D00DA2D18 /* InteractiveLinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLinkLabel.swift; sourceTree = "<group>"; };
 		0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		0FCBAF6225F1795D00DA2D18 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
-		0FCBAF6525F1795D00DA2D18 /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
-		0FCBAF6625F1795D00DA2D18 /* CAPropertyAnimation+Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPropertyAnimation+Key.swift"; sourceTree = "<group>"; };
-		0FCBAF6725F1795D00DA2D18 /* UIBezierPath+Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Circle.swift"; sourceTree = "<group>"; };
-		0FCBAF6825F1795D00DA2D18 /* CGSize+Min.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Min.swift"; sourceTree = "<group>"; };
-		0FCBAF6925F1795D00DA2D18 /* ActivityIndicatorAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorAnimator.swift; sourceTree = "<group>"; };
-		0FCBAF6A25F1795D00DA2D18 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		0FCBAF6C25F1795D00DA2D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FCBAF6D25F1795D00DA2D18 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0FCBAF6E25F1795D00DA2D18 /* LocalizableConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableConstants.swift; sourceTree = "<group>"; };
@@ -220,14 +215,23 @@
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerRowView.swift; sourceTree = "<group>"; };
-		31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		7A79CB8F2751AA3900B7F60D /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
+		7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBankSelectionView.swift; sourceTree = "<group>"; };
+		7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesSelectorView.swift; sourceTree = "<group>"; };
+		7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
+		7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBaseView.swift; sourceTree = "<group>"; };
+		7A01BBEC2783C61800D3DC96 /* FCAccountCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCAccountCreationView.swift; sourceTree = "<group>"; };
+		7A01BBEE2783C6A100D3DC96 /* FCAccountStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCAccountStatusView.swift; sourceTree = "<group>"; };
+		7A01BBF02783C6ED00D3DC96 /* CredentialAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialAccount.swift; sourceTree = "<group>"; };
+		7A01BBF22783C72600D3DC96 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCCredentialsFormView.swift; sourceTree = "<group>"; };
+		7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBannerImageView.swift; sourceTree = "<group>"; };
+		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
 		7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		7A8058522744581600F12B80 /* BankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewCell.swift; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
-		FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC766164EE9BB6CBF8EFDD9 /* Pods_FinerioConnectWidget.framework in Frameworks */,
+				74B17309F2914F3FE24D04AF /* Pods_FinerioConnectWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +294,7 @@
 			children = (
 				0FCBAEFF25F1795C00DA2D18 /* Credential.swift */,
 				0FCBAEFE25F1795C00DA2D18 /* CredentialToken.swift */,
+				7A01BBF02783C6ED00D3DC96 /* CredentialAccount.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -338,7 +343,7 @@
 				0FCBAF1D25F1795D00DA2D18 /* Colors.swift */,
 				0FCBAF1825F1795C00DA2D18 /* Constants.swift */,
 				0FCBAF1B25F1795D00DA2D18 /* Enums.swift */,
-				0FCBAF1E25F1795D00DA2D18 /* LoadingViewController.swift */,
+				7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -363,6 +368,8 @@
 				0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */,
 				0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */,
 				0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */,
+				7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */,
+				7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -377,6 +384,8 @@
 				0FCBAF2725F1795D00DA2D18 /* BankViewController.swift */,
 				0FCBAF2625F1795D00DA2D18 /* BankViewModel.swift */,
 				7A8058522744581600F12B80 /* BankTableViewCell.swift */,
+				7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */,
+				7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */,
 			);
 			path = Bank;
 			sourceTree = "<group>";
@@ -405,6 +414,7 @@
 				0FCBAF2F25F1795D00DA2D18 /* AccountStatusViewController.swift */,
 				0FCBAF3025F1795D00DA2D18 /* AccountStatusViewModel.swift */,
 				0FCBAF3125F1795D00DA2D18 /* AccountStatusCoordinator.swift */,
+				7A01BBEE2783C6A100D3DC96 /* FCAccountStatusView.swift */,
 			);
 			path = Status;
 			sourceTree = "<group>";
@@ -414,8 +424,8 @@
 			children = (
 				0FCBAF3325F1795D00DA2D18 /* AccountCoordinator.swift */,
 				0FCBAF3425F1795D00DA2D18 /* AccountViewModel.swift */,
-				0FCBAF3525F1795D00DA2D18 /* AccountTableViewCell.swift */,
 				0FCBAF3625F1795D00DA2D18 /* AccountViewController.swift */,
+				7A01BBEC2783C61800D3DC96 /* FCAccountCreationView.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -437,6 +447,8 @@
 				0FCBAF3925F1795D00DA2D18 /* UIView+Extensions.swift */,
 				0FCBAF3F25F1795D00DA2D18 /* UIViewController+Extension.swift */,
 				0FCBAF4125F1795D00DA2D18 /* URL+Extensions.swift */,
+				7A01BBF22783C72600D3DC96 /* UIApplication+Extensions.swift */,
+				7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -483,13 +495,13 @@
 		0FCBAF5925F1795D00DA2D18 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */,
 				0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */,
+				7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */,
 				0FCBAF5A25F1795D00DA2D18 /* InteractiveLinkLabel.swift */,
 				0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */,
-				0FCBAF6325F1795D00DA2D18 /* ActivityIndicatorAnimator */,
-				0FCBAF6125F1795D00DA2D18 /* DatePickerDialog */,
-				7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */,
 				7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */,
+				0FCBAF6125F1795D00DA2D18 /* DatePickerDialog */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -500,28 +512,6 @@
 				0FCBAF6225F1795D00DA2D18 /* DatePickerDialog.swift */,
 			);
 			path = DatePickerDialog;
-			sourceTree = "<group>";
-		};
-		0FCBAF6325F1795D00DA2D18 /* ActivityIndicatorAnimator */ = {
-			isa = PBXGroup;
-			children = (
-				0FCBAF6925F1795D00DA2D18 /* ActivityIndicatorAnimator.swift */,
-				0FCBAF6A25F1795D00DA2D18 /* ActivityIndicatorView.swift */,
-				7A79CB8F2751AA3900B7F60D /* FCLoaderAnimationView.swift */,
-				0FCBAF6425F1795D00DA2D18 /* Extensions */,
-			);
-			path = ActivityIndicatorAnimator;
-			sourceTree = "<group>";
-		};
-		0FCBAF6425F1795D00DA2D18 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0FCBAF6625F1795D00DA2D18 /* CAPropertyAnimation+Key.swift */,
-				0FCBAF6525F1795D00DA2D18 /* CGRect+Center.swift */,
-				0FCBAF6825F1795D00DA2D18 /* CGSize+Min.swift */,
-				0FCBAF6725F1795D00DA2D18 /* UIBezierPath+Circle.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0FCBAF6B25F1795D00DA2D18 /* Resources */ = {
@@ -554,7 +544,7 @@
 				0FD2720525F1719600E052F7 /* FinerioConnectWidget */,
 				0FD2720425F1719600E052F7 /* Products */,
 				B72BAD0A5444E289A13BF8A5 /* Pods */,
-				141F52DDF0768E008426A01E /* Frameworks */,
+				EE5FC5DD4C324F8FC95E5993 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -582,21 +572,21 @@
 			path = FinerioConnectWidget;
 			sourceTree = "<group>";
 		};
-		141F52DDF0768E008426A01E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				31FE44CD1D08ADDAB8AF9BAA /* Pods_FinerioConnectWidget.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */,
-				FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */,
+				FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */,
+				89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EE5FC5DD4C324F8FC95E5993 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,7 +607,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD2720B25F1719600E052F7 /* Build configuration list for PBXNativeTarget "FinerioConnectWidget" */;
 			buildPhases = (
-				9B94BE8129EC2AE4EB647325 /* [CP] Check Pods Manifest.lock */,
+				D398D6196E89348F1709E95B /* [CP] Check Pods Manifest.lock */,
 				0FD271FE25F1719600E052F7 /* Headers */,
 				0FD271FF25F1719600E052F7 /* Sources */,
 				0FD2720025F1719600E052F7 /* Frameworks */,
@@ -683,7 +673,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9B94BE8129EC2AE4EB647325 /* [CP] Check Pods Manifest.lock */ = {
+		D398D6196E89348F1709E95B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -714,9 +704,9 @@
 			files = (
 				0FCBAFA425F1795D00DA2D18 /* AccountViewModel.swift in Sources */,
 				0FCBAF8725F1795D00DA2D18 /* Result.swift in Sources */,
+				7A01BBEB2783C5D500D3DC96 /* FCBaseView.swift in Sources */,
 				0FCBAFB725F1795D00DA2D18 /* Log.swift in Sources */,
 				0FCBAFA925F1795D00DA2D18 /* Notification+Extensions.swift in Sources */,
-				0FCBAFCD25F1795D00DA2D18 /* CAPropertyAnimation+Key.swift in Sources */,
 				0FCBAF8525F1795D00DA2D18 /* FinerioConnectWidgetAPI.swift in Sources */,
 				0FCBAF8425F1795D00DA2D18 /* ApiV2FinerioAPIError.swift in Sources */,
 				0F6586C32614F3F500D1BBA6 /* GenericDialog.swift in Sources */,
@@ -724,8 +714,8 @@
 				0FCBAF9B25F1795D00DA2D18 /* BankViewController.swift in Sources */,
 				0FCBAFA825F1795D00DA2D18 /* UIView+Extensions.swift in Sources */,
 				0FCBAFC625F1795D00DA2D18 /* PaddedTextField.swift in Sources */,
-				0FCBAFD025F1795D00DA2D18 /* ActivityIndicatorAnimator.swift in Sources */,
 				0FCBAF7625F1795D00DA2D18 /* Palette.swift in Sources */,
+				7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */,
 				0FCBAFAF25F1795D00DA2D18 /* UINavigationController+Extensions.swift in Sources */,
 				0FCBAF9925F1795D00DA2D18 /* CredentialCoordinator.swift in Sources */,
 				0FCBAFC125F1795D00DA2D18 /* RotationAnimation.swift in Sources */,
@@ -737,8 +727,10 @@
 				0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */,
 				0FCBAFB025F1795D00DA2D18 /* URL+Extensions.swift in Sources */,
 				0FA6A1A926E95491008F8A7A /* CountryModel.swift in Sources */,
+				7A01BBED2783C61800D3DC96 /* FCAccountCreationView.swift in Sources */,
 				0FCBAFC425F1795D00DA2D18 /* ProgressShapeLayer.swift in Sources */,
 				0FCBAFAD25F1795D00DA2D18 /* UIDevice+Extensions.swift in Sources */,
+				7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */,
 				0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */,
 				0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */,
 				0FCBAFC325F1795D00DA2D18 /* StrokeAnimation.swift in Sources */,
@@ -750,22 +742,22 @@
 				0FCBAF8C25F1795D00DA2D18 /* App.swift in Sources */,
 				0F6585D72613B06400D1BBA6 /* UIImage+Extensions.swift in Sources */,
 				0FCBAFC225F1795D00DA2D18 /* ProgressView.swift in Sources */,
+				7A01BBF32783C72600D3DC96 /* UIApplication+Extensions.swift in Sources */,
 				0FCBAF8E25F1795D00DA2D18 /* Configuration.swift in Sources */,
+				7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */,
 				0FCBAFA225F1795D00DA2D18 /* AccountStatusCoordinator.swift in Sources */,
-				0FCBAFA525F1795D00DA2D18 /* AccountTableViewCell.swift in Sources */,
 				0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */,
+				7A01BBF12783C6ED00D3DC96 /* CredentialAccount.swift in Sources */,
 				0FCBAFAE25F1795D00DA2D18 /* UIViewController+Extension.swift in Sources */,
-				0FCBAFCE25F1795D00DA2D18 /* UIBezierPath+Circle.swift in Sources */,
 				0FCBAFAA25F1795D00DA2D18 /* String+Extensions.swift in Sources */,
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,
 				0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */,
 				0FA6A1AE26E9D41F008F8A7A /* BankCountryPickerDialog.swift in Sources */,
-				7A79CB902751AA3900B7F60D /* FCLoaderAnimationView.swift in Sources */,
 				7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */,
+				7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */,
 				7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */,
 				0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */,
-				0FCBAF9525F1795D00DA2D18 /* LoadingViewController.swift in Sources */,
 				0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */,
 				0F5E462726EAC19200A9CB63 /* CredentialHelpDialog.swift in Sources */,
 				0FCBAF9D25F1795D00DA2D18 /* BankCoordinator.swift in Sources */,
@@ -777,21 +769,20 @@
 				0FCBAFCB25F1795D00DA2D18 /* DatePickerDialog.swift in Sources */,
 				0FCBAF9A25F1795D00DA2D18 /* BankViewModel.swift in Sources */,
 				0FCBAFBF25F1795D00DA2D18 /* FAAError.swift in Sources */,
-				0FCBAFD125F1795D00DA2D18 /* ActivityIndicatorView.swift in Sources */,
-				0FCBAFCC25F1795D00DA2D18 /* CGRect+Center.swift in Sources */,
 				0FCBAFC025F1795D00DA2D18 /* StrokeColorAnimation.swift in Sources */,
 				0FCBAFA025F1795D00DA2D18 /* AccountStatusViewController.swift in Sources */,
 				0FCBAF8D25F1795D00DA2D18 /* FinerioConnectWidget.swift in Sources */,
+				7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */,
 				0FCBAF9F25F1795D00DA2D18 /* StartViewController.swift in Sources */,
 				0FCBAFB925F1795D00DA2D18 /* Localize.swift in Sources */,
 				7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */,
 				0FCBAF8B25F1795D00DA2D18 /* APIRoute.swift in Sources */,
 				0FCBAFAC25F1795D00DA2D18 /* UIColor+Extensions.swift in Sources */,
 				0FCBAF7E25F1795D00DA2D18 /* Bank.swift in Sources */,
-				0FCBAFCF25F1795D00DA2D18 /* CGSize+Min.swift in Sources */,
 				0FCBAFBE25F1795D00DA2D18 /* Images.swift in Sources */,
 				0FCBAF9725F1795D00DA2D18 /* CredentialViewModel.swift in Sources */,
 				0FCBAF7B25F1795D00DA2D18 /* Credential.swift in Sources */,
+				7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */,
 				0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */,
 				0FCBAFB225F1795D00DA2D18 /* AppCoordinator.swift in Sources */,
 				0FCBAFB525F1795D00DA2D18 /* HelperEncrypt.swift in Sources */,
@@ -799,6 +790,7 @@
 				0FCBAF7F25F1795D00DA2D18 /* BankField.swift in Sources */,
 				0FCBAFB125F1795D00DA2D18 /* Bundle+Extensions.swift in Sources */,
 				0FCBAF9C25F1795D00DA2D18 /* BankCollectionViewCell.swift in Sources */,
+				7A01BBEF2783C6A100D3DC96 /* FCAccountStatusView.swift in Sources */,
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,
 				0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */,
@@ -939,7 +931,7 @@
 		};
 		0FD2720C25F1719600E052F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6220ED56FFD66756DA44049B /* Pods-FinerioConnectWidget.debug.xcconfig */;
+			baseConfigurationReference = FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -968,7 +960,7 @@
 		};
 		0FD2720D25F1719600E052F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC87F92917102BC68ADDD2B7 /* Pods-FinerioConnectWidget.release.xcconfig */;
+			baseConfigurationReference = 89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;

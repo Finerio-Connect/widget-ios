@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public extension UIApplication {
     class func fcTopViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
