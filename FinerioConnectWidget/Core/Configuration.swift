@@ -31,6 +31,6 @@ internal final class Configuration {
     var texts = Texts()
     var palette = Palette()
     var animations = Animations()
-    var font: String = "Poppins"
+    var font: String = ""
     let app: AppProtocol = App()
 }

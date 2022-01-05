@@ -16,11 +16,6 @@ class ViewController: UIViewController {
 
         title = "Example FinerioConnectWidget"
 
-        FontBlaster.debugEnabled = true
-        FontBlaster.blast { fonts -> Void in
-            print("Loaded Fonts: \(fonts)")
-        }
-
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)

@@ -285,7 +285,7 @@ extension FCCredentialsFormView {
         button.backgroundColor = Configuration.shared.palette.mainColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
+        button.titleLabel?.font = .fcMediumFont(ofSize: 14)
         button.alpha = 0.5
         button.isEnabled = false
         button.layer.masksToBounds = true
@@ -300,7 +300,7 @@ extension FCCredentialsFormView {
         button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
-        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
+        button.titleLabel?.font = .fcMediumFont(ofSize: 14)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

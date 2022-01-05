@@ -54,7 +54,7 @@ extension CredentialTableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14 : 16)
+        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.textColor = Configuration.shared.palette.mainSubTextColor
         return label
     }
@@ -71,7 +71,7 @@ extension CredentialTableViewCell {
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
         textField.textColor = Configuration.shared.palette.termsTextColor
-        textField.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14 : 16)
+        textField.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         textField.setupRightImage(image: Images.lockIcon.image()!)
         return textField
     }

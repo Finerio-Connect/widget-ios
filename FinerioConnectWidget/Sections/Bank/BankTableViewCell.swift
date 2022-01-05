@@ -36,7 +36,7 @@ class BankTableViewCell: UITableViewCell {
         
         let mainStack = UIStackView(arrangedSubviews: [avatarView, labelsStack])
         mainStack.axis = .horizontal
-        mainStack.spacing = 8
+        mainStack.spacing = 13
         mainStack.alignment = .center
         mainStack.distribution = .fillProportionally
         
@@ -78,7 +78,7 @@ extension BankTableViewCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        label.font = .fcBoldFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
+        label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12)
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -88,7 +88,7 @@ extension BankTableViewCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12)
+        label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 8 : 10)
         label.textColor = Configuration.shared.palette.bankCellDetailColor
         return label
     }

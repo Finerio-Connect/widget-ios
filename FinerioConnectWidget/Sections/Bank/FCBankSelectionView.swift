@@ -106,8 +106,8 @@ extension FCBankSelectionView {
                                                         literal(.businessBankTitle)!,
                                                         literal(.fiscalTitle)!])
         
-        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
-        segmentControl.setTitleTextAttributes([.font: UIFont.fcRegularFont(ofSize: fontSize)], for: .normal)
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
+        segmentControl.setTitleTextAttributes([.font: UIFont.fcMediumFont(ofSize: fontSize)], for: .normal)
         segmentControl.addTarget(self, action: #selector(typeBankSelected(_:)), for: .valueChanged)
         
         let bankTypeSelected = Configuration.shared.bankType

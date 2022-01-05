@@ -41,7 +41,7 @@ internal struct Constants {
             static let titleDatePicker = "Fecha"
             static let doneButtonTitleDatePicker = "Ok"
             static let cancelButtonTitleDatePicker = "Cancelar"
-            static let headerTitle = "Autenticación"
+            static let headerTitle = "Autentificación"
             static let headerDescription = "Introduce tus credenciales de banca en línea."
             static let bannerText = "Conexión encriptada en modo lectura nunca tenemos acceso a tu dinero."
             static let continueButtonTitle = "Continuar"
@@ -141,6 +141,7 @@ internal struct Constants {
         static let regularFont = "\(Configuration.shared.font)-Regular"
         static let boldFont = "\(Configuration.shared.font)-Bold"
         static let italicFont = "\(Configuration.shared.font)-Italic"
+        static let mediumFont = "\(Configuration.shared.font)-Medium"
     }
 
     struct Country {

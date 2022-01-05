@@ -118,7 +118,7 @@ extension FCAccountStatusView {
     private func setupBodyDescriptionLabel() -> UILabel {
         let label = UILabel()
         label.textColor = Configuration.shared.palette.termsTextColor
-        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16
+        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -128,7 +128,8 @@ extension FCAccountStatusView {
     
     private func setupButton() -> UIButton {
         let button = UIButton()
-        button.titleLabel?.font = .fcRegularFont(ofSize: 18)
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
+        button.titleLabel?.font = .fcMediumFont(ofSize: fontSize)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

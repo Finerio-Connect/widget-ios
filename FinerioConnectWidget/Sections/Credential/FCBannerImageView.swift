@@ -58,7 +58,7 @@ extension FCBannerImageView {
         bannerLabel.lineBreakMode = .byWordWrapping
         bannerLabel.textColor = Configuration.shared.palette.termsTextColor
         let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
-        bannerLabel.font = .fcRegularFont(ofSize: CGFloat(fontSize))
+        bannerLabel.font = .fcMediumFont(ofSize: CGFloat(fontSize))
         return bannerLabel
     }
     

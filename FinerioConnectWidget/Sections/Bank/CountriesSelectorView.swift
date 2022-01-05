@@ -83,6 +83,8 @@ extension CountriesSelectorView {
     private func setupTitleLabel() -> UILabel {
         let label = commonSetupLabel()
         label.text = literal(.countriesTitle)
+        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
+        label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -90,6 +92,8 @@ extension CountriesSelectorView {
     private func setupCountryLabel() -> UILabel {
         let label = commonSetupLabel()
         label.textColor = UIColor(hex: Constants.Color.grayColor)
+        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
+        label.font = .fcMediumFont(ofSize: CGFloat(fontSize))
         label.frame.size = label.intrinsicContentSize
         roundedContainerView.addSubview(label)
         return label

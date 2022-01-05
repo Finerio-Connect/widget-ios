@@ -76,8 +76,8 @@ extension HeaderSectionView {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16
-        label.font = .fcBoldFont(ofSize: CGFloat(fontSize))
+        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
+        label.font = .fcMediumFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
@@ -88,7 +88,7 @@ extension HeaderSectionView {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
+        let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainSubTextColor
         return label

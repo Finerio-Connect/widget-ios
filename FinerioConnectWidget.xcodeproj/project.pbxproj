@@ -100,7 +100,6 @@
 		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */; };
-		74B17309F2914F3FE24D04AF /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */; };
 		7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */; };
 		7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */; };
 		7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */; };
@@ -115,11 +114,16 @@
 		7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */; };
 		7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */; };
 		7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8058522744581600F12B80 /* BankTableViewCell.swift */; };
+		7A8A81BA27860D9C00DF09AB /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B527860D9B00DF09AB /* Poppins-Light.ttf */; };
+		7A8A81BB27860D9C00DF09AB /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B627860D9C00DF09AB /* Poppins-Regular.ttf */; };
+		7A8A81BC27860D9C00DF09AB /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B727860D9C00DF09AB /* Poppins-Bold.ttf */; };
+		7A8A81BD27860D9C00DF09AB /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */; };
+		7A8A81BF278642A500DF09AB /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */; };
 		7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */; };
+		DCBCD48AD022A85AA7F6C636 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391B0606E0984D0964174125 /* Pods_FinerioConnectWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F5E462626EAC19200A9CB63 /* CredentialHelpDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialHelpDialog.swift; sourceTree = "<group>"; };
 		0F6585D62613B06400D1BBA6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		0F6586302614EF7B00D1BBA6 /* ImageCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaching.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerRowView.swift; sourceTree = "<group>"; };
+		391B0606E0984D0964174125 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBankSelectionView.swift; sourceTree = "<group>"; };
 		7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesSelectorView.swift; sourceTree = "<group>"; };
 		7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
@@ -229,9 +234,14 @@
 		7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		7A8058522744581600F12B80 /* BankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewCell.swift; sourceTree = "<group>"; };
+		7A8A81B527860D9B00DF09AB /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		7A8A81B627860D9C00DF09AB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		7A8A81B727860D9C00DF09AB /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
-		89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
-		FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		A3D5375FA5BD0468F6C50BE6 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		E51DFE607071D0D6F45E3A5C /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B17309F2914F3FE24D04AF /* Pods_FinerioConnectWidget.framework in Frameworks */,
+				DCBCD48AD022A85AA7F6C636 /* Pods_FinerioConnectWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +527,7 @@
 		0FCBAF6B25F1795D00DA2D18 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7A8A81B327860D8000DF09AB /* Fonts */,
 				0FCBAF6C25F1795D00DA2D18 /* GoogleService-Info.plist */,
 				0FCBAF6D25F1795D00DA2D18 /* Localizable.strings */,
 				0FCBAF6E25F1795D00DA2D18 /* LocalizableConstants.swift */,
@@ -544,7 +555,7 @@
 				0FD2720525F1719600E052F7 /* FinerioConnectWidget */,
 				0FD2720425F1719600E052F7 /* Products */,
 				B72BAD0A5444E289A13BF8A5 /* Pods */,
-				EE5FC5DD4C324F8FC95E5993 /* Frameworks */,
+				FCCD458ED5E6F7691E948BBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -572,19 +583,31 @@
 			path = FinerioConnectWidget;
 			sourceTree = "<group>";
 		};
+		7A8A81B327860D8000DF09AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */,
+				7A8A81B727860D9C00DF09AB /* Poppins-Bold.ttf */,
+				7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */,
+				7A8A81B527860D9B00DF09AB /* Poppins-Light.ttf */,
+				7A8A81B627860D9C00DF09AB /* Poppins-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */,
-				89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */,
+				E51DFE607071D0D6F45E3A5C /* Pods-FinerioConnectWidget.debug.xcconfig */,
+				A3D5375FA5BD0468F6C50BE6 /* Pods-FinerioConnectWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EE5FC5DD4C324F8FC95E5993 /* Frameworks */ = {
+		FCCD458ED5E6F7691E948BBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0E95DC5E2CA9913B3B9BBB69 /* Pods_FinerioConnectWidget.framework */,
+				391B0606E0984D0964174125 /* Pods_FinerioConnectWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -607,7 +630,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD2720B25F1719600E052F7 /* Build configuration list for PBXNativeTarget "FinerioConnectWidget" */;
 			buildPhases = (
-				D398D6196E89348F1709E95B /* [CP] Check Pods Manifest.lock */,
+				6064FE2DA5D2AB70603BFEE5 /* [CP] Check Pods Manifest.lock */,
 				0FD271FE25F1719600E052F7 /* Headers */,
 				0FD271FF25F1719600E052F7 /* Sources */,
 				0FD2720025F1719600E052F7 /* Frameworks */,
@@ -660,11 +683,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCBAFD525F1795D00DA2D18 /* Images.xcassets in Resources */,
+				7A8A81BA27860D9C00DF09AB /* Poppins-Light.ttf in Resources */,
 				0FCBAFD225F1795D00DA2D18 /* GoogleService-Info.plist in Resources */,
+				7A8A81BF278642A500DF09AB /* Poppins-Medium.ttf in Resources */,
 				0FCBAFD625F1795D00DA2D18 /* account_loading.json in Resources */,
 				0FCBAFD825F1795D00DA2D18 /* account_ready.json in Resources */,
 				0FCBAFD725F1795D00DA2D18 /* syncing_failure.json in Resources */,
 				0FCBAFDA25F1795D00DA2D18 /* syncing_loop.json in Resources */,
+				7A8A81BD27860D9C00DF09AB /* Poppins-Italic.ttf in Resources */,
+				7A8A81BC27860D9C00DF09AB /* Poppins-Bold.ttf in Resources */,
+				7A8A81BB27860D9C00DF09AB /* Poppins-Regular.ttf in Resources */,
 				0FCBAFD325F1795D00DA2D18 /* Localizable.strings in Resources */,
 				0FCBAFD925F1795D00DA2D18 /* syncing_success.json in Resources */,
 			);
@@ -673,7 +701,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D398D6196E89348F1709E95B /* [CP] Check Pods Manifest.lock */ = {
+		6064FE2DA5D2AB70603BFEE5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -931,7 +959,7 @@
 		};
 		0FD2720C25F1719600E052F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB43DE14BA595DE16318F350 /* Pods-FinerioConnectWidget.debug.xcconfig */;
+			baseConfigurationReference = E51DFE607071D0D6F45E3A5C /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -960,7 +988,7 @@
 		};
 		0FD2720D25F1719600E052F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89E3E2081DCE7839DBC6B99E /* Pods-FinerioConnectWidget.release.xcconfig */;
+			baseConfigurationReference = A3D5375FA5BD0468F6C50BE6 /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
