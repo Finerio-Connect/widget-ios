@@ -31,36 +31,6 @@ internal extension UIFont {
     }
 }
 
-// TO-DO: This can be improved
-//extension UIFont {
-//    enum LocalFont {
-//        static let regular = "Poppins-Regular"
-//        static let bold = "Poppins-Bold"
-//        static let italic = "Poppins-Italic"
-//        static let light = "Poppins-Light"
-//        static let medium = "Poppins-Medium"
-//    }
-//    class func localRegularFont(ofSize size: CGFloat) -> UIFont {
-//        return UIFont(name: LocalFont.regular, size: size) ?? .systemFont(ofSize: size)
-//    }
-//
-//    class func localBoldFont(ofSize size: CGFloat) -> UIFont {
-//        return UIFont(name: LocalFont.bold, size: size) ?? .boldSystemFont(ofSize: size)
-//    }
-//
-//    class func localItalicFont(ofSize size: CGFloat) -> UIFont {
-//        return UIFont(name: LocalFont.italic, size: size) ?? .italicSystemFont(ofSize: size)
-//    }
-//
-//    class func localLightFont(ofSize size: CGFloat) -> UIFont {
-//        return UIFont(name: LocalFont.light, size: size) ?? .systemFont(ofSize: size, weight: .light)
-//    }
-//
-//    class func localMediumFont(ofSize size: CGFloat) -> UIFont {
-//        return UIFont(name: LocalFont.medium, size: size) ?? .systemFont(ofSize: size, weight: .medium)
-//    }
-//}
-
 extension UIFont {
     static func registerFonts(from bundle: Bundle) {
         logInfo("Registering local fonts...")
