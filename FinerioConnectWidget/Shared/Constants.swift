@@ -137,11 +137,12 @@ internal struct Constants {
     }
 
     struct Fonts {
-        static let lighFont = "\(Configuration.shared.font)-Light"
-        static let regularFont = "\(Configuration.shared.font)-Regular"
-        static let boldFont = "\(Configuration.shared.font)-Bold"
-        static let italicFont = "\(Configuration.shared.font)-Italic"
-        static let mediumFont = "\(Configuration.shared.font)-Medium"
+        static let defaultFontName = "Poppins"
+        static let lighFont = "\(Configuration.shared.font!)-Light"
+        static let regularFont = "\(Configuration.shared.font!)-Regular"
+        static let boldFont = "\(Configuration.shared.font!)-Bold"
+        static let italicFont = "\(Configuration.shared.font!)-Italic"
+        static let mediumFont = "\(Configuration.shared.font!)-Medium"
     }
 
     struct Country {

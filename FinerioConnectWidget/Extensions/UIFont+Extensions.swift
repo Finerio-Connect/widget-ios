@@ -11,55 +11,55 @@ import Mixpanel
 
 internal extension UIFont {
     class func fcLighFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: Constants.Fonts.lighFont, size: size) ?? .localLightFont(ofSize: size)
+        return UIFont(name: Constants.Fonts.lighFont, size: size) ?? .systemFont(ofSize: size, weight: .light)
     }
 
     class func fcRegularFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: Constants.Fonts.regularFont, size: size) ?? .localRegularFont(ofSize: size)
+        return UIFont(name: Constants.Fonts.regularFont, size: size) ?? .systemFont(ofSize: size)
     }
 
     class func fcBoldFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: Constants.Fonts.boldFont, size: size) ?? .localBoldFont(ofSize: size)
+        return UIFont(name: Constants.Fonts.boldFont, size: size) ?? .boldSystemFont(ofSize: size)
     }
 
     class func fcItalicFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: Constants.Fonts.italicFont, size: size) ?? .localItalicFont(ofSize: size)
+        return UIFont(name: Constants.Fonts.italicFont, size: size) ?? italicSystemFont(ofSize: size)
     }
     
     class func fcMediumFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: Constants.Fonts.mediumFont, size: size) ?? .localMediumFont(ofSize: size)
+        return UIFont(name: Constants.Fonts.mediumFont, size: size) ?? systemFont(ofSize: size, weight: .medium)
     }
 }
 
 // TO-DO: This can be improved
-extension UIFont {
-    enum LocalFont {
-        static let regular = "Poppins-Regular"
-        static let bold = "Poppins-Bold"
-        static let italic = "Poppins-Italic"
-        static let light = "Poppins-Light"
-        static let medium = "Poppins-Medium"
-    }
-    class func localRegularFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: LocalFont.regular, size: size) ?? .systemFont(ofSize: size)
-    }
-    
-    class func localBoldFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: LocalFont.bold, size: size) ?? .boldSystemFont(ofSize: size)
-    }
-    
-    class func localItalicFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: LocalFont.italic, size: size) ?? .italicSystemFont(ofSize: size)
-    }
-    
-    class func localLightFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: LocalFont.light, size: size) ?? .systemFont(ofSize: size, weight: .light)
-    }
-    
-    class func localMediumFont(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: LocalFont.medium, size: size) ?? .systemFont(ofSize: size, weight: .medium)
-    }
-}
+//extension UIFont {
+//    enum LocalFont {
+//        static let regular = "Poppins-Regular"
+//        static let bold = "Poppins-Bold"
+//        static let italic = "Poppins-Italic"
+//        static let light = "Poppins-Light"
+//        static let medium = "Poppins-Medium"
+//    }
+//    class func localRegularFont(ofSize size: CGFloat) -> UIFont {
+//        return UIFont(name: LocalFont.regular, size: size) ?? .systemFont(ofSize: size)
+//    }
+//
+//    class func localBoldFont(ofSize size: CGFloat) -> UIFont {
+//        return UIFont(name: LocalFont.bold, size: size) ?? .boldSystemFont(ofSize: size)
+//    }
+//
+//    class func localItalicFont(ofSize size: CGFloat) -> UIFont {
+//        return UIFont(name: LocalFont.italic, size: size) ?? .italicSystemFont(ofSize: size)
+//    }
+//
+//    class func localLightFont(ofSize size: CGFloat) -> UIFont {
+//        return UIFont(name: LocalFont.light, size: size) ?? .systemFont(ofSize: size, weight: .light)
+//    }
+//
+//    class func localMediumFont(ofSize size: CGFloat) -> UIFont {
+//        return UIFont(name: LocalFont.medium, size: size) ?? .systemFont(ofSize: size, weight: .medium)
+//    }
+//}
 
 extension UIFont {
     static func registerFonts(from bundle: Bundle) {
