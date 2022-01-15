@@ -83,6 +83,10 @@ public final class FinerioConnectWidget: NSObject {
     }
 
     private(set) var isReadySDK: Bool = false
+    
+    private lazy var registerFonts: Void = {
+        UIFont.registerFonts(from: Bundle.finerioConnectWidget())
+    }()
 
     // MARK: - Private properties
 
@@ -143,7 +147,7 @@ public final class FinerioConnectWidget: NSObject {
         }
         
         // Register local fonts.
-        UIFont.registerFonts(from: Bundle.finerioConnectWidget())
+        let _ = registerFonts
 
         guard let navigationController = presentingViewController.navigationController else {
             logWarn("Couldn't initialize view controller")
