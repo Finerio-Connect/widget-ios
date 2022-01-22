@@ -13,7 +13,6 @@
 		0F6586C32614F3F500D1BBA6 /* GenericDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */; };
 		0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */; };
 		0FA6A1A926E95491008F8A7A /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6A1A826E95491008F8A7A /* CountryModel.swift */; };
-		0FA6A1AE26E9D41F008F8A7A /* BankCountryPickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */; };
 		0FCBAF7625F1795D00DA2D18 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEF725F1795C00DA2D18 /* Palette.swift */; };
 		0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEFA25F1795C00DA2D18 /* SessionManager.swift */; };
 		0FCBAF7925F1795D00DA2D18 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAEFB25F1795C00DA2D18 /* Animations.swift */; };
@@ -98,7 +97,6 @@
 		0FCBAFDA25F1795D00DA2D18 /* syncing_loop.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF7525F1795D00DA2D18 /* syncing_loop.json */; };
 		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */; };
 		7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */; };
 		7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */; };
 		7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */; };
@@ -131,7 +129,6 @@
 		0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDialog.swift; sourceTree = "<group>"; };
 		0F776B62264C78A800B92AD8 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		0FA6A1A826E95491008F8A7A /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
-		0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerDialog.swift; sourceTree = "<group>"; };
 		0FCBAEF725F1795C00DA2D18 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		0FCBAEFA25F1795C00DA2D18 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		0FCBAEFB25F1795C00DA2D18 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -218,7 +215,6 @@
 		0FD2720325F1719600E052F7 /* FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCountryPickerRowView.swift; sourceTree = "<group>"; };
 		391B0606E0984D0964174125 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBankSelectionView.swift; sourceTree = "<group>"; };
 		7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesSelectorView.swift; sourceTree = "<group>"; };
@@ -390,8 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				0FCBAF2925F1795D00DA2D18 /* BankCoordinator.swift */,
-				0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */,
-				0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */,
 				0FCBAF2725F1795D00DA2D18 /* BankViewController.swift */,
 				0FCBAF2625F1795D00DA2D18 /* BankViewModel.swift */,
 				7A8058522744581600F12B80 /* BankTableViewCell.swift */,
@@ -785,7 +779,6 @@
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,
 				0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */,
-				0FA6A1AE26E9D41F008F8A7A /* BankCountryPickerDialog.swift in Sources */,
 				7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */,
 				7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */,
 				7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */,
@@ -825,7 +818,6 @@
 				7A01BBEF2783C6A100D3DC96 /* FCAccountStatusView.swift in Sources */,
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,
-				0FE6595426EA651A00F7562D /* BankCountryPickerRowView.swift in Sources */,
 				0FCBAF8825F1795D00DA2D18 /* HTTPClient.swift in Sources */,
 				0FCBAF9E25F1795D00DA2D18 /* StartViewModel.swift in Sources */,
 				7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */,
