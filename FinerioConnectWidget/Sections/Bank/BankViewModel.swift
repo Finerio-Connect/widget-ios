@@ -13,6 +13,7 @@ internal class BankViewModel {
     var banks: [Bank] = [Bank]()
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
+    let userDefaults = UserDefaults.standard
 
     func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
         if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
@@ -35,16 +36,43 @@ internal class BankViewModel {
     }
 
     func loadBanks(country: String = Configuration.shared.countryCode, type: BankType = Configuration.shared.bankType) {
-        FinerioConnectWidgetAPI.banks(country: country, type: type.rawValue) { [weak self] result in
-            if let error = result.error {
-                self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
-                self?.serviceStatusHandler(.failure)
+        let banksKeyPath = "\(country)_\(type)"
+        
+        if let localBanks = getLocalBanksFromKeyPath(banksKeyPath) {
+            self.banks = localBanks
+            self.serviceStatusHandler(.success)
+        } else {
+            FinerioConnectWidgetAPI.banks(country: country, type: type.rawValue) { [weak self] result in
+                if let error = result.error {
+                    self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
+                    self?.serviceStatusHandler(.failure)
+                }
+                
+                if let value = result.value {
+                    self?.banks = value
+                    self?.saveBanks(value, for: banksKeyPath)
+                    self?.serviceStatusHandler(.success)
+                }
             }
-            
-            if let value = result.value {
-                self?.banks = value
-                self?.serviceStatusHandler(.success)
+        }
+    }
+}
+
+// MARK: - Local Banks
+extension BankViewModel {
+    private func getLocalBanksFromKeyPath(_ keyPath: String) -> [Bank]? {
+        var localBanks: [Bank]? = nil
+        if let banksData = userDefaults.value(forKey: keyPath) as? Data {
+            if let banks = try? JSONDecoder().decode([Bank].self, from: banksData) {
+                localBanks = banks
             }
+        }
+        return localBanks
+    }
+    
+    private func saveBanks(_ banks: [Bank],for keyPath: String) {
+        if let data = try? JSONEncoder().encode(banks) {
+            self.userDefaults.set(data, forKey: keyPath)
         }
     }
 }

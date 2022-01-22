@@ -14,10 +14,10 @@ protocol FCBankSelectionViewDelegate: AnyObject {
 
 class FCBankSelectionView: FCBaseView {
     // Components
-//    private lazy var mainStackView: UIStackView = setupMainStackView()
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var countriesSelectorView: CountriesSelectorView = setupCountriesSelectorView()
-    private lazy var countryPickerDialog: BankCountryPickerDialog = setupCountryPickerDialog()
+//    private lazy var countryPickerDialog: BankCountryPickerDialog = setupCountryPickerDialog()
+    private lazy var dropDownListView: FCDropDownListView = setupDropDownListView()
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
     private lazy var separatorView: UIView = setupSeparatorView()
     private lazy var tableView: UITableView = setupTableView()
@@ -59,32 +59,34 @@ class FCBankSelectionView: FCBaseView {
         bankViewModel.loadBanks()
         
         addComponents()
-        //        setMainStackViewLayout()
         setLayoutLoadingIndicator()
     }
 }
 
 // MARK: - UI
 extension FCBankSelectionView {
-//    private func setupMainStackView() -> UIStackView {
-//        let mainStackView = UIStackView()
-//        mainStackView.axis = .vertical
-//        mainStackView.alignment = .fill
-//        mainStackView.distribution = .fillProportionally
-//        mainStackView.spacing = CGFloat(20)
-//
-//        return mainStackView
-//    }
-    
-    private func setupCountryPickerDialog() -> BankCountryPickerDialog {
-        let pickerDialog = BankCountryPickerDialog()
-        pickerDialog.countryDelegate = self
+    private func setupDropDownListView() -> FCDropDownListView {
+        let dropDownListView = FCDropDownListView()
         
-        superview?.addSubview(pickerDialog)
+        superview?.addSubview(dropDownListView)
         let screenSize: CGRect = UIScreen.main.bounds
-        pickerDialog.frame = screenSize
-        return pickerDialog
+        dropDownListView.frame = screenSize
+        
+        dropDownListView.registerCell(CountryTableViewCell.self,
+                                      forCellReuseIdentifier: CountryTableViewCell.cellIdentifier)
+        dropDownListView.dataSource = self
+        dropDownListView.delegate = self
+        return dropDownListView
     }
+//    private func setupCountryPickerDialog() -> BankCountryPickerDialog {
+//        let pickerDialog = BankCountryPickerDialog()
+//        pickerDialog.countryDelegate = self
+//
+//        superview?.addSubview(pickerDialog)
+//        let screenSize: CGRect = UIScreen.main.bounds
+//        pickerDialog.frame = screenSize
+//        return pickerDialog
+//    }
     
     private func setupCountriesSelectorView() -> CountriesSelectorView {
         let countriesSelectorView = CountriesSelectorView()
@@ -209,24 +211,6 @@ extension FCBankSelectionView {
         tableView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         tableView.bottomAnchor.constraint(lessThanOrEqualTo: safeBottomAnchor).isActive = true
         
-        ///------
-//        mainStackView.addArrangedSubview(headerSectionView)
-//
-//        // Show or hide components
-//        if Configuration.shared.showCountryOptions {
-//            mainStackView.addArrangedSubview(countriesSelectorView)
-//        }
-//        if Configuration.shared.showBankTypeOptions {
-//            mainStackView.addArrangedSubview(bankTypeSegment)
-//        }
-//
-//        let tableAndSeparatorViews = [separatorView, tableView]
-//        let tableStackView = UIStackView(arrangedSubviews: tableAndSeparatorViews)
-//        tableStackView.axis = .vertical
-//
-//        mainStackView.addArrangedSubview(tableStackView)
-//
-//        addSubview(mainStackView)
         addSubview(loadingIndicator)
     }
     
@@ -241,15 +225,6 @@ extension FCBankSelectionView {
 
 // MARK: - Layouts
 extension FCBankSelectionView {
-//    private func setMainStackViewLayout() {
-//        let margin: CGFloat = 20
-//        mainStackView.topAnchor(equalTo: safeTopAnchor, constant: margin)
-//        mainStackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
-//        mainStackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-//        mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: safeBottomAnchor, constant: -margin).isActive = true
-////        mainStackView.bottomAnchor(equalTo: safeBottomAnchor)
-//    }
-    
     private func setLayoutLoadingIndicator() -> Void {
         let loadingViewSize: CGFloat = 60
         loadingIndicator.widthAnchor(equalTo: loadingViewSize)
@@ -287,10 +262,6 @@ extension FCBankSelectionView {
                 }
                 
             case .loaded:
-                //Set countries
-                self.countryPickerDialog.countries = self.bankViewModel.countries
-                self.countryPickerDialog.setCountry()
-                
                 // Set currentCountry
                 if let currentCountry = self.bankViewModel.getCurrentCountry() {
                     self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
@@ -310,8 +281,9 @@ extension FCBankSelectionView {
 
 // MARK: - CountriesPickerView Delegate
 extension FCBankSelectionView: CountriesSelectorViewDelegate {
-    func countriesPickerView(_: CountriesSelectorView, didTapSelector: UILabel) {
-        countryPickerDialog.show()
+    func countriesPickerView(countriesSelectorView: CountriesSelectorView, didTapSelector: UILabel) {
+        dropDownListView.showBelowOfComponent(countriesSelectorView)
+//        countryPickerDialog.show()
     }
 }
 
@@ -345,30 +317,56 @@ extension FCBankSelectionView: UITableViewDelegate {
     }
 }
 
-// MARK: - BankPickerDialog Delegate
-extension FCBankSelectionView: BankPickerDialogDelegate {
-    func didSelectCountry(country: Country) {
+// MARK: - DropDownList DataSource
+extension FCBankSelectionView: FCDropDownListViewDataSource {
+    func dropDownListView(_ dropDownListView: FCDropDownListView, numberOfRowsInSection section: Int) -> Int {
+        return bankViewModel.countries.count
+    }
+    
+    func dropDownListView(_ dropDownListView: FCDropDownListView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        if let countryCell = dropDownListView.dequeueReusableCell(withIdentifier: CountryTableViewCell.cellIdentifier,
+                                                                  for: indexPath) as? CountryTableViewCell {
+            let country = bankViewModel.countries[indexPath.row]
+            countryCell.setCountry(country)
+            cell = countryCell
+        }
+        return cell
+    }
+}
+
+// MARK: - DropDownList Delegate
+extension FCBankSelectionView: FCDropDownListViewDelegate {
+    func dropDownListView(_ dropDownListView: FCDropDownListView, didSelectRowAt indexPath: IndexPath) {
+        let country = bankViewModel.countries[indexPath.row]
         Configuration.shared.countryCode = country.code
-        
+
         // If the bankTypeOptions is visible will reset to 'personal' bankType
         // Otherwise, will use the configured bankType.
         var bankType: BankType = .personal
         if !Configuration.shared.showBankTypeOptions {
             bankType = Configuration.shared.bankType
         }
-        
+
         // Updates the banktype
         Configuration.shared.bankType = bankType
-        
+
         // Updates the Current Country
         countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
         countriesSelectorView.countryNameLabel.text = country.name
-        
+
         // Updates the Segmented Control
         let selectedBankType = BankType.allCases.firstIndex(of: bankType)
         bankTypeSegment.selectedSegmentIndex = selectedBankType!
-        
+
         self.loadingView.start()
         bankViewModel.loadBanks()
+
+        dropDownListView.hide()
+    }
+    
+    func dropDownListViewDidDismiss(_ dropDownListView: FCDropDownListView) {
+        self.countriesSelectorView.rotateArrow(.up)
     }
 }
+

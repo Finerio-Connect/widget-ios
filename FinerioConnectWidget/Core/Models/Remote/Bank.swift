@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Bank {
+public struct Bank: Codable {
     public let id: String
     public let name: String
     public let code: String

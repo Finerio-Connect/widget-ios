@@ -48,7 +48,6 @@
 		0FCBAF9925F1795D00DA2D18 /* CredentialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2425F1795D00DA2D18 /* CredentialCoordinator.swift */; };
 		0FCBAF9A25F1795D00DA2D18 /* BankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2625F1795D00DA2D18 /* BankViewModel.swift */; };
 		0FCBAF9B25F1795D00DA2D18 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2725F1795D00DA2D18 /* BankViewController.swift */; };
-		0FCBAF9C25F1795D00DA2D18 /* BankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2825F1795D00DA2D18 /* BankCollectionViewCell.swift */; };
 		0FCBAF9D25F1795D00DA2D18 /* BankCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2925F1795D00DA2D18 /* BankCoordinator.swift */; };
 		0FCBAF9E25F1795D00DA2D18 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2B25F1795D00DA2D18 /* StartViewModel.swift */; };
 		0FCBAF9F25F1795D00DA2D18 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2C25F1795D00DA2D18 /* StartViewController.swift */; };
@@ -111,6 +110,8 @@
 		7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */; };
 		7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */; };
 		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
+		7A73CA1D279A40E800DF418C /* FCDropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */; };
+		7A73CA1F279A47CB00DF418C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */; };
 		7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */; };
 		7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */; };
 		7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8058522744581600F12B80 /* BankTableViewCell.swift */; };
@@ -165,7 +166,6 @@
 		0FCBAF2425F1795D00DA2D18 /* CredentialCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialCoordinator.swift; sourceTree = "<group>"; };
 		0FCBAF2625F1795D00DA2D18 /* BankViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankViewModel.swift; sourceTree = "<group>"; };
 		0FCBAF2725F1795D00DA2D18 /* BankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
-		0FCBAF2825F1795D00DA2D18 /* BankCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FCBAF2925F1795D00DA2D18 /* BankCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCoordinator.swift; sourceTree = "<group>"; };
 		0FCBAF2B25F1795D00DA2D18 /* StartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		0FCBAF2C25F1795D00DA2D18 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +231,8 @@
 		7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCCredentialsFormView.swift; sourceTree = "<group>"; };
 		7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBannerImageView.swift; sourceTree = "<group>"; };
 		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
+		7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDropDownListView.swift; sourceTree = "<group>"; };
+		7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		7A8058522744581600F12B80 /* BankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,7 +389,6 @@
 		0FCBAF2525F1795D00DA2D18 /* Bank */ = {
 			isa = PBXGroup;
 			children = (
-				0FCBAF2825F1795D00DA2D18 /* BankCollectionViewCell.swift */,
 				0FCBAF2925F1795D00DA2D18 /* BankCoordinator.swift */,
 				0FA6A1AD26E9D41F008F8A7A /* BankCountryPickerDialog.swift */,
 				0FE6595326EA651A00F7562D /* BankCountryPickerRowView.swift */,
@@ -396,6 +397,7 @@
 				7A8058522744581600F12B80 /* BankTableViewCell.swift */,
 				7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */,
 				7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */,
+				7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */,
 			);
 			path = Bank;
 			sourceTree = "<group>";
@@ -505,13 +507,14 @@
 		0FCBAF5925F1795D00DA2D18 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				0FCBAF6125F1795D00DA2D18 /* DatePickerDialog */,
+				7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */,
 				7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */,
 				0F6586C22614F3F500D1BBA6 /* GenericDialog.swift */,
 				7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */,
 				0FCBAF5A25F1795D00DA2D18 /* InteractiveLinkLabel.swift */,
 				0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */,
 				7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */,
-				0FCBAF6125F1795D00DA2D18 /* DatePickerDialog */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				0FCBAF8E25F1795D00DA2D18 /* Configuration.swift in Sources */,
 				7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */,
 				0FCBAFA225F1795D00DA2D18 /* AccountStatusCoordinator.swift in Sources */,
+				7A73CA1F279A47CB00DF418C /* CountryTableViewCell.swift in Sources */,
 				0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */,
 				7A01BBF12783C6ED00D3DC96 /* CredentialAccount.swift in Sources */,
 				0FCBAFAE25F1795D00DA2D18 /* UIViewController+Extension.swift in Sources */,
@@ -814,10 +818,10 @@
 				0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */,
 				0FCBAFB225F1795D00DA2D18 /* AppCoordinator.swift in Sources */,
 				0FCBAFB525F1795D00DA2D18 /* HelperEncrypt.swift in Sources */,
+				7A73CA1D279A40E800DF418C /* FCDropDownListView.swift in Sources */,
 				0FCBAF8025F1795D00DA2D18 /* TransactionStatus.swift in Sources */,
 				0FCBAF7F25F1795D00DA2D18 /* BankField.swift in Sources */,
 				0FCBAFB125F1795D00DA2D18 /* Bundle+Extensions.swift in Sources */,
-				0FCBAF9C25F1795D00DA2D18 /* BankCollectionViewCell.swift in Sources */,
 				7A01BBEF2783C6A100D3DC96 /* FCAccountStatusView.swift in Sources */,
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,

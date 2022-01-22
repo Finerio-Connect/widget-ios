@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Countries Picker View
 protocol CountriesSelectorViewDelegate: AnyObject {
-    func countriesPickerView(_: CountriesSelectorView, didTapSelector: UILabel)
+    func countriesPickerView(countriesSelectorView: CountriesSelectorView, didTapSelector: UILabel)
 }
 
 class CountriesSelectorView: UIView {
@@ -18,6 +18,7 @@ class CountriesSelectorView: UIView {
     lazy var countryNameLabel: UILabel = setupCountryLabel()
     lazy var selectorTitleLabel: UILabel = setupTitleLabel()
     lazy var roundedContainerView: UIView = setupRoundedContainerView()
+    lazy var arrowImageView: UIImageView = UIImageView()
     
     // Vars
     weak var delegate: CountriesSelectorViewDelegate?
@@ -127,7 +128,7 @@ extension CountriesSelectorView {
         let containerHeight = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0
         roundedView.heightAnchor(equalTo: containerHeight)
         
-        let arrowImageView = UIImageView(image: Images.downArrow.image())
+        arrowImageView = UIImageView(image: Images.downArrow.image())
         arrowImageView.contentMode = .center
         roundedView.addSubview(arrowImageView)
         
@@ -138,11 +139,29 @@ extension CountriesSelectorView {
         arrowImageView.trailingAnchor(equalTo: roundedView.trailingAnchor, constant: -12)
         return roundedView
     }
+    
+    enum RotateAngle {
+        case up
+        case down
+    }
+    
+    func rotateArrow(_ rotate: RotateAngle) {
+        UIView.animate(withDuration: 0.2) {[weak self] in
+            switch rotate {
+            case .up:
+                self?.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat(0))
+            case .down:
+                self?.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+            }
+        }
+    }
 }
 
 // MARK: - Actions
 extension CountriesSelectorView {
     @objc private func didTapCountrySelector() {
-        delegate?.countriesPickerView(self, didTapSelector: countryNameLabel)
+        rotateArrow(.down)
+        delegate?.countriesPickerView(countriesSelectorView: self,
+                                      didTapSelector: countryNameLabel)
     }
 }
