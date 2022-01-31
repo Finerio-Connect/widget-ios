@@ -83,7 +83,7 @@ extension CountriesSelectorView {
     
     private func setupTitleLabel() -> UILabel {
         let label = commonSetupLabel()
-        label.text = literal(.countriesTitle)
+        label.text = literal(.selectCountryLabel)
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.textColor = Configuration.shared.palette.mainTextColor

@@ -18,6 +18,8 @@ internal class AccountStatusViewController: BaseViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.view.backgroundColor = .white
         
+        accountStatusView.delegate = self
+        
         view.addSubview(accountStatusView)
         accountStatusView.topAnchor(equalTo: view.safeTopAnchor)
         accountStatusView.leadingAnchor(equalTo: view.leadingAnchor)
@@ -33,4 +35,19 @@ extension AccountStatusViewController
         // Disable back swipe
         return false
     }
+}
+
+// MARK: - AccountStatusView Delegate
+extension AccountStatusViewController: FCAccountStatusViewDelegate {
+    func accountStatusView(didSelectContinueButton: UIButton) {
+        let topVC = UIApplication.fcTopViewController()
+        topVC?.navigationController?.navigationBar.isHidden = false
+        topVC?.navigationController?.backToViewController(BankViewController.self)
+    }
+    
+    func accountStatusView(didSelectExitButton: UIButton) {
+        let topVC = UIApplication.fcTopViewController()
+        topVC?.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }

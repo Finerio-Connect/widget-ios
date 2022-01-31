@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol FCCredentialsFormViewDelegate: AnyObject {
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onActive: ServiceStatus, bank: Bank)
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onSuccess: ServiceStatus, bank: Bank, credentialId: String)
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onFailure: ServiceStatus, bank: Bank)
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onError: ServiceStatus, message: String)
+public protocol FCCredentialsFormViewDelegate: AnyObject {
+    func credentialsFormView(onActive: ServiceStatus, bank: Bank, nextFlowView: FCAccountStatusView)
+    func credentialsFormView(onSuccess: ServiceStatus, bank: Bank, credentialId: String, nextFlowView: FCAccountCreationView)
+    func credentialsFormView(onFailure: ServiceStatus, bank: Bank)
+    func credentialsFormView(onError: ServiceStatus, message: String)
 }
 
-class FCCredentialsFormView: FCBaseView {
+public final class FCCredentialsFormView: FCBaseView {
     // Components
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var textFieldsTableView: UITableView = setupTextFieldTableView()
@@ -26,21 +26,21 @@ class FCCredentialsFormView: FCBaseView {
     private lazy var extraDataDialog = setupExtraDataPickerDialog()
     private let datePicker = DatePickerDialog()
     private lazy var bannerImageView: FCBannerImageView = setupBannerView()
+    private var securityCodeTextField: UITextField?
     
     // Vars
+    public weak var delegate: FCCredentialsFormViewDelegate?
+    private var extraData: ExtraData?
+    private var credentialViewModel: CredentialViewModel = CredentialViewModel()
     private var tableHeight: CGFloat = 0 {
         didSet {
             textFieldsTableView.heightAnchor(equalTo: tableHeight)
         }
     }
-    private var credentialViewModel: CredentialViewModel = CredentialViewModel()
     private var credential = Credential(widgetId: Configuration.shared.widgetId,
                                         customerName: Configuration.shared.customerName,
                                         automaticFetching: Configuration.shared.automaticFetching,
                                         state: Configuration.shared.state)
-    private var securityCodeTextField: UITextField?
-    private var extraData: ExtraData?
-    public var delegate: FCCredentialsFormViewDelegate?
     
     // Inits
     private override init(frame: CGRect) {
@@ -59,6 +59,7 @@ class FCCredentialsFormView: FCBaseView {
         
         localHideKeyboardWhenTappedAround()
         addComponents()
+        observerServiceStatus()
     }
 }
 
@@ -67,11 +68,10 @@ extension  FCCredentialsFormView {
     public func setBank(_ bank: Bank) {
         self.credentialViewModel.bank = bank
         
-        self.loadingView.start()
+        loadingView.start()
         trackEvent(eventName: Constants.Events.bankSelected, [Constants.Events.bankSelected: credentialViewModel.bank.code])
         
         setBankAvatar()
-        observerServiceStatus()
         credentialViewModel.loadBankFields()
     }
 }
@@ -110,7 +110,7 @@ extension FCCredentialsFormView {
         credentialViewModel.createCredential(credential: credential)
     }
     
-    func getTextFieldValuesFromTableView() {
+    private func getTextFieldValuesFromTableView() {
         for (index, _) in credentialViewModel.bankFields.enumerated() {
             guard let cell = textFieldsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CredentialTableViewCell else {
                 return
@@ -122,7 +122,7 @@ extension FCCredentialsFormView {
         }
     }
     
-    func datePickerTapped(_ textField: UITextField) {
+    private func datePickerTapped(_ textField: UITextField) {
         let currentDate = Date()
         var dateComponents = DateComponents()
         dateComponents.year = -150
@@ -157,7 +157,7 @@ extension FCCredentialsFormView {
 
 // MARK: - UI
 extension FCCredentialsFormView {
-    func addComponents() {
+    private func addComponents() {
         let margin: CGFloat = 20
         let spacing: CGFloat = 30
         
@@ -219,8 +219,8 @@ extension FCCredentialsFormView {
     
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerView = HeaderSectionView()
-        headerView.titleLabel.text = Constants.Texts.CredentialSection.headerTitle
-        headerView.descriptionLabel.text = Constants.Texts.CredentialSection.headerDescription
+        headerView.titleLabel.text = literal(.credentialsHeaderTitle)
+        headerView.descriptionLabel.text = literal(.credentialsHeaderSubtitle)
         return headerView
     }
     
@@ -246,7 +246,7 @@ extension FCCredentialsFormView {
         let plainAttributes: [NSAttributedString.Key: Any]
         let linkAttributes: [NSAttributedString.Key : Any]
         
-        let plainText = Constants.Texts.CredentialSection.plainTyCText
+        let plainText = literal(.plainTyCText)!
         let termsColor = Configuration.shared.palette.termsTextColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
@@ -255,7 +255,7 @@ extension FCCredentialsFormView {
         let attributedString = NSMutableAttributedString(string: plainText,
                                                          attributes: plainAttributes)
         
-        let linkedText = Constants.Texts.CredentialSection.linkedTyCText
+        let linkedText = literal(.linkedTyCText)!
         let linkRange = (attributedString.string as NSString).range(of: linkedText)
         
         let urlWebSite = Constants.URLS.termsAndConditions
@@ -296,7 +296,7 @@ extension FCCredentialsFormView {
     
     private func setupHelpButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(Constants.Texts.CredentialSection.helpWithCredentialsLabel, for: .normal)
+        button.setTitle(literal(.helpWithCredentialsButton), for: .normal)
         button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
@@ -370,15 +370,27 @@ extension FCCredentialsFormView {
             case .updated, .interactive: break
                 
             case .active:
-                self.delegate?.credentialsFormView(self,
-                                                   onActive: .success, //success status is correct, not a typo.
-                                                   bank: self.credentialViewModel.bank)
+                if let bank = self.credentialViewModel.bank {
+                    let nextView = FCAccountStatusView()
+                    nextView.setBank(bank)
+                    nextView.setStatus(.success)
+                    
+                    self.delegate?.credentialsFormView(onActive: .success, //success status is correct, not a typo.
+                                                       bank: bank,
+                                                       nextFlowView: nextView)
+                }
                 
             case .success:
-                self.delegate?.credentialsFormView(self,
-                                                   onSuccess: .success,
-                                                   bank: self.credentialViewModel.bank,
-                                                   credentialId: self.credentialViewModel.credentialResponse.id)
+                if let bank = self.credentialViewModel.bank {
+                    let credentialId = self.credentialViewModel.credentialResponse.id
+                    let nextView = FCAccountCreationView()
+                    nextView.setBank(bank, credentialId: credentialId)
+                    
+                    self.delegate?.credentialsFormView(onSuccess: .success,
+                                                       bank: bank,
+                                                       credentialId: credentialId,
+                                                       nextFlowView: nextView)
+                }
                 
             case .loaded:
                 self.textFieldsTableView.reloadData()
@@ -394,13 +406,14 @@ extension FCCredentialsFormView {
                 self.setupExtraData()
                 
             case .failure:
-                self.delegate?.credentialsFormView(self,
-                                                   onFailure: .failure,
+                self.delegate?.credentialsFormView(onFailure: .failure,
                                                    bank: self.credentialViewModel.bank)
                 
             case .error:
-                self.delegate?.credentialsFormView(self,
-                                                   onError: .error,
+                if let errorMessage = self.credentialViewModel.errorMessage {
+                    logWarn(errorMessage)
+                }
+                self.delegate?.credentialsFormView(onError: .error,
                                                    message: self.credentialViewModel.errorMessage)
             }
         }
@@ -409,11 +422,11 @@ extension FCCredentialsFormView {
 
 // MARK: - UITableViewDataSource
 extension FCCredentialsFormView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return credentialViewModel.bankFields?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CredentialTableViewCell.id,
                                                        for: indexPath) as? CredentialTableViewCell else {
             fatalError("Could not cast CredentialTableViewCell")
@@ -429,7 +442,7 @@ extension FCCredentialsFormView: UITableViewDataSource {
 
 // MARK: - Extra Data Picker Dialog Delegate
 extension FCCredentialsFormView: ExtraDataPickerDialogDelegate {
-    func didSelectExtraData(extraData: ExtraData) {
+    internal func didSelectExtraData(extraData: ExtraData) {
         self.extraData = extraData
         securityCodeTextField?.text = extraData.value
         buttonValidation(securityCodeTextField!)
@@ -441,29 +454,29 @@ extension FCCredentialsFormView: UITextFieldDelegate {
     /// NOTE:
     /// If the keyboard has a weird behavior, try to use: UINavigationBar.appearance().isTranslucent = true
     ///
-    open func localHideKeyboardWhenTappedAround() {
+    public func localHideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         endEditing(true)
     }
     
-    open func addKeyboardObserver() {
+    public func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotifications(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
     
-    open func removeKeyboardObserver(){
+    public func removeKeyboardObserver() {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillChangeFrameNotification,
                                                   object: nil)
     }
     
     // This method will notify when keyboard appears/ dissapears
-    @objc func keyboardNotifications(notification: NSNotification) {
+    @objc private func keyboardNotifications(notification: NSNotification) {
         
         var txtFieldY : CGFloat = 0.0  //Using this we will calculate the selected textFields Y Position
         let spaceBetweenTxtFieldAndKeyboard : CGFloat = 5.0 //Specify the space between textfield and keyboard
@@ -508,7 +521,7 @@ extension FCCredentialsFormView: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.tag == Constants.Tags.fieldSecurityCode {
             securityCodeTextField = textField
             datePickerTapped(textField)

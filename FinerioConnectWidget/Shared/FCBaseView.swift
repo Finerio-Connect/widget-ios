@@ -8,7 +8,7 @@
 import UIKit
 import Mixpanel
 
-class FCBaseView: UIView {
+public class FCBaseView: UIView {
     //Vars
     let app = Configuration.shared.app
     let reachability = Reachability()
@@ -42,9 +42,16 @@ extension FCBaseView {
     
     func setLoadingViewLayout() -> Void {
         //Adds loadingView on Top
-        let window = UIApplication.shared.windows.last!
-        window.addSubview(loadingView)
-        loadingView.frame = window.frame
+        if let window = UIApplication.shared.windows.last {
+            // Search for other loaders views to remove
+            let filter = window.subviews.filter({$0.isKind(of: FCLoaderAnimationView.self)})
+            if !filter.isEmpty {
+                let _ = filter.map({$0.removeFromSuperview()})
+            }
+            // Create a new loader view for the current view
+            window.addSubview(loadingView)
+            loadingView.frame = window.frame
+        }
     }
     
     private func setupLoadingView() -> FCLoaderAnimationView {

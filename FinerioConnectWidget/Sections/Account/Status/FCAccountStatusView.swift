@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
-class FCAccountStatusView: FCBaseView {
+public protocol FCAccountStatusViewDelegate {
+    func accountStatusView(didSelectContinueButton: UIButton)
+    func accountStatusView(didSelectExitButton: UIButton)
+}
+
+public final class FCAccountStatusView: FCBaseView {
     // Components
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var statusAvatarView: UIImageView = setupStatusAvatarView()
@@ -17,6 +22,7 @@ class FCAccountStatusView: FCBaseView {
     private lazy var exitButton: UIButton = setupExitButton()
     
     // Vars
+    public var delegate: FCAccountStatusViewDelegate?
     private var accountStatusViewModel: AccountStatusViewModel = AccountStatusViewModel()
     
     // Inits
@@ -63,32 +69,29 @@ extension FCAccountStatusView {
 // MARK: - Status Behaviour
 extension FCAccountStatusView {
     private func configureViewFailure() {
-        headerSectionView.titleLabel.text = Constants.Texts.StatusSection.failureTitleLabel
-        headerSectionView.descriptionLabel.text = Constants.Texts.StatusSection.failureSubtitleLabel
+        headerSectionView.titleLabel.text = literal(.bondingHeaderTitleFailure)
+        headerSectionView.descriptionLabel.text = literal(.bondingHeaderSubtitleFailure)
         
         let statusImg = Images.failureIcon.image()
         statusAvatarView.image = statusImg
         statusAvatarView.tintColor = UIColor(hex: "#F89A9A")
+        bodyDescriptionLabel.text = literal(.bondingDescriptionFailure)
         
-        // Needs to handle the different message...(401,503,403)?
-        bodyDescriptionLabel.text = Constants.Texts.StatusSection.failure401BodyDescriptionLabel
-        
-        continueButton.setTitle(Constants.Texts.StatusSection.failureContinueTitleButton, for: .normal)
-        exitButton.setTitle(Constants.Texts.StatusSection.failureExitTitleButton, for: .normal)
+        continueButton.setTitle(literal(.failureContinueTitleButton), for: .normal)
+        exitButton.setTitle(literal(.failureExitTitleButton), for: .normal)
     }
     
     private func configureViewSuccess() {
-        headerSectionView.titleLabel.text = Constants.Texts.StatusSection.successTitleLabel
-        headerSectionView.descriptionLabel.text = Constants.Texts.StatusSection.successSubtitleLabel
+        headerSectionView.titleLabel.text = literal(.bondingHeaderTitleSuccess)
+        headerSectionView.descriptionLabel.text = literal(.bondingHeaderSubtitleSuccess)
         
         let statusImg = Images.successIcon.image()
         statusAvatarView.image = statusImg
         statusAvatarView.tintColor = Configuration.shared.palette.mainColor
+        bodyDescriptionLabel.text = literal(.bondingDescriptionSuccess)
         
-        bodyDescriptionLabel.text = Constants.Texts.StatusSection.successBodyDescriptionLabel
-        
-        continueButton.setTitle(Constants.Texts.StatusSection.successContinueTitleButton, for: .normal)
-        exitButton.setTitle(Constants.Texts.StatusSection.successExitTitleButton, for: .normal)
+        continueButton.setTitle(literal(.successContinueTitleButton), for: .normal)
+        exitButton.setTitle(literal(.successExitTitleButton), for: .normal)
     }
 }
 
@@ -140,7 +143,7 @@ extension FCAccountStatusView {
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
         button.backgroundColor = Configuration.shared.palette.mainColor
-        button.addTarget(self, action: #selector(backToBanks), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
     
@@ -148,28 +151,25 @@ extension FCAccountStatusView {
         let button = setupButton()
         button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
-        button.addTarget(self, action: #selector(exit), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
         return button
     }
 }
 
 // MARK: - Actions
 extension FCAccountStatusView {
-    @objc private func backToBanks() {
-        let topVC = UIApplication.fcTopViewController()
-        topVC?.navigationController?.navigationBar.isHidden = false
-        topVC?.navigationController?.backToViewController(BankViewController.self)
+    @objc private func didSelectContinueButton() {
+        delegate?.accountStatusView(didSelectContinueButton: continueButton)
     }
     
-    @objc private func exit() {
-        let topVC = UIApplication.fcTopViewController()
-        topVC?.navigationController?.popToRootViewController(animated: true)
+    @objc private func didSelectExitButton() {
+        delegate?.accountStatusView(didSelectExitButton: exitButton)
     }
 }
 
 // MARK: - Layouts
 extension FCAccountStatusView {
-    func setLayoutViews() {
+    private func setLayoutViews() {
         let margin: CGFloat = 20
         let spacing: CGFloat = 60
         // Header

@@ -9,35 +9,36 @@ import Foundation
 import nanopb
 import UIKit
 
-protocol FCAccountCreationViewDelegate: AnyObject {
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) // Optional
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, onSuccess: ServiceStatus, bank: Bank)
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, onFailure: ServiceStatus, message: String, bank: Bank)
+public protocol FCAccountCreationViewDelegate: AnyObject {
+    func accountCreationView(accountCreated: CredentialAccount) // Optional
+    func accountCreationView(onSuccess: ServiceStatus, bank: Bank, nextFlowView: FCAccountStatusView)
+    func accountCreationView(onFailure: ServiceStatus, message: String, bank: Bank, nextFlowView: FCAccountStatusView)
 }
 
-extension FCAccountCreationViewDelegate {
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) {}
+public extension FCAccountCreationViewDelegate {
+    func accountCreationView(accountCreated: CredentialAccount) {}
 }
 
-class FCAccountCreationView: FCBaseView {
+public final class FCAccountCreationView: FCBaseView {
     // Components
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var accountLoaderView: FCLoaderAnimationView = setupLoaderAnimationView()
     private lazy var statusDescriptionLabel: UILabel = setupStatusDescriptionLabel()
+    
     // Vars
-    private var accountViewModel: AccountViewModel = AccountViewModel()
-    var credentialToken = CredentialToken(widgetId: Configuration.shared.widgetId)
     public var delegate: FCAccountCreationViewDelegate?
+    private var accountViewModel: AccountViewModel = AccountViewModel()
+    private var credentialToken = CredentialToken(widgetId: Configuration.shared.widgetId)
     
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        configureView()
+        //        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        configureView()
+        //        configureView()
     }
     
     deinit {
@@ -69,8 +70,8 @@ extension FCAccountCreationView {
 extension FCAccountCreationView {
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerView = HeaderSectionView()
-        headerView.titleLabel.text = Constants.Texts.AccountSection.headerTitle
-        headerView.descriptionLabel.text = Constants.Texts.AccountSection.headerDescription
+        headerView.titleLabel.text = literal(.syncHeaderTitle)
+        headerView.descriptionLabel.text = literal(.syncHeaderSubtitle)
         return headerView
     }
     
@@ -94,7 +95,7 @@ extension FCAccountCreationView {
         let label = UILabel()
         label.textColor = Configuration.shared.palette.mainTextColor
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.text = Constants.Texts.AccountSection.creationSteps[0]
+        label.text = literal(.encryptingData)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
@@ -104,7 +105,7 @@ extension FCAccountCreationView {
 
 // MARK: - Layouts
 extension FCAccountCreationView {
-    func setLayoutViews() {
+    private func setLayoutViews() {
         let margin: CGFloat = 20
         let spacing: CGFloat = 45
         
@@ -154,15 +155,15 @@ extension FCAccountCreationView {
             alert.message = Constants.Texts.AccountSection.firstLabelAlertToken
             
             topVC?.present(alert, animated: true, completion: {
-                            let margin: CGFloat = 5.0
-            
-                            let labelToken = UILabel(frame: CGRect(x: margin, y: 72.0, width: alert.view.frame.width - margin * 2.0, height: 20))
-                            labelToken.text = token
-                            labelToken.textAlignment = .center
-                            labelToken.adjustsFontSizeToFitWidth = true
-                            labelToken.minimumScaleFactor = 0.5
-                            alert.view.addSubview(labelToken)
-                        })
+                let margin: CGFloat = 5.0
+                
+                let labelToken = UILabel(frame: CGRect(x: margin, y: 72.0, width: alert.view.frame.width - margin * 2.0, height: 20))
+                labelToken.text = token
+                labelToken.textAlignment = .center
+                labelToken.adjustsFontSizeToFitWidth = true
+                labelToken.minimumScaleFactor = 0.5
+                alert.view.addSubview(labelToken)
+            })
             return
         }
         topVC?.present(alert, animated: true, completion: nil)
@@ -174,29 +175,43 @@ extension FCAccountCreationView {
     private func observerServiceStatus() {
         accountViewModel.serviceStatusHandler = { [weak self] status in
             guard let `self` = self else { return }
-                        
+            
             switch status {
             case .active, .loaded, .error: break
                 
             case .success:
                 self.trackEvent(eventName: Constants.Events.credentialSuccess)
-                self.delegate?.accountCreationView(self,
-                                                   onSuccess: .success,
-                                                   bank: self.accountViewModel.bank)
+                
+                if let bank = self.accountViewModel.bank {
+                    let nextView = FCAccountStatusView()
+                    nextView.setBank(bank)
+                    nextView.setStatus(.success)
+                    
+                    self.delegate?.accountCreationView(onSuccess: .success,
+                                                       bank: bank,
+                                                       nextFlowView: nextView)
+                }
                 
             case .failure:
                 self.trackEvent(eventName: Constants.Events.credentialFailure)
-                self.delegate?.accountCreationView(self,
-                                                   onFailure: .failure,
-                                                   message: self.accountViewModel.errorMessage,
-                                                   bank: self.accountViewModel.bank)
+                
+                if let bank = self.accountViewModel.bank {
+                    let nextView = FCAccountStatusView()
+                    nextView.setBank(bank)
+                    nextView.setStatus(.failure)
+                    
+                    self.delegate?.accountCreationView(onFailure: .failure,
+                                                       message: self.accountViewModel.errorMessage,
+                                                       bank: bank,
+                                                       nextFlowView: nextView)
+                }
                 
             case .updated:
                 // The update gets called many times, this is to delegate only when credentialAccounts has items.
                 if !self.accountViewModel.credentialAccounts.isEmpty {
                     let credentialAccount = self.accountViewModel.credentialAccounts.removeFirst()
                     self.statusDescriptionLabel.text = credentialAccount.name
-                        self.delegate?.accountCreationView(self, accountCreated: credentialAccount)
+                    self.delegate?.accountCreationView(accountCreated: credentialAccount)
                 }
                 
             case .interactive:

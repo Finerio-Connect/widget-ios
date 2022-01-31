@@ -13,6 +13,13 @@ public struct Bank: Codable {
     public let name: String
     public let code: String
     public let status: String
+    
+    public init(id: String, name: String, code: String, status: String) {
+        self.id = id
+        self.name = name
+        self.code = code
+        self.status = status
+    }
 }
 
 extension Bank: JSONMappable {

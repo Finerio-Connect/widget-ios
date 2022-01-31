@@ -53,7 +53,7 @@ extension FCBannerImageView {
     
     func setupBannerLabel() -> UILabel {
         let bannerLabel = UILabel()
-        bannerLabel.text = Constants.Texts.CredentialSection.bannerText
+        bannerLabel.text = literal(.credentialsDisclaimerText)
         bannerLabel.numberOfLines = 0
         bannerLabel.lineBreakMode = .byWordWrapping
         bannerLabel.textColor = Configuration.shared.palette.termsTextColor

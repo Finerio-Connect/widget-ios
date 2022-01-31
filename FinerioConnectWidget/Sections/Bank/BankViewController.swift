@@ -29,12 +29,12 @@ internal class BankViewController: BaseViewController {
 
 //MARK: - FCBankSelectionView Delegate
 extension BankViewController: FCBankSelectionViewDelegate {
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, onFailure: ServiceStatus, message: String) {
-        self.showAlert(message, viewController: self)
-    }
-    
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank) {
+    func bankSelectionView(didSelect bank: Bank, nextFlowView: FCCredentialsFormView) {
         let coordinator = CredentialCoordinator(context: context!, bank: bank)
         context?.initialize(coordinator: coordinator)
+    }
+    
+    func bankSelectionView(onFailure: ServiceStatus, message: String) {
+        self.showAlert(message, viewController: self)
     }
 }

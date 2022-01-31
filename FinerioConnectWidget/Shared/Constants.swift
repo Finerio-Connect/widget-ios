@@ -29,21 +29,12 @@ internal struct Constants {
 
         struct BankSection {
             static let titleButton = "Seleccionar"
-            static let labelEmpty = "No hay bancos disponibles"
-            static let headerTitle = "Conecta de manera segura con tu institución"
-            static let headerDescription = "Selecciona tu banco y autoriza la conexión"
         }
 
         struct CredentialSection {
-            static let helpWithCredentialsLabel = "¿Dónde consigo mis credenciales?"
-            static let plainTyCText = "He leído y acepto los términos y condiciones."
-            static let linkedTyCText = "términos y condiciones"
             static let titleDatePicker = "Fecha"
-            static let doneButtonTitleDatePicker = "Ok"
+            static let doneButtonTitleDatePicker = "OK"
             static let cancelButtonTitleDatePicker = "Cancelar"
-            static let headerTitle = "Autentificación"
-            static let headerDescription = "Introduce tus credenciales de banca en línea."
-            static let bannerText = "Conexión encriptada en modo lectura nunca tenemos acceso a tu dinero."
             static let continueButtonTitle = "Continuar"
         }
 
@@ -53,24 +44,6 @@ internal struct Constants {
             static let firstLabelAlertToken = "Por favor, introduce este número en tu token:"
             static let secondLabelAlertToken = "después, escribe aquí el número que salío en tu token:"
             static let titleButton = "Enviar"
-            static let headerTitle = "Espera un momento"
-            static let headerDescription = "Este proceso puede tardar unos minutos"
-            static let creationSteps = ["Encriptando tus datos..."]
-        }
-
-        struct StatusSection {
-            static let successTitleLabel = "¡Gracias!"
-            static let successSubtitleLabel = "Tu cuenta ha sido correctamente agregada"
-            static let successBodyDescriptionLabel = "¿Tienes cuenta en otro banco? Puedes agregarlas ahora mismo para obtener mayores beneficios."
-            static let failure401BodyDescriptionLabel = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra."
-            static let failure503BodyDescriptionLabel = "Hay una sesión activa de tu banca en línea. Por favor, ciérrala, espera 15 minutos y intenta de nuevo."
-            static let failure403BodyDescriptionLabel = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra."
-            static let failureTitleLabel = "Ups, algo salió mal"
-            static let failureSubtitleLabel = "Tu cuenta no ha podido ser agregada"
-            static let failureContinueTitleButton = "Aceptar"
-            static let failureExitTitleButton = "Salir"
-            static let successContinueTitleButton = "Agregar otra cuenta"
-            static let successExitTitleButton = "Continuar proceso"
         }
     }
 

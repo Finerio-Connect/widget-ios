@@ -11,9 +11,6 @@ import Foundation
 // SDK
 public let fLocaleCompanyName: String = localize("company_name")
 
-// General
-public let fLocaleSubmitLabel: String = localize("submit_label")
-
 // Alert
 public let fLocaleAlertButtonCancel: String = localize("alert_button_cancel")
 public let fLocaleAlertButtonError: String = localize("alert_button_error")
@@ -26,17 +23,37 @@ public let fLocaleErrorUnexpected: String = localize("error_unexpected")
 public let fLocaleInitTitle: String = localize("init_title")
 public let fLocaleInitSubtitle: String = localize("init_subtitle")
 
-// Banks Section
-public let fLocaleBanksTitle: String = localize("banks_title")
-public let fLocaleCountriesTitle: String = localize("countries_title")
-public let fLocalePersonalBankTitle: String = localize("personal_bank_title")
-public let fLocaleBusinessBankTitle: String = localize("business_bank_title")
-public let fLocaleFiscalTitle: String = localize("fiscal_title")
+// SECTIONS
+/// Banks Section
+public let fLocaleBanksHeaderTitle: String = localize("banks_header_title")
+public let fLocaleBanksHeaderSubtitle: String = localize("banks_header_subtitle")
+public let fLocaleSelectCountryLabel: String = localize("select_country_label")
+public let fLocalePersonalBankType: String = localize("personal_bank_type")
+public let fLocaleBusinessBankType: String = localize("business_bank_type")
+public let fLocaleFiscalBankType: String = localize("fiscal_bank_type")
+public let fLocaleTitleWithoutBanks: String = localize("title_without_banks")
 
-// CredentialCredential Section
-public let fLocaleCreateCredentialTitle: String = localize("create_credential_title")
-public let fLocalePrivacyTermsUrl: String = localize("privacy_terms_url")
-public let fLocaletermsAndConditionsUrl: String = localize("terms_and_conditions_url")
+/// CredentialCredential Section
+public let fLocaleCredentialsHeaderTitle: String = localize("credentials_header_title")
+public let fLocaleCredentialsHeaderSubtitle: String = localize("credentials_header_subtitle")
+public let fLocalePlainTyCText: String = localize("plain_tyc_text")
+public let fLocaleLinkedTyCText: String = localize("linked_tyc_text")
+public let fLocaleHelpWithCredentialsButton: String = localize("help_with_credentials_button")
+public let fLocaleCredentialsDisclaimerText: String = localize("credentials_disclaimer_text")
 
-// Account Status Section
-public let fLocaleSynchronizationTitle: String = localize("synchronization_title")
+/// Account Creation Section
+public let fLocaleSyncHeaderTitle: String = localize("sync_header_title")
+public let fLocaleSyncHeaderSubtitle: String = localize("sync_header_subtitle")
+public let fLocaleEncryptingData: String = localize("encrypting_data")
+
+/// Account Status Section
+public let fLocaleBondingHeaderTitleSuccess: String = localize("bonding_header_title_success")
+public let fLocaleBondingHeaderTitleFailure: String = localize("bonding_header_title_failure")
+public let fLocaleBondingHeaderSubtitleSuccess: String = localize("bonding_header_subtitle_success")
+public let fLocaleBondingHeaderSubtitleFailure: String = localize("bonding_header_subtitle_failure")
+public let fLocaleBondingDescriptionSuccess: String = localize("bonding_description_success")
+public let fLocaleBondingDescriptionFailure: String = localize("bonding_description_failure")
+public let fLocaleFailureContinueTitleButton: String = localize("failure_continue_title_button")
+public let fLocaleFailureExitTitleButton: String = localize("failure_exit_title_button")
+public let fLocaleSuccessContinueTitleButton: String = localize("success_continue_title_button")
+public let fLocaleSuccessExitTitleButton: String = localize("success_exit_title_button")

@@ -21,9 +21,9 @@ internal class CredentialCoordinator: Coordinator {
         let viewController = CredentialViewController()
         if let bank = self.bank {
             viewController.credentialsFormView.setBank(bank)
+            viewController.coordinator = self
+            viewController.context = context
+            context?.push(viewController: viewController)
         }
-        viewController.coordinator = self
-        viewController.context = context
-        context?.push(viewController: viewController)
     }
 }

@@ -39,24 +39,16 @@ extension AccountViewController: UIGestureRecognizerDelegate {
 
 // MARK: - Account Creation View Delegate
 extension AccountViewController: FCAccountCreationViewDelegate {
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, onSuccess: ServiceStatus, bank: Bank) {
+    func accountCreationView(onSuccess: ServiceStatus, bank: Bank, nextFlowView: FCAccountStatusView) {
         self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!,
                                                                        serviceStatus: onSuccess,
                                                                        bank: bank))
     }
     
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, onFailure: ServiceStatus, message: String, bank: Bank) {
+    func accountCreationView(onFailure: ServiceStatus, message: String, bank: Bank, nextFlowView: FCAccountStatusView) {
         self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!,
                                                                        serviceStatus: .failure,
                                                                        errorMessage: message,
                                                                        bank: bank))
-    }
-    
-    func accountCreationView(_ accountCreationView: FCAccountCreationView, accountCreated: CredentialAccount) {
-        print("AccountCreated_Delegate_Name: \(accountCreated.name)")
-        print("AccountCreated_Delegate_CredentialId: \(accountCreated.credentialId)")
-        print("AccountCreated_Delegate_Status: \(accountCreated.status)")
-        print("AccountCreated_Delegate_AccountId: \(accountCreated.accountId)")
-        print("\n")
     }
 }

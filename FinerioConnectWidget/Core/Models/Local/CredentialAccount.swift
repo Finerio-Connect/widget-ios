@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CredentialAccount {
+public final class CredentialAccount {
     var credentialId: String
     var accountId: String
     var name: String

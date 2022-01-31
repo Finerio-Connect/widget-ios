@@ -27,25 +27,25 @@ internal class CredentialViewController: BaseViewController {
 
 // MARK: - Credentials Form View Delegate
 extension CredentialViewController: FCCredentialsFormViewDelegate {
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onActive: ServiceStatus, bank: Bank) {
+    func credentialsFormView(onActive: ServiceStatus, bank: Bank, nextFlowView: FCAccountStatusView) {
         self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!,
                                                                        serviceStatus: onActive,
                                                                        bank: bank))
     }
     
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onSuccess: ServiceStatus, bank: Bank, credentialId: String) {
+    func credentialsFormView(onSuccess: ServiceStatus, bank: Bank, credentialId: String, nextFlowView: FCAccountCreationView) {
         self.context?.initialize(coordinator: AccountCoordinator(context: self.context!,
                                                                  credentialId: credentialId,
                                                                  bank: bank))
     }
     
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onFailure: ServiceStatus, bank: Bank) {
+    func credentialsFormView(onFailure: ServiceStatus, bank: Bank) {
         self.context?.initialize(coordinator: AccountStatusCoordinator(context: self.context!,
                                                                        serviceStatus: onFailure,
                                                                        bank: bank))
     }
     
-    func credentialsFormView(_ credentialsFormView: FCCredentialsFormView, onError: ServiceStatus, message: String) {
+    func credentialsFormView(onError: ServiceStatus, message: String) {
         self.showAlert(message, viewController: self)
     }
 }

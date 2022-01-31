@@ -7,16 +7,15 @@
 
 import UIKit
 
-protocol FCBankSelectionViewDelegate: AnyObject {
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, didSelect bank: Bank)
-    func bankSelectionView(_ bankSelectionView: FCBankSelectionView, onFailure: ServiceStatus, message: String)
+public protocol FCBankSelectionViewDelegate: AnyObject {
+    func bankSelectionView(didSelect bank: Bank, nextFlowView: FCCredentialsFormView)
+    func bankSelectionView(onFailure: ServiceStatus, message: String)
 }
 
-class FCBankSelectionView: FCBaseView {
+public final class FCBankSelectionView: FCBaseView {
     // Components
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var countriesSelectorView: CountriesSelectorView = setupCountriesSelectorView()
-//    private lazy var countryPickerDialog: BankCountryPickerDialog = setupCountryPickerDialog()
     private lazy var dropDownListView: FCDropDownListView = setupDropDownListView()
     private lazy var bankTypeSegment: UISegmentedControl = setupBankTypeSegment()
     private lazy var separatorView: UIView = setupSeparatorView()
@@ -24,8 +23,8 @@ class FCBankSelectionView: FCBaseView {
     private lazy var loadingIndicator: FCLoaderAnimationView = setupLoaderAnimationView()
     
     // Vars
+    public weak var delegate: FCBankSelectionViewDelegate?
     private var bankViewModel: BankViewModel = BankViewModel()
-    weak var delegate: FCBankSelectionViewDelegate?
     private var tableHeight: CGFloat = 0 {
         didSet {
             // Remove old constraints
@@ -78,15 +77,6 @@ extension FCBankSelectionView {
         dropDownListView.delegate = self
         return dropDownListView
     }
-//    private func setupCountryPickerDialog() -> BankCountryPickerDialog {
-//        let pickerDialog = BankCountryPickerDialog()
-//        pickerDialog.countryDelegate = self
-//
-//        superview?.addSubview(pickerDialog)
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        pickerDialog.frame = screenSize
-//        return pickerDialog
-//    }
     
     private func setupCountriesSelectorView() -> CountriesSelectorView {
         let countriesSelectorView = CountriesSelectorView()
@@ -97,16 +87,16 @@ extension FCBankSelectionView {
     
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerView = HeaderSectionView()
-        headerView.titleLabel.text = Constants.Texts.BankSection.headerTitle
-        headerView.descriptionLabel.text = Constants.Texts.BankSection.headerDescription
+        headerView.titleLabel.text = literal(.banksHeaderTitle)
+        headerView.descriptionLabel.text = literal(.banksHeaderSubtitle)
         headerView.setLockAvatarView()
         return headerView
     }
     
     private func setupBankTypeSegment() -> UISegmentedControl {
-        let segmentControl = UISegmentedControl(items: [literal(.personalBankTitle)!,
-                                                        literal(.businessBankTitle)!,
-                                                        literal(.fiscalTitle)!])
+        let segmentControl = UISegmentedControl(items: [literal(.personalBankType)!,
+                                                        literal(.businessBankType)!,
+                                                        literal(.fiscalBankType)!])
         
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
         segmentControl.setTitleTextAttributes([.font: UIFont.fcMediumFont(ofSize: fontSize)], for: .normal)
@@ -152,7 +142,7 @@ extension FCBankSelectionView {
         return loaderView
     }
     
-    func addComponents() {
+    private func addComponents() {
         let margin: CGFloat = 20
         addSubview(headerSectionView)
         headerSectionView.heightAnchor(equalTo: 95)
@@ -250,11 +240,13 @@ extension FCBankSelectionView {
     private func observerServiceStatus() {
         bankViewModel.serviceStatusHandler = { [weak self] status in
             guard let `self` = self else { return }
+
+            self.loadingView.stop()
+            
             switch status {
             case .active, .interactive, .error, .updated: break
                 
             case .success:
-                self.loadingView.stop()
                 DispatchQueue.main.async { [weak self] in
                     self?.loadingIndicator.stop()
                     self?.tableView.reloadData()
@@ -269,11 +261,7 @@ extension FCBankSelectionView {
                 }
                 
             case .failure:
-                self.loadingView.stop()
-                
-                self.delegate?.bankSelectionView(self,
-                                                 onFailure: .failure,
-                                                 message: self.bankViewModel.errorMessage)
+                self.delegate?.bankSelectionView(onFailure: .failure, message: self.bankViewModel.errorMessage)
             }
         }
     }
@@ -281,24 +269,23 @@ extension FCBankSelectionView {
 
 // MARK: - CountriesPickerView Delegate
 extension FCBankSelectionView: CountriesSelectorViewDelegate {
-    func countriesPickerView(countriesSelectorView: CountriesSelectorView, didTapSelector: UILabel) {
+    internal func countriesPickerView(countriesSelectorView: CountriesSelectorView, didTapSelector: UILabel) {
         dropDownListView.showBelowOfComponent(countriesSelectorView)
-//        countryPickerDialog.show()
     }
 }
 
 // MARK: - TableView Datasource
 extension FCBankSelectionView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if bankViewModel.banks.count == 0 {
-            tableView.setEmptyMessage(Constants.Texts.BankSection.labelEmpty)
+            tableView.setEmptyMessage(literal(.titleWithoutBanks)!)
         } else {
             tableView.restore()
         }
         return bankViewModel.banks.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if let aCell = tableView.dequeueReusableCell(withIdentifier: BankTableViewCell.cellIdentifier,
                                                      for: indexPath) as? BankTableViewCell {
@@ -311,19 +298,23 @@ extension FCBankSelectionView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension FCBankSelectionView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bank = bankViewModel.banks[indexPath.row]
-        delegate?.bankSelectionView(self, didSelect: bank)
+        
+        let nextView = FCCredentialsFormView()
+        nextView.setBank(bank)
+        
+        delegate?.bankSelectionView(didSelect: bank, nextFlowView: nextView)
     }
 }
 
 // MARK: - DropDownList DataSource
 extension FCBankSelectionView: FCDropDownListViewDataSource {
-    func dropDownListView(_ dropDownListView: FCDropDownListView, numberOfRowsInSection section: Int) -> Int {
+    internal func dropDownListView(_ dropDownListView: FCDropDownListView, numberOfRowsInSection section: Int) -> Int {
         return bankViewModel.countries.count
     }
     
-    func dropDownListView(_ dropDownListView: FCDropDownListView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func dropDownListView(_ dropDownListView: FCDropDownListView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if let countryCell = dropDownListView.dequeueReusableCell(withIdentifier: CountryTableViewCell.cellIdentifier,
                                                                   for: indexPath) as? CountryTableViewCell {
@@ -337,7 +328,7 @@ extension FCBankSelectionView: FCDropDownListViewDataSource {
 
 // MARK: - DropDownList Delegate
 extension FCBankSelectionView: FCDropDownListViewDelegate {
-    func dropDownListView(_ dropDownListView: FCDropDownListView, didSelectRowAt indexPath: IndexPath) {
+    internal func dropDownListView(_ dropDownListView: FCDropDownListView, didSelectRowAt indexPath: IndexPath) {
         let country = bankViewModel.countries[indexPath.row]
         Configuration.shared.countryCode = country.code
 
@@ -365,7 +356,7 @@ extension FCBankSelectionView: FCDropDownListViewDelegate {
         dropDownListView.hide()
     }
     
-    func dropDownListViewDidDismiss(_ dropDownListView: FCDropDownListView) {
+    internal func dropDownListViewDidDismiss(_ dropDownListView: FCDropDownListView) {
         self.countriesSelectorView.rotateArrow(.up)
     }
 }

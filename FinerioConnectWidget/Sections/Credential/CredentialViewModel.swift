@@ -30,7 +30,7 @@ internal class CredentialViewModel {
             self?.bankFields = result.value
             self?.bankFields?.sort {
                 $0.position < $1.position
-            }
+            }            
             self?.serviceStatusHandler(.loaded)
         }
     }
@@ -79,3 +79,4 @@ internal class CredentialViewModel {
         }
     }
 }
+
