@@ -35,7 +35,7 @@ extension CredentialTableViewCell {
         titleLabel.text = field.friendlyName
         inputTexfield.placeholder = field.friendlyName
         inputTexfield.id = field.name
-        
+      
         if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
             inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
         }

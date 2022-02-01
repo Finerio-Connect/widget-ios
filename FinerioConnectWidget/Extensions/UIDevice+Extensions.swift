@@ -20,6 +20,8 @@ internal extension UIDevice {
         case iPhone_XR_11 = "iPhone XR or iPhone 11"
         case iPhone_XSMax_ProMax = "iPhone XS Max or iPhone Pro Max"
         case iPhone_11Pro = "iPhone 11 Pro"
+        case iPhone_13Pro = "iPhone 13 Pro"
+        case iPhone_13ProMax = "iPhone 13 Pro Max"
         case unknown
     }
 
@@ -35,10 +37,14 @@ internal extension UIDevice {
             return .iPhones_6Plus_6sPlus_7Plus_8Plus
         case 2426:
             return .iPhone_11Pro
+        case 2532:
+            return .iPhone_13Pro
         case 2436:
             return .iPhones_X_XS
         case 2688:
             return .iPhone_XSMax_ProMax
+        case 2778:
+            return .iPhone_13ProMax
         default:
             return .unknown
         }
