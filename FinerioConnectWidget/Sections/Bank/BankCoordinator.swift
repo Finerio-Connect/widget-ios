@@ -17,7 +17,6 @@ internal class BankCoordinator: Coordinator {
 
     func start() {
         let viewController = BankViewController()
-        viewController.viewModel = BankViewModel()
         viewController.coordinator = self
         viewController.context = context
         context?.push(viewController: viewController)

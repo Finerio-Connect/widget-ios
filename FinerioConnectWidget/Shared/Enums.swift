@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ServiceStatus {
+public enum ServiceStatus {
     case active
     case success
     case loaded

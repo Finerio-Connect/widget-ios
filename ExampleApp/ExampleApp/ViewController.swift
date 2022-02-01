@@ -6,19 +6,23 @@
 //
 
 import FinerioAccountWidget
+import Foundation
 import UIKit
 
 class ViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Example FinerioConnectWidget"
 
-        FontBlaster.debugEnabled = true
-        FontBlaster.blast { fonts -> Void in
-            print("Loaded Fonts: \(fonts)")
-        }
-
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 15
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
@@ -30,28 +34,41 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
 
-        view.addSubview(button)
+        stackView.addArrangedSubview(button)
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
-            button.heightAnchor.constraint(equalToConstant: 60),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
+            stackView.heightAnchor.constraint(equalToConstant: 60),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+        
+        let buttonTest = UIButton()
+        buttonTest.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        buttonTest.setTitle("TEST VC", for: .normal)
+        buttonTest.addTarget(self, action: #selector(testViewController), for: .touchUpInside)
+        stackView.addArrangedSubview(buttonTest)
+    }
+    
+    @objc func testViewController() {
+        let vc = TestsViewController()
+        present(vc, animated: true)
     }
 
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
         finerioConnectWidget.logLevel = .debug
-        finerioConnectWidget.font = "Ubuntu"
+//        finerioConnectWidget.font = "Ubuntu"
         /// Country settings
-//        finerioConnectWidget.countryCode = "CO"
+//        finerioConnectWidget.countryCode = "MX"
 //        finerioConnectWidget.showCountryOptions = false
         /// Bank settings
-//        finerioConnectWidget.showBankTypeOptions = false
-//        finerioConnectWidget.bankType = .fiscal
+//        finerioConnectWidget.showBankTypeOptions = true
+//        finerioConnectWidget.bankType = .personal
+        
+        
 
 //        finerioConnectWidget.environment = .production
-        finerioConnectWidget.texts = Texts(companyName: "Super Bank")
+        finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
 
 //        finerioConnectWidget.palette = Palette(
 //            mainColor: UIColor(red: 0 / 255, green: 29 / 255, blue: 255 / 255, alpha: 1),
@@ -60,15 +77,22 @@ class ViewController: UIViewController {
 //            termsTextColor: UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1))
 //
 //        finerioConnectWidget.animations = Animations(
-//            syncingAnimation: "syncingAnimation",
-//            loadingAccountAnimation: "https://cdn.finerio.mx/widget/account_loading.json",
-//            accountReadyAnimation: "accountReadyAnimation",
+//            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
+//            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
 //            successAnimation: "successAnimation",
 //            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
-
+        
+        
+        
+        
         finerioConnectWidget.start(
             widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
             customerName: "René Sandoval",
             presentingViewController: self)
     }
 }
+
+
+
+
+

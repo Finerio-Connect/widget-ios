@@ -9,12 +9,6 @@ import Foundation
 import UIKit
 
 internal struct Constants {
-    /// Titles
-    struct Titles {
-        static let initSection = "Mejora de servicios"
-        static let bankSection = "Vincula tu entidad bancaria"
-    }
-
     /// Texts
     struct Texts {
         struct Errors {
@@ -35,15 +29,13 @@ internal struct Constants {
 
         struct BankSection {
             static let titleButton = "Seleccionar"
-            static let labelEmpty = "No hay bancos disponibles"
         }
 
         struct CredentialSection {
-            static let helpWithCredentialsLabel = "¿Dónde encuentro mis claves?"
-            static let tyCLabel = "Al dar clic en Enviar información aceptas expresamente nuestros Términos de servicio así como nuestro Aviso de privacidad."
             static let titleDatePicker = "Fecha"
-            static let doneButtonTitleDatePicker = "Ok"
+            static let doneButtonTitleDatePicker = "OK"
             static let cancelButtonTitleDatePicker = "Cancelar"
+            static let continueButtonTitle = "Continuar"
         }
 
         struct AccountSection {
@@ -52,15 +44,6 @@ internal struct Constants {
             static let firstLabelAlertToken = "Por favor, introduce este número en tu token:"
             static let secondLabelAlertToken = "después, escribe aquí el número que salío en tu token:"
             static let titleButton = "Enviar"
-        }
-
-        struct StatusSection {
-            static let successTitleLabel = "¡Vinculación exitosa!"
-            static let successSubtitleLabel = "Tu cuenta se analizó correctamente."
-            static let failureTitleLabel = "¡La vinculación falló!"
-            static let failureSubtitleLabel = "Lo sentimos."
-            static let successTitleButton = "Vincular otra cuenta"
-            static let exitTitleButton = "Cancelar"
         }
     }
 
@@ -93,11 +76,11 @@ internal struct Constants {
 
     /// URLS
     struct URLS {
-        static let privacyTerms = "https://finerioconnect.com/privacy"
         static let termsAndConditions = "https://finerioconnect.com/license"
         static let cdnWidget = "https://cdn.finerio.mx/widget"
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
+        static var bankImageShield = "\(cdnWidget)/rounded_logos/bank_\(Constants.Placeholders.bankCode)_shield.png"
         static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
     }
 
@@ -132,10 +115,12 @@ internal struct Constants {
     }
 
     struct Fonts {
-        static let lighFont = "\(Configuration.shared.font)-Light"
-        static let regularFont = "\(Configuration.shared.font)-Regular"
-        static let boldFont = "\(Configuration.shared.font)-Bold"
-        static let italicFont = "\(Configuration.shared.font)-Italic"
+        static let defaultFontName = "Poppins"
+        static let lighFont = "\(Configuration.shared.font!)-Light"
+        static let regularFont = "\(Configuration.shared.font!)-Regular"
+        static let boldFont = "\(Configuration.shared.font!)-Bold"
+        static let italicFont = "\(Configuration.shared.font!)-Italic"
+        static let mediumFont = "\(Configuration.shared.font!)-Medium"
     }
 
     struct Country {
@@ -155,6 +140,7 @@ internal struct Constants {
         static let bankSelected = "Bank selected"
         static let credentials = "View: Credentials"
         static let createCredential = "Create credential"
-        static let credentialCreated = "Credential created"
+        static let credentialSuccess = "Credential success"
+        static let credentialFailure = "Credential failure"
     }
 }

@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.subspec 'Sources' do |default|
     default.ios.deployment_target = '11.0'
     default.source_files          = ['FinerioConnectWidget/**/**/**.{h,m,swift}']
-    default.resource_bundles      = {'FinerioConnectWidget' => ['FinerioConnectWidget/Resources/**/*.{lproj,json,png,xcassets,plist,strings}']}
+    default.resource_bundles      = {'FinerioConnectWidget' => ['FinerioConnectWidget/Resources/**/*.{lproj,json,png,xcassets,plist,strings,ttf}']}
   end
   
   s.dependency 'Firebase/Analytics'

@@ -10,24 +10,24 @@ import FirebaseDatabase
 import UIKit
 
 internal class StartViewController: BaseViewController {
-    private var startViewModel: StartViewModel!
+    private var startViewModel: StartViewModel = StartViewModel()
 
     private lazy var countriesLabel: UILabel = setupTitleLabel()
     private lazy var subtitleLabel: UILabel = setupSubtitleLabel()
     private lazy var bodyLabel: UILabel = setupBodyLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
 
-    private let indicator = ActivityIndicatorView()
+//    private let indicator = ActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startViewModel = viewModel as? StartViewModel
+//        startViewModel = viewModel as? StartViewModel
         configureView()
     }
 
     private func configureView() {
-        title = startViewModel.getTitle()
+//        title = startViewModel.getTitle()
 
         [countriesLabel, subtitleLabel, bodyLabel, continueButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false

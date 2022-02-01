@@ -27,4 +27,10 @@ internal class PaddedTextField: UITextField {
         let bounds = super.editingRect(forBounds: bounds)
         return bounds.inset(by: padding)
     }
+    
+    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        // alignment for right view and size of the view
+        let rightBounds = CGRect(x: bounds.maxX - 42, y: 5, width: 35, height: 35);
+        return rightBounds
+    }
 }

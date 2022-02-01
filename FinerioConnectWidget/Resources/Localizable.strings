@@ -11,25 +11,47 @@
 "alert_button_cancel" = "Cancelar";
 "alert_button_error" = "Aceptar";
 "alert_button_ok" = "OK";
-"submit_label" = "Enviar información";
+"continue_button_title" = "Continuar";
 
 // Init Section
 "init_title" = "¡Hola René!";
 "init_subtitle" = "En ? queremos ofrecerte un mejor servicio.";
 
 // Banks Section
-"banks_title" = "Selecciona tu banco:";
-"countries_title" = "Selecciona tu país";
-"personal_bank_title" = "Banca Personal";
-"business_bank_title" = "Empresarial";
-"fiscal_title" = "Impuestos";
+"banks_header_title" = "Conecta de manera segura con tu institución";
+"banks_header_subtitle" = "Selecciona tu banco y autoriza la conexión";
+"select_country_label" = "Selecciona tu país";
+"personal_bank_type" = "Banca Personal";
+"business_bank_type" = "Empresarial";
+"fiscal_bank_type" = "Impuestos";
+"title_without_banks" = "No hay bancos disponibles";
 
-/*
-   Credential Section
- */
-"create_credential_title" = "Introduce los datos con los que accedes a la banca en línea web de ?";
-"privacy_terms_url" = "https://finerioconnect.com/privacy";
-"terms_and_conditions_url" = "https://finerioconnect.com/license";
+// Credentials Section
+"credentials_header_title" = "Autentificación";
+"credentials_header_subtitle" = "Introduce tus credenciales de banca en línea.";
+"plain_tyc_text" = "He leído y acepto los términos y condiciones.";
+"linked_tyc_text" = "términos y condiciones";
+"help_with_credentials_button" = "¿Dónde consigo mis credenciales?";
+"credentials_disclaimer_text" = "Conexión encriptada en modo lectura nunca tenemos acceso a tu dinero.";
+
+// Account Creation Section
+"sync_header_title" = "Espera un momento";
+"sync_header_subtitle" = "Este proceso puede tardar unos minutos";
+"encrypting_data" = "Encriptando tus datos...";
+
+// Account Status Section
+"bonding_header_title_success" = "¡Gracias!";
+"bonding_header_title_failure" = "Ups, algo salió mal";
+"bonding_header_subtitle_success" = "Tu cuenta ha sido correctamente agregada";
+"bonding_header_subtitle_failure" = "Tu cuenta no ha podido ser agregada";
+"bonding_description_success" = "¿Tienes cuenta en otro banco? Puedes agregarlas ahora mismo para obtener mayores beneficios.";
+"bonding_description_failure" = "Hubo un problema de conexión con tu banco. No has activado tu banca en línea o se requiere que hagas una configuración extra.";
+"failure_continue_title_button" = "Aceptar";
+"failure_exit_title_button" = "Salir";
+"success_continue_title_button" = "Agregar otra cuenta";
+"success_exit_title_button" = "Continuar proceso";
+
+
 
 // Error Codes
 "credentialWidgetService.create.widgetId.null" = "El Id del Widget es requerido";
@@ -46,6 +68,3 @@
 "error_unexpected" = "Unexpected error";
 "create_credential_title" = "Introduce los datos con los que accedes a la banca en línea web de ?";
 "general_error" = "Hubo un problema al crear la conexión a tu banco";
-
-// Account Status Section
-"synchronization_title" = "Agregando cuentas";

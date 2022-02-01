@@ -10,14 +10,14 @@ import UIKit
 extension UITextField {
     private func setPasswordToggleImage(_ button: UIButton) {
         let image = isSecureTextEntry ? Images.eyeClosed.image()?.withRenderingMode(.alwaysTemplate) : Images.eyeOpen.image()?.withRenderingMode(.alwaysTemplate)
-        button.imageView?.tintColor = Configuration.shared.palette.mainColor
+        button.imageView?.tintColor = Configuration.shared.palette.termsTextColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         button.setImage(image, for: .normal)
     }
 
     func enablePasswordToggle() {
         let button = UIButton(type: .custom)
         setPasswordToggleImage(button)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         button.frame = CGRect(x: CGFloat(frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
         button.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
         rightView = button
@@ -49,13 +49,18 @@ extension UITextField {
     }
 
     func setupRightImage(image: UIImage) {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let imageFrame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        let imageView = UIImageView(frame: imageFrame)
+        imageView.contentMode = .scaleAspectFit
         imageView.image = image
-        let imageContainerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        imageContainerView.contentMode = .center
+        
+        let viewFrame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        let imageContainerView = UIView(frame: viewFrame)
         imageContainerView.addSubview(imageView)
+        imageView.center = imageContainerView.center
+                
         rightView = imageContainerView
         rightViewMode = .always
-        tintColor = .lightGray
+        tintColor = Configuration.shared.palette.termsTextColor
     }
 }

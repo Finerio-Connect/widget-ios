@@ -1,23 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "eye_open.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "eye_open@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "eye_open@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "visibility_black_36dp.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
