@@ -39,6 +39,14 @@ class CountryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksCountryCellBackground.dynamicColor
+        countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor
+    }
+    
     func setCountry(_ country: Country) {
         self.country = country
         layoutViews()

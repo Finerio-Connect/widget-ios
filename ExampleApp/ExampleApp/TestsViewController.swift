@@ -18,8 +18,8 @@ class TestsViewController: UIViewController {
         configureFinerioConnectWidget()
         
         // Obtiene la vista requerida del FCWidget
-        let accountStatusView = FCAccountStatusView()
-        accountStatusView.delegate = self
+        let accountStatusView = FCBankSelectionView()
+//        accountStatusView.delegate = self
         
         view.addSubview(accountStatusView)
         accountStatusView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,14 +31,18 @@ class TestsViewController: UIViewController {
         ])
         
         // Inyecta los datos necesarios para la vista.
-        let bank = Bank(id: "1", name: "BBVA Bancomer", code: "BBVA", status: "Active")
-        accountStatusView.setBank(bank)
-        accountStatusView.setStatus(.success)
+//        let bank = Bank(id: "1", name: "BBVA Bancomer", code: "BBVA", status: "Active")
+//        accountStatusView.setBank(bank)
+//        accountStatusView.setStatus(.success)
     }
     
     func configureFinerioConnectWidget() {
         let singleton = FinerioConnectWidget.shared
         //        singleton.start(widgetId: "NOT_VALID_KEY",
+        
+        #warning("TESTING DARKMODE SINGLE VIEWS FLOW")
+
+        
         singleton.start(widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
                         customerName: "René Sandoval")
     }

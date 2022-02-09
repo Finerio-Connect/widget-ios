@@ -21,12 +21,26 @@ class BankTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         backgroundColor = .clear
-        accessoryType = .disclosureIndicator
+        
+        let disclosureIndicator = UIImageView(image: Images.disclosureIndicator.image())
+        disclosureIndicator.frame = CGRect(x: 0, y: 0, width: 6, height: 12)
+        accessoryView = disclosureIndicator
+        
         setupLayoutViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksListCellBackground.dynamicColor
+        lblTitle.textColor = palette.banksListCellTitle.dynamicColor
+        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
+        accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
     }
     
     func setupLayoutViews() {

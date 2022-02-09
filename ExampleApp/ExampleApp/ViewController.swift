@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        button.backgroundColor = .red //UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
         button.setTitle("Open SDK Account Aggregation", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
@@ -82,8 +82,12 @@ class ViewController: UIViewController {
 //            successAnimation: "successAnimation",
 //            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
         
-        
-        
+#warning("TESTING DARKMODE ALL-IN-ONE FLOW")
+//        let fcColor = FCColor(light: .cyan, dark: .blue)
+//        finerioConnectWidget.palette = Palette(bankSectionBackground: fcColor)
+
+//        let bankSectionStyle = BankSectionStyle(background: FCColor(light: .orange, dark: .brown))
+//        finerioConnectWidget.palette = Palette(bankSectionStyle: bankSectionStyle)
         
         finerioConnectWidget.start(
             widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
