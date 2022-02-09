@@ -18,7 +18,7 @@ class TestsViewController: UIViewController {
         configureFinerioConnectWidget()
         
         // Obtiene la vista requerida del FCWidget
-        let accountStatusView = FCBankSelectionView()
+        let accountStatusView = FCCredentialsFormView()
 //        accountStatusView.delegate = self
         
         view.addSubview(accountStatusView)
@@ -31,8 +31,8 @@ class TestsViewController: UIViewController {
         ])
         
         // Inyecta los datos necesarios para la vista.
-//        let bank = Bank(id: "1", name: "BBVA Bancomer", code: "BBVA", status: "Active")
-//        accountStatusView.setBank(bank)
+        let bank = Bank(id: "1", name: "BBVA Bancomer", code: "BBVA", status: "Active")
+        accountStatusView.setBank(bank)
 //        accountStatusView.setStatus(.success)
     }
     

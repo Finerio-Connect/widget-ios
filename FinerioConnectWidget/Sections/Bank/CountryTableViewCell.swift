@@ -39,14 +39,6 @@ class CountryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    override func tintColorDidChange() {
-        super.tintColorDidChange()
-        
-        let palette = Configuration.shared.palette
-        backgroundColor = palette.banksCountryCellBackground.dynamicColor
-        countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor
-    }
-    
     func setCountry(_ country: Country) {
         self.country = country
         layoutViews()
@@ -70,5 +62,19 @@ class CountryTableViewCell: UITableViewCell {
         stackView.trailingAnchor(equalTo: trailingAnchor, constant: -sideSpacing)
         stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
         stackView.bottomAnchor(equalTo: bottomAnchor)
+    }
+}
+
+// MARK: - Style
+extension CountryTableViewCell {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksCountryCellBackground.dynamicColor
+        countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor
     }
 }

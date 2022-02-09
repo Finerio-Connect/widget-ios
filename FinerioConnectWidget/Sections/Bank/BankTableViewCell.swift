@@ -33,16 +33,6 @@ class BankTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func tintColorDidChange() {
-        super.tintColorDidChange()
-        
-        let palette = Configuration.shared.palette
-        backgroundColor = palette.banksListCellBackground.dynamicColor
-        lblTitle.textColor = palette.banksListCellTitle.dynamicColor
-        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
-        accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
-    }
-    
     func setupLayoutViews() {
         let labelsStack = UIStackView(arrangedSubviews: [lblTitle])
         labelsStack.axis = .vertical
@@ -108,4 +98,18 @@ extension BankTableViewCell {
     }
 }
 
-
+// MARK: - Style
+extension BankTableViewCell {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksListCellBackground.dynamicColor
+        lblTitle.textColor = palette.banksListCellTitle.dynamicColor
+        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
+        accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
+    }
+}

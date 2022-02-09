@@ -89,32 +89,6 @@ public final class FCBankSelectionView: FCBaseView {
         super.draw(rect)
         print("--->DRAW")
     }
-    
-    public override func tintColorDidChange() {
-        super.tintColorDidChange()
-        print("--->TINT COLOR DID CHANGE")
-        
-        let palette = Configuration.shared.palette
-        
-        backgroundColor = palette.banksBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
-        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
-        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
-        
-        countriesSelectorView.selectorTitleLabel.textColor = palette.banksSelectCountryLabel.dynamicColor
-        countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
-        
-        bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
-        bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
-        let segmentedActiveTextColor = palette.banksSegmentedControlActiveText.dynamicColor
-        bankTypeSegment.setTitleTextAttributes([.foregroundColor: segmentedActiveTextColor], for: .selected)
-        let segmentedTextColor = palette.banksSegmentedControlText.dynamicColor
-        bankTypeSegment.setTitleTextAttributes([.foregroundColor: segmentedTextColor], for: .normal)
-        
-        tableView.separatorColor = palette.banksListCellSeparator.dynamicColor
-        separatorView.backgroundColor = palette.banksListCellSeparator.dynamicColor
-    }
 }
 
 // MARK: - UI
@@ -416,3 +390,35 @@ extension FCBankSelectionView: FCDropDownListViewDelegate {
     }
 }
 
+// MARK: - Style
+extension FCBankSelectionView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        print("--->TINT COLOR DID CHANGE")
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        
+        backgroundColor = palette.banksBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
+        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
+        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
+        
+        countriesSelectorView.selectorTitleLabel.textColor = palette.banksSelectCountryLabel.dynamicColor
+        countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
+        
+        bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
+        bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+        let segmentedActiveTextColor = palette.banksSegmentedControlActiveText.dynamicColor
+        bankTypeSegment.setTitleTextAttributes([.foregroundColor: segmentedActiveTextColor], for: .selected)
+        let segmentedTextColor = palette.banksSegmentedControlText.dynamicColor
+        bankTypeSegment.setTitleTextAttributes([.foregroundColor: segmentedTextColor], for: .normal)
+        
+        tableView.separatorColor = palette.banksListCellSeparator.dynamicColor
+        separatorView.backgroundColor = palette.banksListCellSeparator.dynamicColor
+        
+    }
+}

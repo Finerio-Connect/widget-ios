@@ -33,15 +33,6 @@ class CountriesSelectorView: UIView {
         super.init(coder: aDecoder)
         configureView()
     }
-    
-    override func tintColorDidChange() {
-        super.tintColorDidChange()
-        
-        let palette = Configuration.shared.palette
-        roundedContainerView.backgroundColor = palette.banksSelectorFieldBackground.dynamicColor
-        roundedContainerView.layer.borderColor = palette.banksSelectorFieldBorder.dynamicColor.cgColor
-        arrowImageView.tintColor = palette.banksCountrySelectorArrow.dynamicColor
-    }
 }
 
 // MARK: - Data
@@ -172,5 +163,20 @@ extension CountriesSelectorView {
         rotateArrow(.down)
         delegate?.countriesPickerView(countriesSelectorView: self,
                                       didTapSelector: countryNameLabel)
+    }
+}
+
+// MARK: - Style
+extension CountriesSelectorView {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        roundedContainerView.backgroundColor = palette.banksSelectorFieldBackground.dynamicColor
+        roundedContainerView.layer.borderColor = palette.banksSelectorFieldBorder.dynamicColor.cgColor
+        arrowImageView.tintColor = palette.banksCountrySelectorArrow.dynamicColor
     }
 }
