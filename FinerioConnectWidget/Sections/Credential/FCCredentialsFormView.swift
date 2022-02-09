@@ -247,7 +247,7 @@ extension FCCredentialsFormView {
         let linkAttributes: [NSAttributedString.Key : Any]
         
         let plainText = literal(.plainTyCText)!
-        let termsColor = Configuration.shared.palette.termsTextColor
+        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
         
@@ -261,7 +261,7 @@ extension FCCredentialsFormView {
         let urlWebSite = Constants.URLS.termsAndConditions
         attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
         
-        let linkColor = Configuration.shared.palette.mainTextColor
+        let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
         
         textView.heightAnchor(equalTo: 40)
@@ -533,5 +533,25 @@ extension FCCredentialsFormView: UITextFieldDelegate {
             return false
         }
         return true
+    }
+}
+
+// MARK: - Style
+extension FCCredentialsFormView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.credentialsBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.credentialsHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.credentialsHeaderSubtitle.dynamicColor
+        toggleSwitch.onTintColor = palette.credentialsSwitchOn.dynamicColor
+        continueButton.backgroundColor = palette.credentialsContinueButtonBackground.dynamicColor
+        continueButton.setTitleColor(palette.credentialsContinueButtonText.dynamicColor, for: .normal)
+        helpButton.backgroundColor = palette.credentialsHelpButtonBackground.dynamicColor
+        helpButton.setTitleColor(palette.credentialsHelpButtonText.dynamicColor, for: .normal)
     }
 }

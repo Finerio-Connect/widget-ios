@@ -38,12 +38,30 @@ final public class Palette: NSObject {
     public var banksSegmentedControlText: FCColor
     public var banksListCellBackground: FCColor
     public var banksListCellTitle: FCColor
-    public var banksListCellSubtitle: FCColor
+//    public var banksListCellSubtitle: FCColor // Hidden by now
     public var banksListCellSeparator: FCColor
     public var banksCountryCellTitle: FCColor
     public var banksListCellDisclosureIndicator: FCColor
     
-    
+    /// Credentials section
+    public var credentialsBackground: FCColor
+    public var credentialsHeaderTitle: FCColor
+    public var credentialsHeaderSubtitle: FCColor
+    public var credentialsFieldsTitle: FCColor
+    public var credentialsFieldsBorder: FCColor
+    public var credentialsFieldsBackground: FCColor
+    public var credentialsFieldsIcon: FCColor
+    public var credentialsFieldsText: FCColor
+    public var credentialsSwitchOn: FCColor
+    public var credentialsTermsPlainText: FCColor
+    public var credentialsTermsLinkedText: FCColor
+    public var credentialsContinueButtonBackground: FCColor
+    public var credentialsContinueButtonText: FCColor
+    public var credentialsHelpButtonBackground: FCColor
+    public var credentialsHelpButtonText: FCColor
+    public var credentialsBannerBorder: FCColor
+    public var credentialsBannerIcon: FCColor
+    public var credentialsBannerText: FCColor
     
     
 
@@ -73,12 +91,29 @@ final public class Palette: NSObject {
                 ,banksSegmentedControlText: FCColor = FCComponentsStyle.banksSegmentedControlText
                 ,banksListCellBackground: FCColor = FCComponentsStyle.banksListCellBackground
                 ,banksListCellTitle: FCColor = FCComponentsStyle.banksListCellTitle
-                ,banksListCellSubtitle: FCColor = FCComponentsStyle.banksListCellSubtitle
+//                ,banksListCellSubtitle: FCColor = FCComponentsStyle.banksListCellSubtitle
                 ,banksListCellSeparator: FCColor = FCComponentsStyle.banksListCellSeparator
                 ,banksCountryCellTitle: FCColor = FCComponentsStyle.banksCountryCellTitle
                 ,banksListCellDisclosureIndicator: FCColor = FCComponentsStyle.banksListCellDisclosureIndicator
                 
-                
+                ,credentialsBackground: FCColor = FCComponentsStyle.credentialsBackground
+                ,credentialsHeaderTitle: FCColor = FCComponentsStyle.credentialsHeaderTitle
+                ,credentialsHeaderSubtitle: FCColor = FCComponentsStyle.credentialsHeaderSubtitle
+                ,credentialsFieldsTitle: FCColor = FCComponentsStyle.credentialsFieldsTitle
+                ,credentialsFieldsBorder: FCColor = FCComponentsStyle.credentialsFieldsBorder
+                ,credentialsFieldsBackground: FCColor = FCComponentsStyle.credentialsFieldsBackground
+                ,credentialsFieldsIcon: FCColor = FCComponentsStyle.credentialsFieldsIcon
+                ,credentialsFieldsText: FCColor = FCComponentsStyle.credentialsFieldsText
+                ,credentialsSwitchOn: FCColor = FCComponentsStyle.credentialsSwitchOn
+                ,credentialsTermsPlainText: FCColor = FCComponentsStyle.credentialsTermsPlainText
+                ,credentialsTermsLinkedText: FCColor = FCComponentsStyle.credentialsTermsLinkedText
+                ,credentialsContinueButtonBackground: FCColor = FCComponentsStyle.credentialsContinueButtonBackground
+                ,credentialsContinueButtonText: FCColor = FCComponentsStyle.credentialsContinueButtonText
+                ,credentialsHelpButtonBackground: FCColor = FCComponentsStyle.credentialsHelpButtonBackground
+                ,credentialsHelpButtonText: FCColor = FCComponentsStyle.credentialsHelpButtonText
+                ,credentialsBannerBorder: FCColor = FCComponentsStyle.credentialsBannerBorder
+                ,credentialsBannerIcon: FCColor = FCComponentsStyle.credentialsBannerIcon
+                ,credentialsBannerText: FCColor = FCComponentsStyle.credentialsBannerText
                 
                 
                 
@@ -109,10 +144,38 @@ final public class Palette: NSObject {
         self.banksSegmentedControlText = banksSegmentedControlText
         self.banksListCellBackground = banksListCellBackground
         self.banksListCellTitle = banksListCellTitle
-        self.banksListCellSubtitle = banksListCellSubtitle
+//        self.banksListCellSubtitle = banksListCellSubtitle
         self.banksListCellSeparator = banksListCellSeparator
         self.banksCountryCellTitle = banksCountryCellTitle
         self.banksListCellDisclosureIndicator = banksListCellDisclosureIndicator
+        
+        self.credentialsBackground = credentialsBackground
+        self.credentialsHeaderTitle = credentialsHeaderTitle
+        self.credentialsHeaderSubtitle = credentialsHeaderSubtitle
+        self.credentialsFieldsTitle = credentialsFieldsTitle
+        self.credentialsFieldsBorder = credentialsFieldsBorder
+        self.credentialsFieldsBackground = credentialsFieldsBackground
+        self.credentialsFieldsIcon = credentialsFieldsIcon
+        self.credentialsFieldsText = credentialsFieldsText
+        self.credentialsSwitchOn = credentialsSwitchOn
+        self.credentialsTermsPlainText = credentialsTermsPlainText
+        self.credentialsTermsLinkedText = credentialsTermsLinkedText
+        self.credentialsContinueButtonBackground = credentialsContinueButtonBackground
+        self.credentialsContinueButtonText = credentialsContinueButtonText
+        self.credentialsHelpButtonBackground = credentialsHelpButtonBackground
+        self.credentialsHelpButtonText = credentialsHelpButtonText
+        self.credentialsBannerBorder = credentialsBannerBorder
+        self.credentialsBannerIcon = credentialsBannerIcon
+        self.credentialsBannerText = credentialsBannerText
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
 }

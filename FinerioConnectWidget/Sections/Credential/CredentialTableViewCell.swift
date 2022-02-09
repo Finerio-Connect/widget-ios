@@ -99,3 +99,17 @@ extension CredentialTableViewCell {
         mainStack.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -8)
     }
 }
+
+// MARK: - Style
+extension CredentialTableViewCell {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
+        inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor
+    }
+}

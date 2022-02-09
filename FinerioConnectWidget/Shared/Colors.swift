@@ -41,34 +41,28 @@ public struct FCComponentsStyle {
     public static let banksSegmentedControlText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
     public static let banksListCellBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
     public static let banksListCellTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksListCellSubtitle = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
+    //    public static let banksListCellSubtitle = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!) // Hidden by now
     public static let banksListCellSeparator = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
     public static let banksListCellDisclosureIndicator = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
     
-}
+    // CREDENTIALS SECTION
+    public static let credentialsBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+    public static let credentialsHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsFieldsTitle = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsFieldsBorder = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#1B1A21")!)
+    public static let credentialsFieldsBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#1B1A21")!)
+    public static let credentialsFieldsIcon = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsFieldsText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsSwitchOn = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let credentialsTermsPlainText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsTermsLinkedText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let credentialsContinueButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let credentialsContinueButtonText = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsHelpButtonBackground = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#373946")!)
+    public static let credentialsHelpButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsBannerBorder = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let credentialsBannerIcon = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let credentialsBannerText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
 
-public struct FCColor {
-    public let light: UIColor
-    public let dark: UIColor?
-    
-    /// Gets the color according to the theme set by the contextual trait collection
-    public var dynamicColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor { traitcollection in
-                if traitcollection.userInterfaceStyle == .dark {
-                    return self.dark ?? self.light
-                } else {
-                    return self.light
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-            return self.light
-        }
-    }
-    
-    public init(light: UIColor, dark: UIColor?) {
-        self.light = light
-        self.dark = dark
-    }
 }

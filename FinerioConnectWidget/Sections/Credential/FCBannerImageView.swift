@@ -78,4 +78,17 @@ extension FCBannerImageView {
     }
 }
 
-
+// MARK: - Style
+extension FCBannerImageView {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        bannerImageView.tintColor = palette.credentialsBannerBorder.dynamicColor
+        bannerLabel.textColor = palette.credentialsBannerText.dynamicColor
+        imageView.tintColor = palette.credentialsBannerIcon.dynamicColor
+    }
+}

@@ -34,3 +34,17 @@ internal class PaddedTextField: UITextField {
         return rightBounds
     }
 }
+
+// MARK: - Style
+extension PaddedTextField {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.credentialsFieldsBackground.dynamicColor
+        layer.borderColor = palette.credentialsFieldsBorder.dynamicColor.cgColor
+    }
+}

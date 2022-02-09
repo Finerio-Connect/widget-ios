@@ -109,7 +109,7 @@ extension BankTableViewCell {
         let palette = Configuration.shared.palette
         backgroundColor = palette.banksListCellBackground.dynamicColor
         lblTitle.textColor = palette.banksListCellTitle.dynamicColor
-        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
+//        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
         accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
     }
 }
