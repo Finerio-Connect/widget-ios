@@ -64,5 +64,22 @@ public struct FCComponentsStyle {
     public static let credentialsBannerBorder = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
     public static let credentialsBannerIcon = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
     public static let credentialsBannerText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-
+    
+    // ACCOUNT CREATION SECTION
+    public static let accountCreationBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+    public static let accountCreationHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountCreationHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountCreationStatusText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    
+    // ACCOUNT STATUS SECTION
+    public static let accountStatusBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+    public static let accountStatusHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountStatusHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountStatusBodyText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountStatusSuccessIcon = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let accountStatusFailureIcon = FCColor(light: UIColor(hex: "#F89A9A")!, dark: UIColor(hex: "#F89A9A")!)
+    public static let accountStatusContinueButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let accountStatusExitButtonBackground = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#373946")!)
+    public static let accountStatusContinueButtonText = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
+    public static let accountStatusExitButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
 }

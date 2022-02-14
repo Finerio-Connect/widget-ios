@@ -33,6 +33,9 @@ class ViewController: UIViewController {
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
+        
+#warning("TEST")
+        button.isHidden = true
 
         stackView.addArrangedSubview(button)
         NSLayoutConstraint.activate([

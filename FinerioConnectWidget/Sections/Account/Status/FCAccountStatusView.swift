@@ -74,7 +74,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.failureIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = UIColor(hex: "#F89A9A")
+        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusFailureIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionFailure)
         
         continueButton.setTitle(literal(.failureContinueTitleButton), for: .normal)
@@ -87,7 +87,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.successIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = Configuration.shared.palette.mainColor
+        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusSuccessIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionSuccess)
         
         continueButton.setTitle(literal(.successContinueTitleButton), for: .normal)
@@ -194,3 +194,23 @@ extension FCAccountStatusView {
     }
 }
 
+// MARK: - Style
+extension FCAccountStatusView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.accountStatusBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.accountStatusHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.accountStatusHeaderSubtitle.dynamicColor
+        bodyDescriptionLabel.textColor = palette.accountStatusBodyText.dynamicColor
+        continueButton.backgroundColor = palette.accountStatusContinueButtonBackground.dynamicColor
+        continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
+        exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
+        exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
+        
+    }
+}

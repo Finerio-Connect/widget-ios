@@ -63,6 +63,23 @@ final public class Palette: NSObject {
     public var credentialsBannerIcon: FCColor
     public var credentialsBannerText: FCColor
     
+    ///Account creation
+    public var accountCreationBackground: FCColor
+    public var accountCreationHeaderTitle: FCColor
+    public var accountCreationHeaderSubtitle: FCColor
+    public var accountCreationStatusText: FCColor
+    
+    /// Account status
+    public var accountStatusBackground: FCColor
+    public var accountStatusHeaderTitle: FCColor
+    public var accountStatusHeaderSubtitle: FCColor
+    public var accountStatusBodyText: FCColor
+    public var accountStatusSuccessIcon: FCColor
+    public var accountStatusFailureIcon: FCColor
+    public var accountStatusContinueButtonBackground: FCColor
+    public var accountStatusExitButtonBackground: FCColor
+    public var accountStatusContinueButtonText: FCColor
+    public var accountStatusExitButtonText: FCColor
     
 
     public init(mainColor: UIColor = Colors.mainColor,
@@ -115,8 +132,22 @@ final public class Palette: NSObject {
                 ,credentialsBannerIcon: FCColor = FCComponentsStyle.credentialsBannerIcon
                 ,credentialsBannerText: FCColor = FCComponentsStyle.credentialsBannerText
                 
+                ,accountCreationBackground: FCColor = FCComponentsStyle.accountCreationBackground
+                ,accountCreationHeaderTitle: FCColor = FCComponentsStyle.accountCreationHeaderTitle
+                ,accountCreationHeaderSubtitle: FCColor = FCComponentsStyle.accountCreationHeaderSubtitle
+                ,accountCreationStatusText: FCColor = FCComponentsStyle.accountCreationStatusText
                 
+                ,accountStatusBackground: FCColor = FCComponentsStyle.accountStatusBackground
+                ,accountStatusHeaderTitle: FCColor = FCComponentsStyle.accountStatusHeaderTitle
+                ,accountStatusHeaderSubtitle: FCColor = FCComponentsStyle.accountStatusHeaderSubtitle
                 
+                ,accountStatusBodyText: FCColor = FCComponentsStyle.accountStatusBodyText
+                ,accountStatusSuccessIcon: FCColor = FCComponentsStyle.accountStatusSuccessIcon
+                ,accountStatusFailureIcon: FCColor = FCComponentsStyle.accountStatusFailureIcon
+                ,accountStatusContinueButtonBackground: FCColor = FCComponentsStyle.accountStatusContinueButtonBackground
+                ,accountStatusExitButtonBackground: FCColor = FCComponentsStyle.accountStatusExitButtonBackground
+                ,accountStatusContinueButtonText: FCColor = FCComponentsStyle.accountStatusContinueButtonText
+                ,accountStatusExitButtonText: FCColor = FCComponentsStyle.accountStatusExitButtonText
     ) {
         self.mainColor = mainColor
         self.mainTextColor = mainTextColor
@@ -168,14 +199,21 @@ final public class Palette: NSObject {
         self.credentialsBannerIcon = credentialsBannerIcon
         self.credentialsBannerText = credentialsBannerText
         
+        self.accountCreationBackground = accountCreationBackground
+        self.accountCreationHeaderTitle = accountCreationHeaderTitle
+        self.accountCreationHeaderSubtitle = accountCreationHeaderSubtitle
+        self.accountCreationStatusText = accountCreationStatusText
         
+        self.accountStatusBackground = accountStatusBackground
+        self.accountStatusHeaderTitle = accountStatusHeaderTitle
+        self.accountStatusHeaderSubtitle = accountStatusHeaderSubtitle
         
-        
-        
-        
-        
-        
-        
-        
+        self.accountStatusBodyText = accountStatusBodyText
+        self.accountStatusSuccessIcon = accountStatusSuccessIcon
+        self.accountStatusFailureIcon = accountStatusFailureIcon
+        self.accountStatusContinueButtonBackground = accountStatusContinueButtonBackground
+        self.accountStatusExitButtonBackground = accountStatusExitButtonBackground
+        self.accountStatusContinueButtonText = accountStatusContinueButtonText
+        self.accountStatusExitButtonText = accountStatusExitButtonText
     }
 }

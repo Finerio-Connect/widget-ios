@@ -220,3 +220,19 @@ extension FCAccountCreationView {
         }
     }
 }
+
+// MARK: - Style
+extension FCAccountCreationView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        didChangeStyle()
+    }
+    
+    private func didChangeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.accountCreationBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.accountCreationHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.accountCreationHeaderSubtitle.dynamicColor
+        statusDescriptionLabel.textColor = palette.accountCreationStatusText.dynamicColor
+    }
+}
