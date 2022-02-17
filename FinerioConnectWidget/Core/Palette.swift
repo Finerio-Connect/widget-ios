@@ -10,14 +10,14 @@ import UIKit
 
 final public class Palette: NSObject {
     #warning("BORRAR")
-    public var mainColor: UIColor
-    public var mainTextColor: UIColor
-    public var mainSubTextColor: UIColor
-    public var bankCellDetailColor: UIColor
-    public var bankCellSeparatorColor: UIColor
-    public var termsTextColor: UIColor
-    public var borderTextField: UIColor
-    public var grayBackgroundColor: UIColor
+//    public var mainColor: UIColor
+//    public var mainTextColor: UIColor
+//    public var mainSubTextColor: UIColor
+//    public var bankCellDetailColor: UIColor
+//    public var bankCellSeparatorColor: UIColor
+//    public var termsTextColor: UIColor
+//    public var borderTextField: UIColor
+//    public var grayBackgroundColor: UIColor
     
     #warning("TESTING")
     ///Banks section
@@ -82,16 +82,17 @@ final public class Palette: NSObject {
     public var accountStatusExitButtonText: FCColor
     
 
-    public init(mainColor: UIColor = Colors.mainColor,
-                mainTextColor: UIColor = Colors.mainTextColor,
-                mainSubTextColor: UIColor = Colors.mainSubTextColor,
-                bankCellDetailColor: UIColor = Colors.bankCellDetailTextColor,
-                bankCellSeparatorColor: UIColor = Colors.bankCellSeparatorColor,
-                termsTextColor: UIColor = Colors.termsTextColor,
-                borderTextField: UIColor = Colors.borderTextField,
-                grayBackgroundColor: UIColor = Colors.grayBackgroundColor
+    public init(
+//        mainColor: UIColor = Colors.mainColor,
+//                mainTextColor: UIColor = Colors.mainTextColor,
+//                mainSubTextColor: UIColor = Colors.mainSubTextColor,
+//                bankCellDetailColor: UIColor = Colors.bankCellDetailTextColor,
+//                bankCellSeparatorColor: UIColor = Colors.bankCellSeparatorColor,
+//                termsTextColor: UIColor = Colors.termsTextColor,
+//                borderTextField: UIColor = Colors.borderTextField,
+//                grayBackgroundColor: UIColor = Colors.grayBackgroundColor
                 
-                ,banksBackground: FCColor = FCComponentsStyle.banksBackground
+                banksBackground: FCColor = FCComponentsStyle.banksBackground
                 ,banksHeaderTitle: FCColor = FCComponentsStyle.banksHeaderTitle
                 ,banksHeaderSubtitle: FCColor = FCComponentsStyle.banksHeaderSubtitle
                 ,banksHeaderIcon: FCColor = FCComponentsStyle.banksHeaderIcon
@@ -149,14 +150,14 @@ final public class Palette: NSObject {
                 ,accountStatusContinueButtonText: FCColor = FCComponentsStyle.accountStatusContinueButtonText
                 ,accountStatusExitButtonText: FCColor = FCComponentsStyle.accountStatusExitButtonText
     ) {
-        self.mainColor = mainColor
-        self.mainTextColor = mainTextColor
-        self.mainSubTextColor = mainSubTextColor
-        self.bankCellDetailColor = bankCellDetailColor
-        self.bankCellSeparatorColor = bankCellSeparatorColor
-        self.termsTextColor = termsTextColor
-        self.borderTextField = borderTextField
-        self.grayBackgroundColor = grayBackgroundColor
+//        self.mainColor = mainColor
+//        self.mainTextColor = mainTextColor
+//        self.mainSubTextColor = mainSubTextColor
+//        self.bankCellDetailColor = bankCellDetailColor
+//        self.bankCellSeparatorColor = bankCellSeparatorColor
+//        self.termsTextColor = termsTextColor
+//        self.borderTextField = borderTextField
+//        self.grayBackgroundColor = grayBackgroundColor
         
         self.banksBackground = banksBackground
         self.banksHeaderTitle = banksHeaderTitle

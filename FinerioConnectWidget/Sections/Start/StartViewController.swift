@@ -61,7 +61,7 @@ extension StartViewController {
         label.numberOfLines = 0
         label.text = "¡Hola \(Configuration.shared.customerName)!"
         label.font = .fcRegularFont(ofSize: 17)
-        label.textColor = Configuration.shared.palette.mainColor
+//        label.textColor = Configuration.shared.palette.mainColor
         return label
     }
 
@@ -70,7 +70,7 @@ extension StartViewController {
         label.numberOfLines = 0
         label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: literal(.companyName) ?? "")
         label.font = .fcBoldFont(ofSize: 20)
-        label.textColor = Configuration.shared.palette.mainTextColor
+//        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
 
@@ -79,14 +79,14 @@ extension StartViewController {
         label.numberOfLines = 0
         label.text = Constants.Texts.InitSection.bodyLabel
         label.font = .fcRegularFont(ofSize: 15)
-        label.textColor = Configuration.shared.palette.mainTextColor
+//        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
 
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.InitSection.titleButton, for: .normal)
-        button.backgroundColor = Configuration.shared.palette.mainColor
+//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
         button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)

@@ -13,16 +13,7 @@ internal class BaseViewController: UIViewController {
     weak var coordinator: Coordinator?
     weak var context: Context?
     
-    override open func viewDidLoad() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
-        view.backgroundColor = .clear
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    override open func viewDidLoad() {}
     
     func getConstraintConstant(firstValue: Double, secondValue: Double, value: Double = 0.0) -> CGFloat {
         if UIDevice.current.screenType == .iPhones_5_5s_5c_SE || UIDevice.current.screenType == .iPhones_6_6s_7_8 {

@@ -70,6 +70,7 @@ extension CountriesSelectorView {
         countryStackView.topAnchor(equalTo: topAnchor)
         countryStackView.leadingAnchor(equalTo: leadingAnchor)
         countryStackView.trailingAnchor(equalTo: trailingAnchor)
+        changeStyle()
     }
     
     private func commonSetupLabel() -> UILabel {
@@ -86,13 +87,13 @@ extension CountriesSelectorView {
         label.text = literal(.selectCountryLabel)
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
-        label.textColor = Configuration.shared.palette.mainTextColor
+//        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
     
     private func setupCountryLabel() -> UILabel {
         let label = commonSetupLabel()
-        label.textColor = UIColor(hex: Constants.Color.grayColor)
+//        label.textColor = UIColor(hex: Constants.Color.grayColor)
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcMediumFont(ofSize: CGFloat(fontSize))
         label.frame.size = label.intrinsicContentSize
@@ -116,7 +117,7 @@ extension CountriesSelectorView {
     
     private func setupRoundedContainerView() -> UIView {
         let roundedView = UIView()
-        roundedView.layer.borderColor = UIColor(hex: Constants.Color.grayColor)?.cgColor
+//        roundedView.layer.borderColor = UIColor(hex: Constants.Color.grayColor)?.cgColor
         roundedView.layer.borderWidth = CGFloat(1.0)
         roundedView.layer.cornerRadius = CGFloat(10.0)
         
@@ -170,10 +171,10 @@ extension CountriesSelectorView {
 extension CountriesSelectorView {
     override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         roundedContainerView.backgroundColor = palette.banksSelectorFieldBackground.dynamicColor
         roundedContainerView.layer.borderColor = palette.banksSelectorFieldBorder.dynamicColor.cgColor

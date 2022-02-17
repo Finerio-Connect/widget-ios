@@ -16,10 +16,15 @@ internal final class AppCoordinator: Coordinator {
     }
 
     func start() {
+        print("--->AppCoordinator: start()")
         let viewController = BankViewController()
 //        viewController.viewModel = BankViewModel()
         viewController.coordinator = self
         viewController.context = context
+        
+        print("--->AppCoordinator: BankViewController traitCollection: \(viewController.traitCollection)")
+        print("--->AppCoordinator: BankViewController View traitCollection: \(viewController.view.traitCollection)")
+        
         context?.push(viewController: viewController)
     }
 }

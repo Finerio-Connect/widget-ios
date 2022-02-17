@@ -25,7 +25,7 @@ internal class ExtraDataPickerDialog: GenericDialog {
     private lazy var acceptButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.BankSection.titleButton, for: .normal)
-        button.backgroundColor = Configuration.shared.palette.mainColor
+//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
         button.layer.masksToBounds = true
@@ -104,7 +104,7 @@ extension ExtraDataPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = extraData[row].value
-        pickerLabel?.textColor = Configuration.shared.palette.mainTextColor
+//        pickerLabel?.textColor = Configuration.shared.palette.mainTextColor
 
         return pickerLabel!
     }

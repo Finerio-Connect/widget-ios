@@ -33,12 +33,10 @@ public final class FCAccountCreationView: FCBaseView {
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //        configureView()
     }
     
     deinit {
@@ -50,6 +48,7 @@ public final class FCAccountCreationView: FCBaseView {
         super.configureView()
         trackEvent(eventName: Constants.Events.createCredential)
         setLayoutViews()
+        changeStyle()
     }
 }
 
@@ -93,7 +92,7 @@ extension FCAccountCreationView {
     
     private func setupStatusDescriptionLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = Configuration.shared.palette.mainTextColor
+//        label.textColor = Configuration.shared.palette.mainTextColor
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.text = literal(.encryptingData)
         label.numberOfLines = 0
@@ -225,10 +224,10 @@ extension FCAccountCreationView {
 extension FCAccountCreationView {
     public override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         backgroundColor = palette.accountCreationBackground.dynamicColor
         headerSectionView.titleLabel.textColor = palette.accountCreationHeaderTitle.dynamicColor

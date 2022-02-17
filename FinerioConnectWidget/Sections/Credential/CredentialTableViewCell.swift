@@ -55,7 +55,7 @@ extension CredentialTableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.textColor = Configuration.shared.palette.mainSubTextColor
+//        label.textColor = Configuration.shared.palette.mainSubTextColor
         return label
     }
     
@@ -67,10 +67,10 @@ extension CredentialTableViewCell {
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.isSecureTextEntry = false
-        textField.layer.borderColor = Configuration.shared.palette.borderTextField.cgColor
+//        textField.layer.borderColor = Configuration.shared.palette.borderTextField.cgColor
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
-        textField.textColor = Configuration.shared.palette.termsTextColor
+//        textField.textColor = Configuration.shared.palette.termsTextColor
         textField.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         textField.setupRightImage(image: Images.lockIcon.image()!)
         return textField
@@ -104,10 +104,10 @@ extension CredentialTableViewCell {
 extension CredentialTableViewCell {
     public override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
         inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor

@@ -39,10 +39,10 @@ internal class PaddedTextField: UITextField {
 extension PaddedTextField {
     public override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         backgroundColor = palette.credentialsFieldsBackground.dynamicColor
         layer.borderColor = palette.credentialsFieldsBorder.dynamicColor.cgColor

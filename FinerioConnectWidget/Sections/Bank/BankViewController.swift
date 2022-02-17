@@ -14,8 +14,7 @@ internal class BankViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        self.view.backgroundColor = .white
+        view.backgroundColor = FCComponentsStyle.viewControllersAIOBackground.dynamicColor
         
         bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)
@@ -26,34 +25,11 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        print("--->VC: TRAIT COLLECTION DID CHANGE")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // To enable the navBar
+        navigationController?.navigationBar.isHidden = false
     }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        print("--->VC: UPDATE VIEW CONSTRAINTS")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        print("--->VC: VIEW WILL LAYOUT SUBVIEWS")
-        if #available(iOS 13.0, *) {
-            #warning("TESTING")
-//            self.navigationController?.overrideUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle // Aqui no funciona
-//            self.overrideUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle // Funciona a medias
-//            self.view.overrideUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle //FUNCIONA A MEDIAS
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        print("--->VC: VIEW DID LAYOUT SUBVIEWS")
-    }
-    
-    
-    
 }
 
 //MARK: - FCBankSelectionView Delegate

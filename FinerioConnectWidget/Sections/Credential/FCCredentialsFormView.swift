@@ -53,12 +53,13 @@ public final class FCCredentialsFormView: FCBaseView {
     
     override func configureView() {
         super.configureView()
-        self.loadingView.backgroundColor = .white
+        self.loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
         
         trackEvent(eventName: Constants.Events.credentials)
         
         localHideKeyboardWhenTappedAround()
         addComponents()
+        changeStyle()
         observerServiceStatus()
     }
 }
@@ -274,7 +275,7 @@ extension FCCredentialsFormView {
     
     private func setupToggleSwitch() -> UISwitch {
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Configuration.shared.palette.mainColor
+//        toggleSwitch.onTintColor = Configuration.shared.palette.mainColor
         toggleSwitch.addTarget(self, action: #selector(toggleSwitchChanged), for: .valueChanged)
         return toggleSwitch
     }
@@ -282,7 +283,7 @@ extension FCCredentialsFormView {
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.continueButtonTitle, for: .normal)
-        button.backgroundColor = Configuration.shared.palette.mainColor
+//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
@@ -297,9 +298,9 @@ extension FCCredentialsFormView {
     private func setupHelpButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(literal(.helpWithCredentialsButton), for: .normal)
-        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
+//        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.heightAnchor(equalTo: 46)
-        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
+//        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
@@ -540,10 +541,10 @@ extension FCCredentialsFormView: UITextFieldDelegate {
 extension FCCredentialsFormView {
     public override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         backgroundColor = palette.credentialsBackground.dynamicColor
         headerSectionView.titleLabel.textColor = palette.credentialsHeaderTitle.dynamicColor

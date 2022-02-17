@@ -24,7 +24,7 @@ class CountryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .fcRegularFont(ofSize: 15)
-        label.textColor = Colors.bankCellDetailTextColor
+//        label.textColor = Colors.bankCellDetailTextColor
         return label
     }()
     
@@ -69,10 +69,10 @@ class CountryTableViewCell: UITableViewCell {
 extension CountryTableViewCell {
     override func tintColorDidChange() {
         super.tintColorDidChange()
-        didChangeStyle()
+        changeStyle()
     }
     
-    private func didChangeStyle() {
+    private func changeStyle() {
         let palette = Configuration.shared.palette
         backgroundColor = palette.banksCountryCellBackground.dynamicColor
         countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor

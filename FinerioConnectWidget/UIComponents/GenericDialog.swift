@@ -35,7 +35,7 @@ internal class GenericDialog: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         let crossImage = Images.cancelButton.image()?.withRenderingMode(.alwaysTemplate)
         button.setImage(crossImage, for: .normal)
-        button.tintColor = UIColor(hex: Constants.Color.segmentColor) //Configuration.shared.palette.mainColor
+//        button.tintColor = UIColor(hex: Constants.Color.segmentColor) //Configuration.shared.palette.mainColor
         button.addTarget(self, action: #selector(hide), for: .touchUpInside)
         button.heightAnchor(equalTo: 25)
         button.widthAnchor(equalTo: 25)
@@ -69,6 +69,8 @@ internal class GenericDialog: UIView {
         closeButton.topAnchor(equalTo: containerView.topAnchor, constant: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12.5)
         closeButton.trailingAnchor(equalTo: containerView.trailingAnchor, constant: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? -10 : -12.5)
 
+        changeStyle()
+        
         setupView()
     }
 
@@ -104,3 +106,15 @@ internal class GenericDialog: UIView {
     open func setupView() {}
 }
  
+// MARK: - Style
+extension GenericDialog {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let tintColor = FCComponentsStyle.genericDialogCloseButton.dynamicColor
+        closeButton.tintColor = tintColor
+    }
+}
