@@ -35,7 +35,6 @@ internal class GenericDialog: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         let crossImage = Images.cancelButton.image()?.withRenderingMode(.alwaysTemplate)
         button.setImage(crossImage, for: .normal)
-//        button.tintColor = UIColor(hex: Constants.Color.segmentColor) //Configuration.shared.palette.mainColor
         button.addTarget(self, action: #selector(hide), for: .touchUpInside)
         button.heightAnchor(equalTo: 25)
         button.widthAnchor(equalTo: 25)

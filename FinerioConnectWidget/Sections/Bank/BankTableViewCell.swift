@@ -84,7 +84,6 @@ extension BankTableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12)
-//        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
     
@@ -94,7 +93,6 @@ extension BankTableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 8 : 10)
-//        label.textColor = Configuration.shared.palette.bankCellDetailColor
         return label
     }
 }
@@ -110,7 +108,7 @@ extension BankTableViewCell {
         let palette = Configuration.shared.palette
         backgroundColor = palette.banksListCellBackground.dynamicColor
         lblTitle.textColor = palette.banksListCellTitle.dynamicColor
-//        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor
+//        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor // Not in use
         accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
     }
 }

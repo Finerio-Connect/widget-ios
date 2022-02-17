@@ -275,7 +275,6 @@ extension FCCredentialsFormView {
     
     private func setupToggleSwitch() -> UISwitch {
         let toggleSwitch = UISwitch()
-//        toggleSwitch.onTintColor = Configuration.shared.palette.mainColor
         toggleSwitch.addTarget(self, action: #selector(toggleSwitchChanged), for: .valueChanged)
         return toggleSwitch
     }
@@ -283,7 +282,6 @@ extension FCCredentialsFormView {
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.continueButtonTitle, for: .normal)
-//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
@@ -298,9 +296,7 @@ extension FCCredentialsFormView {
     private func setupHelpButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(literal(.helpWithCredentialsButton), for: .normal)
-//        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.heightAnchor(equalTo: 46)
-//        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
         button.layer.masksToBounds = true
         button.clipsToBounds = true

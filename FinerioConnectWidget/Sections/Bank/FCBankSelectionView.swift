@@ -110,7 +110,6 @@ extension FCBankSelectionView {
         segmentControl.heightAnchor(equalTo: bankSegmentedHeight)
         
         segmentControl.selectedSegmentIndex = indexBankType ?? 0
-//        segmentControl.backgroundColor = UIColor(hex: Constants.Color.segmentColor)
         return segmentControl
     }
     
@@ -140,7 +139,6 @@ extension FCBankSelectionView {
         tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
-//        tableView.separatorColor = Configuration.shared.palette.bankCellSeparatorColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorInsetReference = .fromCellEdges
         tableView.register(BankTableViewCell.self,
@@ -151,8 +149,6 @@ extension FCBankSelectionView {
     private func setupSeparatorView() -> UIView {
         let separatorView = UIView()
         separatorView.heightAnchor(equalTo: 0.25)
-//        let color = Configuration.shared.palette.bankCellSeparatorColor
-//        separatorView.backgroundColor = color
         return separatorView
     }
     
@@ -261,7 +257,7 @@ extension FCBankSelectionView {
     private func observerServiceStatus() {
         bankViewModel.serviceStatusHandler = { [weak self] status in
             guard let `self` = self else { return }
-
+            
             self.loadingView.stop()
             
             switch status {
@@ -352,28 +348,28 @@ extension FCBankSelectionView: FCDropDownListViewDelegate {
     internal func dropDownListView(_ dropDownListView: FCDropDownListView, didSelectRowAt indexPath: IndexPath) {
         let country = bankViewModel.countries[indexPath.row]
         Configuration.shared.countryCode = country.code
-
+        
         // If the bankTypeOptions is visible will reset to 'personal' bankType
         // Otherwise, will use the configured bankType.
         var bankType: BankType = .personal
         if !Configuration.shared.showBankTypeOptions {
             bankType = Configuration.shared.bankType
         }
-
+        
         // Updates the banktype
         Configuration.shared.bankType = bankType
-
+        
         // Updates the Current Country
         countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
         countriesSelectorView.countryNameLabel.text = country.name
-
+        
         // Updates the Segmented Control
         let selectedBankType = BankType.allCases.firstIndex(of: bankType)
         bankTypeSegment.selectedSegmentIndex = selectedBankType!
-
+        
         self.loadingView.start()
         bankViewModel.loadBanks()
-
+        
         dropDownListView.hide()
     }
     

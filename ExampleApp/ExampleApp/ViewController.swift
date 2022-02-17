@@ -70,12 +70,6 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
 
-//        finerioConnectWidget.palette = Palette(
-//            mainColor: UIColor(red: 0 / 255, green: 29 / 255, blue: 255 / 255, alpha: 1),
-//            backgroundColor: UIColor(red: 170 / 255, green: 162 / 255, blue: 162 / 255, alpha: 1),
-//            mainTextColor: UIColor(red: 218 / 255, green: 37 / 255, blue: 221 / 255, alpha: 1),
-//            termsTextColor: UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1))
-//
 //        finerioConnectWidget.animations = Animations(
 //            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
 //            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
@@ -84,10 +78,10 @@ class ViewController: UIViewController {
         
 #warning("TESTING DARKMODE ALL-IN-ONE FLOW")
 //        let fcColor = FCColor(light: .cyan, dark: .blue)
-//        finerioConnectWidget.palette = Palette(bankSectionBackground: fcColor)
-
-//        let bankSectionStyle = BankSectionStyle(background: FCColor(light: .orange, dark: .brown))
-//        finerioConnectWidget.palette = Palette(bankSectionStyle: bankSectionStyle)
+//        finerioConnectWidget.palette.banksBackground = fcColor
+//        finerioConnectWidget.palette.credentialsBackground = fcColor
+//        finerioConnectWidget.palette.accountCreationBackground = fcColor
+//        finerioConnectWidget.palette.accountStatusBackground = fcColor
         
         finerioConnectWidget.start(
             widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",

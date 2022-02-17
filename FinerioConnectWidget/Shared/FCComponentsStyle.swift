@@ -1,5 +1,5 @@
 //
-//  Colors.swift
+//  FCComponentsStyle.swift
 //  FinerioConnectWidget
 //
 //  Created by René Sandoval on 10/12/20.
@@ -8,18 +8,6 @@
 
 import Foundation
 import UIKit
-
-//public struct Colors {
-//    public static let mainColor: UIColor = .green // UIColor(hex: "#3FD8AF")!
-//    public static let backgroundColor: UIColor = .green // UIColor(hex: "#FFFFFF")!
-//    public static let mainTextColor: UIColor = .green // UIColor(hex: "#00113D")!
-//    public static let mainSubTextColor: UIColor = .green // UIColor(hex: "#333F65")!
-//    public static let bankCellDetailTextColor: UIColor = .green // UIColor(hex: "#989DB3")!
-//    public static let bankCellSeparatorColor: UIColor = .green // UIColor(hex: "E3E5EB")!
-//    public static let termsTextColor: UIColor = .green // UIColor(hex: "#656E8D")!
-//    public static let borderTextField: UIColor = .green // UIColor(hex: "#CACDD9")!
-//    public static let grayBackgroundColor: UIColor = .green // UIColor(hex:"F1F2F5")!
-//}
 
 public struct FCComponentsStyle {
     // BANKS SECTION
@@ -85,6 +73,13 @@ public struct FCComponentsStyle {
     
     // GENERIC DIALOG
     static let genericDialogCloseButton = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
+    
+    // EXTRA DATA DIALOG
+    static let extraDialogAcceptButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    static let extraDialogAcceptButtonTitle = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
+    static let extraDialogPickerText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
+    static let extraDialogBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+//    static let extraDialogPickerSelectedItem = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!) // NOT IN USE
     
     // ALL-IN-ONE FLOW VIEW CONTROLLERS
     static let viewControllersAIOBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)

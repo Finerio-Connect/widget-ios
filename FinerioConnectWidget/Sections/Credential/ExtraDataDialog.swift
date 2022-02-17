@@ -25,7 +25,6 @@ internal class ExtraDataPickerDialog: GenericDialog {
     private lazy var acceptButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.BankSection.titleButton, for: .normal)
-//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 14 : 16)
         button.layer.masksToBounds = true
@@ -66,6 +65,8 @@ internal class ExtraDataPickerDialog: GenericDialog {
         acceptButton.trailingAnchor(equalTo: pickerView.trailingAnchor, constant: -25)
         acceptButton.bottomAnchor(equalTo: containerView.bottomAnchor, constant: -25)
         acceptButton.addTarget(self, action: #selector(didSelectExtraData), for: .touchUpInside)
+        
+        changeStyle()
     }
 
     @objc private func didSelectExtraData() {
@@ -104,12 +105,25 @@ extension ExtraDataPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = extraData[row].value
-//        pickerLabel?.textColor = Configuration.shared.palette.mainTextColor
+        pickerLabel?.textColor = FCComponentsStyle.extraDialogPickerText.dynamicColor
 
         return pickerLabel!
     }
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentSelectedIndex = row
+    }
+}
+
+extension ExtraDataPickerDialog {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        acceptButton.backgroundColor = FCComponentsStyle.extraDialogAcceptButtonBackground.dynamicColor
+        acceptButton.tintColor = FCComponentsStyle.extraDialogAcceptButtonTitle.dynamicColor
+        containerView.backgroundColor = FCComponentsStyle.extraDialogBackground.dynamicColor
     }
 }

@@ -121,7 +121,6 @@ extension FCAccountStatusView {
     
     private func setupBodyDescriptionLabel() -> UILabel {
         let label = UILabel()
-//        label.textColor = Configuration.shared.palette.termsTextColor
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.numberOfLines = 0
@@ -143,15 +142,12 @@ extension FCAccountStatusView {
     
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
-//        button.backgroundColor = Configuration.shared.palette.mainColor
         button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
     
     private func setupExitButton() -> UIButton {
         let button = setupButton()
-//        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
-//        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
         button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
         return button
     }

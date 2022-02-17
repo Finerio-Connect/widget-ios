@@ -40,7 +40,7 @@
 		0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1A25F1795C00DA2D18 /* BaseViewController.swift */; };
 		0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1B25F1795D00DA2D18 /* Enums.swift */; };
 		0FCBAF9325F1795D00DA2D18 /* AnimationsURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */; };
-		0FCBAF9425F1795D00DA2D18 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1D25F1795D00DA2D18 /* Colors.swift */; };
+		0FCBAF9425F1795D00DA2D18 /* FCComponentsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF1D25F1795D00DA2D18 /* FCComponentsStyle.swift */; };
 		0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2125F1795D00DA2D18 /* CredentialTableViewCell.swift */; };
 		0FCBAF9725F1795D00DA2D18 /* CredentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */; };
 		0FCBAF9825F1795D00DA2D18 /* CredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */; };
@@ -156,7 +156,7 @@
 		0FCBAF1A25F1795C00DA2D18 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0FCBAF1B25F1795D00DA2D18 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsURLS.swift; sourceTree = "<group>"; };
-		0FCBAF1D25F1795D00DA2D18 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0FCBAF1D25F1795D00DA2D18 /* FCComponentsStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCComponentsStyle.swift; sourceTree = "<group>"; };
 		0FCBAF2125F1795D00DA2D18 /* CredentialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialTableViewCell.swift; sourceTree = "<group>"; };
 		0FCBAF2225F1795D00DA2D18 /* CredentialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialViewModel.swift; sourceTree = "<group>"; };
 		0FCBAF2325F1795D00DA2D18 /* CredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialViewController.swift; sourceTree = "<group>"; };
@@ -348,7 +348,7 @@
 			children = (
 				0FCBAF1C25F1795D00DA2D18 /* AnimationsURLS.swift */,
 				0FCBAF1A25F1795C00DA2D18 /* BaseViewController.swift */,
-				0FCBAF1D25F1795D00DA2D18 /* Colors.swift */,
+				0FCBAF1D25F1795D00DA2D18 /* FCComponentsStyle.swift */,
 				0FCBAF1825F1795C00DA2D18 /* Constants.swift */,
 				0FCBAF1B25F1795D00DA2D18 /* Enums.swift */,
 				7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */,
@@ -745,7 +745,7 @@
 				0FCBAF9925F1795D00DA2D18 /* CredentialCoordinator.swift in Sources */,
 				0FCBAFC125F1795D00DA2D18 /* RotationAnimation.swift in Sources */,
 				0FCBAFBD25F1795D00DA2D18 /* Reachability.swift in Sources */,
-				0FCBAF9425F1795D00DA2D18 /* Colors.swift in Sources */,
+				0FCBAF9425F1795D00DA2D18 /* FCComponentsStyle.swift in Sources */,
 				0FCBAFBA25F1795D00DA2D18 /* Background.swift in Sources */,
 				0FCBAFA125F1795D00DA2D18 /* AccountStatusViewModel.swift in Sources */,
 				0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */,

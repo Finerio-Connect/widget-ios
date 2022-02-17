@@ -47,7 +47,6 @@ extension FCBannerImageView {
     func setupImageView() -> UIImageView {
         let lockImageView = UIImageView(image: Images.lockIcon.image())
         lockImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-//        lockImageView.tintColor = Configuration.shared.palette.termsTextColor
         lockImageView.heightAnchor(equalTo: 15)
         lockImageView.widthAnchor(equalTo: 15)
         return lockImageView
@@ -58,7 +57,6 @@ extension FCBannerImageView {
         bannerLabel.text = literal(.credentialsDisclaimerText)
         bannerLabel.numberOfLines = 0
         bannerLabel.lineBreakMode = .byWordWrapping
-//        bannerLabel.textColor = Configuration.shared.palette.termsTextColor
         let fontSize = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         bannerLabel.font = .fcMediumFont(ofSize: CGFloat(fontSize))
         return bannerLabel
@@ -75,7 +73,6 @@ extension FCBannerImageView {
     func setupBannerImageView() -> UIImageView {
         let tapeBannerImg = Images.tapeBanner.image()
         let imageView = UIImageView(image: tapeBannerImg)
-//        imageView.tintColor = Configuration.shared.palette.mainColor
         return imageView
     }
 }

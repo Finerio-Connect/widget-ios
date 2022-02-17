@@ -24,7 +24,6 @@ class CountryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .fcRegularFont(ofSize: 15)
-//        label.textColor = Colors.bankCellDetailTextColor
         return label
     }()
     

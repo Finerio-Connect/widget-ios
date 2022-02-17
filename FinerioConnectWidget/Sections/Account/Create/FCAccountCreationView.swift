@@ -92,7 +92,6 @@ extension FCAccountCreationView {
     
     private func setupStatusDescriptionLabel() -> UILabel {
         let label = UILabel()
-//        label.textColor = Configuration.shared.palette.mainTextColor
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.text = literal(.encryptingData)
         label.numberOfLines = 0
