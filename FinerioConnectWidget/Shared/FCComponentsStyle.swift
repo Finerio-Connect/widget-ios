@@ -80,7 +80,7 @@ public struct FCComponentsStyle {
     static let extraDialogAcceptButtonTitle = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
     static let extraDialogPickerText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
     static let extraDialogBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-//    static let extraDialogPickerSelectedItem = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!) // NOT IN USE
+    //    static let extraDialogPickerSelectedItem = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!) // NOT IN USE
     
     // ALL-IN-ONE FLOW VIEW CONTROLLERS
     static let viewControllersAIOBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)

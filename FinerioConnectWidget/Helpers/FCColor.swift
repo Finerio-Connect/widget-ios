@@ -39,22 +39,6 @@ public struct FCColor {
         }
     }
     
-//    /// Gets the color according to the theme set by the contextual trait collection
-//    public var dynamicColor: UIColor {
-//        if #available(iOS 13.0, *) {
-//            return UIColor { traitcollection in
-//                if traitcollection.userInterfaceStyle == .dark {
-//                    return self.dark ?? self.light
-//                } else {
-//                    return self.light
-//                }
-//            }
-//        } else {
-//            // Fallback on earlier versions
-//            return self.light
-//        }
-//    }
-    
     public init(light: UIColor, dark: UIColor?) {
         self.light = light
         self.dark = dark
