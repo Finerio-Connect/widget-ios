@@ -81,7 +81,7 @@ extension  FCCredentialsFormView {
 extension FCCredentialsFormView {
     @objc private func didButtonHelp() {
         DispatchQueue.main.async {
-            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentials.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
             self.helpDialog.show()
         }
     }
@@ -542,6 +542,9 @@ extension FCCredentialsFormView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
+        
+        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        
         backgroundColor = palette.credentialsBackground.dynamicColor
         headerSectionView.titleLabel.textColor = palette.credentialsHeaderTitle.dynamicColor
         headerSectionView.descriptionLabel.textColor = palette.credentialsHeaderSubtitle.dynamicColor

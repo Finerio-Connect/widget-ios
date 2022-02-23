@@ -18,6 +18,12 @@ public enum ServiceStatus {
     case error
 }
 
+public enum Theme: Int {
+    case automatic = 0
+    case light = 1
+    case dark = 2
+}
+
 enum FieldType: String {
     case text = "TEXT"
     case password = "PASSWORD"

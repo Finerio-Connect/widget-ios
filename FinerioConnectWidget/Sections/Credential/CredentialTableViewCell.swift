@@ -22,6 +22,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         setupLayoutViews()
+        changeStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +34,13 @@ internal class CredentialTableViewCell: UITableViewCell {
 extension CredentialTableViewCell {
     func setup(with field: BankField) {
         titleLabel.text = field.friendlyName
-        inputTexfield.placeholder = field.friendlyName
+        
+        let palette = Configuration.shared.palette
+        inputTexfield.attributedPlaceholder = NSAttributedString (
+            string: field.friendlyName,
+            attributes: [.foregroundColor: palette.credentialsFieldsTextPlaceholder.dynamicColor]
+        )
+        
         inputTexfield.id = field.name
       
         if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {

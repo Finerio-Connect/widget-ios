@@ -81,7 +81,7 @@ internal struct Constants {
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
         static var bankImageShield = "\(cdnWidget)/rounded_logos/bank_\(Constants.Placeholders.bankCode)_shield.png"
-        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
+        static var helpWithCredentials = "\(cdnWidget)/help_images/bank_\(Constants.Placeholders.bankCode)_help.png"
     }
 
     /// Keys

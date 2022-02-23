@@ -38,6 +38,7 @@ final public class Palette: NSObject {
     public var credentialsHeaderSubtitle: FCColor
     public var credentialsFieldsTitle: FCColor
     public var credentialsFieldsBorder: FCColor
+    public var credentialsFieldsTextPlaceholder: FCColor
     public var credentialsFieldsBackground: FCColor
     public var credentialsFieldsIcon: FCColor
     public var credentialsFieldsText: FCColor
@@ -99,6 +100,7 @@ final public class Palette: NSObject {
         ,credentialsHeaderSubtitle: FCColor = FCComponentsStyle.credentialsHeaderSubtitle
         ,credentialsFieldsTitle: FCColor = FCComponentsStyle.credentialsFieldsTitle
         ,credentialsFieldsBorder: FCColor = FCComponentsStyle.credentialsFieldsBorder
+        ,credentialsFieldsTextPlaceholder: FCColor = FCComponentsStyle.credentialsFieldsTextPlaceholder
         ,credentialsFieldsBackground: FCColor = FCComponentsStyle.credentialsFieldsBackground
         ,credentialsFieldsIcon: FCColor = FCComponentsStyle.credentialsFieldsIcon
         ,credentialsFieldsText: FCColor = FCComponentsStyle.credentialsFieldsText
@@ -141,6 +143,7 @@ final public class Palette: NSObject {
         self.banksCountrySelectorArrow = banksCountrySelectorArrow
         self.banksCountryCellBackground = banksCountryCellBackground
         self.banksSelectorFieldBorder = banksSelectorFieldBorder
+        self.credentialsFieldsTextPlaceholder = credentialsFieldsTextPlaceholder
         self.banksSegmentedControlBackground = banksSegmentedControlBackground
         self.banksSegmentedControlActiveItem = banksSegmentedControlActiveItem
         self.banksSegmentedControlActiveText = banksSegmentedControlActiveText

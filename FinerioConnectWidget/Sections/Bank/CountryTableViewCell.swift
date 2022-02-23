@@ -41,6 +41,7 @@ class CountryTableViewCell: UITableViewCell {
     func setCountry(_ country: Country) {
         self.country = country
         layoutViews()
+        changeStyle()
     }
     
     private func layoutViews() {

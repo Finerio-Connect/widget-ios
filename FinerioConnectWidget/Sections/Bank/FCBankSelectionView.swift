@@ -110,6 +110,8 @@ extension FCBankSelectionView {
         segmentControl.heightAnchor(equalTo: bankSegmentedHeight)
         
         segmentControl.selectedSegmentIndex = indexBankType ?? 0
+        segmentControl.removeBackgroundShadow()
+        
         return segmentControl
     }
     
@@ -388,6 +390,8 @@ extension FCBankSelectionView {
     private func changeStyle() {
         let palette = Configuration.shared.palette
         
+        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        
         backgroundColor = palette.banksBackground.dynamicColor
         headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
         headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
@@ -398,8 +402,13 @@ extension FCBankSelectionView {
         countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
         
         bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
-        bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
         
+        if #available(iOS 13.0, *) {
+            bankTypeSegment.selectedSegmentTintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+        } else {
+            bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+        }
+
         bankTypeSegment = setupTextAttributesForSegmentControl(bankTypeSegment)
         
         tableView.separatorColor = palette.banksListCellSeparator.dynamicColor

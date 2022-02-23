@@ -64,6 +64,8 @@ class ViewController: UIViewController {
         /// Bank settings
 //        finerioConnectWidget.showBankTypeOptions = true
 //        finerioConnectWidget.bankType = .personal
+        /// Theme appearance
+        finerioConnectWidget.theme = .automatic
         
         
 
@@ -77,7 +79,7 @@ class ViewController: UIViewController {
 //            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
         
 #warning("TESTING DARKMODE ALL-IN-ONE FLOW")
-//        let fcColor = FCColor(light: .cyan, dark: .blue)
+//        let fcColor = FCColor(light: .yellow, dark: .purple)
 //        finerioConnectWidget.palette.banksBackground = fcColor
 //        finerioConnectWidget.palette.credentialsBackground = fcColor
 //        finerioConnectWidget.palette.accountCreationBackground = fcColor

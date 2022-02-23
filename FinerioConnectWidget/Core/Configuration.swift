@@ -33,4 +33,5 @@ internal final class Configuration {
     var animations = Animations()
     var font: String? = nil ?? Constants.Fonts.defaultFontName
     let app: AppProtocol = App()
+    var theme: Theme = .light
 }

@@ -69,7 +69,13 @@ public final class FinerioConnectWidget: NSObject {
             configuration.bankType = bankType
         }
     }
-
+    
+    public var theme: Theme = .light {
+        didSet {
+            configuration.theme = theme
+        }
+    }
+    
     public var showCountryOptions: Bool = true {
         didSet {
             configuration.showCountryOptions = showCountryOptions
