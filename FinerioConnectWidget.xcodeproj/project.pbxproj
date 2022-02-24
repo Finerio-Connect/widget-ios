@@ -108,6 +108,7 @@
 		7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */; };
 		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
 		7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */; };
+		7A5CC31C27C6FE7E0071AE7D /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */; };
 		7A73CA1D279A40E800DF418C /* FCDropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */; };
 		7A73CA1F279A47CB00DF418C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */; };
 		7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */; };
@@ -228,6 +229,7 @@
 		7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBannerImageView.swift; sourceTree = "<group>"; };
 		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
 		7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDropDownListView.swift; sourceTree = "<group>"; };
 		7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		7A79CB912751ACDB00B7F60D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				7A01BBF22783C72600D3DC96 /* UIApplication+Extensions.swift */,
 				7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */,
 				7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */,
+				7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */,
 				0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */,
 				0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */,
+				7A5CC31C27C6FE7E0071AE7D /* UIAlertController+Extensions.swift in Sources */,
 				0FCBAFC325F1795D00DA2D18 /* StrokeAnimation.swift in Sources */,
 				0FCBAF8625F1795D00DA2D18 /* JSONMappable.swift in Sources */,
 				7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */,

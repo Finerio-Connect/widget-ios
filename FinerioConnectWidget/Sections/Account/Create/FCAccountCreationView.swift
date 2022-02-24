@@ -131,6 +131,11 @@ extension FCAccountCreationView {
     private func showAlertToken() {
         let alert = UIAlertController(title: Constants.Texts.AccountSection.titleAlertToken, message: Constants.Texts.AccountSection.labelAlertToken, preferredStyle: .alert)
         
+        if #available(iOS 13.0, *) {
+            let theme = Configuration.shared.theme
+            alert.setTheme(theme)
+        }
+        
         alert.addTextField { textfield in
             textfield.keyboardType = .numberPad
         }

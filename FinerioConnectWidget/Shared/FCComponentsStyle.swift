@@ -72,6 +72,9 @@ public struct FCComponentsStyle {
     public static let accountStatusContinueButtonText = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
     public static let accountStatusExitButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
     
+    // STATUS BAR
+    public static let statusBarBackground = FCColor(light: .yellow, dark: .purple)
+    
     // GENERIC DIALOG
     static let genericDialogCloseButton = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
     
@@ -83,7 +86,7 @@ public struct FCComponentsStyle {
     //    static let extraDialogPickerSelectedItem = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!) // NOT IN USE
     
     // ALL-IN-ONE FLOW VIEW CONTROLLERS
-    static let viewControllersAIOBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+    public static let viewControllersAIOBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
     
     // FULL LOADER VIEW
     static let fullLoaderViewBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)

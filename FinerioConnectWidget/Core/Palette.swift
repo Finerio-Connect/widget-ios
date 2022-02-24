@@ -71,6 +71,12 @@ final public class Palette: NSObject {
     public var accountStatusContinueButtonText: FCColor
     public var accountStatusExitButtonText: FCColor
     
+    /// Status bar
+    public var statusBarBackground: FCColor
+    
+    ///AIO ViewController
+    public var viewControllersAIOBackground: FCColor
+    
     
     public init(
         banksBackground: FCColor = FCComponentsStyle.banksBackground
@@ -131,6 +137,9 @@ final public class Palette: NSObject {
         ,accountStatusExitButtonBackground: FCColor = FCComponentsStyle.accountStatusExitButtonBackground
         ,accountStatusContinueButtonText: FCColor = FCComponentsStyle.accountStatusContinueButtonText
         ,accountStatusExitButtonText: FCColor = FCComponentsStyle.accountStatusExitButtonText
+        
+        ,statusBarBackground: FCColor = FCComponentsStyle.statusBarBackground
+        ,viewControllersAIOBackground: FCColor = FCComponentsStyle.viewControllersAIOBackground
     ) {
         self.banksBackground = banksBackground
         self.banksHeaderTitle = banksHeaderTitle
@@ -190,5 +199,8 @@ final public class Palette: NSObject {
         self.accountStatusExitButtonBackground = accountStatusExitButtonBackground
         self.accountStatusContinueButtonText = accountStatusContinueButtonText
         self.accountStatusExitButtonText = accountStatusExitButtonText
+        
+        self.statusBarBackground = statusBarBackground
+        self.viewControllersAIOBackground = viewControllersAIOBackground
     }
 }

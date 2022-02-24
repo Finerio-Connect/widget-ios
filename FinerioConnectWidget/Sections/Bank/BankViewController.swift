@@ -10,7 +10,7 @@ import UIKit
 
 internal class BankViewController: BaseViewController {
     // Components
-    private var bankSelectionView: FCBankSelectionView! // = FCBankSelectionView()
+    private var bankSelectionView: FCBankSelectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
