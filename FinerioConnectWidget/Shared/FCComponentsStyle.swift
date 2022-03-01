@@ -73,7 +73,7 @@ public struct FCComponentsStyle {
     public static let accountStatusExitButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
     
     // STATUS BAR
-    public static let statusBarBackground = FCColor(light: .yellow, dark: .purple)
+    public static let statusBarBackground = FCColor(light: .clear, dark: .clear)
     
     // GENERIC DIALOG
     static let genericDialogCloseButton = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)

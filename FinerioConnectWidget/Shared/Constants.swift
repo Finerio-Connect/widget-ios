@@ -129,11 +129,6 @@ internal struct Constants {
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
     }
 
-//    struct Color {
-//        static let grayColor = "#989DB3"
-//        static let segmentColor = "#EEEEF0"
-//    }
-
     struct Events {
         static let widgetId = "Widget ID"
         static let banks = "View: Banks"
