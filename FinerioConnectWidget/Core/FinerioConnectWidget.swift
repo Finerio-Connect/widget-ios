@@ -132,7 +132,11 @@ extension FinerioConnectWidget {
     
     private func mixpanelConfigure() {
         Mixpanel.initialize(token: environment == .sandbox ? Constants.Keys.sandboxMixpanelToken : Constants.Keys.productionMixpanelToken)
-        Mixpanel.mainInstance().registerSuperProperties([Constants.Events.widgetId: Configuration.shared.widgetId])
+        let superProperties = [
+            Constants.Events.widgetId: Configuration.shared.widgetId,
+            Constants.Events.appName: Constants.SuperPropertiesValues.appName
+        ]
+        Mixpanel.mainInstance().registerSuperProperties(superProperties)
         if logLevel == .debug { Mixpanel.mainInstance().loggingEnabled = true }
         logInfo("Mixpanel Configuration")
     }

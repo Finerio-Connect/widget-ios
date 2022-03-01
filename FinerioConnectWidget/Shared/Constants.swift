@@ -137,5 +137,10 @@ internal struct Constants {
         static let createCredential = "Create credential"
         static let credentialSuccess = "Credential success"
         static let credentialFailure = "Credential failure"
+        static let appName = "APP Name"
+    }
+    
+    struct SuperPropertiesValues {
+        static let appName = "WidgetMOBILE"
     }
 }
