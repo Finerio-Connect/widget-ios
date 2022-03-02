@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        button.backgroundColor = .red //UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
         button.setTitle("Open SDK Account Aggregation", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
@@ -64,25 +64,28 @@ class ViewController: UIViewController {
         /// Bank settings
 //        finerioConnectWidget.showBankTypeOptions = true
 //        finerioConnectWidget.bankType = .personal
+        /// Theme appearance
+//        finerioConnectWidget.theme = .automatic
         
         
 
 //        finerioConnectWidget.environment = .production
         finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
 
-//        finerioConnectWidget.palette = Palette(
-//            mainColor: UIColor(red: 0 / 255, green: 29 / 255, blue: 255 / 255, alpha: 1),
-//            backgroundColor: UIColor(red: 170 / 255, green: 162 / 255, blue: 162 / 255, alpha: 1),
-//            mainTextColor: UIColor(red: 218 / 255, green: 37 / 255, blue: 221 / 255, alpha: 1),
-//            termsTextColor: UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1))
-//
 //        finerioConnectWidget.animations = Animations(
 //            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
 //            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
 //            successAnimation: "successAnimation",
 //            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
         
-        
+//        let fcColor = FCColor(light: .yellow, dark: .purple)
+//        finerioConnectWidget.palette.banksBackground = fcColor
+//        finerioConnectWidget.palette.credentialsBackground = fcColor
+//        finerioConnectWidget.palette.accountCreationBackground = fcColor
+//        finerioConnectWidget.palette.accountStatusBackground = fcColor
+//        finerioConnectWidget.palette.statusBarBackground = fcColor
+//        finerioConnectWidget.palette.viewControllersAIOBackground = fcColor
+
         
         
         finerioConnectWidget.start(
@@ -91,8 +94,6 @@ class ViewController: UIViewController {
             presentingViewController: self)
     }
 }
-
-
 
 
 

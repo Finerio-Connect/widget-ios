@@ -33,12 +33,10 @@ public final class FCAccountCreationView: FCBaseView {
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //        configureView()
     }
     
     deinit {
@@ -50,6 +48,7 @@ public final class FCAccountCreationView: FCBaseView {
         super.configureView()
         trackEvent(eventName: Constants.Events.createCredential)
         setLayoutViews()
+        changeStyle()
     }
 }
 
@@ -93,7 +92,6 @@ extension FCAccountCreationView {
     
     private func setupStatusDescriptionLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = Configuration.shared.palette.mainTextColor
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         label.text = literal(.encryptingData)
         label.numberOfLines = 0
@@ -132,6 +130,11 @@ extension FCAccountCreationView {
 extension FCAccountCreationView {
     private func showAlertToken() {
         let alert = UIAlertController(title: Constants.Texts.AccountSection.titleAlertToken, message: Constants.Texts.AccountSection.labelAlertToken, preferredStyle: .alert)
+        
+        if #available(iOS 13.0, *) {
+            let theme = Configuration.shared.theme
+            alert.setTheme(theme)
+        }
         
         alert.addTextField { textfield in
             textfield.keyboardType = .numberPad
@@ -218,5 +221,21 @@ extension FCAccountCreationView {
                 self.showAlertToken()
             }
         }
+    }
+}
+
+// MARK: - Style
+extension FCAccountCreationView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.accountCreationBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.accountCreationHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.accountCreationHeaderSubtitle.dynamicColor
+        statusDescriptionLabel.textColor = palette.accountCreationStatusText.dynamicColor
     }
 }

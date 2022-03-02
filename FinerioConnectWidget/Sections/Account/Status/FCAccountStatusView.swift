@@ -40,6 +40,7 @@ public final class FCAccountStatusView: FCBaseView {
         super.configureView()
         addComponents()
         setLayoutViews()
+        changeStyle()
     }
 }
 
@@ -74,7 +75,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.failureIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = UIColor(hex: "#F89A9A")
+        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusFailureIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionFailure)
         
         continueButton.setTitle(literal(.failureContinueTitleButton), for: .normal)
@@ -87,7 +88,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.successIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = Configuration.shared.palette.mainColor
+        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusSuccessIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionSuccess)
         
         continueButton.setTitle(literal(.successContinueTitleButton), for: .normal)
@@ -120,7 +121,6 @@ extension FCAccountStatusView {
     
     private func setupBodyDescriptionLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = Configuration.shared.palette.termsTextColor
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
         label.numberOfLines = 0
@@ -142,15 +142,12 @@ extension FCAccountStatusView {
     
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
-        button.backgroundColor = Configuration.shared.palette.mainColor
         button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
     
     private func setupExitButton() -> UIButton {
         let button = setupButton()
-        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
-        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
         button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
         return button
     }
@@ -194,3 +191,23 @@ extension FCAccountStatusView {
     }
 }
 
+// MARK: - Style
+extension FCAccountStatusView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.accountStatusBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.accountStatusHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.accountStatusHeaderSubtitle.dynamicColor
+        bodyDescriptionLabel.textColor = palette.accountStatusBodyText.dynamicColor
+        continueButton.backgroundColor = palette.accountStatusContinueButtonBackground.dynamicColor
+        continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
+        exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
+        exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
+        
+    }
+}

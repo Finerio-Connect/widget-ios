@@ -24,7 +24,6 @@ class CountryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .fcRegularFont(ofSize: 15)
-        label.textColor = Colors.bankCellDetailTextColor
         return label
     }()
     
@@ -42,6 +41,7 @@ class CountryTableViewCell: UITableViewCell {
     func setCountry(_ country: Country) {
         self.country = country
         layoutViews()
+        changeStyle()
     }
     
     private func layoutViews() {
@@ -62,5 +62,19 @@ class CountryTableViewCell: UITableViewCell {
         stackView.trailingAnchor(equalTo: trailingAnchor, constant: -sideSpacing)
         stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
         stackView.bottomAnchor(equalTo: bottomAnchor)
+    }
+}
+
+// MARK: - Style
+extension CountryTableViewCell {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksCountryCellBackground.dynamicColor
+        countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor
     }
 }

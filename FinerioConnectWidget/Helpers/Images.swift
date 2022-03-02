@@ -31,4 +31,5 @@ extension Images {
     static let tapeBanner = Images("tape_banner")
     static let successIcon = Images("success_icon")
     static let failureIcon = Images("failure_icon")
+    static let disclosureIndicator = Images("disclosure_indicator")
 }

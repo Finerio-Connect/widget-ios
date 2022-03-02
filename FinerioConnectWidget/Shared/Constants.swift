@@ -81,7 +81,7 @@ internal struct Constants {
         static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
         static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
         static var bankImageShield = "\(cdnWidget)/rounded_logos/bank_\(Constants.Placeholders.bankCode)_shield.png"
-        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_help.gif"
+        static var helpWithCredentials = "\(cdnWidget)/help_images/bank_\(Constants.Placeholders.bankCode)_help.png"
     }
 
     /// Keys
@@ -129,11 +129,6 @@ internal struct Constants {
         static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
     }
 
-    struct Color {
-        static let grayColor = "#989DB3"
-        static let segmentColor = "#EEEEF0"
-    }
-
     struct Events {
         static let widgetId = "Widget ID"
         static let banks = "View: Banks"
@@ -142,5 +137,10 @@ internal struct Constants {
         static let createCredential = "Create credential"
         static let credentialSuccess = "Credential success"
         static let credentialFailure = "Credential failure"
+        static let appName = "APP Name"
+    }
+    
+    struct SuperPropertiesValues {
+        static let appName = "WidgetMOBILE"
     }
 }

@@ -47,7 +47,7 @@ public final class FCBankSelectionView: FCBaseView {
         
         trackEvent(eventName: Constants.Events.banks)
         
-        self.loadingView.backgroundColor = .white
+        self.loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
         self.loadingView.start()
         
         observerServiceStatus()
@@ -58,6 +58,7 @@ public final class FCBankSelectionView: FCBaseView {
         bankViewModel.loadBanks()
         
         addComponents()
+        changeStyle()
         setLayoutLoadingIndicator()
     }
 }
@@ -94,12 +95,12 @@ extension FCBankSelectionView {
     }
     
     private func setupBankTypeSegment() -> UISegmentedControl {
-        let segmentControl = UISegmentedControl(items: [literal(.personalBankType)!,
+        var segmentControl = UISegmentedControl(items: [literal(.personalBankType)!,
                                                         literal(.businessBankType)!,
                                                         literal(.fiscalBankType)!])
         
-        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
-        segmentControl.setTitleTextAttributes([.font: UIFont.fcMediumFont(ofSize: fontSize)], for: .normal)
+        segmentControl = setupTextAttributesForSegmentControl(segmentControl)
+        
         segmentControl.addTarget(self, action: #selector(typeBankSelected(_:)), for: .valueChanged)
         
         let bankTypeSelected = Configuration.shared.bankType
@@ -109,7 +110,28 @@ extension FCBankSelectionView {
         segmentControl.heightAnchor(equalTo: bankSegmentedHeight)
         
         segmentControl.selectedSegmentIndex = indexBankType ?? 0
-        segmentControl.backgroundColor = UIColor(hex: Constants.Color.segmentColor)
+        segmentControl.removeBackgroundShadow()
+        
+        return segmentControl
+    }
+    
+    private func setupTextAttributesForSegmentControl(_ segmentControl: UISegmentedControl) -> UISegmentedControl {
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
+        
+        let palette = Configuration.shared.palette
+        let attributesNormal: [NSAttributedString.Key: Any] = [
+            .font: UIFont.fcMediumFont(ofSize: fontSize),
+            .foregroundColor: palette.banksSegmentedControlText.dynamicColor
+        ]
+        
+        let attributesActive: [NSAttributedString.Key: Any] = [
+            .font: UIFont.fcMediumFont(ofSize: fontSize),
+            .foregroundColor: palette.banksSegmentedControlActiveText.dynamicColor
+        ]
+        
+        segmentControl.setTitleTextAttributes(attributesNormal, for: .normal)
+        segmentControl.setTitleTextAttributes(attributesActive, for: .selected)
+        
         return segmentControl
     }
     
@@ -119,7 +141,6 @@ extension FCBankSelectionView {
         tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
-        tableView.separatorColor = Configuration.shared.palette.bankCellSeparatorColor
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorInsetReference = .fromCellEdges
         tableView.register(BankTableViewCell.self,
@@ -129,9 +150,7 @@ extension FCBankSelectionView {
     
     private func setupSeparatorView() -> UIView {
         let separatorView = UIView()
-        separatorView.heightAnchor(equalTo: 1)
-        let color = Configuration.shared.palette.bankCellSeparatorColor
-        separatorView.backgroundColor = color
+        separatorView.heightAnchor(equalTo: 0.25)
         return separatorView
     }
     
@@ -240,7 +259,7 @@ extension FCBankSelectionView {
     private func observerServiceStatus() {
         bankViewModel.serviceStatusHandler = { [weak self] status in
             guard let `self` = self else { return }
-
+            
             self.loadingView.stop()
             
             switch status {
@@ -331,28 +350,28 @@ extension FCBankSelectionView: FCDropDownListViewDelegate {
     internal func dropDownListView(_ dropDownListView: FCDropDownListView, didSelectRowAt indexPath: IndexPath) {
         let country = bankViewModel.countries[indexPath.row]
         Configuration.shared.countryCode = country.code
-
+        
         // If the bankTypeOptions is visible will reset to 'personal' bankType
         // Otherwise, will use the configured bankType.
         var bankType: BankType = .personal
         if !Configuration.shared.showBankTypeOptions {
             bankType = Configuration.shared.bankType
         }
-
+        
         // Updates the banktype
         Configuration.shared.bankType = bankType
-
+        
         // Updates the Current Country
         countriesSelectorView.countryImage.setImage(with: URL(string: country.imageUrl))
         countriesSelectorView.countryNameLabel.text = country.name
-
+        
         // Updates the Segmented Control
         let selectedBankType = BankType.allCases.firstIndex(of: bankType)
         bankTypeSegment.selectedSegmentIndex = selectedBankType!
-
+        
         self.loadingView.start()
         bankViewModel.loadBanks()
-
+        
         dropDownListView.hide()
     }
     
@@ -361,3 +380,38 @@ extension FCBankSelectionView: FCDropDownListViewDelegate {
     }
 }
 
+// MARK: - Style
+extension FCBankSelectionView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        
+        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        
+        backgroundColor = palette.banksBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
+        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
+        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
+        
+        countriesSelectorView.selectorTitleLabel.textColor = palette.banksSelectCountryLabel.dynamicColor
+        countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
+        
+        bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
+        
+        if #available(iOS 13.0, *) {
+            bankTypeSegment.selectedSegmentTintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+        } else {
+            bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+        }
+
+        bankTypeSegment = setupTextAttributesForSegmentControl(bankTypeSegment)
+        
+        tableView.separatorColor = palette.banksListCellSeparator.dynamicColor
+        separatorView.backgroundColor = palette.banksListCellSeparator.dynamicColor
+    }
+}

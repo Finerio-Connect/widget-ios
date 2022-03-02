@@ -45,6 +45,7 @@ class FCDropDownListView: UIView {
         setViewFrame()
         addComponents()
         setDefaults()
+        changeStyle()
     }
 }
 
@@ -176,13 +177,13 @@ extension FCDropDownListView: UITableViewDataSource {
 extension FCDropDownListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
-
+        
         UIView.animate(
             withDuration: 0.5,
             delay: 0.05 * Double(indexPath.row),
             animations: {
                 cell.alpha = 1
-        })
+            })
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -190,3 +191,15 @@ extension FCDropDownListView: UITableViewDelegate {
     }
 }
 
+// MARK: - Style
+extension FCDropDownListView {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        tableView.backgroundColor = palette.banksCountryCellBackground.dynamicColor
+    }
+}

@@ -10,12 +10,11 @@ import UIKit
 
 internal class BankViewController: BaseViewController {
     // Components
-    private var bankSelectionView: FCBankSelectionView! // = FCBankSelectionView()
+    private var bankSelectionView: FCBankSelectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        self.view.backgroundColor = .white
+        view.backgroundColor = FCComponentsStyle.viewControllersAIOBackground.dynamicColor
         
         bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)
@@ -24,6 +23,12 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.leadingAnchor(equalTo: view.leadingAnchor)
         bankSelectionView.trailingAnchor(equalTo: view.trailingAnchor)
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // To enable the navBar
+        navigationController?.navigationBar.isHidden = false
     }
 }
 

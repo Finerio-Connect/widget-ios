@@ -21,7 +21,12 @@ class BankTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         backgroundColor = .clear
-        accessoryType = .disclosureIndicator
+        
+        let disclosureIndicator = UIImageView(image: Images.disclosureIndicator.image())
+        disclosureIndicator.frame = CGRect(x: 0, y: 0, width: 6, height: 12)
+        accessoryView = disclosureIndicator
+        
+        changeStyle()
         setupLayoutViews()
     }
     
@@ -79,7 +84,6 @@ extension BankTableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12)
-        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
     
@@ -89,9 +93,22 @@ extension BankTableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 8 : 10)
-        label.textColor = Configuration.shared.palette.bankCellDetailColor
         return label
     }
 }
 
-
+// MARK: - Style
+extension BankTableViewCell {
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.banksListCellBackground.dynamicColor
+        lblTitle.textColor = palette.banksListCellTitle.dynamicColor
+//        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor // Not in use
+        accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
+    }
+}

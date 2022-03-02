@@ -22,6 +22,7 @@ internal class CredentialTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         setupLayoutViews()
+        changeStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +34,13 @@ internal class CredentialTableViewCell: UITableViewCell {
 extension CredentialTableViewCell {
     func setup(with field: BankField) {
         titleLabel.text = field.friendlyName
-        inputTexfield.placeholder = field.friendlyName
+        
+        let palette = Configuration.shared.palette
+        inputTexfield.attributedPlaceholder = NSAttributedString (
+            string: field.friendlyName,
+            attributes: [.foregroundColor: palette.credentialsFieldsTextPlaceholder.dynamicColor]
+        )
+        
         inputTexfield.id = field.name
       
         if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
@@ -55,7 +62,6 @@ extension CredentialTableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.textColor = Configuration.shared.palette.mainSubTextColor
         return label
     }
     
@@ -67,10 +73,8 @@ extension CredentialTableViewCell {
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.isSecureTextEntry = false
-        textField.layer.borderColor = Configuration.shared.palette.borderTextField.cgColor
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
-        textField.textColor = Configuration.shared.palette.termsTextColor
         textField.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         textField.setupRightImage(image: Images.lockIcon.image()!)
         return textField
@@ -97,5 +101,19 @@ extension CredentialTableViewCell {
         mainStack.leadingAnchor(equalTo: contentView.leadingAnchor)
         mainStack.trailingAnchor(equalTo: contentView.trailingAnchor)
         mainStack.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -8)
+    }
+}
+
+// MARK: - Style
+extension CredentialTableViewCell {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
+        inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor
     }
 }

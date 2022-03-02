@@ -43,14 +43,14 @@ internal class OriginalNavigationController {
 
 class FAANavigationController: UINavigationController {
     override func viewDidLoad() {
-        navigationBar.barTintColor = Colors.mainColor
-        navigationBar.titleTextAttributes = [
-            .foregroundColor: Colors.mainColor,
-            .font: UIFont.systemFont(
-                ofSize: 22,
-                weight: .light
-            ),
-        ]
+//        navigationBar.barTintColor = Colors.mainColor
+//        navigationBar.titleTextAttributes = [
+//            .foregroundColor: Colors.mainColor,
+//            .font: UIFont.systemFont(
+//                ofSize: 22,
+//                weight: .light
+//            ),
+//        ]
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

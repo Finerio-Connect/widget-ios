@@ -19,7 +19,7 @@ internal class CredentialHelpDialog: GenericDialog {
     public var imageURL: String = "" {
         didSet {
             DispatchQueue.main.async {
-                self.helpImageView.image = UIImage.gifImageWithURL(self.imageURL)
+                self.helpImageView.setImage(with: URL(string: self.imageURL))
             }
         }
     }

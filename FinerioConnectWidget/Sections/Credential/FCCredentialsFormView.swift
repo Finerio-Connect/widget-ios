@@ -53,12 +53,13 @@ public final class FCCredentialsFormView: FCBaseView {
     
     override func configureView() {
         super.configureView()
-        self.loadingView.backgroundColor = .white
+        self.loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
         
         trackEvent(eventName: Constants.Events.credentials)
         
         localHideKeyboardWhenTappedAround()
         addComponents()
+        changeStyle()
         observerServiceStatus()
     }
 }
@@ -80,7 +81,7 @@ extension  FCCredentialsFormView {
 extension FCCredentialsFormView {
     @objc private func didButtonHelp() {
         DispatchQueue.main.async {
-            self.helpDialog.imageURL = Constants.URLS.helpWithCredentialsGif.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
+            self.helpDialog.imageURL = Constants.URLS.helpWithCredentials.replacingOccurrences(of: Constants.Placeholders.bankCode, with: self.credentialViewModel.bank.code)
             self.helpDialog.show()
         }
     }
@@ -247,7 +248,7 @@ extension FCCredentialsFormView {
         let linkAttributes: [NSAttributedString.Key : Any]
         
         let plainText = literal(.plainTyCText)!
-        let termsColor = Configuration.shared.palette.termsTextColor
+        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
         
@@ -261,7 +262,7 @@ extension FCCredentialsFormView {
         let urlWebSite = Constants.URLS.termsAndConditions
         attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
         
-        let linkColor = Configuration.shared.palette.mainTextColor
+        let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
         
         textView.heightAnchor(equalTo: 40)
@@ -274,7 +275,6 @@ extension FCCredentialsFormView {
     
     private func setupToggleSwitch() -> UISwitch {
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Configuration.shared.palette.mainColor
         toggleSwitch.addTarget(self, action: #selector(toggleSwitchChanged), for: .valueChanged)
         return toggleSwitch
     }
@@ -282,7 +282,6 @@ extension FCCredentialsFormView {
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.CredentialSection.continueButtonTitle, for: .normal)
-        button.backgroundColor = Configuration.shared.palette.mainColor
         button.heightAnchor(equalTo: 46)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
@@ -297,9 +296,7 @@ extension FCCredentialsFormView {
     private func setupHelpButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(literal(.helpWithCredentialsButton), for: .normal)
-        button.backgroundColor = Configuration.shared.palette.grayBackgroundColor
         button.heightAnchor(equalTo: 46)
-        button.setTitleColor(Configuration.shared.palette.mainSubTextColor, for: .normal)
         button.titleLabel?.font = .fcMediumFont(ofSize: 14)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
@@ -533,5 +530,28 @@ extension FCCredentialsFormView: UITextFieldDelegate {
             return false
         }
         return true
+    }
+}
+
+// MARK: - Style
+extension FCCredentialsFormView {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        
+        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        
+        backgroundColor = palette.credentialsBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.credentialsHeaderTitle.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.credentialsHeaderSubtitle.dynamicColor
+        toggleSwitch.onTintColor = palette.credentialsSwitchOn.dynamicColor
+        continueButton.backgroundColor = palette.credentialsContinueButtonBackground.dynamicColor
+        continueButton.setTitleColor(palette.credentialsContinueButtonText.dynamicColor, for: .normal)
+        helpButton.backgroundColor = palette.credentialsHelpButtonBackground.dynamicColor
+        helpButton.setTitleColor(palette.credentialsHelpButtonText.dynamicColor, for: .normal)
     }
 }

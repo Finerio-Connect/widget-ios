@@ -23,6 +23,9 @@ internal final class Context {
     }
 
     func push(viewController: UIViewController) {
+        let palette = Configuration.shared.palette
+        self.navigationController.setStatusBar(backgroundColor: palette.statusBarBackground)
+        
         navigationController.pushViewController(viewController, animated: true)
     }
 }

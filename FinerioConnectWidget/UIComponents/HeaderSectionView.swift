@@ -56,8 +56,6 @@ extension HeaderSectionView {
         imageView.widthAnchor(equalTo: sizeView)
         imageView.layer.cornerRadius = sizeView / 2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = UIColor(hex: "#F1F2F5")
-        
         return imageView
     }
     
@@ -67,7 +65,6 @@ extension HeaderSectionView {
         let resizedImg = lockIconImage.resizableImage(withCapInsets: capInsets)
         avatarView.image = resizedImg
         avatarView.contentMode = .center
-        avatarView.tintColor = Configuration.shared.palette.mainTextColor
     }
     
     private func setupTitleLabel() -> UILabel {
@@ -78,7 +75,6 @@ extension HeaderSectionView {
         label.textAlignment = .left
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         label.font = .fcMediumFont(ofSize: CGFloat(fontSize))
-        label.textColor = Configuration.shared.palette.mainTextColor
         return label
     }
     
@@ -90,7 +86,6 @@ extension HeaderSectionView {
         label.textAlignment = .left
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 10 : 12
         label.font = .fcRegularFont(ofSize: CGFloat(fontSize))
-        label.textColor = Configuration.shared.palette.mainSubTextColor
         return label
     }
     
