@@ -7,9 +7,8 @@
 //
 
 public struct AnimationsURLS {
-    public static let syncingAnimation = "https://cdn.finerio.mx/widget/syncing_loop.json"
-    public static let loadingAccountAnimation = "https://cdn.finerio.mx/widget/account_loading.json"
-    public static let accountReadyAnimation = "https://cdn.finerio.mx/widget/account_ready.json"
-    public static let successAnimation = "https://cdn.finerio.mx/widget/syncing_success.json"
-    public static let failureAnimation = "https://cdn.finerio.mx/widget/syncing_failure.json"
+    public static let loadingAnimation = "https://cdn.finerio.mx/widget/account_loading.json" //GreenCircle
+    public static let accountCreationAnimation = "https://cdn.finerio.mx/widget/account_loading.json" //GreenCircle
+//    public static let successAnimation = "https://cdn.finerio.mx/widget/syncing_success.json" //CheckedCircleWithLine
+//    public static let failureAnimation = "https://cdn.finerio.mx/widget/syncing_failure.json" //CrossedCircleWithLine
 }

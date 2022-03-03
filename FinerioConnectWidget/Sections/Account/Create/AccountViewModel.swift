@@ -7,22 +7,19 @@
 //
 
 import FirebaseDatabase
+import UIKit
 
 internal class AccountViewModel {
     var errorMessage: String!
     var token: String!
     var credentialId: String!
     var accounts: [AccountStatus] = []
-    var currentAccountId: String = ""
-    var accountCreated: Bool = false
+    var credentialAccounts: [CredentialAccount] = []
     var transactionsCreated: Bool = false
+    var bank: Bank!
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let databaseReference = Database.database().reference()
-
-    func getTitle() -> String {
-        return Constants.Titles.bankSection
-    }
 
     func updateCredentialToken(credentialToken: CredentialToken) {
         FinerioConnectWidgetAPI.updateCredentialToken(credentialToken: credentialToken) { [weak self] result in
@@ -37,33 +34,38 @@ internal class AccountViewModel {
         DispatchQueue.main.async {
             self.databaseReference.child(Constants.Keys.firebaseNode).child(self.credentialId).observe(.value, with: { [self] snapshot in
                 if let values = snapshot.value as? [String: Any] {
+                    logInfo(values.description)
+
                     if let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
                         processAccountsStatus(dataSnapshot: dataSnapshot)
+                        serviceStatusHandler(.updated)
                     }
 
-                    if let status = values["status"] {
-                        if status as! String == Constants.CredentialStatus.created {
-                            accountCreated = true
+                    if let status = values["status"] as? String {
+                        if status == Constants.CredentialStatus.created {
                             serviceStatusHandler(.updated)
                         }
-                        if status as! String == Constants.CredentialStatus.success {
+
+                        if status == Constants.CredentialStatus.success && !transactionsCreated {
                             transactionsCreated = true
                             serviceStatusHandler(.success)
                         }
 
-                        if status as! String == Constants.CredentialStatus.failure {
+                        if status == Constants.CredentialStatus.failure {
                             errorMessage = values["message"] as? String
                             serviceStatusHandler(.failure)
                         }
 
-                        if status as! String == Constants.CredentialStatus.interactive {
+                        if status == Constants.CredentialStatus.interactive {
                             token = values["bankToken"] as? String
                             serviceStatusHandler(.interactive)
                         }
                     }
                 }
             }) { error in
-                print(error.localizedDescription)
+                logError(error as NSError)
+                self.errorMessage = error.localizedDescription
+                self.serviceStatusHandler(.failure)
             }
         }
     }
@@ -74,24 +76,32 @@ internal class AccountViewModel {
                 for value in snap.children {
                     let account = value as! DataSnapshot
                     let valueDictionary = account.value as! [String: AnyObject]
-
+                    
                     let accountName = valueDictionary["name"] as? String ?? ""
                     let accountStatus = valueDictionary["status"] as? String ?? ""
-
-                    let transaction = AccountStatus(id: account.key, name: accountName, status: accountStatus)
-
+                    
+                    let transaction = AccountStatus(id: account.key,
+                                                    name: accountName,
+                                                    status: accountStatus)
+                    
+                    if accountStatus == Constants.CredentialStatus.accountCreated {
+                        let credentialAccount = CredentialAccount(credentialId: self.credentialId,
+                                                                  accountId: account.key,
+                                                                  name: accountName,
+                                                                  status: accountStatus)
+                        
+                        credentialAccounts.append(credentialAccount)
+                    }
+                    
                     let filtered = accounts.filter { accountFound in
                         accountFound.id == account.key
                     }
-
-                    currentAccountId = account.key
-
+                    
                     if filtered.isEmpty {
                         accounts.append(transaction)
                     }
-
+                    
                     filtered.first?.status = accountStatus
-                    serviceStatusHandler(.updated)
                 }
             }
         }

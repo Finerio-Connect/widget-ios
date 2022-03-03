@@ -20,11 +20,20 @@ public struct FinerioConnectWidgetAPI {
 }
 
 extension FinerioConnectWidgetAPI {
-    public static func banks(completion: @escaping (Result<[Bank], MagicLinkAPIError>) -> Void) {
-        client.request(.get, APIRoute.banks) { responseObject, status in
+    public static func countries(completion: @escaping (Result<[Country], MagicLinkAPIError>) -> Void) {
+        client.request(.get, APIRoute.countries) { responseObject, status in
             let response = responseObject as? NSDictionary
             let error = MagicLinkAPIError(response: response, status: status) ?? .UnknownError
-            let banks = [Bank](json: response?["data"])
+            let countries = [Country](json: response?["data"]) ?? [Country]()
+            completion(Result(value: countries, failWith: error))
+        }
+    }
+
+    public static func banks(country: String, type: String, completion: @escaping (Result<[Bank], MagicLinkAPIError>) -> Void) {
+        client.request(.get, APIRoute.banks(country: country, type: type)) { responseObject, status in
+            let response = responseObject as? NSDictionary
+            let error = MagicLinkAPIError(response: response, status: status) ?? .UnknownError
+            let banks = [Bank](json: response?["data"]) ?? [Bank]()
             completion(Result(value: banks, failWith: error))
         }
     }
@@ -34,7 +43,7 @@ extension FinerioConnectWidgetAPI {
         client.request(.get, APIRoute.bankFields(bankId: bankId)) { responseObject, status in
             let response = responseObject as? NSDictionary
             let error = MagicLinkAPIError(response: response, status: status) ?? .UnknownError
-            let bankFields = [BankField](json: response?["data"])
+            let bankFields = [BankField](json: response?["data"]) ?? [BankField]()
             completion(Result(value: bankFields, failWith: error))
         }
     }

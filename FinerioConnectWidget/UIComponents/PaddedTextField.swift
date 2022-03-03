@@ -27,37 +27,24 @@ internal class PaddedTextField: UITextField {
         let bounds = super.editingRect(forBounds: bounds)
         return bounds.inset(by: padding)
     }
+    
+    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        // alignment for right view and size of the view
+        let rightBounds = CGRect(x: bounds.maxX - 42, y: 5, width: 35, height: 35);
+        return rightBounds
+    }
+}
 
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        commonInit()
-//    }
-//
-//    override required init(frame: CGRect) {
-//        super.init(frame: frame)
-//        commonInit()
-//    }
-//
-//    func commonInit() {
-//        rightButton.setImage(Images.eyeClosed.image(), for: .normal)
-//        rightButton.addTarget(self, action: #selector(toggleShowHide), for: .touchUpInside)
-//        rightButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//
-//        rightViewMode = .always
-//        rightView = rightButton
-//        isSecureTextEntry = true
-//    }
-//
-//    @objc func toggleShowHide(button: UIButton) {
-//        toggle()
-//    }
-//
-//    func toggle() {
-//        isSecureTextEntry = !isSecureTextEntry
-//        if isSecureTextEntry {
-//            rightButton.setImage(Images.eyeClosed.image(), for: .normal)
-//        } else {
-//            rightButton.setImage(Images.eyeOpen.image(), for: .normal)
-//        }
-//    }
+// MARK: - Style
+extension PaddedTextField {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
+    }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        backgroundColor = palette.credentialsFieldsBackground.dynamicColor
+        layer.borderColor = palette.credentialsFieldsBorder.dynamicColor.cgColor
+    }
 }

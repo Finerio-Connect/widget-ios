@@ -9,18 +9,63 @@
 import UIKit
 
 internal class CredentialTableViewCell: UITableViewCell {
+    // Components
+    lazy var titleLabel: UILabel = setupTitleLabel()
+    lazy var inputTexfield: PaddedTextField = setupPaddedTextField()
+    
+    // Vars
     static let id = "CredentialTableViewCell"
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        backgroundColor = .clear
+        setupLayoutViews()
+        changeStyle()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
-    var titleLabel: UILabel = {
+// MARK: - Data
+extension CredentialTableViewCell {
+    func setup(with field: BankField) {
+        titleLabel.text = field.friendlyName
+        
+        let palette = Configuration.shared.palette
+        inputTexfield.attributedPlaceholder = NSAttributedString (
+            string: field.friendlyName,
+            attributes: [.foregroundColor: palette.credentialsFieldsTextPlaceholder.dynamicColor]
+        )
+        
+        inputTexfield.id = field.name
+      
+        if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
+            inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
+        }
+        
+        inputTexfield.isSecureTextEntry = field.type.uppercased() == FieldType.password.rawValue ? true : false
+        
+        if inputTexfield.isSecureTextEntry {
+            inputTexfield.enablePasswordToggle()
+        }
+    }
+}
+
+// MARK: - UI
+extension CredentialTableViewCell {
+    func setupTitleLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)?.bold()
-        label.textColor = Configuration.shared.palette.mainColor
+        label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         return label
-    }()
-
-    var inputTexfield: PaddedTextField = {
+    }
+    
+    func setupPaddedTextField() -> PaddedTextField {
         let textField = PaddedTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .default
@@ -28,51 +73,47 @@ internal class CredentialTableViewCell: UITableViewCell {
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.isSecureTextEntry = false
-        textField.layer.borderColor = Configuration.shared.palette.mainColor.cgColor
         textField.layer.borderWidth = CGFloat(1.0)
         textField.layer.cornerRadius = CGFloat(10.0)
-        textField.font = UIFont(name: Configuration.shared.texts.mainFont, size: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 16.0)
+        textField.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
+        textField.setupRightImage(image: Images.lockIcon.image()!)
         return textField
-    }()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
+}
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+// MARK: - Layout
+extension CredentialTableViewCell {
+    func setupLayoutViews() {
+        let cellViews = [titleLabel, inputTexfield]
+        let mainStack = UIStackView(arrangedSubviews: cellViews)
+        mainStack.axis = .vertical
+        mainStack.spacing = 8
+        mainStack.distribution = .fill
+        mainStack.alignment = .fill
+        
+        let titleHeight: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 18 : 21
+        titleLabel.heightAnchor(equalTo: titleHeight)
+        let textFieldHeight: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 40 : 46
+        inputTexfield.heightAnchor(equalTo: textFieldHeight)
+        
+        contentView.addSubview(mainStack)
+        mainStack.topAnchor(equalTo: contentView.topAnchor, constant: 8)
+        mainStack.leadingAnchor(equalTo: contentView.leadingAnchor)
+        mainStack.trailingAnchor(equalTo: contentView.trailingAnchor)
+        mainStack.bottomAnchor(equalTo: contentView.bottomAnchor, constant: -8)
     }
+}
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        selectionStyle = .none
-        contentView.backgroundColor = Configuration.shared.palette.backgroundColor
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(inputTexfield)
-
-        let generalWidth = contentView.layer.frame.width - 100
-
-        titleLabel.widthAnchor(equalTo: generalWidth)
-        titleLabel.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 20.0 : 25.0)
-        titleLabel.topAnchor(equalTo: contentView.topAnchor)
-        titleLabel.centerXAnchor(equalTo: contentView.centerXAnchor)
-
-        inputTexfield.widthAnchor(equalTo: generalWidth)
-        inputTexfield.heightAnchor(equalTo: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 35.0 : 40.0)
-        inputTexfield.topAnchor(equalTo: titleLabel.bottomAnchor)
-        inputTexfield.centerXAnchor(equalTo: contentView.centerXAnchor)
+// MARK: - Style
+extension CredentialTableViewCell {
+    public override func tintColorDidChange() {
+        super.tintColorDidChange()
+        changeStyle()
     }
-
-    func setup(with field: BankField) {
-        titleLabel.text = field.friendlyName
-        inputTexfield.placeholder = field.friendlyName
-        inputTexfield.id = field.name
-        inputTexfield.tag = field.name.uppercased() == FieldType.securityCode.rawValue ? Constants.Tags.fieldSecurityCode : 0
-        inputTexfield.isSecureTextEntry = field.type.uppercased() == FieldType.password.rawValue ? true : false
-
-        if inputTexfield.isSecureTextEntry {
-            inputTexfield.enablePasswordToggle()
-        }
+    
+    private func changeStyle() {
+        let palette = Configuration.shared.palette
+        titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
+        inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor
     }
 }

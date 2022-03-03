@@ -43,6 +43,11 @@ public struct ApiV2FinerioAPIError: Error {
             }
         }
 
+        if let error = response?["error"] as? String, let errorDescription = response?["error_description"] as? String {
+            errorTitle = error
+            errorCode = errorDescription
+        }
+
         error = errorTitle
         message = localize(errorCode)
     }

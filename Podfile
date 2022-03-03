@@ -6,10 +6,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'FinerioConnectWidget' do
-  pod 'Firebase/Analytics', '~> 7.7.0'
-  pod 'Firebase/Database', '~> 7.7.0'
-  pod 'SwiftyRSA', '1.6.0'
-  pod 'lottie-ios', '3.2.1'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
+  pod 'SwiftyRSA'
+  pod 'lottie-ios'
+  pod 'Mixpanel-swift'
 end
 
 post_install do |installer|

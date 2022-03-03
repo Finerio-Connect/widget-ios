@@ -10,36 +10,36 @@ import FirebaseDatabase
 import UIKit
 
 internal class StartViewController: BaseViewController {
-    internal var startViewModel: StartViewModel!
+    private var startViewModel: StartViewModel = StartViewModel()
 
-    fileprivate lazy var titleLabel: UILabel = setupTitleLabel()
-    fileprivate lazy var subtitleLabel: UILabel = setupSubtitleLabel()
-    fileprivate lazy var bodyLabel: UILabel = setupBodyLabel()
-    fileprivate lazy var continueButton: UIButton = setupContinueButton()
+    private lazy var countriesLabel: UILabel = setupTitleLabel()
+    private lazy var subtitleLabel: UILabel = setupSubtitleLabel()
+    private lazy var bodyLabel: UILabel = setupBodyLabel()
+    private lazy var continueButton: UIButton = setupContinueButton()
 
-    private let indicator = ActivityIndicatorView()
+//    private let indicator = ActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startViewModel = viewModel as? StartViewModel
+//        startViewModel = viewModel as? StartViewModel
         configureView()
     }
 
     private func configureView() {
-        title = startViewModel.getTitle()
+//        title = startViewModel.getTitle()
 
-        [titleLabel, subtitleLabel, bodyLabel, continueButton].forEach {
+        [countriesLabel, subtitleLabel, bodyLabel, continueButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
 
-        titleLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
-        titleLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 30.0, secondValue: 50.0))
-        titleLabel.centerXAnchor(equalTo: view.centerXAnchor)
+        countriesLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
+        countriesLabel.topAnchor(equalTo: view.safeTopAnchor, constant: getConstraintConstant(firstValue: 30.0, secondValue: 50.0))
+        countriesLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
         subtitleLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
-        subtitleLabel.topAnchor(equalTo: titleLabel.bottomAnchor, constant: getConstraintConstant(firstValue: 25.0, secondValue: 50.0))
+        subtitleLabel.topAnchor(equalTo: countriesLabel.bottomAnchor, constant: getConstraintConstant(firstValue: 25.0, secondValue: 50.0))
         subtitleLabel.centerXAnchor(equalTo: view.centerXAnchor)
 
         bodyLabel.widthAnchor(equalTo: view.layer.frame.width - 100)
@@ -60,17 +60,15 @@ extension StartViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "¡Hola \(Configuration.shared.customerName)!"
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 17.0)
-        label.textColor = Configuration.shared.palette.mainColor
+        label.font = .fcRegularFont(ofSize: 17)
         return label
     }
 
     private func setupSubtitleLabel() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: Configuration.shared.texts.companyName)
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 20.0)?.bold()
-        label.textColor = Configuration.shared.palette.mainTextColor
+        label.text = fLocaleInitSubtitle.replacingOccurrences(of: Constants.Placeholders.bankName, with: literal(.companyName) ?? "")
+        label.font = .fcBoldFont(ofSize: 20)
         return label
     }
 
@@ -78,18 +76,16 @@ extension StartViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = Constants.Texts.InitSection.bodyLabel
-        label.font = UIFont(name: Configuration.shared.texts.mainFont, size: 15.0)
-        label.textColor = Configuration.shared.palette.mainTextColor
+        label.font = .fcRegularFont(ofSize: 15)
         return label
     }
 
     private func setupContinueButton() -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(Constants.Texts.InitSection.titleButton, for: .normal)
-        button.backgroundColor = Configuration.shared.palette.mainColor
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
-        button.titleLabel?.font = UIFont(name: Configuration.shared.texts.mainFont, size: 18.0)
+        button.titleLabel?.font = .fcRegularFont(ofSize: 18.0)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5

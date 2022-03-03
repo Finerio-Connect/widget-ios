@@ -29,7 +29,7 @@ internal extension UIImageView {
         }
     }
 
-    func setImage(with url: URL?, placeholder: UIImage? = nil, animated: Bool = true) {
+    func setImage(with url: URL?, placeholder: UIImage? = nil, defaultImage: UIImage? = nil, animated: Bool = true) {
         currentTask?.cancel()
 
         // Set the placeholder meanwhile the image is downloaded
@@ -41,12 +41,18 @@ internal extension UIImageView {
             replaceImage(cachedImage, animated: animated)
         } else {
             currentTask = URLSession.shared.dataTask(with: url) { data, _, _ in
-                if let data = data,
-                   let image = UIImage(data: data) {
+                if let data = data, let image = UIImage(data: data) {
                     imageCache.setObject(image, forKey: url.absoluteString as NSString)
                     mainAsync { [weak self] in
                         guard let self = self else { return }
                         self.replaceImage(image, animated: animated)
+                    }
+                } else {
+                    mainAsync { [weak self] in
+                        guard let self = self else { return }
+                        if let defaultImage = defaultImage {
+                            self.replaceImage(defaultImage, animated: animated)
+                        }
                     }
                 }
             }
@@ -60,11 +66,8 @@ internal extension UIImageView {
             return
         }
 
-        UIView.transition(with: self,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                              self.image = image
-                          })
+        UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.image = image
+        })
     }
 }

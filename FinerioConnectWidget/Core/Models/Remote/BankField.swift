@@ -15,6 +15,7 @@ public struct BankField {
     public let type: String
     public let required: Bool
     public var value: String
+    public var extraData: [ExtraData]?
 }
 
 extension BankField: JSONMappable {
@@ -27,11 +28,30 @@ extension BankField: JSONMappable {
             return nil
         }
 
+        let extraData = [ExtraData](json: json["extraData"])
         self.name = name
         self.friendlyName = friendlyName
         self.position = position
         self.type = type
         self.required = required
-        self.value = ""
+        value = ""
+        self.extraData = extraData
+    }
+}
+
+public struct ExtraData {
+    public let name: String
+    public let value: String
+}
+
+extension ExtraData: JSONMappable {
+    init?(json: NSDictionary) {
+        guard let name = json["name"] as? String,
+              let value = json["value"] as? String else {
+            return nil
+        }
+
+        self.name = name
+        self.value = value
     }
 }

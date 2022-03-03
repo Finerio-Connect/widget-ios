@@ -9,23 +9,70 @@
 import Foundation
 
 internal class BankViewModel {
-    var banks: [Bank]!
+    var countries: [Country] = [Country]()
+    var banks: [Bank] = [Bank]()
     var errorMessage: String!
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
+    let userDefaults = UserDefaults.standard
 
-    func getTitle() -> String {
-        return Constants.Titles.bankSection
+    func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
+        if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
+            return countries[index]
+        }
+        return nil
     }
-    
-    func loadBanks() {
-        FinerioConnectWidgetAPI.banks { [weak self] result in
+
+    func loadCountries() {
+        FinerioConnectWidgetAPI.countries { [weak self] result in
             if let error = result.error {
                 self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
                 self?.serviceStatusHandler(.failure)
             }
+            if let value = result.value {
+                self?.countries = value
+                self?.serviceStatusHandler(.loaded)
+            }
+        }
+    }
 
-            self?.banks = result.value
-            self?.serviceStatusHandler(.loaded)
+    func loadBanks(country: String = Configuration.shared.countryCode, type: BankType = Configuration.shared.bankType) {
+        let banksKeyPath = "\(country)_\(type)"
+        
+        if let localBanks = getLocalBanksFromKeyPath(banksKeyPath) {
+            self.banks = localBanks
+            self.serviceStatusHandler(.success)
+        } else {
+            FinerioConnectWidgetAPI.banks(country: country, type: type.rawValue) { [weak self] result in
+                if let error = result.error {
+                    self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
+                    self?.serviceStatusHandler(.failure)
+                }
+                
+                if let value = result.value {
+                    self?.banks = value
+                    self?.saveBanks(value, for: banksKeyPath)
+                    self?.serviceStatusHandler(.success)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Local Banks
+extension BankViewModel {
+    private func getLocalBanksFromKeyPath(_ keyPath: String) -> [Bank]? {
+        var localBanks: [Bank]? = nil
+        if let banksData = userDefaults.value(forKey: keyPath) as? Data {
+            if let banks = try? JSONDecoder().decode([Bank].self, from: banksData) {
+                localBanks = banks
+            }
+        }
+        return localBanks
+    }
+    
+    private func saveBanks(_ banks: [Bank],for keyPath: String) {
+        if let data = try? JSONEncoder().encode(banks) {
+            self.userDefaults.set(data, forKey: keyPath)
         }
     }
 }

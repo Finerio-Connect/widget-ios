@@ -16,12 +16,9 @@ internal class CredentialViewModel {
     var credentialResponse: CredentialResponse!
     var errorMessage: String!
     var totalValidationTextfields: [String] = []
+    var isAcceptingTerms: Bool = false
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
-
-    func getTitle() -> String {
-        return Constants.Titles.bankSection
-    }
 
     func loadBankFields() {
         FinerioConnectWidgetAPI.bankFields(by: bank.id) { [weak self] result in
@@ -33,7 +30,7 @@ internal class CredentialViewModel {
             self?.bankFields = result.value
             self?.bankFields?.sort {
                 $0.position < $1.position
-            }
+            }            
             self?.serviceStatusHandler(.loaded)
         }
     }
@@ -75,6 +72,11 @@ internal class CredentialViewModel {
     }
 
     var validForm: Bool {
-        return bankFields.count == totalValidationTextfields.count
+        if bankFields.count == totalValidationTextfields.count && isAcceptingTerms {
+            return true
+        } else {
+            return false
+        }
     }
 }
+

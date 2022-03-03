@@ -9,12 +9,6 @@ import Foundation
 import UIKit
 
 internal struct Constants {
-    /// Titles
-    struct Titles {
-        static let initSection = "Mejora de servicios"
-        static let bankSection = "Vincula tu entidad bancaria"
-    }
-
     /// Texts
     struct Texts {
         struct Errors {
@@ -33,12 +27,15 @@ internal struct Constants {
             static let titleButton = "Continuar"
         }
 
+        struct BankSection {
+            static let titleButton = "Seleccionar"
+        }
+
         struct CredentialSection {
-            static let helpWithCredentialsLabel = "¿Dónde encuentro mis claves?"
-            static let tyCLabel = "Al dar clic en Enviar información aceptas expresamente nuestros Términos de servicio así como nuestro Aviso de privacidad."
             static let titleDatePicker = "Fecha"
-            static let doneButtonTitleDatePicker = "Ok"
+            static let doneButtonTitleDatePicker = "OK"
             static let cancelButtonTitleDatePicker = "Cancelar"
+            static let continueButtonTitle = "Continuar"
         }
 
         struct AccountSection {
@@ -48,20 +45,12 @@ internal struct Constants {
             static let secondLabelAlertToken = "después, escribe aquí el número que salío en tu token:"
             static let titleButton = "Enviar"
         }
-
-        struct StatusSection {
-            static let successTitleLabel = "¡Vinculación exitosa!"
-            static let successSubtitleLabel = "Tu cuenta se analizó correctamente."
-            static let failureTitleLabel = "¡La vinculación falló!"
-            static let failureSubtitleLabel = "Lo sentimos."
-            static let successTitleButton = "Vincular otra cuenta"
-            static let exitTitleButton = "Cancelar"
-        }
     }
 
     /// Placeholders
     struct Placeholders {
         static var bankId = "@bankId"
+        static var bankCode = "@bankCode"
         static var bankName = "?"
     }
 
@@ -71,15 +60,10 @@ internal struct Constants {
         static var password = "password"
         static var securityCode = "securityCode"
     }
-
-    /// URLS
-    struct URLS {
-        static let privacyTerms = "https://finerioconnect.com/privacy"
-        static let termsAndConditions = "https://finerioconnect.com/license"
-        static let cdnWidget = "https://cdn.finerio.mx/widget"
-        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_off.png"
-        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_on.png"
-        static var helpWithCredentialsGif = "\(cdnWidget)/bank_\(Constants.Placeholders.bankId)_help.gif"
+    
+    /// Texfields Name
+    struct TexfieldsFriendlyName {
+        static var user = "Usuario"
     }
 
     /// Tags
@@ -87,12 +71,25 @@ internal struct Constants {
         static let loader = 200
         static let fieldSecurityCode = 33
         static let fieldPassword = 66
+        static let fieldSelect = 99
+    }
+
+    /// URLS
+    struct URLS {
+        static let termsAndConditions = "https://finerioconnect.com/license"
+        static let cdnWidget = "https://cdn.finerio.mx/widget"
+        static var bankImageOff = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_off.png"
+        static var bankImageOn = "\(cdnWidget)/bank_\(Constants.Placeholders.bankCode)_on.png"
+        static var bankImageShield = "\(cdnWidget)/rounded_logos/bank_\(Constants.Placeholders.bankCode)_shield.png"
+        static var helpWithCredentials = "\(cdnWidget)/help_images/bank_\(Constants.Placeholders.bankCode)_help.png"
     }
 
     /// Keys
     struct Keys {
         static let publicKey = "MIIBCgKCAQEAv1STVY1D8uelL+j4Tm0zsgOsgof3KMsmWUIyvLtKUnH5SBrcPqEbjI5+gwRTwc1d5QcGWqEgx2uSUSaOdDWyTR6mKG8iSMYWEtEeCI/LmwAKGapGDB/ciguhXzsjVa9dZThlHvW4XiHWEIenxzbahXexBuEQfSP9DiJuM9yRqHX60+aCJxupRtLgaWQkTtFGI5tGQ1tMN0qZW7eat//rvzHrp4MU2EOVXiRE06ypWRQhni8zY+VaNPjXHybPC+dIiXspBqwaySKBKqNVZCXtqVa7ouJfXs3HUrpthJqQ30cPefEt0jAFj6QRJDsGwKTXS3gq7mGz3AYq0Be2LuTD1wIDAQAB"
         static let firebaseNode = "CtkFJ3subunSceVh7vUAPMB4TckRSv"
+        static let productionMixpanelToken = "849778938cdb0486c91d953502082582"
+        static let sandboxMixpanelToken = "86830d7eeedf9117694afc6e85d94f56"
     }
 
     struct ErrorCodes {
@@ -115,5 +112,35 @@ internal struct Constants {
         static let MAXIMUM_SCROLL_FRACTION: CGFloat = 0.8
         static let PORTRAIT_KEYBOARD_HEIGHT: CGFloat = 216
         static let LANDSCAPE_KEYBOARD_HEIGHT: CGFloat = 162
+    }
+
+    struct Fonts {
+        static let defaultFontName = "Poppins"
+        static let lighFont = "\(Configuration.shared.font!)-Light"
+        static let regularFont = "\(Configuration.shared.font!)-Regular"
+        static let boldFont = "\(Configuration.shared.font!)-Bold"
+        static let italicFont = "\(Configuration.shared.font!)-Italic"
+        static let mediumFont = "\(Configuration.shared.font!)-Medium"
+    }
+
+    struct Country {
+        static let name = "México"
+        static let code = "MX"
+        static let imageUrl = "https://cdn.finerio.mx/widget/MX.png"
+    }
+
+    struct Events {
+        static let widgetId = "Widget ID"
+        static let banks = "View: Banks"
+        static let bankSelected = "Bank selected"
+        static let credentials = "View: Credentials"
+        static let createCredential = "Create credential"
+        static let credentialSuccess = "Credential success"
+        static let credentialFailure = "Credential failure"
+        static let appName = "APP Name"
+    }
+    
+    struct SuperPropertiesValues {
+        static let appName = "WidgetMOBILE"
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ServiceStatus {
+public enum ServiceStatus {
     case active
     case success
     case loaded
@@ -18,10 +18,16 @@ enum ServiceStatus {
     case error
 }
 
+public enum Theme: Int {
+    case automatic = 0
+    case light = 1
+    case dark = 2
+}
+
 enum FieldType: String {
     case text = "TEXT"
     case password = "PASSWORD"
-    case securityCode = "SECURITYCODE"
+    case select = "SELECT"
 }
 
 public enum LogLevel: Int {
@@ -31,7 +37,13 @@ public enum LogLevel: Int {
     case debug = 3
 }
 
-public enum Environment {
+public enum Environment: String {
     case sandbox
     case production
+}
+
+public enum BankType: String, CaseIterable {
+    case personal = "personal"
+    case business = "business"
+    case fiscal = "fiscal"
 }
