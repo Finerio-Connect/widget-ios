@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "FinerioAccountWidget"
-  s.version               = "1.5.0"
+  s.version               = "2.0.0"
   s.swift_version         = '5.0'
   s.summary               = "Finerio Connect Widget"
   s.homepage              = "https://finerioconnect.com"
@@ -24,11 +24,4 @@ Pod::Spec.new do |s|
   s.dependency 'Mixpanel-swift'
   
   s.requires_arc          = true
-  s.pod_target_xcconfig   = {
-      'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
-      'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/**',
-      'VALID_ARCHS' => 'armv7 arm64 x86_64',
-      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-    }
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end

@@ -56,7 +56,6 @@ class ViewController: UIViewController {
 
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
-        finerioConnectWidget.logLevel = .debug
 //        finerioConnectWidget.font = "Ubuntu"
         /// Country settings
 //        finerioConnectWidget.countryCode = "MX"
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.showBankTypeOptions = true
 //        finerioConnectWidget.bankType = .personal
         /// Theme appearance
-//        finerioConnectWidget.theme = .automatic
+        finerioConnectWidget.theme = .automatic
         
         
 
