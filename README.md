@@ -27,12 +27,6 @@ Edit your `Podfile` and specify the dependency:
 pod 'FinerioAccountWidget'
 ```
 
-... or for a specific version:
-
-```swift
-pod 'FinerioAccountWidget', '~> 2.0.0'
-```
-
 and then run `pod install`. More information about `Cocoapods` [here](https://cocoapods.org/).
 
 ## Usage
