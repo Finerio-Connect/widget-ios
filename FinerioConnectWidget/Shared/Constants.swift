@@ -67,12 +67,20 @@ internal struct Constants {
     }
 
     /// Tags
-    struct Tags {
+//    struct Tags {
+//        static let loader = 200
+//        static let fieldSecurityCode = 33
+//        static let fieldPassword = 66
+//        static let fieldSelect = 99
+//    }
+    
+    struct FieldType {
         static let loader = 200
-        static let fieldSecurityCode = 33
-        static let fieldPassword = 66
-        static let fieldSelect = 99
+        static let plainText = 33
+        static let passwordText = 66
+        static let selectorOptions = 99
     }
+    
 
     /// URLS
     struct URLS {
