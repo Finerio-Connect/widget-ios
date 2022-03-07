@@ -315,7 +315,7 @@ extension FCCredentialsFormView {
                 securityCodeTextField = cell.inputTexfield
             }
             
-            if cell.inputTexfield.tag == Constants.Tags.fieldSelect {
+            if cell.inputTexfield.tag == Constants.FieldType.selectorOptions {
                 if let bankField = credentialViewModel.bankFields.first(where: { $0.name == cell.inputTexfield.id }) {
                     extraDataDialog.extraData = bankField.extraData ?? []
                     
@@ -519,13 +519,20 @@ extension FCCredentialsFormView: UITextFieldDelegate {
     }
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.tag == Constants.Tags.fieldSecurityCode {
+        if textField.tag == Constants.FieldType.passwordText {
+            securityCodeTextField = textField
+            return true
+        }
+        
+#warning("HSBC MX, Special case not tested to show DatePicker...")
+        if credentialViewModel.bank.code == "HSBC-ENTERPRISE" &&
+            textField.tag == Constants.FieldType.passwordText {
             securityCodeTextField = textField
             datePickerTapped(textField)
             return false
         }
         
-        if textField.tag == Constants.Tags.fieldSelect {
+        if textField.tag == Constants.FieldType.selectorOptions {
             extraDataDialog.show()
             return false
         }
