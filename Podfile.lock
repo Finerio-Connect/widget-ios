@@ -1,16 +1,16 @@
 PODS:
-  - Firebase/Analytics (8.12.1):
+  - Firebase/Analytics (8.15.0):
     - Firebase/Core
-  - Firebase/Core (8.12.1):
+  - Firebase/Core (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.12.0)
-  - Firebase/CoreOnly (8.12.1):
-    - FirebaseCore (= 8.12.1)
-  - Firebase/Database (8.12.1):
+    - FirebaseAnalytics (~> 8.15.0)
+  - Firebase/CoreOnly (8.15.0):
+    - FirebaseCore (= 8.15.0)
+  - Firebase/Database (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 8.12.0)
-  - FirebaseAnalytics (8.12.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.12.0)
+    - FirebaseDatabase (~> 8.15.0)
+  - FirebaseAnalytics (8.15.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.15.0)
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -18,47 +18,47 @@ PODS:
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.12.0):
+  - FirebaseAnalytics/AdIdSupport (8.15.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.12.0)
+    - GoogleAppMeasurement (= 8.15.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.12.1):
+  - FirebaseCore (8.15.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (8.12.0):
+  - FirebaseCoreDiagnostics (8.15.0):
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseDatabase (8.12.0):
+  - FirebaseDatabase (8.15.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseInstallations (8.12.0):
+  - FirebaseInstallations (8.15.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleAppMeasurement (8.12.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.12.0)
+  - GoogleAppMeasurement (8.15.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.15.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.12.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.12.0)
+  - GoogleAppMeasurement/AdIdSupport (8.15.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.15.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/WithoutAdIdSupport (8.12.0):
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.15.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/MethodSwizzler (~> 7.7)
     - GoogleUtilities/Network (~> 7.7)
@@ -89,18 +89,39 @@ PODS:
     - GoogleUtilities/Logger
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
-  - Mixpanel-swift (3.1.5):
-    - Mixpanel-swift/Complete (= 3.1.5)
-  - Mixpanel-swift/Complete (3.1.5)
+  - Mixpanel-swift (3.2.0):
+    - Mixpanel-swift/Complete (= 3.2.0)
+  - Mixpanel-swift/Complete (3.2.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - PromisesObjC (2.0.0)
+  - PromisesObjC (2.1.0)
   - SwiftyRSA (1.7.0):
     - SwiftyRSA/ObjC (= 1.7.0)
   - SwiftyRSA/ObjC (1.7.0)
+  - Zendesk (1.3.0):
+    - ZendeskSDKConversationKit (~> 1.1.0)
+  - ZendeskSDKConversationKit (1.1.0):
+    - ZendeskSDKFayeClient (~> 1.0.0)
+    - ZendeskSDKHTTPClient (~> 0.6.0)
+    - ZendeskSDKStorage (~> 0.4.4)
+  - ZendeskSDKFayeClient (1.0.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+    - ZendeskSDKSocketClient (~> 1.0.0)
+  - ZendeskSDKHTTPClient (0.6.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKLogger (0.4.3)
+  - ZendeskSDKMessaging (2.3.0):
+    - Zendesk (~> 1.3.0)
+    - ZendeskSDKConversationKit (~> 1.1.0)
+    - ZendeskSDKUIComponents (~> 1.0.0)
+  - ZendeskSDKSocketClient (1.0.0):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKStorage (0.4.4):
+    - ZendeskSDKLogger (~> 0.4.3)
+  - ZendeskSDKUIComponents (1.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -108,6 +129,7 @@ DEPENDENCIES:
   - lottie-ios
   - Mixpanel-swift
   - SwiftyRSA
+  - ZendeskSDKMessaging
 
 SPEC REPOS:
   trunk:
@@ -126,24 +148,42 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftyRSA
+    - Zendesk
+    - ZendeskSDKConversationKit
+    - ZendeskSDKFayeClient
+    - ZendeskSDKHTTPClient
+    - ZendeskSDKLogger
+    - ZendeskSDKMessaging
+    - ZendeskSDKSocketClient
+    - ZendeskSDKStorage
+    - ZendeskSDKUIComponents
 
 SPEC CHECKSUMS:
-  Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
-  FirebaseAnalytics: bd10d7706ba8d6e01ea2816f8fe9e9b881cb0918
-  FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
-  FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
-  FirebaseDatabase: f130b3d45b2a7a0b86059734d5bd67353df8d32f
-  FirebaseInstallations: 25764cf322e77f99449395870a65b2bef88e1545
-  GoogleAppMeasurement: ae033c3aad67e68294369373056b4d74cc8ae0d6
+  Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
+  FirebaseAnalytics: 7761cbadb00a717d8d0939363eb46041526474fa
+  FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
+  FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseDatabase: f567afd233e54a303d84423207736590a6feb419
+  FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
+  GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
-  Mixpanel-swift: 280dbe36928ce333a3cd10bb17118565c63e30bd
+  Mixpanel-swift: 7c0b15c3ea96a997a989737612a3e62e72c1c561
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
+  Zendesk: 152e5507451de5006bfe686d5c152af2302ccfe5
+  ZendeskSDKConversationKit: 2eeb5294964286f709b723b936847559a3fda492
+  ZendeskSDKFayeClient: 033b5962a15e1512943b2266d7494438578ed4bb
+  ZendeskSDKHTTPClient: bcdf5f283b67a1951687fcd4cc452213226b127c
+  ZendeskSDKLogger: 1eb208475583b94571d651f74a70e7d762cdfa1c
+  ZendeskSDKMessaging: 66c945d03e9490cbd881f8af7476e3e143b6e7e3
+  ZendeskSDKSocketClient: aa939d3b4a40f1183305262b575d4e390ce86bd3
+  ZendeskSDKStorage: b310557446bbfd7508c0500fea0cf29d2c7692bd
+  ZendeskSDKUIComponents: 20912879bb243721fa1955cf1e200d0b782a8508
 
-PODFILE CHECKSUM: 11f83e647a04a30795d2909046e32126b6a25f9e
+PODFILE CHECKSUM: e9280de44701309a8fbfa2aa40b7b5da75326482
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

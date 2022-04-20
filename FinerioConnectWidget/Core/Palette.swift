@@ -8,8 +8,8 @@
 
 import UIKit
 
-final public class Palette: NSObject {
-    ///Banks section
+public final class Palette: NSObject {
+    /// Banks section
     public var banksBackground: FCColor
     public var banksHeaderTitle: FCColor
     public var banksHeaderSubtitle: FCColor
@@ -31,7 +31,7 @@ final public class Palette: NSObject {
     public var banksListCellSeparator: FCColor
     public var banksCountryCellTitle: FCColor
     public var banksListCellDisclosureIndicator: FCColor
-    
+
     /// Credentials section
     public var credentialsBackground: FCColor
     public var credentialsHeaderTitle: FCColor
@@ -52,13 +52,13 @@ final public class Palette: NSObject {
     public var credentialsBannerBorder: FCColor
     public var credentialsBannerIcon: FCColor
     public var credentialsBannerText: FCColor
-    
-    ///Account creation
+
+    /// Account creation
     public var accountCreationBackground: FCColor
     public var accountCreationHeaderTitle: FCColor
     public var accountCreationHeaderSubtitle: FCColor
     public var accountCreationStatusText: FCColor
-    
+
     /// Account status
     public var accountStatusBackground: FCColor
     public var accountStatusHeaderTitle: FCColor
@@ -70,76 +70,79 @@ final public class Palette: NSObject {
     public var accountStatusExitButtonBackground: FCColor
     public var accountStatusContinueButtonText: FCColor
     public var accountStatusExitButtonText: FCColor
-    
+
     /// Status bar
     public var statusBarBackground: FCColor
-    
-    ///AIO ViewController
+
+    /// AIO ViewController
     public var viewControllersAIOBackground: FCColor
-    
-    
+
+    /// Zendesk icon
+    public var zendeskIconBackground: FCColor = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public var zendeskIconTint: FCColor = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#000000")!)
+
     public init(
         banksBackground: FCColor = FCComponentsStyle.banksBackground
-        ,banksHeaderTitle: FCColor = FCComponentsStyle.banksHeaderTitle
-        ,banksHeaderSubtitle: FCColor = FCComponentsStyle.banksHeaderSubtitle
-        ,banksHeaderIcon: FCColor = FCComponentsStyle.banksHeaderIcon
-        ,banksHeaderIconBackground: FCColor = FCComponentsStyle.banksHeaderIconBackground
-        ,banksSelectCountryLabel: FCColor = FCComponentsStyle.banksSelectCountryLabel
-        ,banksSelectedCountryName: FCColor = FCComponentsStyle.banksSelectedCountryName
-        ,banksSelectorFieldBackground: FCColor = FCComponentsStyle.banksSelectorFieldBackground
-        ,banksCountrySelectorArrow: FCColor = FCComponentsStyle.banksCountrySelectorArrow
-        ,banksCountryCellBackground: FCColor = FCComponentsStyle.banksCountryCellBackground
-        ,banksSelectorFieldBorder: FCColor = FCComponentsStyle.banksSelectorFieldBorder
-        ,banksSegmentedControlBackground: FCColor = FCComponentsStyle.banksSegmentedControlBackground
-        ,banksSegmentedControlActiveItem: FCColor = FCComponentsStyle.banksSegmentedControlActiveItem
-        ,banksSegmentedControlActiveText: FCColor = FCComponentsStyle.banksSegmentedControlActiveText
-        ,banksSegmentedControlText: FCColor = FCComponentsStyle.banksSegmentedControlText
-        ,banksListCellBackground: FCColor = FCComponentsStyle.banksListCellBackground
-        ,banksListCellTitle: FCColor = FCComponentsStyle.banksListCellTitle
+        , banksHeaderTitle: FCColor = FCComponentsStyle.banksHeaderTitle
+        , banksHeaderSubtitle: FCColor = FCComponentsStyle.banksHeaderSubtitle
+        , banksHeaderIcon: FCColor = FCComponentsStyle.banksHeaderIcon
+        , banksHeaderIconBackground: FCColor = FCComponentsStyle.banksHeaderIconBackground
+        , banksSelectCountryLabel: FCColor = FCComponentsStyle.banksSelectCountryLabel
+        , banksSelectedCountryName: FCColor = FCComponentsStyle.banksSelectedCountryName
+        , banksSelectorFieldBackground: FCColor = FCComponentsStyle.banksSelectorFieldBackground
+        , banksCountrySelectorArrow: FCColor = FCComponentsStyle.banksCountrySelectorArrow
+        , banksCountryCellBackground: FCColor = FCComponentsStyle.banksCountryCellBackground
+        , banksSelectorFieldBorder: FCColor = FCComponentsStyle.banksSelectorFieldBorder
+        , banksSegmentedControlBackground: FCColor = FCComponentsStyle.banksSegmentedControlBackground
+        , banksSegmentedControlActiveItem: FCColor = FCComponentsStyle.banksSegmentedControlActiveItem
+        , banksSegmentedControlActiveText: FCColor = FCComponentsStyle.banksSegmentedControlActiveText
+        , banksSegmentedControlText: FCColor = FCComponentsStyle.banksSegmentedControlText
+        , banksListCellBackground: FCColor = FCComponentsStyle.banksListCellBackground
+        , banksListCellTitle: FCColor = FCComponentsStyle.banksListCellTitle
         //                ,banksListCellSubtitle: FCColor = FCComponentsStyle.banksListCellSubtitle
-        ,banksListCellSeparator: FCColor = FCComponentsStyle.banksListCellSeparator
-        ,banksCountryCellTitle: FCColor = FCComponentsStyle.banksCountryCellTitle
-        ,banksListCellDisclosureIndicator: FCColor = FCComponentsStyle.banksListCellDisclosureIndicator
-        
-        ,credentialsBackground: FCColor = FCComponentsStyle.credentialsBackground
-        ,credentialsHeaderTitle: FCColor = FCComponentsStyle.credentialsHeaderTitle
-        ,credentialsHeaderSubtitle: FCColor = FCComponentsStyle.credentialsHeaderSubtitle
-        ,credentialsFieldsTitle: FCColor = FCComponentsStyle.credentialsFieldsTitle
-        ,credentialsFieldsBorder: FCColor = FCComponentsStyle.credentialsFieldsBorder
-        ,credentialsFieldsTextPlaceholder: FCColor = FCComponentsStyle.credentialsFieldsTextPlaceholder
-        ,credentialsFieldsBackground: FCColor = FCComponentsStyle.credentialsFieldsBackground
-        ,credentialsFieldsIcon: FCColor = FCComponentsStyle.credentialsFieldsIcon
-        ,credentialsFieldsText: FCColor = FCComponentsStyle.credentialsFieldsText
-        ,credentialsSwitchOn: FCColor = FCComponentsStyle.credentialsSwitchOn
-        ,credentialsTermsPlainText: FCColor = FCComponentsStyle.credentialsTermsPlainText
-        ,credentialsTermsLinkedText: FCColor = FCComponentsStyle.credentialsTermsLinkedText
-        ,credentialsContinueButtonBackground: FCColor = FCComponentsStyle.credentialsContinueButtonBackground
-        ,credentialsContinueButtonText: FCColor = FCComponentsStyle.credentialsContinueButtonText
-        ,credentialsHelpButtonBackground: FCColor = FCComponentsStyle.credentialsHelpButtonBackground
-        ,credentialsHelpButtonText: FCColor = FCComponentsStyle.credentialsHelpButtonText
-        ,credentialsBannerBorder: FCColor = FCComponentsStyle.credentialsBannerBorder
-        ,credentialsBannerIcon: FCColor = FCComponentsStyle.credentialsBannerIcon
-        ,credentialsBannerText: FCColor = FCComponentsStyle.credentialsBannerText
-        
-        ,accountCreationBackground: FCColor = FCComponentsStyle.accountCreationBackground
-        ,accountCreationHeaderTitle: FCColor = FCComponentsStyle.accountCreationHeaderTitle
-        ,accountCreationHeaderSubtitle: FCColor = FCComponentsStyle.accountCreationHeaderSubtitle
-        ,accountCreationStatusText: FCColor = FCComponentsStyle.accountCreationStatusText
-        
-        ,accountStatusBackground: FCColor = FCComponentsStyle.accountStatusBackground
-        ,accountStatusHeaderTitle: FCColor = FCComponentsStyle.accountStatusHeaderTitle
-        ,accountStatusHeaderSubtitle: FCColor = FCComponentsStyle.accountStatusHeaderSubtitle
-        
-        ,accountStatusBodyText: FCColor = FCComponentsStyle.accountStatusBodyText
-        ,accountStatusSuccessIcon: FCColor = FCComponentsStyle.accountStatusSuccessIcon
-        ,accountStatusFailureIcon: FCColor = FCComponentsStyle.accountStatusFailureIcon
-        ,accountStatusContinueButtonBackground: FCColor = FCComponentsStyle.accountStatusContinueButtonBackground
-        ,accountStatusExitButtonBackground: FCColor = FCComponentsStyle.accountStatusExitButtonBackground
-        ,accountStatusContinueButtonText: FCColor = FCComponentsStyle.accountStatusContinueButtonText
-        ,accountStatusExitButtonText: FCColor = FCComponentsStyle.accountStatusExitButtonText
-        
-        ,statusBarBackground: FCColor = FCComponentsStyle.statusBarBackground
-        ,viewControllersAIOBackground: FCColor = FCComponentsStyle.viewControllersAIOBackground
+        , banksListCellSeparator: FCColor = FCComponentsStyle.banksListCellSeparator
+        , banksCountryCellTitle: FCColor = FCComponentsStyle.banksCountryCellTitle
+        , banksListCellDisclosureIndicator: FCColor = FCComponentsStyle.banksListCellDisclosureIndicator
+
+        , credentialsBackground: FCColor = FCComponentsStyle.credentialsBackground
+        , credentialsHeaderTitle: FCColor = FCComponentsStyle.credentialsHeaderTitle
+        , credentialsHeaderSubtitle: FCColor = FCComponentsStyle.credentialsHeaderSubtitle
+        , credentialsFieldsTitle: FCColor = FCComponentsStyle.credentialsFieldsTitle
+        , credentialsFieldsBorder: FCColor = FCComponentsStyle.credentialsFieldsBorder
+        , credentialsFieldsTextPlaceholder: FCColor = FCComponentsStyle.credentialsFieldsTextPlaceholder
+        , credentialsFieldsBackground: FCColor = FCComponentsStyle.credentialsFieldsBackground
+        , credentialsFieldsIcon: FCColor = FCComponentsStyle.credentialsFieldsIcon
+        , credentialsFieldsText: FCColor = FCComponentsStyle.credentialsFieldsText
+        , credentialsSwitchOn: FCColor = FCComponentsStyle.credentialsSwitchOn
+        , credentialsTermsPlainText: FCColor = FCComponentsStyle.credentialsTermsPlainText
+        , credentialsTermsLinkedText: FCColor = FCComponentsStyle.credentialsTermsLinkedText
+        , credentialsContinueButtonBackground: FCColor = FCComponentsStyle.credentialsContinueButtonBackground
+        , credentialsContinueButtonText: FCColor = FCComponentsStyle.credentialsContinueButtonText
+        , credentialsHelpButtonBackground: FCColor = FCComponentsStyle.credentialsHelpButtonBackground
+        , credentialsHelpButtonText: FCColor = FCComponentsStyle.credentialsHelpButtonText
+        , credentialsBannerBorder: FCColor = FCComponentsStyle.credentialsBannerBorder
+        , credentialsBannerIcon: FCColor = FCComponentsStyle.credentialsBannerIcon
+        , credentialsBannerText: FCColor = FCComponentsStyle.credentialsBannerText
+
+        , accountCreationBackground: FCColor = FCComponentsStyle.accountCreationBackground
+        , accountCreationHeaderTitle: FCColor = FCComponentsStyle.accountCreationHeaderTitle
+        , accountCreationHeaderSubtitle: FCColor = FCComponentsStyle.accountCreationHeaderSubtitle
+        , accountCreationStatusText: FCColor = FCComponentsStyle.accountCreationStatusText
+
+        , accountStatusBackground: FCColor = FCComponentsStyle.accountStatusBackground
+        , accountStatusHeaderTitle: FCColor = FCComponentsStyle.accountStatusHeaderTitle
+        , accountStatusHeaderSubtitle: FCColor = FCComponentsStyle.accountStatusHeaderSubtitle
+
+        , accountStatusBodyText: FCColor = FCComponentsStyle.accountStatusBodyText
+        , accountStatusSuccessIcon: FCColor = FCComponentsStyle.accountStatusSuccessIcon
+        , accountStatusFailureIcon: FCColor = FCComponentsStyle.accountStatusFailureIcon
+        , accountStatusContinueButtonBackground: FCColor = FCComponentsStyle.accountStatusContinueButtonBackground
+        , accountStatusExitButtonBackground: FCColor = FCComponentsStyle.accountStatusExitButtonBackground
+        , accountStatusContinueButtonText: FCColor = FCComponentsStyle.accountStatusContinueButtonText
+        , accountStatusExitButtonText: FCColor = FCComponentsStyle.accountStatusExitButtonText
+
+        , statusBarBackground: FCColor = FCComponentsStyle.statusBarBackground
+        , viewControllersAIOBackground: FCColor = FCComponentsStyle.viewControllersAIOBackground
     ) {
         self.banksBackground = banksBackground
         self.banksHeaderTitle = banksHeaderTitle
@@ -163,7 +166,7 @@ final public class Palette: NSObject {
         self.banksListCellSeparator = banksListCellSeparator
         self.banksCountryCellTitle = banksCountryCellTitle
         self.banksListCellDisclosureIndicator = banksListCellDisclosureIndicator
-        
+
         self.credentialsBackground = credentialsBackground
         self.credentialsHeaderTitle = credentialsHeaderTitle
         self.credentialsHeaderSubtitle = credentialsHeaderSubtitle
@@ -182,16 +185,16 @@ final public class Palette: NSObject {
         self.credentialsBannerBorder = credentialsBannerBorder
         self.credentialsBannerIcon = credentialsBannerIcon
         self.credentialsBannerText = credentialsBannerText
-        
+
         self.accountCreationBackground = accountCreationBackground
         self.accountCreationHeaderTitle = accountCreationHeaderTitle
         self.accountCreationHeaderSubtitle = accountCreationHeaderSubtitle
         self.accountCreationStatusText = accountCreationStatusText
-        
+
         self.accountStatusBackground = accountStatusBackground
         self.accountStatusHeaderTitle = accountStatusHeaderTitle
         self.accountStatusHeaderSubtitle = accountStatusHeaderSubtitle
-        
+
         self.accountStatusBodyText = accountStatusBodyText
         self.accountStatusSuccessIcon = accountStatusSuccessIcon
         self.accountStatusFailureIcon = accountStatusFailureIcon
@@ -199,7 +202,7 @@ final public class Palette: NSObject {
         self.accountStatusExitButtonBackground = accountStatusExitButtonBackground
         self.accountStatusContinueButtonText = accountStatusContinueButtonText
         self.accountStatusExitButtonText = accountStatusExitButtonText
-        
+
         self.statusBarBackground = statusBarBackground
         self.viewControllersAIOBackground = viewControllersAIOBackground
     }
