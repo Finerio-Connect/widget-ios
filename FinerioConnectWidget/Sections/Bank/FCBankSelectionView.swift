@@ -90,7 +90,7 @@ extension FCBankSelectionView {
         let headerView = HeaderSectionView()
         headerView.titleLabel.text = literal(.banksHeaderTitle)
         headerView.descriptionLabel.text = literal(.banksHeaderSubtitle)
-        headerView.setLockAvatarView()
+        headerView.setCustomIconImage(Images.lockIcon.image()!)
         return headerView
     }
     

@@ -51,6 +51,15 @@
 "success_continue_title_button" = "Agregar otra cuenta";
 "success_exit_title_button" = "Continuar proceso";
 
+// Onboarding Section
+"onboarding_main_title" = "¡Bienvenido, %USUARIO%!";
+"onboarding_main_description" = "Agrega tu cuenta bancaria ahora mismo y accede a un crédito a tu medida con aprobación rápida.";
+"onboarding_main_linked_label" = "Conocer mi seguridad y beneficios";
+"onboarding_main_linked_label_url" = "https://www.google.com";
+"onboarding_main_bullet_text_1" = "Completamente seguro";
+"onboarding_main_bullet_text_2" = "Evaluación al instante";
+"onboarding_main_continue_button" = "Continuar";
+"onboarding_main_exit_button" = "Agregar cuenta manualmente";
 
 
 // Error Codes
