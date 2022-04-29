@@ -47,6 +47,8 @@ public final class Texts: NSObject {
     public var onboardingMainBullet2: String
     public var onboardingMainContinueButton: String
     public var onboardingMainExitButton: String
+    public var onboardingStepContinueButton: String
+    public var onboardingStepExitButton: String
     
     
     @objc public init(
@@ -84,7 +86,9 @@ public final class Texts: NSObject {
         onboardingMainBullet1: String  = fLocaleOnboardingMainBulletCell1,
         onboardingMainBullet2: String = fLocaleOnboardingMainBulletCell2,
         onboardingMainContinueButton: String = fLocaleOnboardingMainContinueButton,
-        onboardingMainExitButton: String = fLocaleOnboardingMainExitButton
+        onboardingMainExitButton: String = fLocaleOnboardingMainExitButton,
+        onboardingStepContinueButton: String = fLocaleOnboardingStepContinueButton,
+        onboardingStepExitButton: String = fLocaleOnboardingStepExitButton
     ) {
         self.companyName = companyName
         self.banksHeaderTitle = banksHeaderTitle
@@ -121,6 +125,8 @@ public final class Texts: NSObject {
         self.onboardingMainBullet2 = onboardingMainBullet2
         self.onboardingMainContinueButton = onboardingMainContinueButton
         self.onboardingMainExitButton = onboardingMainExitButton
+        self.onboardingStepContinueButton = onboardingStepContinueButton
+        self.onboardingStepExitButton = onboardingStepExitButton
     }
 }
 
@@ -160,6 +166,8 @@ enum Literal: CustomStringConvertible {
     case onboargingMainBullet2
     case onboardingMainContinueButton
     case onboardingMainExitButton
+    case onboardingStepContinueButton
+    case onboardingStepExitButton
     
     var description: String {
         return literal(self) ?? String(hashValue)
@@ -205,5 +213,8 @@ func literal(_ literal: Literal) -> String? {
     case .onboargingMainBullet2: return literals.onboardingMainBullet2
     case .onboardingMainContinueButton: return literals.onboardingMainContinueButton
     case .onboardingMainExitButton: return literals.onboardingMainExitButton
+    case .onboardingStepContinueButton: return literals.onboardingStepContinueButton
+    case .onboardingStepExitButton: return literals.onboardingStepExitButton
+        
     }
 }

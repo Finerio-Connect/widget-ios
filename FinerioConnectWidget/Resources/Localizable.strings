@@ -60,6 +60,8 @@
 "onboarding_main_bullet_text_2" = "Evaluación al instante";
 "onboarding_main_continue_button" = "Continuar";
 "onboarding_main_exit_button" = "Agregar cuenta manualmente";
+"onboarding_step_continue_button" = "Siguiente";
+"onboarding_step_exit_button" = "Saltar";
 
 
 // Error Codes

@@ -67,3 +67,5 @@ public let fLocaleOnboardingMainBulletCell1: String = localize("onboarding_main_
 public let fLocaleOnboardingMainBulletCell2: String = localize("onboarding_main_bullet_text_2")
 public let fLocaleOnboardingMainContinueButton: String = localize("onboarding_main_continue_button")
 public let fLocaleOnboardingMainExitButton: String = localize("onboarding_main_exit_button")
+public let fLocaleOnboardingStepContinueButton: String = localize("onboarding_step_continue_button")
+public let fLocaleOnboardingStepExitButton: String = localize("onboarding_step_exit_button")

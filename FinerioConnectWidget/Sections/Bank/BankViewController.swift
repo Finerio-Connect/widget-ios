@@ -27,10 +27,9 @@ internal class BankViewController: BaseViewController {
         
         #warning("TESTING CODE")
         let vc = OnboardingViewController()
-//        let navVC = UINavigationController(rootViewController: vc)
-//        self.navigationController?.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-//        self.present(navVC, animated: true)
+        let navVC = UINavigationController(rootViewController: vc)
+        self.navigationController?.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
         
         #warning("TESTING CODE")
 //        let vc = FCOnboardingMainView()
