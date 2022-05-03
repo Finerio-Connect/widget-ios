@@ -24,7 +24,7 @@ class OnboardingCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        backgroundColor = .systemPink //.clear
+        backgroundColor = .clear
         
         changeStyle()
         setupLayoutViews()
@@ -38,8 +38,10 @@ class OnboardingCell: UITableViewCell {
 extension OnboardingCell {
     func setupLayoutViews() {
         addSubview(avatarView)
+        avatarView.topAnchor(equalTo: topAnchor, constant: 8)
         avatarView.leadingAnchor(equalTo: leadingAnchor)
         avatarView.centerYAnchor(equalTo: centerYAnchor)
+        avatarView.bottomAnchor(equalTo: bottomAnchor, constant: -8)
         
         addSubview(descriptionLabel)
         let spacing: CGFloat = 12
@@ -87,7 +89,6 @@ extension OnboardingCell {
     func setupDescriptionLabel() -> UILabel {
         let label = UILabel()
         label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.text = literal(.onboardingMainDescription)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left

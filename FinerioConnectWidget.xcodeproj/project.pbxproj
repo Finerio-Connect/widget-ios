@@ -108,7 +108,7 @@
 		7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */; };
 		7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */; };
 		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
-		7A118649281AFD8800C34748 /* OnboardingStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A118648281AFD8800C34748 /* OnboardingStepOneVC.swift */; };
+		7A118649281AFD8800C34748 /* OnboardingContentPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */; };
 		7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */; };
 		7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */; };
 		7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28C77428184652002DD9F5 /* OnboardingCell.swift */; };
@@ -127,6 +127,8 @@
 		7A8A81BF278642A500DF09AB /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */; };
 		7A97DF9A27B4304D00238F78 /* FCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97DF9927B4304D00238F78 /* FCColor.swift */; };
 		7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */; };
+		7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */; };
+		7AE00CBB2820C40500B4EED3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */; };
 		7AEF77C0281A2461000FB919 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -234,7 +236,7 @@
 		7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCCredentialsFormView.swift; sourceTree = "<group>"; };
 		7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBannerImageView.swift; sourceTree = "<group>"; };
 		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
-		7A118648281AFD8800C34748 /* OnboardingStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepOneVC.swift; sourceTree = "<group>"; };
+		7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentPageVC.swift; sourceTree = "<group>"; };
 		7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingStepView.swift; sourceTree = "<group>"; };
 		7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		7A28C77428184652002DD9F5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -253,6 +255,8 @@
 		7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		7A97DF9927B4304D00238F78 /* FCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCColor.swift; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
+		7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageVC.swift; sourceTree = "<group>"; };
+		7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		920B202546E7F799D4FA60B2 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		B8C89F5EB21571A3C1CECA5B /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -618,19 +622,10 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		7A118647281AFD1800C34748 /* Steps */ = {
-			isa = PBXGroup;
-			children = (
-				7A118648281AFD8800C34748 /* OnboardingStepOneVC.swift */,
-				7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */,
-			);
-			path = Steps;
-			sourceTree = "<group>";
-		};
 		7A4B9A4D28176A9F00C4DBA7 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				7A118647281AFD1800C34748 /* Steps */,
+				7AE00CB92820C30800B4EED3 /* Paginator */,
 				7A118646281AFCF700C34748 /* Main */,
 			);
 			path = Onboarding;
@@ -646,6 +641,17 @@
 				7A8A81B627860D9C00DF09AB /* Poppins-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7AE00CB92820C30800B4EED3 /* Paginator */ = {
+			isa = PBXGroup;
+			children = (
+				7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */,
+				7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */,
+				7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */,
+				7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */,
+			);
+			path = Paginator;
 			sourceTree = "<group>";
 		};
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
@@ -826,12 +832,13 @@
 				0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */,
 				7A01BBF12783C6ED00D3DC96 /* CredentialAccount.swift in Sources */,
 				0FCBAFAE25F1795D00DA2D18 /* UIViewController+Extension.swift in Sources */,
-				7A118649281AFD8800C34748 /* OnboardingStepOneVC.swift in Sources */,
+				7A118649281AFD8800C34748 /* OnboardingContentPageVC.swift in Sources */,
 				0FCBAFAA25F1795D00DA2D18 /* String+Extensions.swift in Sources */,
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,
 				0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */,
 				7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */,
+				7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */,
 				7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */,
 				7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */,
 				0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */,
@@ -844,6 +851,7 @@
 				0FCBAFA625F1795D00DA2D18 /* AccountViewController.swift in Sources */,
 				0FCBAF8325F1795D00DA2D18 /* Texts.swift in Sources */,
 				0FCBAFBC25F1795D00DA2D18 /* JSON.swift in Sources */,
+				7AE00CBB2820C40500B4EED3 /* OnboardingModel.swift in Sources */,
 				0FCBAFCB25F1795D00DA2D18 /* DatePickerDialog.swift in Sources */,
 				0FCBAF9A25F1795D00DA2D18 /* BankViewModel.swift in Sources */,
 				0FCBAFBF25F1795D00DA2D18 /* FAAError.swift in Sources */,

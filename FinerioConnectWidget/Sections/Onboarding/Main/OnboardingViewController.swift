@@ -12,13 +12,27 @@ class OnboardingViewController: BaseViewController {
     // Components
     var mainView: FCOnboardingMainView!
     
+    // Vars
+    private var onboardingModel: OnboardingModel!
+
+    // Inits
+    init(onboardingModel: OnboardingModel) {
+        self.onboardingModel = onboardingModel
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = Configuration.shared.palette.viewControllersAIOBackground.dynamicColor
         
-        mainView = FCOnboardingMainView()
+        mainView = FCOnboardingMainView(main: onboardingModel.main)
         mainView.delegate = self
         mainView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainView)
@@ -32,8 +46,10 @@ class OnboardingViewController: BaseViewController {
 
 extension OnboardingViewController: FCOnboardingMainViewDelegate {
     func selectedContinueButton() {
-        let stepOneVC = OnboardingStepOneVC()
-        self.navigationController?.pushViewController(stepOneVC, animated: true)
+        if let pages = onboardingModel.pages {
+            let onboardingPageVC = OnboardingPageVC(onboardingModel: pages)
+            self.navigationController?.pushViewController(onboardingPageVC, animated: true)
+        }
     }
     
     func selectedExitButton() {

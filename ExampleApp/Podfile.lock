@@ -102,9 +102,9 @@ PODS:
     - GoogleUtilities/Logger
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
-  - Mixpanel-swift (3.2.2):
-    - Mixpanel-swift/Complete (= 3.2.2)
-  - Mixpanel-swift/Complete (3.2.2)
+  - Mixpanel-swift (3.2.3):
+    - Mixpanel-swift/Complete (= 3.2.3)
+  - Mixpanel-swift/Complete (3.2.3)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -153,7 +153,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
-  Mixpanel-swift: 661b9b9f6a3c82abf18ba9809da62241c0de0269
+  Mixpanel-swift: a7636894d2bba8bdb924fbd1cdb8f52fd998cf87
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6

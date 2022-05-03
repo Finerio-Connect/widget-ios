@@ -8,6 +8,13 @@
 
 import UIKit
 
+// Model to support plain and linked text
+struct TextWithLink {
+    var fullPlainText: String
+    var linkedTextPhrase: String?
+    var urlSource: String?
+}
+
 class VerticallyCenteredTextView: UITextView {
     override var contentSize: CGSize {
         didSet {

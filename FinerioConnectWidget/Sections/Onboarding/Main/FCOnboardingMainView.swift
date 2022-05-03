@@ -19,21 +19,18 @@ class FCOnboardingMainView: FCBaseView {
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var mainDescriptionLabel: UILabel = setupMainDescriptionLabel()
     private lazy var tableView: ContentSizedTableView = setupTableView()
-    private lazy var linkedLabel: UITextView = setupLinkedLabel()
+    private lazy var linkedLabel: VerticallyCenteredTextView = setupLinkedLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
     private lazy var exitButton: UIButton = setupExitButton()
     
     // Vars
     weak var delegate: FCOnboardingMainViewDelegate?
-    let bulletStrings = [literal(.onboargingMainBullet1),
-                         literal(.onboargingMainBullet2)]
-    
-    let bulletIcons = [Images.lockIcon.rawValue,
-                       Images.rayIcon.rawValue]
+    private var main: OnboardingModel.Main!
     
     // Inits
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(main: OnboardingModel.Main) {
+        self.main = main
+        super.init(frame: .zero)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,9 +86,10 @@ extension FCOnboardingMainView {
         stackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         
         addSubview(linkedLabel)
-        linkedLabel.topAnchor(equalTo: tableView.bottomAnchor, constant: margin)
+        linkedLabel.topAnchor(equalTo: tableView.bottomAnchor, constant: margin / 4)
         linkedLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         linkedLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        linkedLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
     }
 }
 
@@ -100,26 +98,25 @@ extension FCOnboardingMainView {
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerView = HeaderSectionView()
         headerView.setCustomIconImage(Images.buildingIcon.image()!)
-        headerView.titleLabel.text = literal(.onboardingMainTitle)
-        headerView.descriptionLabel.text = ""
+        headerView.titleLabel.text = main.headerTitle
+        headerView.descriptionLabel.isHidden = true
         return headerView
     }
     
     private func setupMainDescriptionLabel() -> UILabel {
         let label = UILabel()
         label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.text = literal(.onboardingMainDescription)
+        label.text = main.headerDescription
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-        
         return label
     }
     
     private func setupTableView() -> ContentSizedTableView {
         let tableView = ContentSizedTableView()
         tableView.dataSource = self
-        tableView.backgroundColor = .green //.clear
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.bounces = false
         tableView.register(OnboardingCell.self,
@@ -127,28 +124,41 @@ extension FCOnboardingMainView {
         return tableView
     }
     
-    private func setupLinkedLabel() -> UITextView {
-        let textView = UITextView()
-        textView.heightAnchor(equalTo: 70)
-        textView.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
+    private func setupLinkedLabel() -> VerticallyCenteredTextView {
+        let textView = VerticallyCenteredTextView()
+        let plainAttributes: [NSAttributedString.Key: Any]
+        let linkAttributes: [NSAttributedString.Key : Any]
         
-        if let linkedText = literal(.onboardingLinkedLabel) {
-            let font = UIFont.fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
+        let plainText = main.textWithLink.fullPlainText
+        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
+        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
+        let fontType = UIFont.fcRegularFont(ofSize: fontSize)
+        
+        plainAttributes = [.foregroundColor: termsColor, .font: fontType]
+        let attributedString = NSMutableAttributedString(string: plainText,
+                                                         attributes: plainAttributes)
+        
+        if let linkedText = main.textWithLink.linkedTextPhrase {
+            let linkRange = (attributedString.string as NSString).range(of: linkedText)
             
-            var attributes = [NSAttributedString.Key: Any]()
-            attributes = [
-                .font: font,
-                .underlineStyle: NSUnderlineStyle.thick.rawValue
+            if let urlWebSite = main.textWithLink.urlSource {
+                attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
+            }
+            
+            let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
+            linkAttributes = [
+                .font: fontType,
+                .underlineStyle: NSUnderlineStyle.thick.rawValue,
+                .foregroundColor: linkColor
             ]
             
-            let attributedString = NSMutableAttributedString(string: linkedText, attributes: attributes)
-            let range = NSRange.init(location: 0, length: linkedText.count)
-            if let urlString = literal(.onboardingMainLinkedLabelURL) {
-                attributedString.addAttribute(.link, value: urlString, range: range)
-            }
-            textView.attributedText = attributedString
+            textView.linkTextAttributes = linkAttributes
         }
         
+        textView.backgroundColor = .clear
+        textView.attributedText = attributedString
+        textView.isEditable = false
+        textView.textAlignment = .left
         return textView
     }
     
@@ -181,35 +191,20 @@ extension FCOnboardingMainView {
 // MARK: - TableView Data Source
 extension FCOnboardingMainView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bulletStrings.count
+        return main.listItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var aCell = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingCell.cellIdentifier, for: indexPath) as? OnboardingCell {
-            
-            let text = bulletStrings[indexPath.row]
-            let iconName = bulletIcons[indexPath.row]
-            
-            cell.descriptionLabel.text = text
-            if let image = Images.init(iconName).image() {
-                cell.setCustomIconImage(image)
-            }
-            
+            let listItem = main.listItems[indexPath.row]
+            cell.descriptionLabel.text = listItem.description
+            cell.setCustomIconImage(listItem.icon)
             aCell = cell
         }
         return aCell
     }
 }
-
-// MARK: - UITextView Delegate
-extension FCOnboardingMainView: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        UIApplication.shared.open(URL)
-        return false
-    }
-}
-
 
 // MARK: - Style
 extension FCOnboardingMainView {

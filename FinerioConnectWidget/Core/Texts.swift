@@ -39,12 +39,6 @@ public final class Texts: NSObject {
     public var successContinueTitleButton: String
     public var successExitTitleButton: String
     // Onboarding views
-    public var onboardingMainTitle: String
-    public var onboardingMainDescription: String
-    public var onboardingMainLinkedLabel: String
-    public var onboardingMainLinkedLabelURL: String
-    public var onboardingMainBullet1: String
-    public var onboardingMainBullet2: String
     public var onboardingMainContinueButton: String
     public var onboardingMainExitButton: String
     public var onboardingStepContinueButton: String
@@ -79,12 +73,6 @@ public final class Texts: NSObject {
         failureExitTitleButton: String = fLocaleFailureExitTitleButton,
         successContinueTitleButton: String = fLocaleSuccessContinueTitleButton,
         successExitTitleButton: String = fLocaleSuccessExitTitleButton,
-        onboardingMainTitle: String = fLocaleOnboardingMainTitle,
-        onboardingMainDescription: String = fLocaleOnboardingMainDescription,
-        onboardingLinkedLabel: String = fLocaleOnboardingMainLinkedLabel,
-        onboardingMainLinkedLabelURL: String = fLocaleOnboardingMainLinkedLabelURL,
-        onboardingMainBullet1: String  = fLocaleOnboardingMainBulletCell1,
-        onboardingMainBullet2: String = fLocaleOnboardingMainBulletCell2,
         onboardingMainContinueButton: String = fLocaleOnboardingMainContinueButton,
         onboardingMainExitButton: String = fLocaleOnboardingMainExitButton,
         onboardingStepContinueButton: String = fLocaleOnboardingStepContinueButton,
@@ -117,12 +105,6 @@ public final class Texts: NSObject {
         self.failureExitTitleButton = failureExitTitleButton
         self.successContinueTitleButton = successContinueTitleButton
         self.successExitTitleButton = successExitTitleButton
-        self.onboardingMainTitle = onboardingMainTitle
-        self.onboardingMainDescription = onboardingMainDescription
-        self.onboardingMainLinkedLabel = onboardingLinkedLabel
-        self.onboardingMainLinkedLabelURL = onboardingMainLinkedLabelURL
-        self.onboardingMainBullet1 = onboardingMainBullet1
-        self.onboardingMainBullet2 = onboardingMainBullet2
         self.onboardingMainContinueButton = onboardingMainContinueButton
         self.onboardingMainExitButton = onboardingMainExitButton
         self.onboardingStepContinueButton = onboardingStepContinueButton
@@ -158,12 +140,6 @@ enum Literal: CustomStringConvertible {
     case failureExitTitleButton
     case successContinueTitleButton
     case successExitTitleButton
-    case onboardingMainTitle
-    case onboardingMainDescription
-    case onboardingLinkedLabel
-    case onboardingMainLinkedLabelURL
-    case onboargingMainBullet1
-    case onboargingMainBullet2
     case onboardingMainContinueButton
     case onboardingMainExitButton
     case onboardingStepContinueButton
@@ -205,12 +181,6 @@ func literal(_ literal: Literal) -> String? {
     case .failureExitTitleButton: return literals.failureExitTitleButton
     case .successContinueTitleButton: return literals.successContinueTitleButton
     case .successExitTitleButton: return literals.successExitTitleButton
-    case .onboardingMainTitle: return literals.onboardingMainTitle
-    case .onboardingMainDescription: return literals.onboardingMainDescription
-    case .onboardingLinkedLabel: return literals.onboardingMainLinkedLabel
-    case .onboardingMainLinkedLabelURL: return literals.onboardingMainLinkedLabelURL
-    case .onboargingMainBullet1: return literals.onboardingMainBullet1
-    case .onboargingMainBullet2: return literals.onboardingMainBullet2
     case .onboardingMainContinueButton: return literals.onboardingMainContinueButton
     case .onboardingMainExitButton: return literals.onboardingMainExitButton
     case .onboardingStepContinueButton: return literals.onboardingStepContinueButton
