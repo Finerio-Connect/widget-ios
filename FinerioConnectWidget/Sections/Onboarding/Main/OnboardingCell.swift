@@ -58,25 +58,6 @@ extension OnboardingCell {
         imageView.layer.cornerRadius = sizeView / 2
         imageView.clipsToBounds = true
         return imageView
-        
-//        let avatarView = UIImageView(image: Images.buildingIcon.image())
-//        let size: CGFloat = 12
-//        avatarView.heightAnchor(equalTo: size)
-//        avatarView.widthAnchor(equalTo: size)
-//
-//        let containerSize: CGFloat = 33
-//        let roundedContainer = UIView()
-//        roundedContainer.layer.cornerRadius = containerSize / 2
-//        roundedContainer.backgroundColor = .white
-//        roundedContainer.addSubview(avatarView)
-//
-//        roundedContainer.widthAnchor(equalTo: containerSize)
-//        roundedContainer.heightAnchor(equalTo: containerSize)
-//
-//        avatarView.centerXAnchor(equalTo: roundedContainer.centerXAnchor)
-//        avatarView.centerYAnchor(equalTo: roundedContainer.centerYAnchor)
-//
-//        return roundedContainer
     }
     
     func setCustomIconImage(_ image: UIImage) {

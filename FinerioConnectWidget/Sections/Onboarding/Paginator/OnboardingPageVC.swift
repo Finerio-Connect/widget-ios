@@ -32,6 +32,7 @@ class OnboardingPageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        #warning("HARCODED COLOR")
         self.view.backgroundColor = .white
         pageVC.setViewControllers([self.viewControllerAtIndex(index: 0)],
                                   direction: .forward,
@@ -40,7 +41,34 @@ class OnboardingPageVC: BaseViewController {
         pageVC.delegate = self
         
         self.addChild(pageVC)
-        
+        self.setLayoutViews()
+        self.pageVC.didMove(toParent: self)
+    }
+}
+
+// MARK: - Events
+extension OnboardingPageVC {
+    func viewControllerAtIndex(index: Int) -> OnboardingContentPageVC {
+        let onboardingPage = self.onboardingModel[index]
+        let contentPageVC = OnboardingContentPageVC(onboardingPage: onboardingPage)
+        contentPageVC.pageIndex = index
+        return contentPageVC
+    }
+    
+    @objc func didSelectContinueButton() {
+//        delegate?.selectedContinueButton()
+    }
+    
+    @objc func didSelectExitButton() {
+        self.dismiss(animated: true)
+//        delegate?.selectedExitButton()
+    }
+}
+
+
+// MARK: - Layout
+extension OnboardingPageVC {
+    func setLayoutViews() {
         let margin: CGFloat = 20
         let stackView = UIStackView(arrangedSubviews: [exitButton, continueButton])
         stackView.axis = .horizontal
@@ -59,33 +87,11 @@ class OnboardingPageVC: BaseViewController {
             pageView.topAnchor(equalTo: self.view.topAnchor)
             pageView.leadingAnchor(equalTo: self.view.leadingAnchor)
             pageView.trailingAnchor(equalTo: self.view.trailingAnchor)
-            pageView.bottomAnchor(equalTo: pageControl.topAnchor)
             
             pageControl.topAnchor(equalTo: pageView.bottomAnchor)
             pageControl.centerXAnchor(equalTo: self.view.centerXAnchor)
-            pageControl.bottomAnchor(equalTo: stackView.topAnchor, constant: -margin)
+            pageControl.bottomAnchor(equalTo: stackView.topAnchor, constant: -margin * 1.5)
         }
-        
-        
-        self.pageVC.didMove(toParent: self)
-    }
-}
-
-// MARK: - Events
-extension OnboardingPageVC {
-    func viewControllerAtIndex(index: Int) -> OnboardingContentPageVC {
-        
-        let onboardingPage = self.onboardingModel[index]
-        let contentPageVC = OnboardingContentPageVC(onboardingPage: onboardingPage)
-        contentPageVC.pageIndex = index
-        return contentPageVC
-        
-//        if (onboardingModel.count == 0) || (index >= onboardingModel.count) {
-//            return OnboardingContentPageVC()
-//        }
-//        let vc = OnboardingContentPageVC()
-//        vc.pageIndex = index
-//        return vc
     }
 }
 
@@ -94,12 +100,12 @@ extension OnboardingPageVC {
     func setupPageVC() -> UIPageViewController {
         let pageVC = UIPageViewController(transitionStyle: .scroll,
                                           navigationOrientation: .horizontal)
-        pageVC.view.backgroundColor = .purple
         return pageVC
     }
     
     func setupPageControl() -> UIPageControl {
         let pageControl = UIPageControl()
+        #warning("HARDCODED COLORS")
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = .green
         pageControl.backgroundColor = .clear
@@ -126,14 +132,14 @@ extension OnboardingPageVC {
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
         button.setTitle(literal(.onboardingStepContinueButton), for: .normal)
-//        button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
     
     private func setupExitButton() -> UIButton {
         let button = setupButton()
         button.setTitle(literal(.onboardingStepExitButton), for: .normal)
-//        button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
         return button
     }
 }

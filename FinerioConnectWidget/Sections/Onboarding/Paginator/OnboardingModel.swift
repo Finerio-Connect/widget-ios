@@ -57,7 +57,7 @@ let main = OnboardingModel.Main(icon: Images.buildingIcon.image()!,
 
 
 // Paginator Data
-let linkedDescriptionStepOne = TextWithLink(fullPlainText:"Recuerda en ningún momento se realizarán movimientos o compras. Si tienes dudas de la privacidad puedes consultarlo aquí.",
+let linkedDescriptionStepOne = TextWithLink(fullPlainText:"Recuerda en ningún momento se realizarán movimientos o compras. Si tienes dudas de la privacidad puedes consultarlo aquí. Recuerda en ningún momento se realizarán movimientos o compras. Si tienes dudas de la privacidad puedes consultarlo aquí.",
                                                    linkedTextPhrase: "aquí",
                                                    urlSource: "https://www.google.com")
 

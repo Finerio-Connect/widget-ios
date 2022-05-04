@@ -40,26 +40,23 @@ extension FCOnboardingStepView {
     func setLayoutViews() {
         let margin: CGFloat = 20
         
-        self.backgroundColor = .green
+        #warning("HARCODED COLOR")
+//        self.backgroundColor = .green
         
         addSubview(imageView)
-        imageView.topAnchor.constraint(greaterThanOrEqualTo: safeTopAnchor, constant: margin * 4).isActive = true
-//        imageView.topAnchor(equalTo: safeTopAnchor, constant: margin * 4)
+        imageView.topAnchor.constraint(lessThanOrEqualTo: safeTopAnchor, constant: margin * 5).isActive = true
         imageView.centerXAnchor(equalTo: centerXAnchor)
+
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.spacing = margin
+        stackView.distribution = .fillProportionally
+        addSubview(stackView)
         
-        addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor, constant: margin).isActive = true
-//        titleLabel.topAnchor(equalTo: imageView.bottomAnchor, constant: margin * 4)
-        titleLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
-        titleLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-        
-        addSubview(descriptionLabel)
-        descriptionLabel.topAnchor(equalTo: titleLabel.bottomAnchor, constant: margin * 0.8)
-        descriptionLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
-        descriptionLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-        descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
-//        descriptionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -margin).isActive = true
-        descriptionLabel.bottomAnchor(equalTo: bottomAnchor, constant: -margin)
+        stackView.topAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor, constant: margin).isActive = true
+        stackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+        stackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        stackView.bottomAnchor(equalTo: bottomAnchor, constant: -margin)
     }
 }
 
@@ -112,9 +109,10 @@ extension FCOnboardingStepView {
             textView.linkTextAttributes = linkAttributes
         }
         
-        textView.backgroundColor = .clear
         textView.attributedText = attributedString
+        textView.backgroundColor = .clear
         textView.isEditable = false
+        textView.isScrollEnabled = false
         textView.textAlignment = .center
         return textView
     }    

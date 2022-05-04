@@ -158,6 +158,7 @@ extension FCOnboardingMainView {
         textView.backgroundColor = .clear
         textView.attributedText = attributedString
         textView.isEditable = false
+        textView.isScrollEnabled = false
         textView.textAlignment = .left
         return textView
     }
