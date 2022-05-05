@@ -11,7 +11,6 @@ import CoreLocation
 
 protocol FCOnboardingMainViewDelegate: AnyObject {
     func selectedContinueButton()
-    func selectedExitButton()
 }
 
 class FCOnboardingMainView: FCBaseView {
@@ -21,7 +20,6 @@ class FCOnboardingMainView: FCBaseView {
     private lazy var tableView: ContentSizedTableView = setupTableView()
     private lazy var linkedLabel: VerticallyCenteredTextView = setupLinkedLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
-    private lazy var exitButton: UIButton = setupExitButton()
     
     // Vars
     weak var delegate: FCOnboardingMainViewDelegate?
@@ -49,10 +47,6 @@ extension FCOnboardingMainView {
     @objc func didSelectContinueButton() {
         delegate?.selectedContinueButton()
     }
-    
-    @objc func didSelectExitButton() {
-        delegate?.selectedExitButton()
-    }
 }
 
 // MARK: - Layout
@@ -76,7 +70,7 @@ extension FCOnboardingMainView {
         tableView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         tableView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         
-        let stackView = UIStackView(arrangedSubviews: [continueButton, exitButton])
+        let stackView = UIStackView(arrangedSubviews: [continueButton])
         stackView.axis = .vertical
         stackView.spacing = 12
         
@@ -180,13 +174,6 @@ extension FCOnboardingMainView {
         button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
-    
-    private func setupExitButton() -> UIButton {
-        let button = setupButton()
-        button.setTitle(literal(.onboardingMainExitButton), for: .normal)
-        button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
-        return button
-    }
 }
 
 // MARK: - TableView Data Source
@@ -210,16 +197,12 @@ extension FCOnboardingMainView: UITableViewDataSource {
 // MARK: - Style
 extension FCOnboardingMainView {
     func changeStyle() {
-#warning("PERSONALIZAR VARIABLES PARA COLOR ?")
         let palette = Configuration.shared.palette
         headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
         headerSectionView.avatarView.tintColor = palette.circleIconTint.dynamicColor
         headerSectionView.avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
-        
+        mainDescriptionLabel.textColor = palette.regularSizedText.dynamicColor
         continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
         continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
-        exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
-        exitButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
-        
     }
 }

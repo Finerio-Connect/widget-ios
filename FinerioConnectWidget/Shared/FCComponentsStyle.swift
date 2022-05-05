@@ -26,25 +26,9 @@ public struct FCComponentsStyle {
     private static let arsenic = UIColor(hex: "#373946")!
     private static let darkGunMetal = UIColor(hex: "#24252D")!
     private static let eerieBlack = UIColor(hex: "#1B1A21")!
-    
-    // FINERIO GROUP
-//    private static let finerioBlue = FCColor(light: cetaceanBlue, dark: white)
-//    private static let finerioMint = FCColor(light: eucalyptus, dark: caribeanGreen)
-//    private static let finerioLightGray = FCColor(light: antiFlashWhite, dark: arsenic)
-//    private static let finerioWhite = FCColor(light: white, dark: darkGunMetal)
-//    private static let finerioLightText = FCColor(light: white, dark: white)
-//    private static let finerioContrastText = FCColor(light: americanBlue, dark: white)
-//    private static let finerioFailure = FCColor(light: lightSalmonPink, dark: lightSalmonPink)
-    
-    // SEMANTIC COLORS TO BE DELETED
-//    public static let publicPrimary = finerioBlue
-//    public static let publicSecondary = finerioLightGray
-//    public static let publicTint = finerioMint
-//    public static let publicBackground = finerioWhite
-//    public static let publicLightText = finerioLightText
-//    public static let publicContrastText = finerioContrastText
-//    public static let publicFailure = finerioFailure
-    
+}
+
+extension FCComponentsStyle {
     // BY COMPONENTS
     public static let circleIconTint = FCColor(light: cetaceanBlue, dark: white)
     public static let circleIconBackground = FCColor(light: antiFlashWhite, dark: eerieBlack)
@@ -72,98 +56,116 @@ public struct FCComponentsStyle {
     public static let cellSeparator = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
     public static let cellDisclosureIndicator = FCColor(light: manatee, dark: white)
     public static let dialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
-    
-    
-    
-    
+    public static let pageDotActive = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let pageDotInactive = FCColor(light: lightPeriwinkle, dark: eerieBlack)
+}
 
+//extension FCComponentsStyle {
+    // FINERIO GROUP
+    //    private static let finerioBlue = FCColor(light: cetaceanBlue, dark: white)
+    //    private static let finerioMint = FCColor(light: eucalyptus, dark: caribeanGreen)
+    //    private static let finerioLightGray = FCColor(light: antiFlashWhite, dark: arsenic)
+    //    private static let finerioWhite = FCColor(light: white, dark: darkGunMetal)
+    //    private static let finerioLightText = FCColor(light: white, dark: white)
+    //    private static let finerioContrastText = FCColor(light: americanBlue, dark: white)
+    //    private static let finerioFailure = FCColor(light: lightSalmonPink, dark: lightSalmonPink)
+    
+    // SEMANTIC COLORS TO BE DELETED
+    //    public static let publicPrimary = finerioBlue
+    //    public static let publicSecondary = finerioLightGray
+    //    public static let publicTint = finerioMint
+    //    public static let publicBackground = finerioWhite
+    //    public static let publicLightText = finerioLightText
+    //    public static let publicContrastText = finerioContrastText
+    //    public static let publicFailure = finerioFailure
+    
     // BANKS SECTION
-//    public static let banksBackground = publicBackground
-//    public static let banksHeaderTitle = publicPrimary
-//    public static let banksHeaderSubtitle = publicPrimary
-//    public static let banksHeaderIcon = primary
-//    public static let banksHeaderIconBackground = FCColor(light: antiFlashWhite, dark: eerieBlack)
-//    public static let banksSelectCountryLabel = publicPrimary
-//    public static let banksSelectedCountryName = FCColor(light: manatee, dark: white)
-//    public static let banksSelectorFieldBackground = FCColor(light: white, dark: eerieBlack)
-//    public static let banksSelectorFieldBorder = FCColor(light: lightPeriwinkle, dark: eerieBlack)
-//    public static let banksCountrySelectorArrow = FCColor(light: manatee, dark: white)
-//    public static let banksCountryCellBackground = FCColor(light: white, dark: eerieBlack)
-//    public static let banksCountryCellTitle = FCColor(light: manatee, dark: white)
+    //    public static let banksBackground = publicBackground
+    //    public static let banksHeaderTitle = publicPrimary
+    //    public static let banksHeaderSubtitle = publicPrimary
+    //    public static let banksHeaderIcon = primary
+    //    public static let banksHeaderIconBackground = FCColor(light: antiFlashWhite, dark: eerieBlack)
+    //    public static let banksSelectCountryLabel = publicPrimary
+    //    public static let banksSelectedCountryName = FCColor(light: manatee, dark: white)
+    //    public static let banksSelectorFieldBackground = FCColor(light: white, dark: eerieBlack)
+    //    public static let banksSelectorFieldBorder = FCColor(light: lightPeriwinkle, dark: eerieBlack)
+    //    public static let banksCountrySelectorArrow = FCColor(light: manatee, dark: white)
+    //    public static let banksCountryCellBackground = FCColor(light: white, dark: eerieBlack)
+    //    public static let banksCountryCellTitle = FCColor(light: manatee, dark: white)
     
-//    public static let banksSegmentedControlActiveText = publicPrimary
-//    public static let banksSegmentedControlText = publicPrimary
-//    public static let banksListCellBackground = publicBackground
-//    public static let banksListCellTitle = publicPrimary
+    //    public static let banksSegmentedControlActiveText = publicPrimary
+    //    public static let banksSegmentedControlText = publicPrimary
+    //    public static let banksListCellBackground = publicBackground
+    //    public static let banksListCellTitle = publicPrimary
     //    public static let banksListCellSubtitle = FCColor(light: manatee, dark: white) // Hidden by now
-//    public static let banksListCellSeparator = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
-//    public static let credentialsFieldsTextPlaceholder = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
-//    static let genericDialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
-//    public static let banksListCellDisclosureIndicator = FCColor(light: manatee, dark: white)
-//    public static let credentialsFieldsIcon = FCColor(light: manatee, dark: white)
-//    public static let credentialsFieldsText = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsTermsPlainText = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsBannerIcon = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsBannerText = FCColor(light: darkBlueGray, dark: white)
-//    public static let accountStatusBodyText = FCColor(light: darkBlueGray, dark: white)
-
+    //    public static let banksListCellSeparator = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    //    public static let credentialsFieldsTextPlaceholder = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    //    static let genericDialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    //    public static let banksListCellDisclosureIndicator = FCColor(light: manatee, dark: white)
+    //    public static let credentialsFieldsIcon = FCColor(light: manatee, dark: white)
+    //    public static let credentialsFieldsText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsTermsPlainText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsBannerIcon = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsBannerText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let accountStatusBodyText = FCColor(light: darkBlueGray, dark: white)
+    
     
     
     
     // CREDENTIALS SECTION
-//    public static let credentialsBackground = publicBackground
-//    public static let credentialsHeaderTitle = publicPrimary
-//    public static let credentialsHeaderSubtitle = publicPrimary
-//    public static let credentialsFieldsTitle = publicContrastText
-//    public static let credentialsFieldsBorder = FCColor(light: lightPeriwinkle, dark: eerieBlack)
-//    public static let credentialsFieldsTextPlaceholder = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
-//    public static let credentialsFieldsBackground = FCColor(light: white, dark: eerieBlack)
-//    public static let credentialsFieldsIcon = FCColor(light: manatee, dark: white)
-//    public static let credentialsFieldsText = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsSwitchOn = publicTint
-//    public static let credentialsTermsPlainText = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsTermsLinkedText = FCColor(light: cetateanBlue, dark: caribeanGreen)
-//    public static let credentialsContinueButtonBackground = accent
-//    public static let credentialsContinueButtonText = lightText
-//    public static let credentialsHelpButtonBackground = publicSecondary
-//    public static let credentialsHelpButtonText = publicContrastText
-//    public static let credentialsBannerBorder = publicTint
-//    public static let credentialsBannerIcon = FCColor(light: darkBlueGray, dark: white)
-//    public static let credentialsBannerText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsBackground = publicBackground
+    //    public static let credentialsHeaderTitle = publicPrimary
+    //    public static let credentialsHeaderSubtitle = publicPrimary
+    //    public static let credentialsFieldsTitle = publicContrastText
+    //    public static let credentialsFieldsBorder = FCColor(light: lightPeriwinkle, dark: eerieBlack)
+    //    public static let credentialsFieldsTextPlaceholder = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    //    public static let credentialsFieldsBackground = FCColor(light: white, dark: eerieBlack)
+    //    public static let credentialsFieldsIcon = FCColor(light: manatee, dark: white)
+    //    public static let credentialsFieldsText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsSwitchOn = publicTint
+    //    public static let credentialsTermsPlainText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsTermsLinkedText = FCColor(light: cetateanBlue, dark: caribeanGreen)
+    //    public static let credentialsContinueButtonBackground = accent
+    //    public static let credentialsContinueButtonText = lightText
+    //    public static let credentialsHelpButtonBackground = publicSecondary
+    //    public static let credentialsHelpButtonText = publicContrastText
+    //    public static let credentialsBannerBorder = publicTint
+    //    public static let credentialsBannerIcon = FCColor(light: darkBlueGray, dark: white)
+    //    public static let credentialsBannerText = FCColor(light: darkBlueGray, dark: white)
     
     // ACCOUNT CREATION SECTION
-//    public static let accountCreationBackground = publicBackground
-//    public static let accountCreationHeaderTitle = publicPrimary
-//    public static let accountCreationHeaderSubtitle = publicPrimary
-//    public static let accountCreationStatusText = publicPrimary
+    //    public static let accountCreationBackground = publicBackground
+    //    public static let accountCreationHeaderTitle = publicPrimary
+    //    public static let accountCreationHeaderSubtitle = publicPrimary
+    //    public static let accountCreationStatusText = publicPrimary
     
     // ACCOUNT STATUS SECTION
-//    public static let accountStatusBackground = publicBackground
-//    public static let accountStatusHeaderTitle = publicPrimary
-//    public static let accountStatusHeaderSubtitle = publicPrimary
-//    public static let accountStatusBodyText = FCColor(light: darkBlueGray, dark: white)
-//    public static let accountStatusSuccessIcon = publicTint
-//    public static let accountStatusFailureIcon = publicFailure
-//    public static let accountStatusContinueButtonBackground = accent
-//    public static let accountStatusExitButtonBackground = publicSecondary
-//    public static let accountStatusContinueButtonText = lightText
-//    public static let accountStatusExitButtonText = publicContrastText
+    //    public static let accountStatusBackground = publicBackground
+    //    public static let accountStatusHeaderTitle = publicPrimary
+    //    public static let accountStatusHeaderSubtitle = publicPrimary
+    //    public static let accountStatusBodyText = FCColor(light: darkBlueGray, dark: white)
+    //    public static let accountStatusSuccessIcon = publicTint
+    //    public static let accountStatusFailureIcon = publicFailure
+    //    public static let accountStatusContinueButtonBackground = accent
+    //    public static let accountStatusExitButtonBackground = publicSecondary
+    //    public static let accountStatusContinueButtonText = lightText
+    //    public static let accountStatusExitButtonText = publicContrastText
     
     // STATUS BAR
     
     // GENERIC DIALOG
-//    static let genericDialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    //    static let genericDialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
     
     // EXTRA DATA DIALOG
-//    static let extraDialogAcceptButtonBackground = publicTint
-//    static let extraDialogAcceptButtonTitle = publicLightText
-//    static let extraDialogPickerText = publicContrastText
-//    static let extraDialogBackground = publicBackground
+    //    static let extraDialogAcceptButtonBackground = publicTint
+    //    static let extraDialogAcceptButtonTitle = publicLightText
+    //    static let extraDialogPickerText = publicContrastText
+    //    static let extraDialogBackground = publicBackground
     //    static let extraDialogPickerSelectedItem = FCColor(light: antiFlashWhite, dark: eerieBlack) // NOT IN USE
     
     // ALL-IN-ONE FLOW VIEW CONTROLLERS
-//    public static let viewControllersAIOBackground = publicBackground
+    //    public static let viewControllersAIOBackground = publicBackground
     
     // FULL LOADER VIEW
-//    static let fullLoaderViewBackground = publicBackground
-}
+    //    static let fullLoaderViewBackground = publicBackground
+//}

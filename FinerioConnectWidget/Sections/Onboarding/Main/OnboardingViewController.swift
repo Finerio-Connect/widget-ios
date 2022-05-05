@@ -14,7 +14,7 @@ class OnboardingViewController: BaseViewController {
     
     // Vars
     private var onboardingModel: OnboardingModel!
-
+    
     // Inits
     init(onboardingModel: OnboardingModel) {
         self.onboardingModel = onboardingModel
@@ -31,10 +31,15 @@ class OnboardingViewController: BaseViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
-        
+        setLayoutViews()
+    }
+}
+
+// MARK: - Layout
+extension OnboardingViewController {
+    func setLayoutViews() {
         mainView = FCOnboardingMainView(main: onboardingModel.main)
         mainView.delegate = self
-        mainView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainView)
         
         mainView.topAnchor(equalTo: self.view.safeTopAnchor)
@@ -44,15 +49,12 @@ class OnboardingViewController: BaseViewController {
     }
 }
 
+// MARK: - OnboardingMainView Delegate
 extension OnboardingViewController: FCOnboardingMainViewDelegate {
     func selectedContinueButton() {
         if let pages = onboardingModel.pages {
             let onboardingPageVC = OnboardingPageVC(onboardingModel: pages)
             self.navigationController?.pushViewController(onboardingPageVC, animated: true)
         }
-    }
-    
-    func selectedExitButton() {
-        self.dismiss(animated: true)
     }
 }

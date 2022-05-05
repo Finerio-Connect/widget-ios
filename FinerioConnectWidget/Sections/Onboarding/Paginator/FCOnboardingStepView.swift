@@ -40,9 +40,6 @@ extension FCOnboardingStepView {
     func setLayoutViews() {
         let margin: CGFloat = 20
         
-        #warning("HARCODED COLOR")
-//        self.backgroundColor = .green
-        
         addSubview(imageView)
         imageView.topAnchor.constraint(lessThanOrEqualTo: safeTopAnchor, constant: margin * 5).isActive = true
         imageView.centerXAnchor(equalTo: centerXAnchor)
@@ -78,7 +75,6 @@ extension FCOnboardingStepView {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        
         return label
     }
     
@@ -125,5 +121,6 @@ extension FCOnboardingStepView {
 extension FCOnboardingStepView {
     func changeStyle() {
         let palette = Configuration.shared.palette
+        titleLabel.textColor = palette.mediumSizedText.dynamicColor
     }
 }

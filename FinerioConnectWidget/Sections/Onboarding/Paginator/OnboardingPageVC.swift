@@ -105,10 +105,6 @@ extension OnboardingPageVC {
     
     func setupPageControl() -> UIPageControl {
         let pageControl = UIPageControl()
-        #warning("HARDCODED COLORS")
-        pageControl.pageIndicatorTintColor = .lightGray
-        pageControl.currentPageIndicatorTintColor = .green
-        
         pageControl.backgroundColor = .clear
         pageControl.currentPage = 0
         pageControl.numberOfPages = onboardingModel.count
@@ -190,10 +186,8 @@ extension OnboardingPageVC: UIPageViewControllerDelegate {
 extension OnboardingPageVC {
     func changeStyle() {
         let palette = Configuration.shared.palette
-//        backgroundColor = palette.accountStatusBackground.dynamicColor
-//        headerSectionView.titleLabel.textColor = palette.accountStatusHeaderTitle.dynamicColor
-//        headerSectionView.descriptionLabel.textColor = palette.accountStatusHeaderSubtitle.dynamicColor
-//        bodyDescriptionLabel.textColor = palette.accountStatusBodyText.dynamicColor
+        pageControl.pageIndicatorTintColor = palette.pageDotInactive.dynamicColor
+        pageControl.currentPageIndicatorTintColor = palette.pageDotActive.dynamicColor
         continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
         continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
         exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor

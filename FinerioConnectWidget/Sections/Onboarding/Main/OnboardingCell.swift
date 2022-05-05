@@ -35,6 +35,7 @@ class OnboardingCell: UITableViewCell {
     }
 }
 
+//MARK: - Layout
 extension OnboardingCell {
     func setupLayoutViews() {
         addSubview(avatarView)
@@ -49,7 +50,10 @@ extension OnboardingCell {
         descriptionLabel.trailingAnchor(equalTo: trailingAnchor, constant: -spacing)
         descriptionLabel.centerYAnchor(equalTo: centerYAnchor)
     }
-    
+}
+
+// MARK: - UI
+extension OnboardingCell {
     func setupAvatarView() -> UIImageView {
         let imageView = UIImageView(image: UIImage())
         let sizeView = CGFloat(33)
@@ -73,14 +77,17 @@ extension OnboardingCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-
+        
         return label
     }
-    
+}
+
+// MARK: - Style
+extension OnboardingCell {
     func changeStyle() {
-        #warning("PERZONALIZAR")
         let palette = Configuration.shared.palette
         avatarView.tintColor = palette.circleIconTint.dynamicColor
         avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
+        descriptionLabel.textColor = palette.regularSizedText.dynamicColor
     }
 }

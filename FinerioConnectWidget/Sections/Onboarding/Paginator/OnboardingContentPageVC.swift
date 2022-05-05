@@ -29,13 +29,13 @@ class OnboardingContentPageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
-
-        self.setLayoutViews()
+        setLayoutViews()
     }
 }
 
+// MARK: - Layout
 extension OnboardingContentPageVC {
     func setLayoutViews() {
         view.addSubview(stepView)

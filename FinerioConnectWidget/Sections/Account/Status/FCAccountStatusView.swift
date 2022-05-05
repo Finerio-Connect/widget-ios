@@ -208,6 +208,5 @@ extension FCAccountStatusView {
         continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
         exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
         exitButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
-        
     }
 }

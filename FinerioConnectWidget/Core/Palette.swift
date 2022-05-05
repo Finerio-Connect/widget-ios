@@ -36,7 +36,8 @@ final public class Palette: NSObject {
     public var cellSeparator: FCColor
     public var cellDisclosureIndicator: FCColor
     public var dialogCloseButton: FCColor
-    
+    public var pageDotActive: FCColor
+    public var pageDotInactive: FCColor
     
     
     
@@ -138,6 +139,10 @@ final public class Palette: NSObject {
         ,cellDisclosureIndicator: FCColor = FCComponentsStyle.cellDisclosureIndicator
         ,fieldsPlaceholder: FCColor = FCComponentsStyle.fieldsPlaceholder
         ,dialogCloseButton: FCColor = FCComponentsStyle.dialogCloseButton
+        ,pageDotActive: FCColor = FCComponentsStyle.pageDotActive
+        ,pageDotInactive: FCColor = FCComponentsStyle.pageDotInactive
+        
+        
         
         
 //        ,banksBackground: FCColor = FCComponentsStyle.banksBackground
@@ -227,6 +232,9 @@ final public class Palette: NSObject {
         self.cellSeparator = cellSeparator
         self.cellDisclosureIndicator = cellDisclosureIndicator
         self.dialogCloseButton = dialogCloseButton
+        self.pageDotActive = pageDotActive
+        self.pageDotInactive = pageDotInactive
+        
         
         
         
