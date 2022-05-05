@@ -30,7 +30,7 @@ class OnboardingViewController: BaseViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
-        self.view.backgroundColor = Configuration.shared.palette.viewControllersAIOBackground.dynamicColor
+        self.view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         mainView = FCOnboardingMainView(main: onboardingModel.main)
         mainView.delegate = self

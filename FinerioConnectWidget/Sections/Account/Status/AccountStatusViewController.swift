@@ -16,7 +16,7 @@ internal class AccountStatusViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.view.backgroundColor = FCComponentsStyle.viewControllersAIOBackground.dynamicColor
+        self.view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
         
         accountStatusView.delegate = self
         

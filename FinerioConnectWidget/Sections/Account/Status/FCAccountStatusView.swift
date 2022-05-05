@@ -75,7 +75,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.failureIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusFailureIcon.dynamicColor
+        statusAvatarView.tintColor = Configuration.shared.palette.failureIconTint.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionFailure)
         
         continueButton.setTitle(literal(.failureContinueTitleButton), for: .normal)
@@ -88,7 +88,7 @@ extension FCAccountStatusView {
         
         let statusImg = Images.successIcon.image()
         statusAvatarView.image = statusImg
-        statusAvatarView.tintColor = Configuration.shared.palette.accountStatusSuccessIcon.dynamicColor
+        statusAvatarView.tintColor = Configuration.shared.palette.successIconTint.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionSuccess)
         
         continueButton.setTitle(literal(.successContinueTitleButton), for: .normal)
@@ -200,14 +200,14 @@ extension FCAccountStatusView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        backgroundColor = palette.accountStatusBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.accountStatusHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.accountStatusHeaderSubtitle.dynamicColor
-        bodyDescriptionLabel.textColor = palette.accountStatusBodyText.dynamicColor
-        continueButton.backgroundColor = palette.accountStatusContinueButtonBackground.dynamicColor
-        continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
-        exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
-        exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
+        backgroundColor = palette.backgroundView.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
+        bodyDescriptionLabel.textColor = palette.liteText.dynamicColor
+        continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
+        continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
+        exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
+        exitButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
         
     }
 }

@@ -15,7 +15,7 @@ internal class CredentialViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = FCComponentsStyle.viewControllersAIOBackground.dynamicColor
+        self.view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
         
         view.addSubview(credentialsFormView)
         credentialsFormView.delegate = self

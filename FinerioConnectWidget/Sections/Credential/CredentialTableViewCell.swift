@@ -38,7 +38,7 @@ extension CredentialTableViewCell {
         let palette = Configuration.shared.palette
         inputTexfield.attributedPlaceholder = NSAttributedString (
             string: field.friendlyName,
-            attributes: [.foregroundColor: palette.credentialsFieldsTextPlaceholder.dynamicColor]
+            attributes: [.foregroundColor: palette.fieldsPlaceholder.dynamicColor]
         )
         
         inputTexfield.id = field.name
@@ -129,7 +129,7 @@ extension CredentialTableViewCell {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
-        inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor
+        titleLabel.textColor = palette.regularSizedText.dynamicColor
+        inputTexfield.textColor = palette.liteText.dynamicColor
     }
 }

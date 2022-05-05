@@ -31,9 +31,8 @@ class OnboardingPageVC: BaseViewController {
     // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        #warning("HARCODED COLOR")
-        self.view.backgroundColor = .white
+        view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+
         pageVC.setViewControllers([self.viewControllerAtIndex(index: 0)],
                                   direction: .forward,
                                   animated: true)
@@ -43,6 +42,7 @@ class OnboardingPageVC: BaseViewController {
         self.addChild(pageVC)
         self.setLayoutViews()
         self.pageVC.didMove(toParent: self)
+        self.changeStyle()
     }
 }
 
@@ -108,6 +108,7 @@ extension OnboardingPageVC {
         #warning("HARDCODED COLORS")
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = .green
+        
         pageControl.backgroundColor = .clear
         pageControl.currentPage = 0
         pageControl.numberOfPages = onboardingModel.count
@@ -120,8 +121,6 @@ extension OnboardingPageVC {
         let button = UIButton()
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
         button.titleLabel?.font = .fcMediumFont(ofSize: fontSize)
-        #warning("TEST COLOR")
-        button.backgroundColor = .red
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
@@ -184,5 +183,20 @@ extension OnboardingPageVC: UIPageViewControllerDelegate {
         if let contentPageVC = pageViewController.viewControllers?.first as? OnboardingContentPageVC {
             pageControl.currentPage = contentPageVC.pageIndex
         }
+    }
+}
+
+// MARK: - Style
+extension OnboardingPageVC {
+    func changeStyle() {
+        let palette = Configuration.shared.palette
+//        backgroundColor = palette.accountStatusBackground.dynamicColor
+//        headerSectionView.titleLabel.textColor = palette.accountStatusHeaderTitle.dynamicColor
+//        headerSectionView.descriptionLabel.textColor = palette.accountStatusHeaderSubtitle.dynamicColor
+//        bodyDescriptionLabel.textColor = palette.accountStatusBodyText.dynamicColor
+        continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
+        continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
+        exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
+        exitButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
     }
 }

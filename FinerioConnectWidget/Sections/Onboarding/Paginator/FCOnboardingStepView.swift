@@ -88,7 +88,7 @@ extension FCOnboardingStepView {
         let linkAttributes: [NSAttributedString.Key : Any]
         
         let plainText = onboardingPage.textWithLink.fullPlainText
-        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
+        let termsColor = Configuration.shared.palette.liteText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
         
@@ -103,9 +103,12 @@ extension FCOnboardingStepView {
                 attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
             }
             
-            let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
-            linkAttributes = [.foregroundColor: linkColor, .font: fontType]
-            
+            let linkColor = Configuration.shared.palette.linkedText.dynamicColor
+            linkAttributes = [
+                .font: fontType,
+                .underlineStyle: NSUnderlineStyle.thick.rawValue,
+                .foregroundColor: linkColor
+            ]
             textView.linkTextAttributes = linkAttributes
         }
         
@@ -122,9 +125,5 @@ extension FCOnboardingStepView {
 extension FCOnboardingStepView {
     func changeStyle() {
         let palette = Configuration.shared.palette
-//        continueButton.backgroundColor = palette.accountStatusContinueButtonBackground.dynamicColor
-//        continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
-//        exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
-//        exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
     }
 }

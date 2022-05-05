@@ -30,7 +30,7 @@ class OnboardingContentPageVC: BaseViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
-        self.view.backgroundColor = Configuration.shared.palette.viewControllersAIOBackground.dynamicColor
+        view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
 
         self.setLayoutViews()
     }

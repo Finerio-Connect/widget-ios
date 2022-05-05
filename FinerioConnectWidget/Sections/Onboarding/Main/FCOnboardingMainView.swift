@@ -130,7 +130,7 @@ extension FCOnboardingMainView {
         let linkAttributes: [NSAttributedString.Key : Any]
         
         let plainText = main.textWithLink.fullPlainText
-        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
+        let termsColor = Configuration.shared.palette.liteText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
         
@@ -145,7 +145,7 @@ extension FCOnboardingMainView {
                 attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
             }
             
-            let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
+            let linkColor = Configuration.shared.palette.linkedText.dynamicColor
             linkAttributes = [
                 .font: fontType,
                 .underlineStyle: NSUnderlineStyle.thick.rawValue,
@@ -212,13 +212,14 @@ extension FCOnboardingMainView {
     func changeStyle() {
 #warning("PERSONALIZAR VARIABLES PARA COLOR ?")
         let palette = Configuration.shared.palette
-        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
-        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.avatarView.tintColor = palette.circleIconTint.dynamicColor
+        headerSectionView.avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
         
-        continueButton.backgroundColor = palette.accountStatusContinueButtonBackground.dynamicColor
-        continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
-        exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
-        exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
+        continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
+        continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
+        exitButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
+        exitButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
         
     }
 }

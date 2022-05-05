@@ -80,6 +80,7 @@ extension OnboardingCell {
     func changeStyle() {
         #warning("PERZONALIZAR")
         let palette = Configuration.shared.palette
-        avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
+        avatarView.tintColor = palette.circleIconTint.dynamicColor
+        avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
     }
 }

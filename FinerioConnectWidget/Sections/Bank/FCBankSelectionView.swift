@@ -47,7 +47,7 @@ public final class FCBankSelectionView: FCBaseView {
         
         trackEvent(eventName: Constants.Events.banks)
         
-        self.loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        self.loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
         self.loadingView.start()
         
         observerServiceStatus()
@@ -121,12 +121,12 @@ extension FCBankSelectionView {
         let palette = Configuration.shared.palette
         let attributesNormal: [NSAttributedString.Key: Any] = [
             .font: UIFont.fcMediumFont(ofSize: fontSize),
-            .foregroundColor: palette.banksSegmentedControlText.dynamicColor
+            .foregroundColor: palette.mediumSizedText.dynamicColor
         ]
         
         let attributesActive: [NSAttributedString.Key: Any] = [
             .font: UIFont.fcMediumFont(ofSize: fontSize),
-            .foregroundColor: palette.banksSegmentedControlActiveText.dynamicColor
+            .foregroundColor: palette.mediumSizedText.dynamicColor
         ]
         
         segmentControl.setTitleTextAttributes(attributesNormal, for: .normal)
@@ -390,28 +390,28 @@ extension FCBankSelectionView {
     private func changeStyle() {
         let palette = Configuration.shared.palette
         
-        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
+        loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
         
-        backgroundColor = palette.banksBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
-        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
-        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
+        backgroundColor = palette.backgroundView.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
+        headerSectionView.avatarView.tintColor = palette.circleIconTint.dynamicColor
+        headerSectionView.avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
         
-        countriesSelectorView.selectorTitleLabel.textColor = palette.banksSelectCountryLabel.dynamicColor
-        countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
+        countriesSelectorView.selectorTitleLabel.textColor = palette.regularSizedText.dynamicColor
+        countriesSelectorView.countryNameLabel.textColor = palette.dropDownMenuTint.dynamicColor
         
-        bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
+        bankTypeSegment.backgroundColor = palette.segmentedControlBackground.dynamicColor
         
         if #available(iOS 13.0, *) {
-            bankTypeSegment.selectedSegmentTintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+            bankTypeSegment.selectedSegmentTintColor = palette.segmentedControlActiveItem.dynamicColor
         } else {
-            bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+            bankTypeSegment.tintColor = palette.segmentedControlActiveItem.dynamicColor
         }
 
         bankTypeSegment = setupTextAttributesForSegmentControl(bankTypeSegment)
         
-        tableView.separatorColor = palette.banksListCellSeparator.dynamicColor
-        separatorView.backgroundColor = palette.banksListCellSeparator.dynamicColor
+        tableView.separatorColor = palette.cellSeparator.dynamicColor
+        separatorView.backgroundColor = palette.cellSeparator.dynamicColor
     }
 }
