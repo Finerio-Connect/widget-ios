@@ -70,20 +70,22 @@ extension FCOnboardingMainView {
         tableView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         tableView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         
-        let stackView = UIStackView(arrangedSubviews: [continueButton])
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        
-        addSubview(stackView)
-        stackView.bottomAnchor(equalTo: safeBottomAnchor, constant: -spacing * 2)
-        stackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
-        stackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-        
         addSubview(linkedLabel)
         linkedLabel.topAnchor(equalTo: tableView.bottomAnchor, constant: margin / 4)
         linkedLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         linkedLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         linkedLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
+        
+        let stackView = UIStackView(arrangedSubviews: [continueButton])
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        
+        addSubview(stackView)
+        stackView.topAnchor.constraint(greaterThanOrEqualTo: linkedLabel.bottomAnchor, constant: margin).isActive = true
+        stackView.bottomAnchor(equalTo: safeBottomAnchor, constant: -spacing * 2)
+        stackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+        stackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+
     }
 }
 

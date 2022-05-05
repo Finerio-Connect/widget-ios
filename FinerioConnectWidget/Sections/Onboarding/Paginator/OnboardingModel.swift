@@ -41,8 +41,8 @@ extension OnboardingModel {
 #warning("EXAMPLE DATA")
 // Main Data
 let listItems = [
-    OnboardingModel.ListItem(icon: Images.lockIcon.image()!, description: "Completamente seguro"),
-    OnboardingModel.ListItem(icon: Images.rayIcon.image()!, description: "Evaluación al instante")
+    OnboardingModel.ListItem(icon: Images.lockIcon.image()!, description: "Completamente seguro")
+    ,OnboardingModel.ListItem(icon: Images.rayIcon.image()!, description: "Evaluación al instante")
 ]
 
 let descriptionLinked = TextWithLink(fullPlainText: "Conocer mi seguridad y beneficios",
