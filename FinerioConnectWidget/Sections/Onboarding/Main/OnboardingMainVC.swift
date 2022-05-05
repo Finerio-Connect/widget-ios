@@ -1,5 +1,5 @@
 //
-//  OnboardingVC.swift
+//  OnboardingMainVC.swift
 //  FinerioConnectWidget
 //
 //  Created by Jesus G on 25/04/22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardingViewController: BaseViewController {
+class OnboardingMainVC: BaseViewController {
     // Components
     var mainView: FCOnboardingMainView!
     
@@ -36,7 +36,7 @@ class OnboardingViewController: BaseViewController {
 }
 
 // MARK: - Layout
-extension OnboardingViewController {
+extension OnboardingMainVC {
     func setLayoutViews() {
         mainView = FCOnboardingMainView(main: onboardingModel.main)
         mainView.delegate = self
@@ -50,11 +50,17 @@ extension OnboardingViewController {
 }
 
 // MARK: - OnboardingMainView Delegate
-extension OnboardingViewController: FCOnboardingMainViewDelegate {
-    func selectedContinueButton() {
+extension OnboardingMainVC: FCOnboardingMainViewDelegate {
+    func selectedLinkedText() {
+        #warning("LLAMAR A COORDINATOR")
         if let pages = onboardingModel.pages {
-            let onboardingPageVC = OnboardingPageVC(onboardingModel: pages)
+            let onboardingPageVC = OnboardingPageVC(pages: pages)
             self.navigationController?.pushViewController(onboardingPageVC, animated: true)
         }
+    }
+    
+    func selectedContinueButton() {
+#warning("LLAMAR A COORDINATOR")
+        print("CONTINUAR FLUJO NORMAL DEL WIDGET Y SALIR DEL ONBOARDING")
     }
 }

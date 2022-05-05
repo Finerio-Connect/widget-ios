@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol FCOnboardingMainViewDelegate: AnyObject {
     func selectedContinueButton()
+    func selectedLinkedText()
 }
 
 class FCOnboardingMainView: FCBaseView {
@@ -18,7 +19,8 @@ class FCOnboardingMainView: FCBaseView {
     private lazy var headerSectionView: HeaderSectionView = setupHeaderSectionView()
     private lazy var mainDescriptionLabel: UILabel = setupMainDescriptionLabel()
     private lazy var tableView: ContentSizedTableView = setupTableView()
-    private lazy var linkedLabel: VerticallyCenteredTextView = setupLinkedLabel()
+    private lazy var linkedButton: UIButton = setupLinkedButton()
+//    private lazy var linkedLabel: VerticallyCenteredTextView = setupLinkedLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
     
     // Vars
@@ -47,6 +49,10 @@ extension FCOnboardingMainView {
     @objc func didSelectContinueButton() {
         delegate?.selectedContinueButton()
     }
+    
+    @objc func didTapLinkedButton() {
+        delegate?.selectedLinkedText()
+    }
 }
 
 // MARK: - Layout
@@ -70,18 +76,23 @@ extension FCOnboardingMainView {
         tableView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         tableView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
         
-        addSubview(linkedLabel)
-        linkedLabel.topAnchor(equalTo: tableView.bottomAnchor, constant: margin / 4)
-        linkedLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
-        linkedLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
-        linkedLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
-        
+//        addSubview(linkedLabel)
+//        linkedLabel.topAnchor(equalTo: tableView.bottomAnchor, constant: margin / 4)
+//        linkedLabel.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+//        linkedLabel.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+//        linkedLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
+//
         let stackView = UIStackView(arrangedSubviews: [continueButton])
         stackView.axis = .vertical
         stackView.spacing = 12
         
+        addSubview(linkedButton)
+        linkedButton.topAnchor(equalTo: tableView.bottomAnchor, constant: margin)
+        linkedButton.leadingAnchor(equalTo: leadingAnchor, constant: margin)
+        linkedButton.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
+        
         addSubview(stackView)
-        stackView.topAnchor.constraint(greaterThanOrEqualTo: linkedLabel.bottomAnchor, constant: margin).isActive = true
+        stackView.topAnchor.constraint(greaterThanOrEqualTo: linkedButton.bottomAnchor, constant: margin).isActive = true
         stackView.bottomAnchor(equalTo: safeBottomAnchor, constant: -spacing * 2)
         stackView.leadingAnchor(equalTo: leadingAnchor, constant: margin)
         stackView.trailingAnchor(equalTo: trailingAnchor, constant: -margin)
@@ -120,44 +131,65 @@ extension FCOnboardingMainView {
         return tableView
     }
     
-    private func setupLinkedLabel() -> VerticallyCenteredTextView {
-        let textView = VerticallyCenteredTextView()
-        let plainAttributes: [NSAttributedString.Key: Any]
-        let linkAttributes: [NSAttributedString.Key : Any]
-        
-        let plainText = main.textWithLink.fullPlainText
-        let termsColor = Configuration.shared.palette.liteText.dynamicColor
+    private func setupLinkedButton() -> UIButton {
+        let button = UIButton()
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
+        let linkColor = Configuration.shared.palette.linkedText.dynamicColor
         
-        plainAttributes = [.foregroundColor: termsColor, .font: fontType]
-        let attributedString = NSMutableAttributedString(string: plainText,
-                                                         attributes: plainAttributes)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: fontType,
+            .foregroundColor: linkColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
         
-        if let linkedText = main.textWithLink.linkedTextPhrase {
-            let linkRange = (attributedString.string as NSString).range(of: linkedText)
-            
-            if let urlWebSite = main.textWithLink.urlSource {
-                attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
-            }
-            
-            let linkColor = Configuration.shared.palette.linkedText.dynamicColor
-            linkAttributes = [
-                .font: fontType,
-                .underlineStyle: NSUnderlineStyle.thick.rawValue,
-                .foregroundColor: linkColor
-            ]
-            
-            textView.linkTextAttributes = linkAttributes
-        }
+        let attributedString = NSMutableAttributedString(string: main.textWithLink.fullPlainText,
+                                                         attributes: attributes)
         
-        textView.backgroundColor = .clear
-        textView.attributedText = attributedString
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.textAlignment = .left
-        return textView
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.addTarget(self, action: #selector(didTapLinkedButton), for: .touchUpInside)
+        return button
     }
+    
+//    private func setupLinkedLabel() -> VerticallyCenteredTextView {
+//        let textView = VerticallyCenteredTextView()
+//        let plainAttributes: [NSAttributedString.Key: Any]
+//        let linkAttributes: [NSAttributedString.Key : Any]
+//
+//        let plainText = main.textWithLink.fullPlainText
+//        let termsColor = Configuration.shared.palette.liteText.dynamicColor
+//        let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
+//        let fontType = UIFont.fcRegularFont(ofSize: fontSize)
+//
+//        plainAttributes = [.foregroundColor: termsColor, .font: fontType]
+//        let attributedString = NSMutableAttributedString(string: plainText,
+//                                                         attributes: plainAttributes)
+//
+//        if let linkedText = main.textWithLink.linkedTextPhrase {
+//            let linkRange = (attributedString.string as NSString).range(of: linkedText)
+//
+//            if let urlWebSite = main.textWithLink.urlSource {
+//                attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
+//            }
+//
+//            let linkColor = Configuration.shared.palette.linkedText.dynamicColor
+//            linkAttributes = [
+//                .font: fontType,
+//                .underlineStyle: NSUnderlineStyle.thick.rawValue,
+//                .foregroundColor: linkColor
+//            ]
+//
+//            textView.linkTextAttributes = linkAttributes
+//        }
+//
+//        textView.backgroundColor = .clear
+//        textView.attributedText = attributedString
+//        textView.isEditable = false
+//        textView.isScrollEnabled = false
+//        textView.textAlignment = .left
+//        return textView
+//    }
     
     private func setupButton() -> UIButton {
         let button = UIButton()

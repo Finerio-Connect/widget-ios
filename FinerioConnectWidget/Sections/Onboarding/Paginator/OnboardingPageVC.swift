@@ -16,12 +16,12 @@ class OnboardingPageVC: BaseViewController {
     private lazy var pageVC: UIPageViewController = setupPageVC()
     
     // Vars
-    var onboardingModel: [OnboardingModel.Page]!
+    var pages: [OnboardingModel.Page]!
     
     // Inits
-    init(onboardingModel: [OnboardingModel.Page]) {
+    init(pages: [OnboardingModel.Page]) {
         super.init()
-        self.onboardingModel = onboardingModel
+        self.pages = pages
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +49,7 @@ class OnboardingPageVC: BaseViewController {
 // MARK: - Events
 extension OnboardingPageVC {
     func viewControllerAtIndex(index: Int) -> OnboardingContentPageVC {
-        let onboardingPage = self.onboardingModel[index]
+        let onboardingPage = self.pages[index]
         let contentPageVC = OnboardingContentPageVC(onboardingPage: onboardingPage)
         contentPageVC.pageIndex = index
         return contentPageVC
@@ -107,7 +107,7 @@ extension OnboardingPageVC {
         let pageControl = UIPageControl()
         pageControl.backgroundColor = .clear
         pageControl.currentPage = 0
-        pageControl.numberOfPages = onboardingModel.count
+        pageControl.numberOfPages = pages.count
         pageControl.hidesForSinglePage = true
         pageControl.isUserInteractionEnabled = false
         return pageControl
@@ -126,7 +126,7 @@ extension OnboardingPageVC {
     
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
-        button.setTitle(literal(.onboardingStepContinueButton), for: .normal)
+        button.setTitle(literal(.onboardingStepNextButton), for: .normal)
         button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
@@ -136,6 +136,14 @@ extension OnboardingPageVC {
         button.setTitle(literal(.onboardingStepExitButton), for: .normal)
         button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
         return button
+    }
+    
+    private func updatesButtonTitle(for index: Int) {
+        if index == (pages.count - 1) {
+            continueButton.setTitle(literal(.onboardingStepContinueButton), for: .normal)
+        } else {
+            continueButton.setTitle(literal(.onboardingStepNextButton), for: .normal)
+        }
     }
 }
 
@@ -158,14 +166,14 @@ extension OnboardingPageVC: UIPageViewControllerDataSource {
             return nil
         }
         index += 1
-        if (index == onboardingModel.count) {
+        if (index == pages.count) {
             return nil
         }
         return self.viewControllerAtIndex(index: index)
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return onboardingModel.count
+        return pages.count
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -177,7 +185,10 @@ extension OnboardingPageVC: UIPageViewControllerDataSource {
 extension OnboardingPageVC: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let contentPageVC = pageViewController.viewControllers?.first as? OnboardingContentPageVC {
-            pageControl.currentPage = contentPageVC.pageIndex
+            if let index = contentPageVC.pageIndex {
+                pageControl.currentPage = index
+                updatesButtonTitle(for: index)
+            }
         }
     }
 }

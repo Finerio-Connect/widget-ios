@@ -26,7 +26,7 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
         
         #warning("TESTING CODE")
-        let vc = OnboardingViewController(onboardingModel: finerioOnboarding)
+        let vc = OnboardingMainVC(onboardingModel: finerioOnboarding)
         let navVC = UINavigationController(rootViewController: vc)
         self.navigationController?.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true)

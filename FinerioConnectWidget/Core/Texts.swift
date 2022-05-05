@@ -42,8 +42,8 @@ public final class Texts: NSObject {
     public var onboardingMainContinueButton: String
     public var onboardingMainExitButton: String
     public var onboardingStepContinueButton: String
+    public var onboardingStepNextButton: String
     public var onboardingStepExitButton: String
-    
     
     @objc public init(
         companyName: String = fLocaleCompanyName,
@@ -76,6 +76,7 @@ public final class Texts: NSObject {
         onboardingMainContinueButton: String = fLocaleOnboardingMainContinueButton,
         onboardingMainExitButton: String = fLocaleOnboardingMainExitButton,
         onboardingStepContinueButton: String = fLocaleOnboardingStepContinueButton,
+        onboardingStepNextButton: String = fLocaleOnboardingStepNextButton,
         onboardingStepExitButton: String = fLocaleOnboardingStepExitButton
     ) {
         self.companyName = companyName
@@ -108,6 +109,7 @@ public final class Texts: NSObject {
         self.onboardingMainContinueButton = onboardingMainContinueButton
         self.onboardingMainExitButton = onboardingMainExitButton
         self.onboardingStepContinueButton = onboardingStepContinueButton
+        self.onboardingStepNextButton = onboardingStepNextButton
         self.onboardingStepExitButton = onboardingStepExitButton
     }
 }
@@ -143,6 +145,7 @@ enum Literal: CustomStringConvertible {
     case onboardingMainContinueButton
     case onboardingMainExitButton
     case onboardingStepContinueButton
+    case onboardingStepNextButton
     case onboardingStepExitButton
     
     var description: String {
@@ -184,6 +187,7 @@ func literal(_ literal: Literal) -> String? {
     case .onboardingMainContinueButton: return literals.onboardingMainContinueButton
     case .onboardingMainExitButton: return literals.onboardingMainExitButton
     case .onboardingStepContinueButton: return literals.onboardingStepContinueButton
+    case .onboardingStepNextButton: return literals.onboardingStepNextButton
     case .onboardingStepExitButton: return literals.onboardingStepExitButton
         
     }
