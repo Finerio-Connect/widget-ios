@@ -65,12 +65,16 @@ extension OnboardingPageVC {
             pageVC.setViewControllers([nextPage], direction: .forward, animated: true)
             updatesButtonTitle(for: nextPage.pageIndex)
         } else {
+            UserConfig.hasShownOnboarding = true
+            
             let bankCoordinator = BankCoordinator(context: self.context!)
             bankCoordinator.start()
         }
     }
     
     @objc func didSelectExitButton() {
+        UserConfig.hasShownOnboarding = true
+        
         let bankCoordinator = BankCoordinator(context: self.context!)
         bankCoordinator.start()
     }

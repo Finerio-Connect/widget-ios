@@ -58,6 +58,8 @@ extension OnboardingMainVC: FCOnboardingMainViewDelegate {
     }
     
     func selectedContinueButton() {
+        UserConfig.hasShownOnboarding = true
+        
         let bankCoordinator = BankCoordinator(context: self.context!)
         context?.initialize(coordinator: bankCoordinator)
     }

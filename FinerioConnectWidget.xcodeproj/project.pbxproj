@@ -110,6 +110,7 @@
 		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
 		7A118649281AFD8800C34748 /* OnboardingContentPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */; };
 		7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */; };
+		7A121F4C282709870076A41E /* FCUserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A121F4B282709870076A41E /* FCUserConfig.swift */; };
 		7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */; };
 		7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28C77428184652002DD9F5 /* OnboardingCell.swift */; };
 		7A4B9A5128176D6300C4DBA7 /* FCOnboardingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */; };
@@ -240,6 +241,7 @@
 		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
 		7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentPageVC.swift; sourceTree = "<group>"; };
 		7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingStepView.swift; sourceTree = "<group>"; };
+		7A121F4B282709870076A41E /* FCUserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCUserConfig.swift; sourceTree = "<group>"; };
 		7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		7A28C77428184652002DD9F5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingMainView.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				0FCBAF1825F1795C00DA2D18 /* Constants.swift */,
 				0FCBAF1B25F1795D00DA2D18 /* Enums.swift */,
 				7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */,
+				7A121F4B282709870076A41E /* FCUserConfig.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				7A4B9A5128176D6300C4DBA7 /* FCOnboardingMainView.swift in Sources */,
 				0FCBAFC325F1795D00DA2D18 /* StrokeAnimation.swift in Sources */,
 				0FCBAF8625F1795D00DA2D18 /* JSONMappable.swift in Sources */,
+				7A121F4C282709870076A41E /* FCUserConfig.swift in Sources */,
 				7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */,
 				7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */,
 				0FCBAF8F25F1795D00DA2D18 /* Constants.swift in Sources */,

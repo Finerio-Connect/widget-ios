@@ -28,7 +28,7 @@ internal class BankViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // To enable the navBar
-        navigationController?.navigationBar.isHidden = false
+            navigationController?.navigationBar.isHidden = false
     }
 }
 

@@ -17,8 +17,9 @@ internal final class AppCoordinator: Coordinator {
     
     func start() {
         let showOnboarding = Configuration.shared.showOnboarding
+        let hasShownOnboarding = UserConfig.hasShownOnboarding
         
-        if showOnboarding {
+        if showOnboarding && (hasShownOnboarding == false) {
             let onboardingModel = Configuration.shared.onboarding
             let onboardingMainCoordinator = OnboardingCoordinator(context: self.context!,
                                                                   onboardingModel: onboardingModel)
@@ -27,25 +28,5 @@ internal final class AppCoordinator: Coordinator {
             let bankCoordinator = BankCoordinator(context: self.context!)
             bankCoordinator.start()
         }
-        
-        //        let viewController = prepareRootViewController()
-        //        viewController.coordinator = self
-        //        viewController.context = context
-        //        context?.push(viewController: viewController)
     }
 }
-
-//extension AppCoordinator {
-//    private func prepareRootViewController() -> BaseViewController {
-//        let showOnboarding = Configuration.shared.showOnboarding
-//        var viewController: BaseViewController
-//
-//        if showOnboarding {
-//            let onboardingData = Configuration.shared.onboarding
-//            viewController = OnboardingMainVC(onboardingModel: onboardingData)
-//        } else {
-//            viewController = BankViewController()
-//        }
-//        return viewController
-//    }
-//}

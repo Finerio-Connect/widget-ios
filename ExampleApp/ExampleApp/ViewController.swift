@@ -88,8 +88,8 @@ class ViewController: UIViewController {
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
 //        finerioConnectWidget.showChat = true // Zendesk help chat
-        finerioConnectWidget.showOnboarding = true // Show onboarding tutorial
-        finerioConnectWidget.onboarding = prepareOnboardingData()
+//        finerioConnectWidget.showOnboarding = false // Show onboarding tutorial
+//        finerioConnectWidget.onboarding = prepareOnboardingData()
         
 //        finerioConnectWidget.font = "Ubuntu"
         /// Country settings
