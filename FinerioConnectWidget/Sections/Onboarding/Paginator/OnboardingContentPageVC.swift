@@ -16,7 +16,7 @@ class OnboardingContentPageVC: BaseViewController {
     var pageIndex: Int!
     
     // Inits
-    init(onboardingPage: OnboardingModel.Page) {
+    init(onboardingPage: Onboarding.OnboardingPage) {
         super.init()
         self.stepView = FCOnboardingStepView(onboardingPage: onboardingPage)
     }

@@ -15,10 +15,10 @@ class FCOnboardingStepView: FCBaseView {
     private lazy var descriptionLabel: VerticallyCenteredTextView = setupDescriptionLabel()
 
     // Vars
-    private var onboardingPage: OnboardingModel.Page!
+    private var onboardingPage: Onboarding.OnboardingPage!
     
     // Inits
-    init(onboardingPage: OnboardingModel.Page) {
+    init(onboardingPage: Onboarding.OnboardingPage) {
         self.onboardingPage = onboardingPage
         super.init(frame: .zero)
     }
@@ -83,7 +83,7 @@ extension FCOnboardingStepView {
         let plainAttributes: [NSAttributedString.Key: Any]
         let linkAttributes: [NSAttributedString.Key : Any]
         
-        let plainText = onboardingPage.textWithLink.fullPlainText
+        let plainText = onboardingPage.detail.fullPlainText
         let termsColor = Configuration.shared.palette.liteText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
@@ -92,10 +92,10 @@ extension FCOnboardingStepView {
         let attributedString = NSMutableAttributedString(string: plainText,
                                                          attributes: plainAttributes)
         
-        if let linkedText = onboardingPage.textWithLink.linkedTextPhrase {
+        if let linkedText = onboardingPage.detail.linkedTextPhrase {
             let linkRange = (attributedString.string as NSString).range(of: linkedText)
             
-            if let urlWebSite = onboardingPage.textWithLink.urlSource {
+            if let urlWebSite = onboardingPage.detail.urlSource {
                 attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
             }
             

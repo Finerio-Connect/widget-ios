@@ -23,6 +23,8 @@ internal final class Configuration {
     var countryCode: String = Constants.Country.code
     var showCountryOptions: Bool = true
     var showBankTypeOptions: Bool = true
+    var showOnboarding: Bool = true
+    var onboarding: Onboarding = onboardingFinerioData
     var bankType: BankType = .personal
     var automaticFetching: Bool!
     var state: String!

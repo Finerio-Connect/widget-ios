@@ -53,13 +53,43 @@ class ViewController: UIViewController {
         let vc = TestsViewController()
         present(vc, animated: true)
     }
+    
+    func prepareOnboardingData() -> Onboarding {
+        let pageOne = Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.up.filled")!,
+                                                icon: UIImage(systemName: "dpad.up.filled")!,
+                                                title: "ITEM UNO",
+                                                detail: TextWithLink(fullPlainText: "DESCRIPCION PAGE UNO"))
+        
+        let pageTwo = Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.right.filled")!,
+                                                icon: UIImage(systemName: "dpad.right.filled")!,
+                                                title: "ITEM DOS",
+                                                detail: TextWithLink(fullPlainText: "DESCRIPCION PAGE DOS"))
+        
+        let pageThree = Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.down.filled")!,
+                                                  icon: UIImage(systemName: "dpad.down.filled")!,
+                                                  title: "ITEM TRES",
+                                                  detail: TextWithLink(fullPlainText: "DESCRIPCION PAGE TRES"))
+        
+        let pageFour = Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.left.filled")!,
+                                                 icon: UIImage(systemName: "dpad.left.filled")!,
+                                                 title: "ITEM CUATRO",
+                                                 detail: TextWithLink(fullPlainText: "DESCRIPCION PAGE CUATRO"))
+        
+        let pages = [pageOne, pageTwo, pageThree, pageFour]
+        
+        let main = Onboarding.Main(icon: UIImage(systemName: "gamecontroller")!,
+                                   title: "TITULO CLIENTE",
+                                   description: "DESCRIPCION CLIENTE",
+                                   actionText: TextWithLink(fullPlainText: "LINKED TEXT"))
+        let onboardingDataClient = Onboarding(main: main, pages: pages)
+        return onboardingDataClient
+    }
 
     @objc private func startWidget() {
         let finerioConnectWidget = FinerioConnectWidget.shared
 //        finerioConnectWidget.showChat = true // Zendesk help chat
-//        finerioConnectWidget.showOnboarding = true // Show onboarding tutorial
-//        finerioConnectWidget.onboarding = Onboarding(icon, title, subtitle, info,
-//                                                     onboardingPages: [OnboardingPage(icons, bullets)])
+        finerioConnectWidget.showOnboarding = true // Show onboarding tutorial
+        finerioConnectWidget.onboarding = prepareOnboardingData()
         
 //        finerioConnectWidget.font = "Ubuntu"
         /// Country settings

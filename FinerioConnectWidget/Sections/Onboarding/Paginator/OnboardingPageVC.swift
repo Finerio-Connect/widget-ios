@@ -16,10 +16,10 @@ class OnboardingPageVC: BaseViewController {
     private lazy var pageVC: UIPageViewController = setupPageVC()
     
     // Vars
-    var pages: [OnboardingModel.Page]!
+    var pages: [Onboarding.OnboardingPage]!
     
     // Inits
-    init(pages: [OnboardingModel.Page]) {
+    init(pages: [Onboarding.OnboardingPage]) {
         super.init()
         self.pages = pages
     }
@@ -56,12 +56,23 @@ extension OnboardingPageVC {
     }
     
     @objc func didSelectContinueButton() {
-//        delegate?.selectedContinueButton()
+        guard let currentPage = pageVC.viewControllers?.first as? OnboardingContentPageVC else { return }
+        guard let currentIndex = currentPage.pageIndex else { return }
+        
+        if currentIndex < (pages.count - 1) {
+            let nextPage = viewControllerAtIndex(index: currentPage.pageIndex + 1)
+            pageControl.currentPage = nextPage.pageIndex
+            pageVC.setViewControllers([nextPage], direction: .forward, animated: true)
+            updatesButtonTitle(for: nextPage.pageIndex)
+        } else {
+            let bankCoordinator = BankCoordinator(context: self.context!)
+            bankCoordinator.start()
+        }
     }
     
     @objc func didSelectExitButton() {
-        self.dismiss(animated: true)
-//        delegate?.selectedExitButton()
+        let bankCoordinator = BankCoordinator(context: self.context!)
+        bankCoordinator.start()
     }
 }
 

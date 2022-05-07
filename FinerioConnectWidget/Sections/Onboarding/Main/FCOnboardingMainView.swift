@@ -25,11 +25,11 @@ class FCOnboardingMainView: FCBaseView {
     
     // Vars
     weak var delegate: FCOnboardingMainViewDelegate?
-    private var main: OnboardingModel.Main!
+    private var onboardingModel: Onboarding!
     
     // Inits
-    init(main: OnboardingModel.Main) {
-        self.main = main
+    init(onboarding: Onboarding) {
+        self.onboardingModel = onboarding
         super.init(frame: .zero)
     }
     
@@ -104,8 +104,8 @@ extension FCOnboardingMainView {
 extension FCOnboardingMainView {
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerView = HeaderSectionView()
-        headerView.setCustomIconImage(Images.buildingIcon.image()!)
-        headerView.titleLabel.text = main.headerTitle
+        headerView.setCustomIconImage(onboardingModel.main.topIcon)
+        headerView.titleLabel.text = onboardingModel.main.title
         headerView.descriptionLabel.isHidden = true
         return headerView
     }
@@ -113,7 +113,7 @@ extension FCOnboardingMainView {
     private func setupMainDescriptionLabel() -> UILabel {
         let label = UILabel()
         label.font = .fcRegularFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
-        label.text = main.headerDescription
+        label.text = onboardingModel.main.description
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
@@ -143,7 +143,7 @@ extension FCOnboardingMainView {
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
-        let attributedString = NSMutableAttributedString(string: main.textWithLink.fullPlainText,
+        let attributedString = NSMutableAttributedString(string: onboardingModel.main.actionText.fullPlainText,
                                                          attributes: attributes)
         
         button.setAttributedTitle(attributedString, for: .normal)
@@ -213,15 +213,16 @@ extension FCOnboardingMainView {
 // MARK: - TableView Data Source
 extension FCOnboardingMainView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return main.listItems.count
+        return onboardingModel.onboardingPages?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var aCell = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingCell.cellIdentifier, for: indexPath) as? OnboardingCell {
-            let listItem = main.listItems[indexPath.row]
-            cell.descriptionLabel.text = listItem.description
-            cell.setCustomIconImage(listItem.icon)
+            if let page = onboardingModel.onboardingPages?[indexPath.row] {
+                cell.descriptionLabel.text = page.title
+                cell.setCustomIconImage(page.icon)
+            }
             aCell = cell
         }
         return aCell

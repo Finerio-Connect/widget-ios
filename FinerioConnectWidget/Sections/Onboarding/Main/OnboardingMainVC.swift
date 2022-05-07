@@ -13,10 +13,10 @@ class OnboardingMainVC: BaseViewController {
     var mainView: FCOnboardingMainView!
     
     // Vars
-    private var onboardingModel: OnboardingModel!
+    private var onboardingModel: Onboarding!
     
     // Inits
-    init(onboardingModel: OnboardingModel) {
+    init(onboardingModel: Onboarding) {
         self.onboardingModel = onboardingModel
         super.init()
     }
@@ -38,7 +38,7 @@ class OnboardingMainVC: BaseViewController {
 // MARK: - Layout
 extension OnboardingMainVC {
     func setLayoutViews() {
-        mainView = FCOnboardingMainView(main: onboardingModel.main)
+        mainView = FCOnboardingMainView(onboarding: self.onboardingModel)
         mainView.delegate = self
         self.view.addSubview(mainView)
         
@@ -52,15 +52,13 @@ extension OnboardingMainVC {
 // MARK: - OnboardingMainView Delegate
 extension OnboardingMainVC: FCOnboardingMainViewDelegate {
     func selectedLinkedText() {
-        #warning("LLAMAR A COORDINATOR")
-        if let pages = onboardingModel.pages {
-            let onboardingPageVC = OnboardingPageVC(pages: pages)
-            self.navigationController?.pushViewController(onboardingPageVC, animated: true)
-        }
+        let model = Configuration.shared.onboarding
+        let coordinator = OnboardingCoordinator(context: context!, onboardingModel: model)
+        coordinator.nextViewController()
     }
     
     func selectedContinueButton() {
-#warning("LLAMAR A COORDINATOR")
-        print("CONTINUAR FLUJO NORMAL DEL WIDGET Y SALIR DEL ONBOARDING")
+        let bankCoordinator = BankCoordinator(context: self.context!)
+        context?.initialize(coordinator: bankCoordinator)
     }
 }

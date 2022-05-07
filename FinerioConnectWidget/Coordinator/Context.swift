@@ -10,13 +10,17 @@ import Foundation
 import UIKit
 
 internal final class Context {
-    weak var coordinator: Coordinator?
+    // Components
     var navigationController: UINavigationController
+    // Vars
+    weak var coordinator: Coordinator?
 
+    // Inits
     init(with navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
+    // Methods
     func initialize(coordinator: Coordinator) {
         self.coordinator = coordinator
         coordinator.start()
@@ -25,7 +29,6 @@ internal final class Context {
     func push(viewController: UIViewController) {
         let palette = Configuration.shared.palette
         self.navigationController.setStatusBar(backgroundColor: palette.statusBarBackground)
-        
         navigationController.pushViewController(viewController, animated: true)
     }
 }

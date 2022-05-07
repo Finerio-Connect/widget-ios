@@ -9,10 +9,16 @@
 import UIKit
 
 // Model to support plain and linked text
-struct TextWithLink {
+public struct TextWithLink {
     var fullPlainText: String
     var linkedTextPhrase: String?
     var urlSource: String?
+    
+    public init(fullPlainText: String, linkedTextPhrase: String? = nil, urlSource: String? = nil) {
+        self.fullPlainText = fullPlainText
+        self.linkedTextPhrase = linkedTextPhrase
+        self.urlSource = urlSource
+    }
 }
 
 class VerticallyCenteredTextView: UITextView {

@@ -16,7 +16,6 @@ internal class BankViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
         
-        #warning("ORIGINAL CODE")
         bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)
         bankSelectionView.delegate = self
@@ -24,21 +23,6 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.leadingAnchor(equalTo: view.leadingAnchor)
         bankSelectionView.trailingAnchor(equalTo: view.trailingAnchor)
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
-        
-        #warning("TESTING CODE")
-        let vc = OnboardingMainVC(onboardingModel: finerioOnboarding)
-        let navVC = UINavigationController(rootViewController: vc)
-        self.navigationController?.modalPresentationStyle = .fullScreen
-        self.present(navVC, animated: true)
-        
-        #warning("TESTING CODE")
-//        let vc = FCOnboardingMainView()
-//        view.addSubview(vc)
-//        vc.topAnchor(equalTo: view.safeTopAnchor)
-//        vc.leadingAnchor(equalTo: view.leadingAnchor)
-//        vc.trailingAnchor(equalTo: view.trailingAnchor)
-//        vc.bottomAnchor(equalTo: view.safeBottomAnchor)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
