@@ -112,7 +112,6 @@
 		7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */; };
 		7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */; };
 		7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28C77428184652002DD9F5 /* OnboardingCell.swift */; };
-		7A4B9A4F28176AD200C4DBA7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B9A4E28176AD200C4DBA7 /* OnboardingViewController.swift */; };
 		7A4B9A5128176D6300C4DBA7 /* FCOnboardingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */; };
 		7A5CC31C27C6FE7E0071AE7D /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */; };
 		7A73CA1D279A40E800DF418C /* FCDropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */; };
@@ -126,9 +125,12 @@
 		7A8A81BD27860D9C00DF09AB /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */; };
 		7A8A81BF278642A500DF09AB /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */; };
 		7A97DF9A27B4304D00238F78 /* FCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97DF9927B4304D00238F78 /* FCColor.swift */; };
+		7ABFC4EC2825FAE6001F44B3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */; };
+		7ABFC4EE2825FB0A001F44B3 /* OnboardingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */; };
+		7ABFC4F02825FB37001F44B3 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */; };
+		7ABFC4F22825FBB7001F44B3 /* FCOnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */; };
 		7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */; };
 		7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */; };
-		7AE00CBB2820C40500B4EED3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */; };
 		7AEF77C0281A2461000FB919 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -240,7 +242,6 @@
 		7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingStepView.swift; sourceTree = "<group>"; };
 		7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		7A28C77428184652002DD9F5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
-		7A4B9A4E28176AD200C4DBA7 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingMainView.swift; sourceTree = "<group>"; };
 		7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDropDownListView.swift; sourceTree = "<group>"; };
@@ -254,9 +255,12 @@
 		7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		7A97DF9927B4304D00238F78 /* FCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCColor.swift; sourceTree = "<group>"; };
+		7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingMainVC.swift; sourceTree = "<group>"; };
+		7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingData.swift; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageVC.swift; sourceTree = "<group>"; };
-		7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		920B202546E7F799D4FA60B2 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		B8C89F5EB21571A3C1CECA5B /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -615,7 +619,7 @@
 		7A118646281AFCF700C34748 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7A4B9A4E28176AD200C4DBA7 /* OnboardingViewController.swift */,
+				7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */,
 				7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */,
 				7A28C77428184652002DD9F5 /* OnboardingCell.swift */,
 			);
@@ -625,6 +629,8 @@
 		7A4B9A4D28176A9F00C4DBA7 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */,
+				7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */,
 				7AE00CB92820C30800B4EED3 /* Paginator */,
 				7A118646281AFCF700C34748 /* Main */,
 			);
@@ -649,7 +655,7 @@
 				7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */,
 				7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */,
 				7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */,
-				7AE00CBA2820C40500B4EED3 /* OnboardingModel.swift */,
+				7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */,
 			);
 			path = Paginator;
 			sourceTree = "<group>";
@@ -795,11 +801,13 @@
 				0FCBAFC625F1795D00DA2D18 /* PaddedTextField.swift in Sources */,
 				0FCBAF7625F1795D00DA2D18 /* Palette.swift in Sources */,
 				7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */,
+				7ABFC4F02825FB37001F44B3 /* OnboardingCoordinator.swift in Sources */,
 				0FCBAFAF25F1795D00DA2D18 /* UINavigationController+Extensions.swift in Sources */,
 				0FCBAF9925F1795D00DA2D18 /* CredentialCoordinator.swift in Sources */,
 				0FCBAFC125F1795D00DA2D18 /* RotationAnimation.swift in Sources */,
 				0FCBAFBD25F1795D00DA2D18 /* Reachability.swift in Sources */,
 				0FCBAF9425F1795D00DA2D18 /* FCComponentsStyle.swift in Sources */,
+				7ABFC4EE2825FB0A001F44B3 /* OnboardingMainVC.swift in Sources */,
 				0FCBAFBA25F1795D00DA2D18 /* Background.swift in Sources */,
 				0FCBAFA125F1795D00DA2D18 /* AccountStatusViewModel.swift in Sources */,
 				0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */,
@@ -844,6 +852,7 @@
 				0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */,
 				0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */,
 				0F5E462726EAC19200A9CB63 /* CredentialHelpDialog.swift in Sources */,
+				7ABFC4F22825FBB7001F44B3 /* FCOnboardingData.swift in Sources */,
 				0FCBAF9D25F1795D00DA2D18 /* BankCoordinator.swift in Sources */,
 				7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */,
 				0FCBAFB325F1795D00DA2D18 /* Context.swift in Sources */,
@@ -851,7 +860,6 @@
 				0FCBAFA625F1795D00DA2D18 /* AccountViewController.swift in Sources */,
 				0FCBAF8325F1795D00DA2D18 /* Texts.swift in Sources */,
 				0FCBAFBC25F1795D00DA2D18 /* JSON.swift in Sources */,
-				7AE00CBB2820C40500B4EED3 /* OnboardingModel.swift in Sources */,
 				0FCBAFCB25F1795D00DA2D18 /* DatePickerDialog.swift in Sources */,
 				0FCBAF9A25F1795D00DA2D18 /* BankViewModel.swift in Sources */,
 				0FCBAFBF25F1795D00DA2D18 /* FAAError.swift in Sources */,
@@ -870,7 +878,6 @@
 				0FCBAF9725F1795D00DA2D18 /* CredentialViewModel.swift in Sources */,
 				0FCBAF7B25F1795D00DA2D18 /* Credential.swift in Sources */,
 				7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */,
-				7A4B9A4F28176AD200C4DBA7 /* OnboardingViewController.swift in Sources */,
 				0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */,
 				0FCBAFB225F1795D00DA2D18 /* AppCoordinator.swift in Sources */,
 				0FCBAFB525F1795D00DA2D18 /* HelperEncrypt.swift in Sources */,
@@ -882,6 +889,7 @@
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,
 				0FCBAF8825F1795D00DA2D18 /* HTTPClient.swift in Sources */,
+				7ABFC4EC2825FAE6001F44B3 /* Onboarding.swift in Sources */,
 				0FCBAF9E25F1795D00DA2D18 /* StartViewModel.swift in Sources */,
 				7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */,
 				0FCBAF7A25F1795D00DA2D18 /* CredentialToken.swift in Sources */,

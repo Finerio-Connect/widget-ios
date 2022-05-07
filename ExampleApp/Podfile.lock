@@ -80,9 +80,9 @@ PODS:
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (9.1.2):
-    - GoogleUtilities/Environment (~> 7.2)
-    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.1.4):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
@@ -105,9 +105,9 @@ PODS:
     - GoogleUtilities/Logger
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
-  - Mixpanel-swift (3.2.3):
-    - Mixpanel-swift/Complete (= 3.2.3)
-  - Mixpanel-swift/Complete (3.2.3)
+  - Mixpanel-swift (3.2.5):
+    - Mixpanel-swift/Complete (= 3.2.5)
+  - Mixpanel-swift/Complete (3.2.5)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -154,11 +154,11 @@ SPEC CHECKSUMS:
   FirebaseDatabase: c7bb29fefd9196f719164452ebe287bc8f5976dd
   FirebaseInstallations: e693c0dfe404af44afbd553de42498b2ca1ca189
   GoogleAppMeasurement: 2c2792d43ebdea0524adbc90cba9139721f3039b
-  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
-  Mixpanel-swift: a7636894d2bba8bdb924fbd1cdb8f52fd998cf87
+  Mixpanel-swift: 7a06cc6f0fa8617bc8bb0871cace42f7d779751e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
