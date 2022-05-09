@@ -98,6 +98,14 @@ public final class FinerioConnectWidget: NSObject {
             configuration.onboarding = onboarding
         }
     }
+    
+    #warning("REVISAR CON RENE")
+    private lazy var myFunction: Void = {
+        // Do something once
+        if UserConfig.hasShownOnboarding {
+            UserConfig.hasShownOnboarding = false
+        }
+    }()
 
     private(set) var isReadySDK: Bool = false
     
@@ -155,6 +163,10 @@ extension FinerioConnectWidget {
 
 // MARK: - Public Methods
 extension FinerioConnectWidget {
+    public func resetOnboarding() {
+        _ = myFunction
+    }
+    
     public func start(widgetId: String,
                       customerName: String,
                       customerId: String? = nil,

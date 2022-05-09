@@ -1,7 +1,9 @@
 # Finerio Connect iOS Widget
+
 ![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)
 ![Languages](https://img.shields.io/badge/languages-swift-orange.svg)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
+
 ## Introduction
 
 The iOS widget for the Finerio Connect 2.0 API reduces friction in the process of asking users for their online banking credentials by taking care of the implementation and improving the user experience.
@@ -348,95 +350,40 @@ finerioConnectWidget.logLevel = .info
 
 ## UI/UX customization
 
-### Colors
-
-You can create a new instance of the `Palette` class and assign it to `FinerioConnectWidget.shared.palette`.
-
-```swift
-FinerioConnectWidget.shared.palette = Palette(
-    mainColor: .blue,
-    mainTextColor: .black,
-    mainSubTextColor: .gray,
-    bankCellDetailColor: .white,
-    bankCellSeparatorColor: .lightGray,
-    termsTextColor: .lightGray,
-    borderTextField: .lightGray,
-    grayBackgroundColor: .darkGray)
-```
-
-The SDK has a default `Finerio Connect` color palette, if you want to customize the main color, you can do the following:
-
-```swift
-FinerioConnectWidget.shared.palette = Palette( 
-  mainColor: .green 
-)
-```
-
-Or even change the property directly, as follows:
-
-```swift
-FinerioConnectWidget.shared.palette.mainColor = .green
-```
-
 ### Themes for Light and Dark Mode
 
-We have prepared a default theme to toggle the user interface with iOS `Dark Mode` functionality. Additionally you can customize some of the component properties of each of the views included in this SDK. Either change them property by property or as a whole using the `Palette` object.
+We have prepared a default theme to toggle the user interface with iOS `Dark Mode` functionality. Additionally you can customize some components properties for the light and dark themes with your own branding colors.
 
 ```swift
 FinerioConnectWidget.shared.palette = Palette(
-    banksBackground: FCColor(light: .red, dark: .blue),
-    banksHeaderTitle: FCColor(light: .red, dark: .blue),
-    banksHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    banksHeaderIcon: FCColor(light: .red, dark: .blue),
-    banksHeaderIconBackground: FCColor(light: .red, dark: .blue),
-    banksSelectCountryLabel: FCColor(light: .red, dark: .blue),
-    banksSelectedCountryName: FCColor(light: .red, dark: .blue),
-    banksSelectorFieldBackground: FCColor(light: .red, dark: .blue),
-    banksCountrySelectorArrow: FCColor(light: .red, dark: .blue),
-    banksCountryCellBackground: FCColor(light: .red, dark: .blue),
-    banksSelectorFieldBorder: FCColor(light: .red, dark: .blue),
-    credentialsFieldsTextPlaceholder: 
-    banksSegmentedControlBackground: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlActiveItem: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlActiveText: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlText: FCColor(light: .red, dark: .blue),
-    banksListCellBackground: FCColor(light: .red, dark: .blue),
-    banksListCellTitle: FCColor(light: .red, dark: .blue),
-    banksListCellSeparator: FCColor(light: .red, dark: .blue),
-    banksCountryCellTitle: FCColor(light: .red, dark: .blue),
-    banksListCellDisclosureIndicator: FCColor(light: .red, dark: .blue),
-    credentialsBackground: FCColor(light: .red, dark: .blue),
-    credentialsHeaderTitle: FCColor(light: .red, dark: .blue),
-    credentialsHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    credentialsFieldsTitle: FCColor(light: .red, dark: .blue),
-    credentialsFieldsBorder: FCColor(light: .red, dark: .blue),
-    credentialsFieldsBackground: FCColor(light: .red, dark: .blue),
-    credentialsFieldsIcon: FCColor(light: .red, dark: .blue),
-    credentialsFieldsText: FCColor(light: .red, dark: .blue),
-    credentialsSwitchOn: FCColor(light: .red, dark: .blue),
-    credentialsTermsPlainText: FCColor(light: .red, dark: .blue),
-    credentialsTermsLinkedText: FCColor(light: .red, dark: .blue),
-    credentialsContinueButtonBackground: FCColor(light: .red, dark: .blue),
-    credentialsContinueButtonText: FCColor(light: .red, dark: .blue),
-    credentialsHelpButtonBackground: FCColor(light: .red, dark: .blue),
-    credentialsHelpButtonText: FCColor(light: .red, dark: .blue),
-    credentialsBannerBorder: FCColor(light: .red, dark: .blue),
-    credentialsBannerIcon: FCColor(light: .red, dark: .blue),
-    credentialsBannerText: FCColor(light: .red, dark: .blue),
-    accountCreationBackground: FCColor(light: .red, dark: .blue),
-    accountCreationHeaderTitle: FCColor(light: .red, dark: .blue),
-    accountCreationHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    accountCreationStatusText: FCColor(light: .red, dark: .blue),
-    accountStatusBackground: FCColor(light: .red, dark: .blue),
-    accountStatusHeaderTitle: FCColor(light: .red, dark: .blue),
-    accountStatusHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    accountStatusBodyText: FCColor(light: .red, dark: .blue),
-    accountStatusSuccessIcon: FCColor(light: .red, dark: .blue),
-    accountStatusFailureIcon: FCColor(light: .red, dark: .blue),
-    accountStatusContinueButtonBackground: FCColor(light: .red, dark: .blue),
-    accountStatusExitButtonBackground: FCColor(light: .red, dark: .blue),
-    accountStatusContinueButtonText: FCColor(light: .red, dark: .blue),
-    accountStatusExitButtonText: FCColor(light: .red, dark: .blue)
+    circleIconTint: FCColor(light: .red, dark: .blue),
+    circleIconBackground: FCColor(light: .red, dark: .blue),
+    buttonActiveBackground: FCColor(light: .red, dark: .blue),
+    buttonActiveText: FCColor(light: .red, dark: .blue),
+    buttonPassiveBackground: FCColor(light: .red, dark: .blue),
+    buttonPassiveText: FCColor(light: .red, dark: .blue),
+    backgroundView: FCColor(light: .red, dark: .blue),
+    regularSizedText: FCColor(light: .red, dark: .blue),
+    mediumSizedText: FCColor(light: .red, dark: .blue),
+    linkedText: FCColor(light: .red, dark: .blue),
+    fieldsBackground: FCColor(light: .red, dark: .blue),
+    fieldsBorder: FCColor(light: .red, dark: .blue),
+    fieldsRightIcon: FCColor(light: .red, dark: .blue),
+    segmentedControlBackground: FCColor(light: .red, dark: .blue),
+    segmentedControlActiveItem: FCColor(light: .red, dark: .blue),
+    dropDownMenuTint: FCColor(light: .red, dark: .blue),
+    toggleSwitchOn: FCColor(light: .red, dark: .blue),
+    bannerBorder: FCColor(light: .red, dark: .blue),
+    successIconTint: FCColor(light: .red, dark: .blue),
+    failureIconTint: FCColor(light: .red, dark: .blue),
+    statusBarBackground: FCColor(light: .red, dark: .blue),
+    liteText: FCColor(light: .red, dark: .blue),
+    cellSeparator: FCColor(light: .red, dark: .blue),
+    cellDisclosureIndicator: FCColor(light: .red, dark: .blue),
+    fieldsPlaceholder: FCColor(light: .red, dark: .blue),
+    dialogCloseButton: FCColor(light: .red, dark: .blue),
+    pageDotActive: FCColor(light: .red, dark: .blue),
+    pageDotInactive: FCColor(light: .red, dark: .blue)
 )
 ```
 
@@ -496,4 +443,42 @@ The SDK has animations by default with `Lottie`. You only need to change the ani
 FinerioConnectWidget.shared.animations = Animations(
     loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
     accountCreationAnimation: "accountAnimation")
+```
+
+## Onboarding Flow
+
+The SDK provides a default onboarding flow that can be enabled or disabled in the Widget's Aggregation process. This views can be customized with the given `Palette` of styles. This onboarding process gets called only once during the Widget's Aggregation process.
+
+```swift
+FinerioConnectWidget.shared.showOnboarding = true
+```
+
+### Customized Pages
+
+The onboarding flow provides a class to inject your custom images and data to present in your own onboarding process. To inject this data you need to enable the `showOnboarding` flag and set the `Onboarding` instance as follows:
+
+```swift
+FinerioConnectWidget.shared.showOnboarding = true
+FinerioConnectWidget.shared.onboarding = Onboarding(
+    main: Onboarding.Main(icon: UIImage(systemName: "gamecontroller")!,
+                          title: "Main page title",
+                          description: "Description for main page",
+                          actionText: TextWithLink(fullPlainText: "Link to show pages")),
+    pages: [Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.up.filled")!,
+                                      icon: UIImage(systemName: "dpad.up.filled")!,
+                                      title: "Bullet Title One",
+                                      detail: TextWithLink(fullPlainText: "Description for page one")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.right.filled")!,
+                                      icon: UIImage(systemName: "dpad.right.filled")!,
+                                      title: "Bullet Title Two",
+                                      detail: TextWithLink(fullPlainText: "Description for page two")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.down.filled")!,
+                                      icon: UIImage(systemName: "dpad.down.filled")!,
+                                      title: "Bullet Title Three",
+                                      detail: TextWithLink(fullPlainText: "Description for page three")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.left.filled")!,
+                                      icon: UIImage(systemName: "dpad.left.filled")!,
+                                      title: "Bullet Title Four",
+                                      detail: TextWithLink(fullPlainText: "Description for page four"))
+])
 ```

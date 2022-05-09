@@ -90,6 +90,8 @@ class ViewController: UIViewController {
 //        finerioConnectWidget.showChat = true // Zendesk help chat
 //        finerioConnectWidget.showOnboarding = false // Show onboarding tutorial
 //        finerioConnectWidget.onboarding = prepareOnboardingData()
+        #warning("SI SE DEJA ENCENDIDO EL RESET, SE MUESTRA EL ONBOARDING SIEMPRE...")
+//        finerioConnectWidget.resetOnboarding()
         
 //        finerioConnectWidget.font = "Ubuntu"
         /// Country settings
@@ -128,6 +130,3 @@ class ViewController: UIViewController {
             presentingViewController: self)
     }
 }
-
-
-
