@@ -67,7 +67,13 @@ extension OnboardingPageVC {
         } else {
             UserConfig.hasShownOnboarding = true
             
+//            let bankCoordinator = BankCoordinator(context: self.context!)
+//            context?.pop(viewController: self)
+//            context?.initialize(coordinator: bankCoordinator)
+            
             let bankCoordinator = BankCoordinator(context: self.context!)
+            #warning("NECESITA REMOVER MÁS DE UN VIEW CONTROLLER A ESTE MOMENTO...")
+            context?.popToRoot()
             bankCoordinator.start()
         }
     }
@@ -76,7 +82,13 @@ extension OnboardingPageVC {
         UserConfig.hasShownOnboarding = true
         
         let bankCoordinator = BankCoordinator(context: self.context!)
-        bankCoordinator.start()
+#warning("NECESITA REMOVER MÁS DE UN VIEW CONTROLLER A ESTE MOMENTO...")
+        context?.popToRoot()
+        context?.initialize(coordinator: bankCoordinator)
+
+        
+//        let bankCoordinator = BankCoordinator(context: self.context!)
+//        bankCoordinator.start()
     }
 }
 

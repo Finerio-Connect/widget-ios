@@ -19,6 +19,11 @@ internal class BankCoordinator: Coordinator {
         let viewController = BankViewController()
         viewController.coordinator = self
         viewController.context = context
+        context?.navigationController.isNavigationBarHidden = false
+        
+//        viewController.navigationController?.isNavigationBarHidden = false
+//        context?.navigationController.navigationBar.isHidden = false
+//        viewController.navigationController?.navigationBar.isHidden = false
         context?.push(viewController: viewController)
     }
 }

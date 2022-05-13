@@ -93,19 +93,17 @@ public final class FinerioConnectWidget: NSObject {
         }
     }
     
+    public var hasShownOnboarding: Bool = false {
+        didSet {
+            UserConfig.hasShownOnboarding = hasShownOnboarding
+        }
+    }
+    
     public var onboarding: Onboarding = onboardingFinerioData {
         didSet {
             configuration.onboarding = onboarding
         }
     }
-    
-    #warning("REVISAR CON RENE")
-    private lazy var myFunction: Void = {
-        // Do something once
-        if UserConfig.hasShownOnboarding {
-            UserConfig.hasShownOnboarding = false
-        }
-    }()
 
     private(set) var isReadySDK: Bool = false
     
@@ -163,10 +161,6 @@ extension FinerioConnectWidget {
 
 // MARK: - Public Methods
 extension FinerioConnectWidget {
-    public func resetOnboarding() {
-        _ = myFunction
-    }
-    
     public func start(widgetId: String,
                       customerName: String,
                       customerId: String? = nil,

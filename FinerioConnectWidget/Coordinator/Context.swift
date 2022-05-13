@@ -26,9 +26,19 @@ internal final class Context {
         coordinator.start()
     }
 
-    func push(viewController: UIViewController) {
+    func push(viewController: BaseViewController) {
         let palette = Configuration.shared.palette
         self.navigationController.setStatusBar(backgroundColor: palette.statusBarBackground)
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func pop(viewController: BaseViewController) {
+        self.navigationController.viewControllers.removeAll(where: {$0 === viewController})
+    }
+    
+    func popToRoot() {
+        let firstVC = self.navigationController.viewControllers.removeFirst()
+        self.navigationController.viewControllers.removeAll()
+        self.navigationController.viewControllers.append(firstVC)
     }
 }

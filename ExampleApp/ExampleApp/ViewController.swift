@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 class ViewController: UIViewController {
-
+    var currentVersionTest: Double = 1.0
+    var oldVersionTest: Double = 1.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Example FinerioConnectWidget"
-
+        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 15
@@ -33,11 +35,10 @@ class ViewController: UIViewController {
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(startWidget), for: .touchUpInside)
-
+        
         stackView.addArrangedSubview(button)
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalToConstant: view.frame.width - 40),
-            stackView.heightAnchor.constraint(equalToConstant: 60),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
@@ -47,13 +48,85 @@ class ViewController: UIViewController {
         buttonTest.setTitle("TEST VC", for: .normal)
         buttonTest.addTarget(self, action: #selector(testViewController), for: .touchUpInside)
         stackView.addArrangedSubview(buttonTest)
+        
+        let buttonApp = UIButton()
+        buttonApp.backgroundColor = .purple
+        buttonApp.setTitle("VERSION APP UPDATE", for: .normal)
+        buttonApp.addTarget(self, action: #selector(changeVersionOnRuntime), for: .touchUpInside)
+        stackView.addArrangedSubview(buttonApp)
     }
-    
+}
+
+//MARK: - Start Widget
+extension ViewController {
+    @objc private func startWidget() {
+        let finerioConnectWidget = FinerioConnectWidget.shared
+        /// ENVIRONMENT SETTINGS
+        //        finerioConnectWidget.environment = .production
+        
+        /// ZENDESK SETTINGS
+        //        finerioConnectWidget.showChat = true // Zendesk help chat
+        
+        /// ONBOARDING SETTINGS
+        finerioConnectWidget.showOnboarding = true // Show onboarding tutorial in the beginning
+        //        finerioConnectWidget.onboarding = prepareOnboardingData() //Set your own onboarding data
+        //        finerioConnectWidget.hasShownOnboarding = false // To handle the reset of onboarding flow
+        demoValidateVersionUpdate(finerioConnectWidget)
+        
+        /// COUNTRY SETTINGS
+        //        finerioConnectWidget.countryCode = "MX"
+        //        finerioConnectWidget.showCountryOptions = false
+        
+        /// BANK SETTINGS
+        //        finerioConnectWidget.showBankTypeOptions = true
+        //        finerioConnectWidget.bankType = .personal
+        
+        /// THEME APPEARANCE SETTINGS
+        finerioConnectWidget.theme = .automatic
+        
+        /// TEXTS SETTINGS
+        finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
+        //        finerioConnectWidget.font = "Ubuntu"
+        
+        /// ANIMATIONS SETTINGS
+        //        finerioConnectWidget.animations = Animations(
+        //            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
+        //            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json")
+        
+        /// PALETTE SETTTINGS
+        //        let fcColor = FCColor(light: .yellow, dark: .purple)
+        //        finerioConnectWidget.palette.backgroundView = fcColor
+        //        finerioConnectWidget.palette.buttonActiveBackground = fcColor
+        
+        
+        finerioConnectWidget.start(
+            widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
+            customerName: "René Sandoval",
+            presentingViewController: self)
+    }
+}
+
+
+// MARK: - Events
+extension ViewController {
     @objc func testViewController() {
         let vc = TestsViewController()
         present(vc, animated: true)
     }
     
+    @objc private func changeVersionOnRuntime() {
+        print("OldVersionApp: \(oldVersionTest)")
+        oldVersionTest = currentVersionTest
+        print("OldVersionApp: \(oldVersionTest)")
+        
+        print("CurrentVersionApp: \(currentVersionTest)")
+        currentVersionTest += 1
+        print("CurrentVersionApp: \(currentVersionTest)")
+    }
+}
+
+// MARK: - Auxiliar Methods
+extension ViewController {
     func prepareOnboardingData() -> Onboarding {
         let pageOne = Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.up.filled")!,
                                                 icon: UIImage(systemName: "dpad.up.filled")!,
@@ -78,55 +151,20 @@ class ViewController: UIViewController {
         let pages = [pageOne, pageTwo, pageThree, pageFour]
         
         let main = Onboarding.Main(icon: UIImage(systemName: "gamecontroller")!,
-                                   title: "TITULO CLIENTE",
-                                   description: "DESCRIPCION CLIENTE",
-                                   actionText: TextWithLink(fullPlainText: "LINKED TEXT"))
+                                   title: "ONBOARDING WIDGET VERSION \(currentVersionTest)",
+                                   description: "Descubre las novedades de esta actualización",
+                                   actionText: TextWithLink(fullPlainText: "Ver nuevas funcionalidades"))
         let onboardingDataClient = Onboarding(main: main, pages: pages)
         return onboardingDataClient
     }
-
-    @objc private func startWidget() {
-        let finerioConnectWidget = FinerioConnectWidget.shared
-//        finerioConnectWidget.showChat = true // Zendesk help chat
-//        finerioConnectWidget.showOnboarding = false // Show onboarding tutorial
-//        finerioConnectWidget.onboarding = prepareOnboardingData()
-        #warning("SI SE DEJA ENCENDIDO EL RESET, SE MUESTRA EL ONBOARDING SIEMPRE...")
-//        finerioConnectWidget.resetOnboarding()
-        
-//        finerioConnectWidget.font = "Ubuntu"
-        /// Country settings
-//        finerioConnectWidget.countryCode = "MX"
-//        finerioConnectWidget.showCountryOptions = false
-        /// Bank settings
-//        finerioConnectWidget.showBankTypeOptions = true
-//        finerioConnectWidget.bankType = .personal
-        /// Theme appearance
-        finerioConnectWidget.theme = .automatic
-        
-        
-
-//        finerioConnectWidget.environment = .production
-        finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
-
-//        finerioConnectWidget.animations = Animations(
-//            loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
-//            accountCreationAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
-//            successAnimation: "successAnimation",
-//            failureAnimation: "https://cdn.finerio.mx/widget/syncing_failure.json")
-        
-//        let fcColor = FCColor(light: .yellow, dark: .purple)
-//        finerioConnectWidget.palette.banksBackground = fcColor
-//        finerioConnectWidget.palette.credentialsBackground = fcColor
-//        finerioConnectWidget.palette.accountCreationBackground = fcColor
-//        finerioConnectWidget.palette.accountStatusBackground = fcColor
-//        finerioConnectWidget.palette.statusBarBackground = fcColor
-//        finerioConnectWidget.palette.viewControllersAIOBackground = fcColor
-
-        
-        
-        finerioConnectWidget.start(
-            widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46",
-            customerName: "René Sandoval",
-            presentingViewController: self)
+    
+    // Demo validation to reset onboarding on Update Version
+    private func demoValidateVersionUpdate(_ finerioConnectWidget: FinerioConnectWidget) {
+        if currentVersionTest > oldVersionTest {
+            oldVersionTest = currentVersionTest
+            // this will reset the onboarding
+            finerioConnectWidget.hasShownOnboarding = false
+            finerioConnectWidget.onboarding = prepareOnboardingData()
+        }
     }
 }

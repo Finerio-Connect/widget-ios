@@ -20,6 +20,7 @@ internal class OnboardingCoordinator: Coordinator {
         let viewController = OnboardingMainVC(onboardingModel: onboardingModel)
         viewController.coordinator = self
         viewController.context = context
+        context?.navigationController.isNavigationBarHidden = true
         context?.push(viewController: viewController)
     }
     
@@ -27,8 +28,14 @@ internal class OnboardingCoordinator: Coordinator {
         if let pages = onboardingModel.onboardingPages {
             let viewController = OnboardingPageVC(pages: pages)
             viewController.coordinator = self
+            viewController.context?.coordinator = self
             viewController.context = context
             context?.push(viewController: viewController)
         }
+    }
+    
+    func banksCoordinator() {
+        let bankCoordinator = BankCoordinator(context: self.context!)
+        bankCoordinator.start()
     }
 }

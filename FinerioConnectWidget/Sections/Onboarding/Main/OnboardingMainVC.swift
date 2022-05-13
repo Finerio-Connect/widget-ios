@@ -28,9 +28,8 @@ class OnboardingMainVC: BaseViewController {
     // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = true
-        self.view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        let backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        self.view.backgroundColor = backgroundColor
         setLayoutViews()
     }
 }
@@ -60,7 +59,12 @@ extension OnboardingMainVC: FCOnboardingMainViewDelegate {
     func selectedContinueButton() {
         UserConfig.hasShownOnboarding = true
         
+//        if let coordinator = coordinator as? OnboardingCoordinator {
+//            coordinator.banksCoordinator()
+//        }
+        
         let bankCoordinator = BankCoordinator(context: self.context!)
+        context?.pop(viewController: self)
         context?.initialize(coordinator: bankCoordinator)
     }
 }
