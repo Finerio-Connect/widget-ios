@@ -60,7 +60,7 @@ extension FCBaseView {
         //        loaderView.animationSource = "https://assets5.lottiefiles.com/packages/lf20_lmk0pfms.json"
         //        loaderView.animationSource = "TestLottieLocal"
         //        loaderView.animationSize = 100
-        //        loaderView.backgroundColor = .red.withAlphaComponent(0.5)
+                loaderView.backgroundColor = .red.withAlphaComponent(0.5)
         return loaderView
     }
 }

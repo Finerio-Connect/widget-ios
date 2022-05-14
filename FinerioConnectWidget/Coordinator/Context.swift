@@ -33,12 +33,14 @@ internal final class Context {
     }
     
     func pop(viewController: BaseViewController) {
-        self.navigationController.viewControllers.removeAll(where: {$0 === viewController})
+        let viewControllers = self.navigationController.viewControllers
+        let filteredVC = viewControllers.filter({$0 != viewController})
+        self.navigationController.setViewControllers(filteredVC, animated: false)
     }
     
     func popToRoot() {
         let firstVC = self.navigationController.viewControllers.removeFirst()
         self.navigationController.viewControllers.removeAll()
-        self.navigationController.viewControllers.append(firstVC)
+        self.navigationController.setViewControllers([firstVC], animated: false)
     }
 }

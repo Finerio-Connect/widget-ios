@@ -274,10 +274,14 @@ extension FCBankSelectionView {
                 
             case .loaded:
                 // Set currentCountry
-                if let currentCountry = self.bankViewModel.getCurrentCountry() {
-                    self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
-                    self.countriesSelectorView.countryNameLabel.text = currentCountry.name
-                }
+                self.bankViewModel.getCurrentCountry(completion: { country in
+                    if let currentCountry = country {
+                        DispatchQueue.main.async {
+                            self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
+                            self.countriesSelectorView.countryNameLabel.text = currentCountry.name
+                        }
+                    }
+                })
                 
             case .failure:
                 self.delegate?.bankSelectionView(onFailure: .failure, message: self.bankViewModel.errorMessage)

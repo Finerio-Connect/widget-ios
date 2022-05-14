@@ -15,11 +15,15 @@ internal class BankViewModel {
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let userDefaults = UserDefaults.standard
 
-    func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
-        if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
-            return countries[index]
+    func getCurrentCountry(_ country: String = Configuration.shared.countryCode,
+                           completion: @escaping(Country?)->()) {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            if let index = self?.countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
+                completion(self?.countries[index])
+            } else {
+                completion(nil)
+            }
         }
-        return nil
     }
 
     func loadCountries() {
