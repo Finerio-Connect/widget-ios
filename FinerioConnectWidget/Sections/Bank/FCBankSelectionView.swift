@@ -47,9 +47,6 @@ public final class FCBankSelectionView: FCBaseView {
         
         trackEvent(eventName: Constants.Events.banks)
         
-        self.loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
-        self.loadingView.start()
-        
         observerServiceStatus()
         
         if Configuration.shared.showCountryOptions {
@@ -60,6 +57,9 @@ public final class FCBankSelectionView: FCBaseView {
         addComponents()
         changeStyle()
         setLayoutLoadingIndicator()
+        
+        self.loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        self.loadingView.start()
     }
 }
 
@@ -230,6 +230,17 @@ extension FCBankSelectionView {
             self.tableHeight = height
         }
     }
+    
+    private func setCurrentCountry() {
+        self.bankViewModel.getCurrentCountry(completion: { country in
+            if let currentCountry = country {
+                DispatchQueue.main.async {
+                    self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
+                    self.countriesSelectorView.countryNameLabel.text = currentCountry.name
+                }
+            }
+        })
+    }
 }
 
 // MARK: - Layouts
@@ -273,15 +284,8 @@ extension FCBankSelectionView {
                 }
                 
             case .loaded:
-                // Set currentCountry
-                self.bankViewModel.getCurrentCountry(completion: { country in
-                    if let currentCountry = country {
-                        DispatchQueue.main.async {
-                            self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
-                            self.countriesSelectorView.countryNameLabel.text = currentCountry.name
-                        }
-                    }
-                })
+                self.setCurrentCountry()
+                
                 
             case .failure:
                 self.delegate?.bankSelectionView(onFailure: .failure, message: self.bankViewModel.errorMessage)

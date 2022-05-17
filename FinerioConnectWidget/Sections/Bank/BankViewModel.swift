@@ -17,12 +17,10 @@ internal class BankViewModel {
 
     func getCurrentCountry(_ country: String = Configuration.shared.countryCode,
                            completion: @escaping(Country?)->()) {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            if let index = self?.countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
-                completion(self?.countries[index])
-            } else {
-                completion(nil)
-            }
+        if let country = self.countries.filter({$0.code.lowercased() == country.lowercased() }).first {
+            completion(country)
+        } else {
+            completion (nil)
         }
     }
 
@@ -64,6 +62,7 @@ internal class BankViewModel {
 
 // MARK: - Local Banks
 extension BankViewModel {
+    #warning("Improve to use it with FCUserConfig")
     private func getLocalBanksFromKeyPath(_ keyPath: String) -> [Bank]? {
         var localBanks: [Bank]? = nil
         if let banksData = userDefaults.value(forKey: keyPath) as? Data {
