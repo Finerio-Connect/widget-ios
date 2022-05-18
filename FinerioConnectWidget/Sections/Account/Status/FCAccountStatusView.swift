@@ -20,22 +20,23 @@ public final class FCAccountStatusView: FCBaseView {
     private lazy var bodyDescriptionLabel: UILabel = setupBodyDescriptionLabel()
     private lazy var continueButton: UIButton = setupContinueButton()
     private lazy var exitButton: UIButton = setupExitButton()
-    
+
     // Vars
     public var delegate: FCAccountStatusViewDelegate?
     private var accountStatusViewModel: AccountStatusViewModel = AccountStatusViewModel()
-    
+    private var floatingButtonAdded = false
+
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureView()
     }
-    
+
     override func configureView() {
         super.configureView()
         addComponents()
@@ -45,20 +46,21 @@ public final class FCAccountStatusView: FCBaseView {
 }
 
 // MARK: - Data
+
 extension FCAccountStatusView {
     public func setBank(_ bank: Bank) {
-        self.accountStatusViewModel.bank = bank
-        
+        accountStatusViewModel.bank = bank
+
         let imageName = Constants.URLS.bankImageShield.replacingOccurrences(of: Constants.Placeholders.bankCode,
                                                                             with: accountStatusViewModel.bank.code)
         let urlImage = URL(string: imageName)!
         headerSectionView.avatarView.setImage(with: urlImage,
                                               defaultImage: Images.otherBanksOff.image())
     }
-    
+
     public func setStatus(_ status: ServiceStatus) {
-        self.accountStatusViewModel.serviceStatus = status
-        
+        accountStatusViewModel.serviceStatus = status
+
         if status == .success {
             configureViewSuccess()
         } else {
@@ -68,35 +70,37 @@ extension FCAccountStatusView {
 }
 
 // MARK: - Status Behaviour
+
 extension FCAccountStatusView {
     private func configureViewFailure() {
         headerSectionView.titleLabel.text = literal(.bondingHeaderTitleFailure)
         headerSectionView.descriptionLabel.text = literal(.bondingHeaderSubtitleFailure)
-        
+
         let statusImg = Images.failureIcon.image()
         statusAvatarView.image = statusImg
         statusAvatarView.tintColor = Configuration.shared.palette.accountStatusFailureIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionFailure)
-        
+
         continueButton.setTitle(literal(.failureContinueTitleButton), for: .normal)
         exitButton.setTitle(literal(.failureExitTitleButton), for: .normal)
     }
-    
+
     private func configureViewSuccess() {
         headerSectionView.titleLabel.text = literal(.bondingHeaderTitleSuccess)
         headerSectionView.descriptionLabel.text = literal(.bondingHeaderSubtitleSuccess)
-        
+
         let statusImg = Images.successIcon.image()
         statusAvatarView.image = statusImg
         statusAvatarView.tintColor = Configuration.shared.palette.accountStatusSuccessIcon.dynamicColor
         bodyDescriptionLabel.text = literal(.bondingDescriptionSuccess)
-        
+
         continueButton.setTitle(literal(.successContinueTitleButton), for: .normal)
         exitButton.setTitle(literal(.successExitTitleButton), for: .normal)
     }
 }
 
 // MARK: - UI
+
 extension FCAccountStatusView {
     private func addComponents() {
         addSubview(headerSectionView)
@@ -104,13 +108,18 @@ extension FCAccountStatusView {
         addSubview(bodyDescriptionLabel)
         addSubview(continueButton)
         addSubview(exitButton)
+
+        if !floatingButtonAdded {
+            addFloatingButton()
+            floatingButtonAdded = true
+        }
     }
-    
+
     private func setupHeaderSectionView() -> HeaderSectionView {
         let headerSectionView = HeaderSectionView()
         return headerSectionView
     }
-    
+
     private func setupStatusAvatarView() -> UIImageView {
         let imageView = UIImageView()
         let size: CGFloat = 60
@@ -118,7 +127,7 @@ extension FCAccountStatusView {
         imageView.widthAnchor(equalTo: size)
         return imageView
     }
-    
+
     private func setupBodyDescriptionLabel() -> UILabel {
         let label = UILabel()
         let fontSize = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
@@ -128,7 +137,7 @@ extension FCAccountStatusView {
         label.textAlignment = .center
         return label
     }
-    
+
     private func setupButton() -> UIButton {
         let button = UIButton()
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_6_6s_7_8 ? 12 : 14
@@ -139,13 +148,13 @@ extension FCAccountStatusView {
         button.heightAnchor(equalTo: CGFloat(46))
         return button
     }
-    
+
     private func setupContinueButton() -> UIButton {
         let button = setupButton()
         button.addTarget(self, action: #selector(didSelectContinueButton), for: .touchUpInside)
         return button
     }
-    
+
     private func setupExitButton() -> UIButton {
         let button = setupButton()
         button.addTarget(self, action: #selector(didSelectExitButton), for: .touchUpInside)
@@ -154,17 +163,19 @@ extension FCAccountStatusView {
 }
 
 // MARK: - Actions
+
 extension FCAccountStatusView {
     @objc private func didSelectContinueButton() {
         delegate?.accountStatusView(didSelectContinueButton: continueButton)
     }
-    
+
     @objc private func didSelectExitButton() {
         delegate?.accountStatusView(didSelectExitButton: exitButton)
     }
 }
 
 // MARK: - Layouts
+
 extension FCAccountStatusView {
     private func setLayoutViews() {
         let margin: CGFloat = 20
@@ -192,12 +203,13 @@ extension FCAccountStatusView {
 }
 
 // MARK: - Style
+
 extension FCAccountStatusView {
-    public override func tintColorDidChange() {
+    override public func tintColorDidChange() {
         super.tintColorDidChange()
         changeStyle()
     }
-    
+
     private func changeStyle() {
         let palette = Configuration.shared.palette
         backgroundColor = palette.accountStatusBackground.dynamicColor
@@ -208,6 +220,5 @@ extension FCAccountStatusView {
         continueButton.setTitleColor(palette.accountStatusContinueButtonText.dynamicColor, for: .normal)
         exitButton.backgroundColor = palette.accountStatusExitButtonBackground.dynamicColor
         exitButton.setTitleColor(palette.accountStatusExitButtonText.dynamicColor, for: .normal)
-        
     }
 }

@@ -32,4 +32,5 @@ extension Images {
     static let successIcon = Images("success_icon")
     static let failureIcon = Images("failure_icon")
     static let disclosureIndicator = Images("disclosure_indicator")
+    static let zendeskIcon = Images("icon_zendesk")
 }
