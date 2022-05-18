@@ -31,7 +31,7 @@ class OnboardingPageVC: BaseViewController {
     // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
 
         pageVC.setViewControllers([self.viewControllerAtIndex(index: 0)],
                                   direction: .forward,
@@ -67,12 +67,7 @@ extension OnboardingPageVC {
         } else {
             UserConfig.hasShownOnboarding = true
             
-//            let bankCoordinator = BankCoordinator(context: self.context!)
-//            context?.pop(viewController: self)
-//            context?.initialize(coordinator: bankCoordinator)
-            
             let bankCoordinator = BankCoordinator(context: self.context!)
-            #warning("NECESITA REMOVER MÁS DE UN VIEW CONTROLLER A ESTE MOMENTO...")
             context?.popToRoot()
             bankCoordinator.start()
         }
@@ -82,13 +77,8 @@ extension OnboardingPageVC {
         UserConfig.hasShownOnboarding = true
         
         let bankCoordinator = BankCoordinator(context: self.context!)
-#warning("NECESITA REMOVER MÁS DE UN VIEW CONTROLLER A ESTE MOMENTO...")
         context?.popToRoot()
         context?.initialize(coordinator: bankCoordinator)
-
-        
-//        let bankCoordinator = BankCoordinator(context: self.context!)
-//        bankCoordinator.start()
     }
 }
 

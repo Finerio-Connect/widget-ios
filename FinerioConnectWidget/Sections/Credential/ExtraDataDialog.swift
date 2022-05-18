@@ -105,7 +105,7 @@ extension ExtraDataPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource {
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = extraData[row].value
-        pickerLabel?.textColor = FCComponentsStyle.buttonPassiveText.dynamicColor
+        pickerLabel?.textColor = Configuration.shared.palette.buttonPassiveText.dynamicColor
 
         return pickerLabel!
     }
@@ -122,8 +122,9 @@ extension ExtraDataPickerDialog {
     }
     
     private func changeStyle() {
-        acceptButton.backgroundColor = FCComponentsStyle.buttonActiveBackground.dynamicColor
-        acceptButton.tintColor = FCComponentsStyle.buttonActiveText.dynamicColor
-        containerView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        let palette = Configuration.shared.palette
+        acceptButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
+        acceptButton.tintColor = palette.buttonActiveText.dynamicColor
+        containerView.backgroundColor = palette.backgroundView.dynamicColor
     }
 }

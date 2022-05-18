@@ -92,8 +92,6 @@ finerioConnectWidget.animations = Animations()
 finerioConnectWidget.palette = Palette()
 ```
 
-
-
 ## Separation by Views
 
 ### FCBankSelectionView
@@ -628,4 +626,26 @@ FinerioConnectWidget.shared.onboarding = Onboarding(
                                       title: "Bullet Title Four",
                                       detail: TextWithLink(fullPlainText: "Description for page four"))
 ])
+```
+
+### Reset Onboarding Flow
+
+In order to handle the reset of the onboarding flow we provide some properties that can be used with some logic to perform a custom reset flow.
+
+```swift
+// To know if a user has saw the onboarding flow once.
+finerioConnectWidget.hasShownOnboarding = true 
+// To show the onboarding tutorial
+finerioConnectWidget.showOnboarding = true
+```
+
+As an example, if you have some control version of your app or releases, you can configure the logic to reset the onboarding flow every time you update or deploy a new release version.
+
+```swift
+if currentVersion > oldVersion {
+    // this will reset the onboarding
+    finerioConnectWidget.hasShownOnboarding = false
+    // You can inject your new features in pages of the Onboarding
+    finerioConnectWidget.onboarding = Onboarding()
+}
 ```

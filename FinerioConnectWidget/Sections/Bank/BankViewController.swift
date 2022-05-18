@@ -14,7 +14,7 @@ internal class BankViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)

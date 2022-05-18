@@ -58,7 +58,7 @@ public final class FCBankSelectionView: FCBaseView {
         changeStyle()
         setLayoutLoadingIndicator()
         
-        self.loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        self.loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         self.loadingView.start()
     }
 }
@@ -398,7 +398,7 @@ extension FCBankSelectionView {
     private func changeStyle() {
         let palette = Configuration.shared.palette
         
-        loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         backgroundColor = palette.backgroundView.dynamicColor
         headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor

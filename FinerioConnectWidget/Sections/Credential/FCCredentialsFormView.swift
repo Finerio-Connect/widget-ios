@@ -53,7 +53,7 @@ public final class FCCredentialsFormView: FCBaseView {
     
     override func configureView() {
         super.configureView()
-        self.loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        self.loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         trackEvent(eventName: Constants.Events.credentials)
         
@@ -550,7 +550,7 @@ extension FCCredentialsFormView {
     private func changeStyle() {
         let palette = Configuration.shared.palette
         
-        loadingView.backgroundColor = FCComponentsStyle.backgroundView.dynamicColor
+        loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         backgroundColor = palette.backgroundView.dynamicColor
         headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
