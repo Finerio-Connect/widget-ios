@@ -24,10 +24,10 @@ class ViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
-        
+
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .red //UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
+        button.backgroundColor = .red // UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
         button.setTitle("Open SDK Account Aggregation", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 18) ?? .boldSystemFont(ofSize: 18)
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-        
+
         let buttonTest = UIButton()
         buttonTest.backgroundColor = UIColor(red: 63 / 255, green: 216 / 255, blue: 175 / 255, alpha: 1)
         buttonTest.setTitle("TEST VC", for: .normal)

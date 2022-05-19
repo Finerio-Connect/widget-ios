@@ -11,6 +11,7 @@ target 'FinerioConnectWidget' do
   pod 'SwiftyRSA'
   pod 'lottie-ios'
   pod 'Mixpanel-swift'
+  pod 'ZendeskSDKMessaging'
 end
 
 post_install do |installer|

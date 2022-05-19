@@ -11,7 +11,7 @@ import UIKit
 internal class BankViewController: BaseViewController {
     // Components
     private var bankSelectionView: FCBankSelectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
@@ -26,14 +26,15 @@ internal class BankViewController: BaseViewController {
     }
 }
 
-//MARK: - FCBankSelectionView Delegate
+// MARK: - FCBankSelectionView Delegate
+
 extension BankViewController: FCBankSelectionViewDelegate {
     func bankSelectionView(didSelect bank: Bank, nextFlowView: FCCredentialsFormView) {
         let coordinator = CredentialCoordinator(context: context!, bank: bank)
         context?.initialize(coordinator: coordinator)
     }
-    
+
     func bankSelectionView(onFailure: ServiceStatus, message: String) {
-        self.showAlert(message, viewController: self)
+        showAlert(message, viewController: self)
     }
 }

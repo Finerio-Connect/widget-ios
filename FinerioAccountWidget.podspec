@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftyRSA'
   s.dependency 'lottie-ios'
   s.dependency 'Mixpanel-swift'
+  s.dependency 'ZendeskSDKMessaging'
   
   s.requires_arc          = true
 end

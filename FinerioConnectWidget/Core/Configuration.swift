@@ -25,6 +25,7 @@ internal final class Configuration {
     var showBankTypeOptions: Bool = true
     var showOnboarding: Bool = true
     var onboarding: Onboarding = onboardingFinerioData
+    var showChat: Bool = true
     var bankType: BankType = .personal
     var automaticFetching: Bool!
     var state: String!

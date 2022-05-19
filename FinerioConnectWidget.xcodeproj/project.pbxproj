@@ -711,7 +711,7 @@
 		0FD271FA25F1719600E052F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "Finerio Connect";
 				TargetAttributes = {
 					0FD2720225F1719600E052F7 = {
