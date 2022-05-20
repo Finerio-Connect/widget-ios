@@ -106,9 +106,9 @@ extension BankTableViewCell {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        backgroundColor = palette.banksListCellBackground.dynamicColor
-        lblTitle.textColor = palette.banksListCellTitle.dynamicColor
+        backgroundColor = palette.backgroundView.dynamicColor
+        lblTitle.textColor = palette.mediumSizedText.dynamicColor
 //        lblSubtitle.textColor = palette.banksListCellSubtitle.dynamicColor // Not in use
-        accessoryView?.tintColor = palette.banksListCellDisclosureIndicator.dynamicColor
+        accessoryView?.tintColor = palette.cellDisclosureIndicator.dynamicColor
     }
 }

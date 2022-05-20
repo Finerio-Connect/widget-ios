@@ -48,10 +48,7 @@ public final class FCBankSelectionView: FCBaseView {
         super.configureView()
 
         trackEvent(eventName: Constants.Events.banks)
-
-        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
-        loadingView.start()
-
+        
         observerServiceStatus()
 
         if Configuration.shared.showCountryOptions {
@@ -62,6 +59,9 @@ public final class FCBankSelectionView: FCBaseView {
         addComponents()
         changeStyle()
         setLayoutLoadingIndicator()
+        
+        self.loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        self.loadingView.start()
     }
 }
 
@@ -93,7 +93,7 @@ extension FCBankSelectionView {
         let headerView = HeaderSectionView()
         headerView.titleLabel.text = literal(.banksHeaderTitle)
         headerView.descriptionLabel.text = literal(.banksHeaderSubtitle)
-        headerView.setLockAvatarView()
+        headerView.setCustomIconImage(Images.lockIcon.image()!)
         return headerView
     }
 
@@ -124,12 +124,12 @@ extension FCBankSelectionView {
         let palette = Configuration.shared.palette
         let attributesNormal: [NSAttributedString.Key: Any] = [
             .font: UIFont.fcMediumFont(ofSize: fontSize),
-            .foregroundColor: palette.banksSegmentedControlText.dynamicColor,
+            .foregroundColor: palette.mediumSizedText.dynamicColor
         ]
 
         let attributesActive: [NSAttributedString.Key: Any] = [
             .font: UIFont.fcMediumFont(ofSize: fontSize),
-            .foregroundColor: palette.banksSegmentedControlActiveText.dynamicColor,
+            .foregroundColor: palette.mediumSizedText.dynamicColor
         ]
 
         segmentControl.setTitleTextAttributes(attributesNormal, for: .normal)
@@ -233,6 +233,17 @@ extension FCBankSelectionView {
             tableHeight = height
         }
     }
+    
+    private func setCurrentCountry() {
+        self.bankViewModel.getCurrentCountry(completion: { country in
+            if let currentCountry = country {
+                DispatchQueue.main.async {
+                    self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
+                    self.countriesSelectorView.countryNameLabel.text = currentCountry.name
+                }
+            }
+        })
+    }
 }
 
 // MARK: - Layouts
@@ -278,18 +289,15 @@ extension FCBankSelectionView {
                     self?.calculateTableHeight()
 
                     if !((self?.floatingButtonAdded) == nil) {
-                        self?.addFloatingButton()
+//                        self?.addFloatingButton()
                         self?.floatingButtonAdded = true
                     }
                 }
 
             case .loaded:
-                // Set currentCountry
-                if let currentCountry = self.bankViewModel.getCurrentCountry() {
-                    self.countriesSelectorView.countryImage.setImage(with: URL(string: currentCountry.imageUrl))
-                    self.countriesSelectorView.countryNameLabel.text = currentCountry.name
-                }
-
+                self.setCurrentCountry()
+                
+                
             case .failure:
                 self.delegate?.bankSelectionView(onFailure: .failure, message: self.bankViewModel.errorMessage)
             }
@@ -406,29 +414,29 @@ extension FCBankSelectionView {
 
     private func changeStyle() {
         let palette = Configuration.shared.palette
-
-        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
-
-        backgroundColor = palette.banksBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.banksHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.banksHeaderSubtitle.dynamicColor
-        headerSectionView.avatarView.tintColor = palette.banksHeaderIcon.dynamicColor
-        headerSectionView.avatarView.backgroundColor = palette.banksHeaderIconBackground.dynamicColor
-
-        countriesSelectorView.selectorTitleLabel.textColor = palette.banksSelectCountryLabel.dynamicColor
-        countriesSelectorView.countryNameLabel.textColor = palette.banksSelectedCountryName.dynamicColor
-
-        bankTypeSegment.backgroundColor = palette.banksSegmentedControlBackground.dynamicColor
-
+        
+        loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        
+        backgroundColor = palette.backgroundView.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
+        headerSectionView.avatarView.tintColor = palette.circleIconTint.dynamicColor
+        headerSectionView.avatarView.backgroundColor = palette.circleIconBackground.dynamicColor
+        
+        countriesSelectorView.selectorTitleLabel.textColor = palette.regularSizedText.dynamicColor
+        countriesSelectorView.countryNameLabel.textColor = palette.dropDownMenuTint.dynamicColor
+        
+        bankTypeSegment.backgroundColor = palette.segmentedControlBackground.dynamicColor
+        
         if #available(iOS 13.0, *) {
-            bankTypeSegment.selectedSegmentTintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+            bankTypeSegment.selectedSegmentTintColor = palette.segmentedControlActiveItem.dynamicColor
         } else {
-            bankTypeSegment.tintColor = palette.banksSegmentedControlActiveItem.dynamicColor
+            bankTypeSegment.tintColor = palette.segmentedControlActiveItem.dynamicColor
         }
 
         bankTypeSegment = setupTextAttributesForSegmentControl(bankTypeSegment)
-
-        tableView.separatorColor = palette.banksListCellSeparator.dynamicColor
-        separatorView.backgroundColor = palette.banksListCellSeparator.dynamicColor
+        
+        tableView.separatorColor = palette.cellSeparator.dynamicColor
+        separatorView.backgroundColor = palette.cellSeparator.dynamicColor
     }
 }

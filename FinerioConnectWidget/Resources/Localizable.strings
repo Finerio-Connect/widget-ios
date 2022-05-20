@@ -51,6 +51,12 @@
 "success_continue_title_button" = "Agregar otra cuenta";
 "success_exit_title_button" = "Continuar proceso";
 
+// Onboarding Section
+"onboarding_main_continue_button" = "Continuar";
+"onboarding_main_exit_button" = "Agregar cuenta manualmente";
+"onboarding_step_continue_button" = "Continuar";
+"onboarding_step_next_button" = "Siguiente";
+"onboarding_step_exit_button" = "Saltar";
 
 
 // Error Codes

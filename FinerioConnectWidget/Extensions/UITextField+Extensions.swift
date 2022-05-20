@@ -10,7 +10,7 @@ import UIKit
 extension UITextField {
     private func setPasswordToggleImage(_ button: UIButton) {
         let image = isSecureTextEntry ? Images.eyeClosed.image()?.withRenderingMode(.alwaysTemplate) : Images.eyeOpen.image()?.withRenderingMode(.alwaysTemplate)
-        button.imageView?.tintColor = Configuration.shared.palette.credentialsFieldsIcon.dynamicColor
+        button.imageView?.tintColor = Configuration.shared.palette.fieldsRightIcon.dynamicColor
         button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         button.setImage(image, for: .normal)
     }
@@ -61,6 +61,6 @@ extension UITextField {
                 
         rightView = imageContainerView
         rightViewMode = .always
-        tintColor = Configuration.shared.palette.credentialsFieldsIcon.dynamicColor
+        tintColor = Configuration.shared.palette.fieldsRightIcon.dynamicColor
     }
 }

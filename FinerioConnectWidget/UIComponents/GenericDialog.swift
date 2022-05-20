@@ -113,7 +113,7 @@ extension GenericDialog {
     }
     
     private func changeStyle() {
-        let tintColor = FCComponentsStyle.genericDialogCloseButton.dynamicColor
+        let tintColor = Configuration.shared.palette.dialogCloseButton.dynamicColor
         closeButton.tintColor = tintColor
     }
 }

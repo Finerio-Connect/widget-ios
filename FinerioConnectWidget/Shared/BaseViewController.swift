@@ -13,6 +13,14 @@ internal class BaseViewController: UIViewController {
     weak var coordinator: Coordinator?
     weak var context: Context?
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override open func viewDidLoad() {}
     
     func getConstraintConstant(firstValue: Double, secondValue: Double, value: Double = 0.0) -> CGFloat {

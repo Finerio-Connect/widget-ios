@@ -21,7 +21,6 @@ public final class FinerioConnectWidget: NSObject {
     public var presentingViewController: UIViewController?
 
     // MARK: - Instance Properties
-
     internal var context: Context?
 
     public var logLevel: LogLevel {
@@ -87,6 +86,24 @@ public final class FinerioConnectWidget: NSObject {
     public var showBankTypeOptions: Bool = true {
         didSet {
             configuration.showBankTypeOptions = showBankTypeOptions
+        }
+    }
+    
+    public var showOnboarding: Bool = true {
+        didSet {
+            configuration.showOnboarding = showOnboarding
+        }
+    }
+    
+    public var hasShownOnboarding: Bool = false {
+        didSet {
+            UserConfig.hasShownOnboarding = hasShownOnboarding
+        }
+    }
+    
+    public var onboarding: Onboarding = onboardingFinerioData {
+        didSet {
+            configuration.onboarding = onboarding
         }
     }
 

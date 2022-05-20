@@ -233,9 +233,9 @@ extension FCAccountCreationView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        backgroundColor = palette.accountCreationBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.accountCreationHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.accountCreationHeaderSubtitle.dynamicColor
-        statusDescriptionLabel.textColor = palette.accountCreationStatusText.dynamicColor
+        backgroundColor = palette.backgroundView.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
+        statusDescriptionLabel.textColor = palette.mediumSizedText.dynamicColor
     }
 }

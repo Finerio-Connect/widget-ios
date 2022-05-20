@@ -10,84 +10,52 @@ import Foundation
 import UIKit
 
 public struct FCComponentsStyle {
-    // BANKS SECTION
-    public static let banksBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    public static let banksHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksHeaderIcon = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksHeaderIconBackground = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let banksSelectCountryLabel = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksSelectedCountryName = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksSelectorFieldBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let banksSelectorFieldBorder = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let banksCountrySelectorArrow = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksCountryCellBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let banksCountryCellTitle = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksSegmentedControlBackground = FCColor(light: UIColor(hex: "#EEEEF0")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let banksSegmentedControlActiveItem = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#373946")!)
-    public static let banksSegmentedControlActiveText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksSegmentedControlText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let banksListCellBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    public static let banksListCellTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    //    public static let banksListCellSubtitle = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!) // Hidden by now
-    public static let banksListCellSeparator = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
-    public static let banksListCellDisclosureIndicator = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
-    
-    // CREDENTIALS SECTION
-    public static let credentialsBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    public static let credentialsHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsFieldsTitle = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsFieldsBorder = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let credentialsFieldsTextPlaceholder = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
-    public static let credentialsFieldsBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#1B1A21")!)
-    public static let credentialsFieldsIcon = FCColor(light: UIColor(hex: "#989DB3")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsFieldsText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsSwitchOn = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let credentialsTermsPlainText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsTermsLinkedText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let credentialsContinueButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let credentialsContinueButtonText = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsHelpButtonBackground = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#373946")!)
-    public static let credentialsHelpButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsBannerBorder = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let credentialsBannerIcon = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let credentialsBannerText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-    
-    // ACCOUNT CREATION SECTION
-    public static let accountCreationBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    public static let accountCreationHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountCreationHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountCreationStatusText = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    
-    // ACCOUNT STATUS SECTION
-    public static let accountStatusBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    public static let accountStatusHeaderTitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountStatusHeaderSubtitle = FCColor(light: UIColor(hex: "#00113D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountStatusBodyText = FCColor(light: UIColor(hex: "#656E8D")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountStatusSuccessIcon = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let accountStatusFailureIcon = FCColor(light: UIColor(hex: "#F89A9A")!, dark: UIColor(hex: "#F89A9A")!)
-    public static let accountStatusContinueButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    public static let accountStatusExitButtonBackground = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#373946")!)
-    public static let accountStatusContinueButtonText = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
-    public static let accountStatusExitButtonText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
-    
-    // STATUS BAR
+    // LIGHT THEME
+    private static let cetaceanBlue = UIColor(hex: "#00113D")!
+    private static let americanBlue = UIColor(hex: "#333F65")!
+    private static let eucalyptus = UIColor(hex: "#3FD8AF")!
+    private static let antiFlashWhite = UIColor(hex: "#F1F2F5")!
+    private static let manatee = UIColor(hex: "#989DB3")!
+    private static let lightPeriwinkle = UIColor(hex: "#CACDD9")!
+    private static let brightGray = UIColor(hex: "#EEEEF0")!
+    private static let darkBlueGray = UIColor(hex: "#656E8D")!
+    private static let lightSalmonPink = UIColor(hex: "#F89A9A")!
+    // DARK THEME
+    private static let white = UIColor(hex: "#FFFFFF")!
+    private static let caribeanGreen = UIColor(hex: "#07CEA4")!
+    private static let arsenic = UIColor(hex: "#373946")!
+    private static let darkGunMetal = UIColor(hex: "#24252D")!
+    private static let eerieBlack = UIColor(hex: "#1B1A21")!
+}
+
+extension FCComponentsStyle {
+    // BY COMPONENTS
+    public static let circleIconTint = FCColor(light: cetaceanBlue, dark: white)
+    public static let circleIconBackground = FCColor(light: antiFlashWhite, dark: eerieBlack)
+    public static let buttonActiveBackground = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let buttonActiveText = FCColor(light: white, dark: white)
+    public static let buttonPassiveBackground = FCColor(light: antiFlashWhite, dark: arsenic)
+    public static let buttonPassiveText = FCColor(light: americanBlue, dark: white)
+    public static let backgroundView = FCColor(light: white, dark: darkGunMetal)
+    public static let regularSizedText = FCColor(light: americanBlue, dark: white)
+    public static let mediumSizedText = FCColor(light: cetaceanBlue, dark: white)
+    public static let liteText = FCColor(light: darkBlueGray, dark: white)
+    public static let linkedText = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let fieldsBackground = FCColor(light: white, dark: eerieBlack)
+    public static let fieldsBorder = FCColor(light: lightPeriwinkle, dark: eerieBlack)
+    public static let fieldsPlaceholder = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    public static let fieldsRightIcon = FCColor(light: manatee, dark: white)
+    public static let segmentedControlBackground = FCColor(light: brightGray, dark: eerieBlack)
+    public static let segmentedControlActiveItem = FCColor(light: white, dark: arsenic)
+    public static let dropDownMenuTint = FCColor(light: manatee, dark: white)
+    public static let toggleSwitchOn = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let bannerBorder = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let successIconTint = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let failureIconTint = FCColor(light: lightSalmonPink, dark: lightSalmonPink)
     public static let statusBarBackground = FCColor(light: .clear, dark: .clear)
-    
-    // GENERIC DIALOG
-    static let genericDialogCloseButton = FCColor(light: UIColor(hex: "#CACDD9")!, dark: UIColor(hex: "#CACDD9")!)
-    
-    // EXTRA DATA DIALOG
-    static let extraDialogAcceptButtonBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
-    static let extraDialogAcceptButtonTitle = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#FFFFFF")!)
-    static let extraDialogPickerText = FCColor(light: UIColor(hex: "#333F65")!, dark: UIColor(hex: "#FFFFFF")!)
-    static let extraDialogBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    //    static let extraDialogPickerSelectedItem = FCColor(light: UIColor(hex: "#F1F2F5")!, dark: UIColor(hex: "#1B1A21")!) // NOT IN USE
-    
-    // ALL-IN-ONE FLOW VIEW CONTROLLERS
-    public static let viewControllersAIOBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
-    
-    // FULL LOADER VIEW
-    static let fullLoaderViewBackground = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#24252D")!)
+    public static let cellSeparator = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    public static let cellDisclosureIndicator = FCColor(light: manatee, dark: white)
+    public static let dialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
+    public static let pageDotActive = FCColor(light: eucalyptus, dark: caribeanGreen)
+    public static let pageDotInactive = FCColor(light: lightPeriwinkle, dark: eerieBlack)
 }

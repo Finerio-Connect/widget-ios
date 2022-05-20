@@ -29,30 +29,30 @@ public class FCBaseView: UIView {
 // MARK: - UI
 
 extension FCBaseView {
-    func addFloatingButton() {
-        if Configuration.shared.showChat {
-            let floatingButton = UIButton(type: .system)
-            floatingButton.setImage(Images.zendeskIcon.image()?.withRenderingMode(.alwaysTemplate), for: .normal)
-            floatingButton.tintColor = Configuration.shared.palette.zendeskIconTint.dynamicColor
-            floatingButton.translatesAutoresizingMaskIntoConstraints = false
-            floatingButton.backgroundColor = Configuration.shared.palette.zendeskIconBackground.dynamicColor
-            floatingButton.widthAnchor(equalTo: 60)
-            floatingButton.heightAnchor(equalTo: 60)
-            floatingButton.layer.cornerRadius = 30
-            floatingButton.layer.masksToBounds = true
-            floatingButton.clipsToBounds = true
-            floatingButton.layer.shadowColor = UIColor.black.cgColor
-            floatingButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-            floatingButton.layer.shadowOpacity = 0.4
-            floatingButton.layer.shadowRadius = 2
-            floatingButton.addTarget(self, action: #selector(startZendesk), for: .touchUpInside)
-
-            addSubview(floatingButton)
-
-            floatingButton.bottomAnchor(equalTo: safeBottomAnchor)
-            floatingButton.trailingAnchor(equalTo: trailingAnchor, constant: -20)
-        }
-    }
+//    func addFloatingButton() {
+//        if Configuration.shared.showChat {
+//            let floatingButton = UIButton(type: .system)
+//            floatingButton.setImage(Images.zendeskIcon.image()?.withRenderingMode(.alwaysTemplate), for: .normal)
+//            floatingButton.tintColor = Configuration.shared.palette.zendeskIconTint.dynamicColor
+//            floatingButton.translatesAutoresizingMaskIntoConstraints = false
+//            floatingButton.backgroundColor = Configuration.shared.palette.zendeskIconBackground.dynamicColor
+//            floatingButton.widthAnchor(equalTo: 60)
+//            floatingButton.heightAnchor(equalTo: 60)
+//            floatingButton.layer.cornerRadius = 30
+//            floatingButton.layer.masksToBounds = true
+//            floatingButton.clipsToBounds = true
+//            floatingButton.layer.shadowColor = UIColor.black.cgColor
+//            floatingButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+//            floatingButton.layer.shadowOpacity = 0.4
+//            floatingButton.layer.shadowRadius = 2
+//            floatingButton.addTarget(self, action: #selector(startZendesk), for: .touchUpInside)
+//
+//            addSubview(floatingButton)
+//
+//            floatingButton.bottomAnchor(equalTo: safeBottomAnchor)
+//            floatingButton.trailingAnchor(equalTo: trailingAnchor, constant: -20)
+//        }
+//    }
 
     @objc private func startZendesk() {
         guard let viewController = Zendesk.instance?.messaging?.messagingViewController() else { return }
@@ -99,7 +99,7 @@ extension FCBaseView {
         //        loaderView.animationSource = "https://assets5.lottiefiles.com/packages/lf20_lmk0pfms.json"
         //        loaderView.animationSource = "TestLottieLocal"
         //        loaderView.animationSize = 100
-        //        loaderView.backgroundColor = .red.withAlphaComponent(0.5)
+                loaderView.backgroundColor = .red.withAlphaComponent(0.5)
         return loaderView
     }
 }

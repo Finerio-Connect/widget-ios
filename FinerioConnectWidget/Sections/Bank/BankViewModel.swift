@@ -15,11 +15,13 @@ internal class BankViewModel {
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let userDefaults = UserDefaults.standard
 
-    func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
-        if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
-            return countries[index]
+    func getCurrentCountry(_ country: String = Configuration.shared.countryCode,
+                           completion: @escaping(Country?)->()) {
+        if let country = self.countries.filter({$0.code.lowercased() == country.lowercased() }).first {
+            completion(country)
+        } else {
+            completion (nil)
         }
-        return nil
     }
 
     func loadCountries() {
@@ -60,6 +62,7 @@ internal class BankViewModel {
 
 // MARK: - Local Banks
 extension BankViewModel {
+    #warning("Improve to use it with FCUserConfig")
     private func getLocalBanksFromKeyPath(_ keyPath: String) -> [Bank]? {
         var localBanks: [Bank]? = nil
         if let banksData = userDefaults.value(forKey: keyPath) as? Data {

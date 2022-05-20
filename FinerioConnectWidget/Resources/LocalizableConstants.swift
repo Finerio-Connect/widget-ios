@@ -57,3 +57,10 @@ public let fLocaleFailureContinueTitleButton: String = localize("failure_continu
 public let fLocaleFailureExitTitleButton: String = localize("failure_exit_title_button")
 public let fLocaleSuccessContinueTitleButton: String = localize("success_continue_title_button")
 public let fLocaleSuccessExitTitleButton: String = localize("success_exit_title_button")
+
+/// Onboarding Section
+public let fLocaleOnboardingMainContinueButton: String = localize("onboarding_main_continue_button")
+public let fLocaleOnboardingMainExitButton: String = localize("onboarding_main_exit_button")
+public let fLocaleOnboardingStepContinueButton: String = localize("onboarding_step_continue_button")
+public let fLocaleOnboardingStepNextButton: String = localize("onboarding_step_next_button")
+public let fLocaleOnboardingStepExitButton: String = localize("onboarding_step_exit_button")

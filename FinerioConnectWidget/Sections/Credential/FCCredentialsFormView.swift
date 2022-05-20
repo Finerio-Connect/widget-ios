@@ -56,8 +56,8 @@ public final class FCCredentialsFormView: FCBaseView {
 
     override func configureView() {
         super.configureView()
-        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
-
+        self.loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        
         trackEvent(eventName: Constants.Events.credentials)
 
         localHideKeyboardWhenTappedAround()
@@ -254,7 +254,7 @@ extension FCCredentialsFormView {
         let linkAttributes: [NSAttributedString.Key: Any]
 
         let plainText = literal(.plainTyCText)!
-        let termsColor = Configuration.shared.palette.credentialsTermsPlainText.dynamicColor
+        let termsColor = Configuration.shared.palette.liteText.dynamicColor
         let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 10 : 12
         let fontType = UIFont.fcRegularFont(ofSize: fontSize)
 
@@ -267,8 +267,8 @@ extension FCCredentialsFormView {
 
         let urlWebSite = Constants.URLS.termsAndConditions
         attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
-
-        let linkColor = Configuration.shared.palette.credentialsTermsLinkedText.dynamicColor
+        
+        let linkColor = Configuration.shared.palette.linkedText.dynamicColor
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
 
         textView.heightAnchor(equalTo: 40)
@@ -409,7 +409,7 @@ extension FCCredentialsFormView {
                 self.setupExtraData()
 
                 if !self.floatingButtonAdded {
-                    self.addFloatingButton()
+//                    self.addFloatingButton()
                     self.floatingButtonAdded = true
                 }
             case .failure:
@@ -560,16 +560,16 @@ extension FCCredentialsFormView {
 
     private func changeStyle() {
         let palette = Configuration.shared.palette
-
-        loadingView.backgroundColor = FCComponentsStyle.fullLoaderViewBackground.dynamicColor
-
-        backgroundColor = palette.credentialsBackground.dynamicColor
-        headerSectionView.titleLabel.textColor = palette.credentialsHeaderTitle.dynamicColor
-        headerSectionView.descriptionLabel.textColor = palette.credentialsHeaderSubtitle.dynamicColor
-        toggleSwitch.onTintColor = palette.credentialsSwitchOn.dynamicColor
-        continueButton.backgroundColor = palette.credentialsContinueButtonBackground.dynamicColor
-        continueButton.setTitleColor(palette.credentialsContinueButtonText.dynamicColor, for: .normal)
-        helpButton.backgroundColor = palette.credentialsHelpButtonBackground.dynamicColor
-        helpButton.setTitleColor(palette.credentialsHelpButtonText.dynamicColor, for: .normal)
+        
+        loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+        
+        backgroundColor = palette.backgroundView.dynamicColor
+        headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
+        headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
+        toggleSwitch.onTintColor = palette.toggleSwitchOn.dynamicColor
+        continueButton.backgroundColor = palette.buttonActiveBackground.dynamicColor
+        continueButton.setTitleColor(palette.buttonActiveText.dynamicColor, for: .normal)
+        helpButton.backgroundColor = palette.buttonPassiveBackground.dynamicColor
+        helpButton.setTitleColor(palette.buttonPassiveText.dynamicColor, for: .normal)
     }
 }
