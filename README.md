@@ -29,7 +29,7 @@ Edit your `Podfile` and specify the dependency:
 pod 'FinerioAccountWidget'
 ```
 
-and then run `pod install`. More information about `Cocoapods` [here](https://cocoapods.org/).
+and then run `pod install --repo-update`. More information about `Cocoapods` [here](https://cocoapods.org/).
 
 ## Usage
 

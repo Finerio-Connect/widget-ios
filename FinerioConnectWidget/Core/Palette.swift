@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class Palette: NSObject {
+public final class Palette: NSObject {
     public var circleIconTint: FCColor
     public var circleIconBackground: FCColor
     public var buttonActiveBackground: FCColor
@@ -37,36 +37,40 @@ final public class Palette: NSObject {
     public var dialogCloseButton: FCColor
     public var pageDotActive: FCColor
     public var pageDotInactive: FCColor
-    
+    public var zendeskIconBackground: FCColor
+    public var zendeskIconTint: FCColor
+
     public init(
         circleIconTint: FCColor = FCComponentsStyle.circleIconTint
-        ,circleIconBackground: FCColor = FCComponentsStyle.circleIconBackground
-        ,buttonActiveBackground: FCColor = FCComponentsStyle.buttonActiveBackground
-        ,buttonActiveText: FCColor = FCComponentsStyle.buttonActiveText
-        ,buttonPassiveBackground: FCColor = FCComponentsStyle.buttonPassiveBackground
-        ,buttonPassiveText: FCColor = FCComponentsStyle.buttonPassiveText
-        ,backgroundView: FCColor = FCComponentsStyle.backgroundView
-        ,regularSizedText: FCColor = FCComponentsStyle.regularSizedText
-        ,mediumSizedText: FCColor = FCComponentsStyle.mediumSizedText
-        ,linkedText: FCColor = FCComponentsStyle.linkedText
-        ,fieldsBackground: FCColor = FCComponentsStyle.fieldsBackground
-        ,fieldsBorder: FCColor = FCComponentsStyle.fieldsBorder
-        ,fieldsRightIcon: FCColor = FCComponentsStyle.fieldsRightIcon
-        ,segmentedControlBackground: FCColor = FCComponentsStyle.segmentedControlBackground
-        ,segmentedControlActiveItem: FCColor = FCComponentsStyle.segmentedControlActiveItem
-        ,dropDownMenuTint: FCColor = FCComponentsStyle.dropDownMenuTint
-        ,toggleSwitchOn: FCColor = FCComponentsStyle.toggleSwitchOn
-        ,bannerBorder: FCColor = FCComponentsStyle.bannerBorder
-        ,successIconTint: FCColor = FCComponentsStyle.successIconTint
-        ,failureIconTint: FCColor = FCComponentsStyle.failureIconTint
-        ,statusBarBackground: FCColor = FCComponentsStyle.statusBarBackground
-        ,liteText: FCColor = FCComponentsStyle.liteText
-        ,cellSeparator: FCColor = FCComponentsStyle.cellSeparator
-        ,cellDisclosureIndicator: FCColor = FCComponentsStyle.cellDisclosureIndicator
-        ,fieldsPlaceholder: FCColor = FCComponentsStyle.fieldsPlaceholder
-        ,dialogCloseButton: FCColor = FCComponentsStyle.dialogCloseButton
-        ,pageDotActive: FCColor = FCComponentsStyle.pageDotActive
-        ,pageDotInactive: FCColor = FCComponentsStyle.pageDotInactive
+        , circleIconBackground: FCColor = FCComponentsStyle.circleIconBackground
+        , buttonActiveBackground: FCColor = FCComponentsStyle.buttonActiveBackground
+        , buttonActiveText: FCColor = FCComponentsStyle.buttonActiveText
+        , buttonPassiveBackground: FCColor = FCComponentsStyle.buttonPassiveBackground
+        , buttonPassiveText: FCColor = FCComponentsStyle.buttonPassiveText
+        , backgroundView: FCColor = FCComponentsStyle.backgroundView
+        , regularSizedText: FCColor = FCComponentsStyle.regularSizedText
+        , mediumSizedText: FCColor = FCComponentsStyle.mediumSizedText
+        , linkedText: FCColor = FCComponentsStyle.linkedText
+        , fieldsBackground: FCColor = FCComponentsStyle.fieldsBackground
+        , fieldsBorder: FCColor = FCComponentsStyle.fieldsBorder
+        , fieldsRightIcon: FCColor = FCComponentsStyle.fieldsRightIcon
+        , segmentedControlBackground: FCColor = FCComponentsStyle.segmentedControlBackground
+        , segmentedControlActiveItem: FCColor = FCComponentsStyle.segmentedControlActiveItem
+        , dropDownMenuTint: FCColor = FCComponentsStyle.dropDownMenuTint
+        , toggleSwitchOn: FCColor = FCComponentsStyle.toggleSwitchOn
+        , bannerBorder: FCColor = FCComponentsStyle.bannerBorder
+        , successIconTint: FCColor = FCComponentsStyle.successIconTint
+        , failureIconTint: FCColor = FCComponentsStyle.failureIconTint
+        , statusBarBackground: FCColor = FCComponentsStyle.statusBarBackground
+        , liteText: FCColor = FCComponentsStyle.liteText
+        , cellSeparator: FCColor = FCComponentsStyle.cellSeparator
+        , cellDisclosureIndicator: FCColor = FCComponentsStyle.cellDisclosureIndicator
+        , fieldsPlaceholder: FCColor = FCComponentsStyle.fieldsPlaceholder
+        , dialogCloseButton: FCColor = FCComponentsStyle.dialogCloseButton
+        , pageDotActive: FCColor = FCComponentsStyle.pageDotActive
+        , pageDotInactive: FCColor = FCComponentsStyle.pageDotInactive
+        , zendeskIconBackground: FCColor = FCComponentsStyle.zendeskIconBackground
+        , zendeskIconTint: FCColor = FCComponentsStyle.zendeskIconTint
     ) {
         self.circleIconTint = circleIconTint
         self.circleIconBackground = circleIconBackground
@@ -96,5 +100,7 @@ final public class Palette: NSObject {
         self.dialogCloseButton = dialogCloseButton
         self.pageDotActive = pageDotActive
         self.pageDotInactive = pageDotInactive
+        self.zendeskIconBackground = zendeskIconBackground
+        self.zendeskIconTint = zendeskIconTint
     }
 }

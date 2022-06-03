@@ -96,7 +96,6 @@
 		0FCBAFDA25F1795D00DA2D18 /* syncing_loop.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF7525F1795D00DA2D18 /* syncing_loop.json */; };
 		0FD18F9B26F94C1500E7E3D6 /* ExtraDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD18F9A26F94C1500E7E3D6 /* ExtraDataDialog.swift */; };
 		0FD2720825F1719600E052F7 /* FinerioConnectWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		396524672C1892FD765824AB /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C89F5EB21571A3C1CECA5B /* Pods_FinerioConnectWidget.framework */; };
 		7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */; };
 		7A01BBE72783BC0600D3DC96 /* CountriesSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */; };
 		7A01BBE92783C57E00D3DC96 /* FCLoaderAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */; };
@@ -133,6 +132,7 @@
 		7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */; };
 		7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */; };
 		7AEF77C0281A2461000FB919 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */; };
+		AB9407D51ED7DFC6BB89151E /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,7 +227,6 @@
 		0FD2720325F1719600E052F7 /* FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18BB3F2781798F4BBAB8C36A /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
 		7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBankSelectionView.swift; sourceTree = "<group>"; };
 		7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesSelectorView.swift; sourceTree = "<group>"; };
 		7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
@@ -264,8 +263,9 @@
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageVC.swift; sourceTree = "<group>"; };
 		7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
-		920B202546E7F799D4FA60B2 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		B8C89F5EB21571A3C1CECA5B /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,13 +273,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396524672C1892FD765824AB /* Pods_FinerioConnectWidget.framework in Frameworks */,
+				AB9407D51ED7DFC6BB89151E /* Pods_FinerioConnectWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DFAAD185C66E7A70EA6ED65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0FCBAEB025F1785300DA2D18 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,7 +591,7 @@
 				0FD2720525F1719600E052F7 /* FinerioConnectWidget */,
 				0FD2720425F1719600E052F7 /* Products */,
 				B72BAD0A5444E289A13BF8A5 /* Pods */,
-				2F02FB34A294C2B78D8B7D64 /* Frameworks */,
+				0DFAAD185C66E7A70EA6ED65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -609,14 +617,6 @@
 				0FCBAF5925F1795D00DA2D18 /* UIComponents */,
 			);
 			path = FinerioConnectWidget;
-			sourceTree = "<group>";
-		};
-		2F02FB34A294C2B78D8B7D64 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B8C89F5EB21571A3C1CECA5B /* Pods_FinerioConnectWidget.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7A118646281AFCF700C34748 /* Main */ = {
@@ -666,8 +666,8 @@
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				920B202546E7F799D4FA60B2 /* Pods-FinerioConnectWidget.debug.xcconfig */,
-				18BB3F2781798F4BBAB8C36A /* Pods-FinerioConnectWidget.release.xcconfig */,
+				EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */,
+				ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -690,7 +690,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD2720B25F1719600E052F7 /* Build configuration list for PBXNativeTarget "FinerioConnectWidget" */;
 			buildPhases = (
-				9B39487AFE6B2706BEB6D1EB /* [CP] Check Pods Manifest.lock */,
+				A4905F57AE031EFD6F25D8F8 /* [CP] Check Pods Manifest.lock */,
 				0FD271FE25F1719600E052F7 /* Headers */,
 				0FD271FF25F1719600E052F7 /* Sources */,
 				0FD2720025F1719600E052F7 /* Frameworks */,
@@ -711,7 +711,7 @@
 		0FD271FA25F1719600E052F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = "Finerio Connect";
 				TargetAttributes = {
 					0FD2720225F1719600E052F7 = {
@@ -761,7 +761,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9B39487AFE6B2706BEB6D1EB /* [CP] Check Pods Manifest.lock */ = {
+		A4905F57AE031EFD6F25D8F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1031,10 +1031,10 @@
 		};
 		0FD2720C25F1719600E052F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 920B202546E7F799D4FA60B2 /* Pods-FinerioConnectWidget.debug.xcconfig */;
+			baseConfigurationReference = EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1049,7 +1049,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1061,10 +1061,10 @@
 		};
 		0FD2720D25F1719600E052F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18BB3F2781798F4BBAB8C36A /* Pods-FinerioConnectWidget.release.xcconfig */;
+			baseConfigurationReference = ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1079,7 +1079,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

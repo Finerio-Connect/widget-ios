@@ -73,6 +73,11 @@ extension FCAccountStatusView {
 
 extension FCAccountStatusView {
     private func configureViewFailure() {
+        if !floatingButtonAdded {
+            addFloatingButton()
+            floatingButtonAdded = true
+        }
+
         headerSectionView.titleLabel.text = literal(.bondingHeaderTitleFailure)
         headerSectionView.descriptionLabel.text = literal(.bondingHeaderSubtitleFailure)
 
@@ -108,11 +113,6 @@ extension FCAccountStatusView {
         addSubview(bodyDescriptionLabel)
         addSubview(continueButton)
         addSubview(exitButton)
-
-        if !floatingButtonAdded {
-//            addFloatingButton()
-            floatingButtonAdded = true
-        }
     }
 
     private func setupHeaderSectionView() -> HeaderSectionView {

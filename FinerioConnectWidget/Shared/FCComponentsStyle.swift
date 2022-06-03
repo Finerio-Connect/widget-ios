@@ -58,4 +58,7 @@ extension FCComponentsStyle {
     public static let dialogCloseButton = FCColor(light: lightPeriwinkle, dark: lightPeriwinkle)
     public static let pageDotActive = FCColor(light: eucalyptus, dark: caribeanGreen)
     public static let pageDotInactive = FCColor(light: lightPeriwinkle, dark: eerieBlack)
+
+    public static let zendeskIconBackground = FCColor(light: UIColor(hex: "#3FD8AF")!, dark: UIColor(hex: "#07CEA4")!)
+    public static let zendeskIconTint = FCColor(light: UIColor(hex: "#FFFFFF")!, dark: UIColor(hex: "#000000")!)
 }

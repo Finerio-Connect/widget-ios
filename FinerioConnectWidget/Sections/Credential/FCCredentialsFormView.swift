@@ -43,8 +43,6 @@ public final class FCCredentialsFormView: FCBaseView {
                                         automaticFetching: Configuration.shared.automaticFetching,
                                         state: Configuration.shared.state)
 
-    private var floatingButtonAdded = false
-
     // Inits
     override private init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,8 +54,8 @@ public final class FCCredentialsFormView: FCBaseView {
 
     override func configureView() {
         super.configureView()
-        self.loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
-        
+        loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+
         trackEvent(eventName: Constants.Events.credentials)
 
         localHideKeyboardWhenTappedAround()
@@ -267,7 +265,7 @@ extension FCCredentialsFormView {
 
         let urlWebSite = Constants.URLS.termsAndConditions
         attributedString.addAttribute(NSAttributedString.Key.link, value: urlWebSite, range: linkRange)
-        
+
         let linkColor = Configuration.shared.palette.linkedText.dynamicColor
         linkAttributes = [.foregroundColor: linkColor, .font: fontType]
 
@@ -407,11 +405,6 @@ extension FCCredentialsFormView {
 
                 self.continueButton.addTarget(self, action: #selector(self.createCredential), for: .touchUpInside)
                 self.setupExtraData()
-
-                if !self.floatingButtonAdded {
-//                    self.addFloatingButton()
-                    self.floatingButtonAdded = true
-                }
             case .failure:
                 self.delegate?.credentialsFormView(onFailure: .failure,
                                                    bank: self.credentialViewModel.bank)
@@ -534,7 +527,7 @@ extension FCCredentialsFormView: UITextFieldDelegate {
             return true
         }
 
-        #warning("HSBC MX, Special case not tested to show DatePicker...")
+        // #warning("HSBC MX, Special case not tested to show DatePicker...")
         if credentialViewModel.bank.code == "HSBC-ENTERPRISE" &&
             textField.tag == Constants.FieldType.passwordText {
             securityCodeTextField = textField
@@ -560,9 +553,9 @@ extension FCCredentialsFormView {
 
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        
+
         loadingView.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
-        
+
         backgroundColor = palette.backgroundView.dynamicColor
         headerSectionView.titleLabel.textColor = palette.mediumSizedText.dynamicColor
         headerSectionView.descriptionLabel.textColor = palette.regularSizedText.dynamicColor
