@@ -1,9 +1,9 @@
 name: deploy_to_cocoapods
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
+    branches:    
+      - 'main'
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     
     - name: Install Cocoapods
       run: gem install cocoapods
