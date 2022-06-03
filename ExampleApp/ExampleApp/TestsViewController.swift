@@ -24,7 +24,7 @@ class TestsViewController: UIViewController {
         view.addSubview(bankSelectionView)
         bankSelectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bankSelectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            bankSelectionView.topAnchor.constraint(equalTo: view.safeTopAnchor),
             bankSelectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bankSelectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bankSelectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

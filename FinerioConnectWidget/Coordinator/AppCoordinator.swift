@@ -10,16 +10,23 @@ import Foundation
 
 internal final class AppCoordinator: Coordinator {
     var context: Context?
-
+    
     init(context: Context) {
         self.context = context
     }
-
+    
     func start() {
-        let viewController = BankViewController()
-        viewController.coordinator = self
-        viewController.context = context
+        let showOnboarding = Configuration.shared.showOnboarding
+        let hasShownOnboarding = UserConfig.hasShownOnboarding
         
-        context?.push(viewController: viewController)
+        if showOnboarding && (hasShownOnboarding == false) {
+            let onboardingModel = Configuration.shared.onboarding
+            let onboardingMainCoordinator = OnboardingCoordinator(context: self.context!,
+                                                                  onboardingModel: onboardingModel)
+            onboardingMainCoordinator.start()
+        } else {
+            let bankCoordinator = BankCoordinator(context: self.context!)
+            bankCoordinator.start()
+        }
     }
 }

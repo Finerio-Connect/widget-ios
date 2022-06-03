@@ -59,10 +59,9 @@ extension HeaderSectionView {
         return imageView
     }
     
-    func setLockAvatarView() {
-        let lockIconImage = Images.lockIcon.image()!
+    func setCustomIconImage(_ image: UIImage) {
         let capInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        let resizedImg = lockIconImage.resizableImage(withCapInsets: capInsets)
+        let resizedImg = image.resizableImage(withCapInsets: capInsets)
         avatarView.image = resizedImg
         avatarView.contentMode = .center
     }

@@ -200,6 +200,6 @@ extension FCDropDownListView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        tableView.backgroundColor = palette.banksCountryCellBackground.dynamicColor
+        tableView.backgroundColor = palette.fieldsBackground.dynamicColor
     }
 }

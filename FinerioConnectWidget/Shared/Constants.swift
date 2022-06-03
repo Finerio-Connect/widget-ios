@@ -67,12 +67,20 @@ internal struct Constants {
     }
 
     /// Tags
-    struct Tags {
+//    struct Tags {
+//        static let loader = 200
+//        static let fieldSecurityCode = 33
+//        static let fieldPassword = 66
+//        static let fieldSelect = 99
+//    }
+    
+    struct FieldType {
         static let loader = 200
-        static let fieldSecurityCode = 33
-        static let fieldPassword = 66
-        static let fieldSelect = 99
+        static let plainText = 33
+        static let passwordText = 66
+        static let selectorOptions = 99
     }
+    
 
     /// URLS
     struct URLS {
@@ -90,6 +98,7 @@ internal struct Constants {
         static let firebaseNode = "CtkFJ3subunSceVh7vUAPMB4TckRSv"
         static let productionMixpanelToken = "849778938cdb0486c91d953502082582"
         static let sandboxMixpanelToken = "86830d7eeedf9117694afc6e85d94f56"
+        static let zendeskChannelKey = "eyJzZXR0aW5nc191cmwiOiJodHRwczovL2ZpbmVyaW9jb25uZWN0aGVscC56ZW5kZXNrLmNvbS9tb2JpbGVfc2RrX2FwaS9zZXR0aW5ncy8wMUcwSzRUMlYyWEtUMDA1WUpYWktTOFk3Ry5qc29uIn0="
     }
 
     struct ErrorCodes {

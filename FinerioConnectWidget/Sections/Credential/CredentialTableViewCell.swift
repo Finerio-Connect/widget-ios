@@ -38,14 +38,14 @@ extension CredentialTableViewCell {
         let palette = Configuration.shared.palette
         inputTexfield.attributedPlaceholder = NSAttributedString (
             string: field.friendlyName,
-            attributes: [.foregroundColor: palette.credentialsFieldsTextPlaceholder.dynamicColor]
+            attributes: [.foregroundColor: palette.fieldsPlaceholder.dynamicColor]
         )
         
         inputTexfield.id = field.name
-      
-        if field.name.uppercased() == Constants.TexfieldsName.securityCode.uppercased() {
-            inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
-        }
+        inputTexfield.tag = tagForTextFieldType(field.type)
+        
+        // OLD
+        //            inputTexfield.tag = field.type.uppercased() == FieldType.text.rawValue ? Constants.Tags.fieldSecurityCode : Constants.Tags.fieldSelect
         
         inputTexfield.isSecureTextEntry = field.type.uppercased() == FieldType.password.rawValue ? true : false
         
@@ -78,6 +78,22 @@ extension CredentialTableViewCell {
         textField.font = .fcMediumFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
         textField.setupRightImage(image: Images.lockIcon.image()!)
         return textField
+    }
+    
+    func tagForTextFieldType(_ textFieldType: String) -> Int {
+        switch textFieldType.uppercased() {
+        case FieldType.text.rawValue:
+            return Constants.FieldType.plainText
+            
+        case FieldType.password.rawValue:
+            return Constants.FieldType.passwordText
+            
+        case FieldType.select.rawValue:
+            return Constants.FieldType.selectorOptions
+            
+        default:
+            return Constants.FieldType.plainText
+        }
     }
 }
 
@@ -113,7 +129,7 @@ extension CredentialTableViewCell {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        titleLabel.textColor = palette.credentialsFieldsTitle.dynamicColor
-        inputTexfield.textColor = palette.credentialsFieldsText.dynamicColor
+        titleLabel.textColor = palette.regularSizedText.dynamicColor
+        inputTexfield.textColor = palette.liteText.dynamicColor
     }
 }

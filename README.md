@@ -1,7 +1,9 @@
 # Finerio Connect iOS Widget
+
 ![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)
 ![Languages](https://img.shields.io/badge/languages-swift-orange.svg)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FinerioAccountWidget.svg)](https://cocoapods.org/pods/FinerioAccountWidget)
+
 ## Introduction
 
 The iOS widget for the Finerio Connect 2.0 API reduces friction in the process of asking users for their online banking credentials by taking care of the implementation and improving the user experience.
@@ -27,7 +29,7 @@ Edit your `Podfile` and specify the dependency:
 pod 'FinerioAccountWidget'
 ```
 
-and then run `pod install`. More information about `Cocoapods` [here](https://cocoapods.org/).
+and then run `pod install --repo-update`. More information about `Cocoapods` [here](https://cocoapods.org/).
 
 ## Usage
 
@@ -56,6 +58,38 @@ let finerioConnectWidget = FinerioConnectWidget.shared
 finerioConnectWidget.start( 
   widgetId: "pparKeszQYwBF64A8WsWab5VDnVdE8QDnVCp2pgVubJRxyNU46", 
   customerName: "René Sandoval")
+```
+
+### FinerioConnectWidget Properties
+
+```swift
+let finerioConnectWidget = FinerioConnectWidget.shared
+// (Required) Enum to pre-select an environment to work with. Values: [.production, .sandbox]
+finerioConnectWidget.environment = .production
+// (Optional) Flag to enable or disable the Zendesk help integration chat. DefaultValue: true
+finerioConnectWidget.showChat = true
+// (Optional) Flag to enable or disable the presentation of an Onboarding flow. DefaultValue: true
+finerioConnectWidget.showOnboarding = false
+// (Optional) Property to set a custom instance of Onboarding class to display in the Onboarding flow. DefaultValue: nil
+finerioConnectWidget.onboarding = Onboarding()
+// (Optional) The font name of a given custom font to use in the workflow. DefaultValue: ""
+finerioConnectWidget.font = "Ubuntu"
+// (Optional) The country code to use in order to fetch banks of that country by default. DefaultValue: ""
+finerioConnectWidget.countryCode = "MX"
+// (Optional) Flag to enable or disable the Countries dropdown menu from the UI. DefaultValue: true.
+finerioConnectWidget.showCountryOptions = false
+// (Optional) Flag to enable or disable the BankType selector from the UI. DefaultValue: true.
+finerioConnectWidget.showBankTypeOptions = true
+// (Optional) Enum to pre-select the BankType from the UI. Values: [.personal, .business, .fiscal] DefaultValue: .personal
+finerioConnectWidget.bankType = .personal
+// (Optional) Enum to pre-select a theme for the UI. Values: [.automatic, .light, .dark] DefaultValue: .light
+finerioConnectWidget.theme = .automatic
+// (Optional) Property to set a custom instance of Texts class to display within the worflow. DefaultValue: nil
+finerioConnectWidget.texts = Texts(companyName: "Super Bank Company")
+// (Optional) Property to set a custom instance of Animations class to display in wait or loading scenarios. DefaultValue: nil
+finerioConnectWidget.animations = Animations()
+// (Optional) Property to set a custom instance of Palette class to display your custom colors in the components. DefaultValue: nil
+finerioConnectWidget.palette = Palette()
 ```
 
 ## Separation by Views
@@ -348,95 +382,93 @@ finerioConnectWidget.logLevel = .info
 
 ## UI/UX customization
 
-### Colors
+### Default Colors
 
-You can create a new instance of the `Palette` class and assign it to `FinerioConnectWidget.shared.palette`.
+Our brand palette of colors is used across the widget's process as a default palette.
+
+```swift
+    // LIGHT THEME
+    private static let cetaceanBlue = UIColor(hex: "#00113D")!
+    private static let americanBlue = UIColor(hex: "#333F65")!
+    private static let eucalyptus = UIColor(hex: "#3FD8AF")!
+    private static let antiFlashWhite = UIColor(hex: "#F1F2F5")!
+    private static let manatee = UIColor(hex: "#989DB3")!
+    private static let lightPeriwinkle = UIColor(hex: "#CACDD9")!
+    private static let brightGray = UIColor(hex: "#EEEEF0")!
+    private static let darkBlueGray = UIColor(hex: "#656E8D")!
+    private static let lightSalmonPink = UIColor(hex: "#F89A9A")!
+    // DARK THEME
+    private static let white = UIColor(hex: "#FFFFFF")!
+    private static let caribeanGreen = UIColor(hex: "#07CEA4")!
+    private static let arsenic = UIColor(hex: "#373946")!
+    private static let darkGunMetal = UIColor(hex: "#24252D")!
+    private static let eerieBlack = UIColor(hex: "#1B1A21")!
+```
+
+And is grouped by common components and a few number of properties to handle all the personalization across the views.
+
+## Themes for Light and Dark Mode
+
+We have prepared a default theme to toggle the user interface with iOS `Dark Mode` functionality. Additionally you can customize some components properties for the light and dark themes with your own branding colors.
 
 ```swift
 FinerioConnectWidget.shared.palette = Palette(
-    mainColor: .blue,
-    mainTextColor: .black,
-    mainSubTextColor: .gray,
-    bankCellDetailColor: .white,
-    bankCellSeparatorColor: .lightGray,
-    termsTextColor: .lightGray,
-    borderTextField: .lightGray,
-    grayBackgroundColor: .darkGray)
-```
-
-The SDK has a default `Finerio Connect` color palette, if you want to customize the main color, you can do the following:
-
-```swift
-FinerioConnectWidget.shared.palette = Palette( 
-  mainColor: .green 
-)
-```
-
-Or even change the property directly, as follows:
-
-```swift
-FinerioConnectWidget.shared.palette.mainColor = .green
-```
-
-### Themes for Light and Dark Mode
-
-We have prepared a default theme to toggle the user interface with iOS `Dark Mode` functionality. Additionally you can customize some of the component properties of each of the views included in this SDK. Either change them property by property or as a whole using the `Palette` object.
-
-```swift
-FinerioConnectWidget.shared.palette = Palette(
-    banksBackground: FCColor(light: .red, dark: .blue),
-    banksHeaderTitle: FCColor(light: .red, dark: .blue),
-    banksHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    banksHeaderIcon: FCColor(light: .red, dark: .blue),
-    banksHeaderIconBackground: FCColor(light: .red, dark: .blue),
-    banksSelectCountryLabel: FCColor(light: .red, dark: .blue),
-    banksSelectedCountryName: FCColor(light: .red, dark: .blue),
-    banksSelectorFieldBackground: FCColor(light: .red, dark: .blue),
-    banksCountrySelectorArrow: FCColor(light: .red, dark: .blue),
-    banksCountryCellBackground: FCColor(light: .red, dark: .blue),
-    banksSelectorFieldBorder: FCColor(light: .red, dark: .blue),
-    credentialsFieldsTextPlaceholder: 
-    banksSegmentedControlBackground: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlActiveItem: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlActiveText: FCColor(light: .red, dark: .blue),
-    banksSegmentedControlText: FCColor(light: .red, dark: .blue),
-    banksListCellBackground: FCColor(light: .red, dark: .blue),
-    banksListCellTitle: FCColor(light: .red, dark: .blue),
-    banksListCellSeparator: FCColor(light: .red, dark: .blue),
-    banksCountryCellTitle: FCColor(light: .red, dark: .blue),
-    banksListCellDisclosureIndicator: FCColor(light: .red, dark: .blue),
-    credentialsBackground: FCColor(light: .red, dark: .blue),
-    credentialsHeaderTitle: FCColor(light: .red, dark: .blue),
-    credentialsHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    credentialsFieldsTitle: FCColor(light: .red, dark: .blue),
-    credentialsFieldsBorder: FCColor(light: .red, dark: .blue),
-    credentialsFieldsBackground: FCColor(light: .red, dark: .blue),
-    credentialsFieldsIcon: FCColor(light: .red, dark: .blue),
-    credentialsFieldsText: FCColor(light: .red, dark: .blue),
-    credentialsSwitchOn: FCColor(light: .red, dark: .blue),
-    credentialsTermsPlainText: FCColor(light: .red, dark: .blue),
-    credentialsTermsLinkedText: FCColor(light: .red, dark: .blue),
-    credentialsContinueButtonBackground: FCColor(light: .red, dark: .blue),
-    credentialsContinueButtonText: FCColor(light: .red, dark: .blue),
-    credentialsHelpButtonBackground: FCColor(light: .red, dark: .blue),
-    credentialsHelpButtonText: FCColor(light: .red, dark: .blue),
-    credentialsBannerBorder: FCColor(light: .red, dark: .blue),
-    credentialsBannerIcon: FCColor(light: .red, dark: .blue),
-    credentialsBannerText: FCColor(light: .red, dark: .blue),
-    accountCreationBackground: FCColor(light: .red, dark: .blue),
-    accountCreationHeaderTitle: FCColor(light: .red, dark: .blue),
-    accountCreationHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    accountCreationStatusText: FCColor(light: .red, dark: .blue),
-    accountStatusBackground: FCColor(light: .red, dark: .blue),
-    accountStatusHeaderTitle: FCColor(light: .red, dark: .blue),
-    accountStatusHeaderSubtitle: FCColor(light: .red, dark: .blue),
-    accountStatusBodyText: FCColor(light: .red, dark: .blue),
-    accountStatusSuccessIcon: FCColor(light: .red, dark: .blue),
-    accountStatusFailureIcon: FCColor(light: .red, dark: .blue),
-    accountStatusContinueButtonBackground: FCColor(light: .red, dark: .blue),
-    accountStatusExitButtonBackground: FCColor(light: .red, dark: .blue),
-    accountStatusContinueButtonText: FCColor(light: .red, dark: .blue),
-    accountStatusExitButtonText: FCColor(light: .red, dark: .blue)
+    // Tint color for the icon rounded by a circle.
+    circleIconTint: FCColor(light: .red, dark: .blue),
+    // Background color for the circle that contains an icon.
+    circleIconBackground: FCColor(light: .red, dark: .blue),
+    // Background color for the buttons that performs a next or continue flow action.
+    buttonActiveBackground: FCColor(light: .red, dark: .blue),
+    // Tint color for the title of buttons that performs a next or continue flow action.
+    buttonActiveText: FCColor(light: .red, dark: .blue),
+    // Background color for the buttons that performs an exit or stops the flow action.
+    buttonPassiveBackground: FCColor(light: .red, dark: .blue),
+    // Tint color for the title of buttons that performs an exit or stops the flow action.
+    buttonPassiveText: FCColor(light: .red, dark: .blue),
+    // Background color used in all the views
+    backgroundView: FCColor(light: .red, dark: .blue),
+    // Tint color commonly used for the paragraph texts or normal texts.
+    regularSizedText: FCColor(light: .red, dark: .blue),
+    // Tint color used in phrases or titles to distinguish from others descriptions.
+    mediumSizedText: FCColor(light: .red, dark: .blue),
+    // Tint color used in linked texts that redirects to a web site or a view within the flow.
+    linkedText: FCColor(light: .red, dark: .blue),
+    // Background color used in the text fields.
+    fieldsBackground: FCColor(light: .red, dark: .blue),
+    // Border tint  color used in the text fields.
+    fieldsBorder: FCColor(light: .red, dark: .blue),
+    // Tint color used in the right icons of the text fields.
+    fieldsRightIcon: FCColor(light: .red, dark: .blue),
+    // Background color for segmented controls
+    segmentedControlBackground: FCColor(light: .red, dark: .blue),
+    // Background color for the active part of segmented controls
+    segmentedControlActiveItem: FCColor(light: .red, dark: .blue),
+    // Tint color for the text in the dropdown menu
+    dropDownMenuTint: FCColor(light: .red, dark: .blue),
+    // Tint color for the on status of the toggle switch
+    toggleSwitchOn: FCColor(light: .red, dark: .blue),
+    // Border color of the banner component
+    bannerBorder: FCColor(light: .red, dark: .blue),
+    // Tint color for the success icon shown after a correct synchronization process
+    successIconTint: FCColor(light: .red, dark: .blue),
+    // Tint color for the failure icon shown after a failed synchronization process
+    failureIconTint: FCColor(light: .red, dark: .blue),
+    // Background color for the status bar
+    statusBarBackground: FCColor(light: .red, dark: .blue),
+    // Tint color for the phrases or paragraphs with a thin text
+    liteText: FCColor(light: .red, dark: .blue),
+    // Tint color used in the cell separators of tables
+    cellSeparator: FCColor(light: .red, dark: .blue),
+    // Tint color used in the icons of disclosure indicators within the cells of tables
+    cellDisclosureIndicator: FCColor(light: .red, dark: .blue),
+    // Tint color used in the placeholders of the text fields
+    fieldsPlaceholder: FCColor(light: .red, dark: .blue),
+    // Tint color used in the icon of the close button of the dialog alerts
+    dialogCloseButton: FCColor(light: .red, dark: .blue),
+    // Tint color used in the current dot of the page control of onboarding components
+    pageDotActive: FCColor(light: .red, dark: .blue),
+    // Tint color used in the unselected dots of the page control of onboarding components
+    pageDotInactive: FCColor(light: .red, dark: .blue)
 )
 ```
 
@@ -464,11 +496,71 @@ You can customize the SDK string texts to suit your application:
 
 ```swift
 FinerioConnectWidget.shared.texts = Texts(
-    companyName: "Finerio Connect",
-    countriesTitle: "Seleccione un país",
-    personalBankTitle: "Banca personal",
-    businessBankTitle: "Banca empresarial",
-    fiscalTitle: "Banca fiscal")
+    // Your company name
+    companyName: "your_text",
+    // The title to be displayed on the BanksListView
+    banksHeaderTitle: "your_text",
+    // A subtitle to be displayed on the BanksListView
+    banksHeaderSubtitle: "your_text",
+    // The text that brings context in the select country section of BanksListView
+    selectCountryLabel: "your_text",
+    // The name to refer to a personal bank type
+    personalBankType: "your_text",
+    // The name to refer to a business bank type
+    businessBankType: "your_text",
+    // The name to refer to a fiscal bank type
+    fiscalBankType: "your_text",
+    // The message to present when there's no banks to show
+    titleWithoutBanks: "your_text",
+    // The title to be displayed on the CredentialsView
+    credentialsHeaderTitle: "your_text",
+    // A subtitle to be displayed on the CredentialsView
+    credentialsHeaderSubtitle: "your_text",
+    // The full plain text to show in a linked text
+    plainTyCText: "your_text",
+    // The part of text to show with underline in a linked text and that will perform an event.
+    linkedTyCText: "your_text",
+    // The title to show in the Help button on CredentialsView
+    helpWithCredentialsButton: "your_text",
+    // The disclaimer text to show on the CredentialsView
+    credentialsDisclaimerText: "your_text",
+    // The title to be displayed on the SyncAccountsView
+    syncHeaderTitle: "your_text",
+    // A subtitle to be displayed on the SyncAccountsView
+    syncHeaderSubtitle: "your_text",
+    // The text that describes the status of the SyncAccountsView
+    encryptingData: "your_text",
+    // The title to be displayed on the StatusAccountView in case of successfuly process i.e. Congratulations!
+    bondingHeaderTitleSuccess: "your_text",
+    // The title to be displayed on the StatusAccountView in case of failure process i.e Ops! something goes wrong.
+    bondingHeaderTitleFailure: "your_text",
+    // A subtitle to be displayed on the StatusAccountView in case of successfuly process i.e communication error
+    bondingHeaderSubtitleSuccess: "your_text",
+    // A subtitle to be displayed on the StatusAccountView in case of failure process i.e. account saved
+    bondingHeaderSubtitleFailure: "your_text",
+    // A description to be displayed on the StatusAccountView in case of successfuly process i.e added with success detail
+    bondingDescriptionSuccess: "your_text",
+    // A description to be displayed on the StatusAccountView in case of failure process i.e. error connection detail
+    bondingDescriptionFailure: "your_text",
+    // A title for the button to retry the workflow
+    failureContinueTitleButton: "your_text",
+    // A title for the button to stops the workflow or cancels the process.
+    failureExitTitleButton: "your_text",
+    // A title for the button to continue the workflow
+    successContinueTitleButton: "your_text",
+    // A title for the button to stops the workflow or cancels the process.
+    successExitTitleButton: "your_text",
+    // A title for the button to continue the workflow
+    onboardingMainContinueButton: "your_text",
+    // A title for the button to stops the workflow or cancels the process.
+    onboardingMainExitButton: "your_text",
+    // A title for the button to continue the workflow of pages
+    onboardingStepContinueButton: "your_text",
+    // A title for the button to continue the workflow of pages
+    onboardingStepNextButton: "your_text",
+    // A title for the button to stops the workflow or cancels the process.
+    onboardingStepExitButton: "your_text"
+)
 ```
 
 To customize the font, import your preferred font files and set them in the traditional way. Finally add the name of the font in the property:
@@ -496,4 +588,64 @@ The SDK has animations by default with `Lottie`. You only need to change the ani
 FinerioConnectWidget.shared.animations = Animations(
     loadingAnimation: "https://assets3.lottiefiles.com/packages/lf20_d4dil7mw.json",
     accountCreationAnimation: "accountAnimation")
+```
+
+## Onboarding Flow
+
+The SDK provides a default onboarding flow that can be enabled or disabled in the Widget's Aggregation process. This views can be customized with the given `Palette` of styles. This onboarding process gets called only once during the Widget's Aggregation process.
+
+```swift
+FinerioConnectWidget.shared.showOnboarding = true
+```
+
+### Customized Pages
+
+The onboarding flow provides a class to inject your custom images and data to present in your own onboarding process. To inject this data you need to enable the `showOnboarding` flag and set the `Onboarding` instance as follows:
+
+```swift
+FinerioConnectWidget.shared.showOnboarding = true
+FinerioConnectWidget.shared.onboarding = Onboarding(
+    main: Onboarding.Main(icon: UIImage(systemName: "gamecontroller")!,
+                          title: "Main page title",
+                          description: "Description for main page",
+                          actionText: TextWithLink(fullPlainText: "Link to show pages")),
+    pages: [Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.up.filled")!,
+                                      icon: UIImage(systemName: "dpad.up.filled")!,
+                                      title: "Bullet Title One",
+                                      detail: TextWithLink(fullPlainText: "Description for page one")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.right.filled")!,
+                                      icon: UIImage(systemName: "dpad.right.filled")!,
+                                      title: "Bullet Title Two",
+                                      detail: TextWithLink(fullPlainText: "Description for page two")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.down.filled")!,
+                                      icon: UIImage(systemName: "dpad.down.filled")!,
+                                      title: "Bullet Title Three",
+                                      detail: TextWithLink(fullPlainText: "Description for page three")),
+            Onboarding.OnboardingPage(image: UIImage(systemName: "dpad.left.filled")!,
+                                      icon: UIImage(systemName: "dpad.left.filled")!,
+                                      title: "Bullet Title Four",
+                                      detail: TextWithLink(fullPlainText: "Description for page four"))
+])
+```
+
+### Reset Onboarding Flow
+
+In order to handle the reset of the onboarding flow we provide some properties that can be used with some logic to perform a custom reset flow.
+
+```swift
+// To know if a user has saw the onboarding flow once.
+finerioConnectWidget.hasShownOnboarding = true 
+// To show the onboarding tutorial
+finerioConnectWidget.showOnboarding = true
+```
+
+As an example, if you have some control version of your app or releases, you can configure the logic to reset the onboarding flow every time you update or deploy a new release version.
+
+```swift
+if currentVersion > oldVersion {
+    // this will reset the onboarding
+    finerioConnectWidget.hasShownOnboarding = false
+    // You can inject your new features in pages of the Onboarding
+    finerioConnectWidget.onboarding = Onboarding()
+}
 ```

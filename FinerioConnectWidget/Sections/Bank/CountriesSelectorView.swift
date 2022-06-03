@@ -173,8 +173,8 @@ extension CountriesSelectorView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        roundedContainerView.backgroundColor = palette.banksSelectorFieldBackground.dynamicColor
-        roundedContainerView.layer.borderColor = palette.banksSelectorFieldBorder.dynamicColor.cgColor
-        arrowImageView.tintColor = palette.banksCountrySelectorArrow.dynamicColor
+        roundedContainerView.backgroundColor = palette.fieldsBackground.dynamicColor
+        roundedContainerView.layer.borderColor = palette.fieldsBorder.dynamicColor.cgColor
+        arrowImageView.tintColor = palette.dropDownMenuTint.dynamicColor
     }
 }

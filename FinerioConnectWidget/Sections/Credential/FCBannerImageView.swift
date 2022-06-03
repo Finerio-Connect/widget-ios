@@ -86,8 +86,8 @@ extension FCBannerImageView {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        bannerImageView.tintColor = palette.credentialsBannerBorder.dynamicColor
-        bannerLabel.textColor = palette.credentialsBannerText.dynamicColor
-        imageView.tintColor = palette.credentialsBannerIcon.dynamicColor
+        bannerImageView.tintColor = palette.bannerBorder.dynamicColor
+        bannerLabel.textColor = palette.liteText.dynamicColor
+        imageView.tintColor = palette.liteText.dynamicColor
     }
 }

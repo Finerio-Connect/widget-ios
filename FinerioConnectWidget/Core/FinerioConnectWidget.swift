@@ -9,6 +9,8 @@
 import FirebaseCore
 import Mixpanel
 import UIKit
+import ZendeskSDK
+import ZendeskSDKMessaging
 
 public final class FinerioConnectWidget: NSObject {
     // MARK: - Type Properties
@@ -19,7 +21,6 @@ public final class FinerioConnectWidget: NSObject {
     public var presentingViewController: UIViewController?
 
     // MARK: - Instance Properties
-
     internal var context: Context?
 
     public var logLevel: LogLevel {
@@ -69,13 +70,13 @@ public final class FinerioConnectWidget: NSObject {
             configuration.bankType = bankType
         }
     }
-    
+
     public var theme: Theme = .light {
         didSet {
             configuration.theme = theme
         }
     }
-    
+
     public var showCountryOptions: Bool = true {
         didSet {
             configuration.showCountryOptions = showCountryOptions
@@ -87,9 +88,33 @@ public final class FinerioConnectWidget: NSObject {
             configuration.showBankTypeOptions = showBankTypeOptions
         }
     }
+    
+    public var showOnboarding: Bool = true {
+        didSet {
+            configuration.showOnboarding = showOnboarding
+        }
+    }
+    
+    public var hasShownOnboarding: Bool = false {
+        didSet {
+            UserConfig.hasShownOnboarding = hasShownOnboarding
+        }
+    }
+    
+    public var onboarding: Onboarding = onboardingFinerioData {
+        didSet {
+            configuration.onboarding = onboarding
+        }
+    }
+
+    public var showChat: Bool = true {
+        didSet {
+            configuration.showChat = showChat
+        }
+    }
 
     private(set) var isReadySDK: Bool = false
-    
+
     private lazy var registerFonts: Void = {
         UIFont.registerFonts(from: Bundle.finerioConnectWidget())
     }()
@@ -117,7 +142,8 @@ public final class FinerioConnectWidget: NSObject {
     }
 }
 
-//MARK: - Private Methods
+// MARK: - Private Methods
+
 extension FinerioConnectWidget {
     private func firebaseConfigure() {
         let filePath = Bundle.finerioConnectWidget().path(forResource: "GoogleService-Info", ofType: "plist")
@@ -125,24 +151,34 @@ extension FinerioConnectWidget {
             assert(false, "Couldn't load config file")
             return
         }
-        
+
         FirebaseApp.configure(options: fileopts)
         logInfo("Firebase Configuration")
     }
-    
+
     private func mixpanelConfigure() {
         Mixpanel.initialize(token: environment == .sandbox ? Constants.Keys.sandboxMixpanelToken : Constants.Keys.productionMixpanelToken)
         let superProperties = [
             Constants.Events.widgetId: Configuration.shared.widgetId,
-            Constants.Events.appName: Constants.SuperPropertiesValues.appName
+            Constants.Events.appName: Constants.SuperPropertiesValues.appName,
         ]
         Mixpanel.mainInstance().registerSuperProperties(superProperties)
         if logLevel == .debug { Mixpanel.mainInstance().loggingEnabled = true }
         logInfo("Mixpanel Configuration")
     }
+
+    private func configureZendesk() {
+        ZendeskSDK.Zendesk.initialize(withChannelKey: Constants.Keys.zendeskChannelKey, messagingFactory: DefaultMessagingFactory()) {
+            result in
+            if case let .failure(error) = result {
+                print("Messaging did not initialize.\nError: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 // MARK: - Public Methods
+
 extension FinerioConnectWidget {
     public func start(widgetId: String,
                       customerName: String,
@@ -158,25 +194,29 @@ extension FinerioConnectWidget {
             configuration.customerId = customerId
             configuration.automaticFetching = automaticFetching
             configuration.state = state
-            
+
             self.presentingViewController = presentingViewController
-            
+
             firebaseConfigure()
             mixpanelConfigure()
-            
+
+            if showChat {
+                configureZendesk()
+            }
+
             isReadySDK = true
         }
-        
+
         // Register local fonts.
-        let _ = registerFonts
-        
+        _ = registerFonts
+
         // To present the all-in-one flow
         if let presentingVC = presentingViewController {
             guard let navigationController = presentingVC.navigationController else {
                 logWarn("Couldn't initialize view controller, required NavigationController")
                 return
             }
-            
+
             context = Context(with: navigationController)
             context?.initialize(coordinator: AppCoordinator(context: context!))
         }

@@ -74,7 +74,7 @@ extension CountryTableViewCell {
     
     private func changeStyle() {
         let palette = Configuration.shared.palette
-        backgroundColor = palette.banksCountryCellBackground.dynamicColor
-        countryLabel.textColor = palette.banksCountryCellTitle.dynamicColor
+        backgroundColor = palette.fieldsBackground.dynamicColor
+        countryLabel.textColor = palette.dropDownMenuTint.dynamicColor
     }
 }

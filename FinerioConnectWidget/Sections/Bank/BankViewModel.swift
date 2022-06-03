@@ -15,11 +15,13 @@ internal class BankViewModel {
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
     let userDefaults = UserDefaults.standard
 
-    func getCurrentCountry(_ country: String = Configuration.shared.countryCode) -> Country? {
-        if let index = countries.firstIndex(where: { $0.code.lowercased() == country.lowercased() }) {
-            return countries[index]
+    func getCurrentCountry(_ country: String = Configuration.shared.countryCode,
+                           completion: @escaping (Country?) -> Void) {
+        if let country = countries.filter({ $0.code.lowercased() == country.lowercased() }).first {
+            completion(country)
+        } else {
+            completion(nil)
         }
-        return nil
     }
 
     func loadCountries() {
@@ -37,17 +39,17 @@ internal class BankViewModel {
 
     func loadBanks(country: String = Configuration.shared.countryCode, type: BankType = Configuration.shared.bankType) {
         let banksKeyPath = "\(country)_\(type)"
-        
+
         if let localBanks = getLocalBanksFromKeyPath(banksKeyPath) {
-            self.banks = localBanks
-            self.serviceStatusHandler(.success)
+            banks = localBanks
+            serviceStatusHandler(.success)
         } else {
             FinerioConnectWidgetAPI.banks(country: country, type: type.rawValue) { [weak self] result in
                 if let error = result.error {
                     self?.errorMessage = error.error == Constants.Texts.Errors.unknownError ? Constants.Texts.Errors.unknownErrorMessage : error.message
                     self?.serviceStatusHandler(.failure)
                 }
-                
+
                 if let value = result.value {
                     self?.banks = value
                     self?.saveBanks(value, for: banksKeyPath)
@@ -59,9 +61,11 @@ internal class BankViewModel {
 }
 
 // MARK: - Local Banks
+
 extension BankViewModel {
+    // #warning("Improve to use it with FCUserConfig")
     private func getLocalBanksFromKeyPath(_ keyPath: String) -> [Bank]? {
-        var localBanks: [Bank]? = nil
+        var localBanks: [Bank]?
         if let banksData = userDefaults.value(forKey: keyPath) as? Data {
             if let banks = try? JSONDecoder().decode([Bank].self, from: banksData) {
                 localBanks = banks
@@ -69,10 +73,10 @@ extension BankViewModel {
         }
         return localBanks
     }
-    
-    private func saveBanks(_ banks: [Bank],for keyPath: String) {
+
+    private func saveBanks(_ banks: [Bank], for keyPath: String) {
         if let data = try? JSONEncoder().encode(banks) {
-            self.userDefaults.set(data, forKey: keyPath)
+            userDefaults.set(data, forKey: keyPath)
         }
     }
 }

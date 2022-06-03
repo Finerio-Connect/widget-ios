@@ -107,7 +107,12 @@
 		7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */; };
 		7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */; };
 		7A01BBF92783C92000D3DC96 /* UIResponder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */; };
+		7A118649281AFD8800C34748 /* OnboardingContentPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */; };
+		7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */; };
+		7A121F4C282709870076A41E /* FCUserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A121F4B282709870076A41E /* FCUserConfig.swift */; };
 		7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */; };
+		7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28C77428184652002DD9F5 /* OnboardingCell.swift */; };
+		7A4B9A5128176D6300C4DBA7 /* FCOnboardingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */; };
 		7A5CC31C27C6FE7E0071AE7D /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */; };
 		7A73CA1D279A40E800DF418C /* FCDropDownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */; };
 		7A73CA1F279A47CB00DF418C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */; };
@@ -120,8 +125,14 @@
 		7A8A81BD27860D9C00DF09AB /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */; };
 		7A8A81BF278642A500DF09AB /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */; };
 		7A97DF9A27B4304D00238F78 /* FCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97DF9927B4304D00238F78 /* FCColor.swift */; };
+		7ABFC4EC2825FAE6001F44B3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */; };
+		7ABFC4EE2825FB0A001F44B3 /* OnboardingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */; };
+		7ABFC4F02825FB37001F44B3 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */; };
+		7ABFC4F22825FBB7001F44B3 /* FCOnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */; };
 		7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */; };
-		C60A8072C86AB9673D6A31D3 /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3C876CA01DBD2085B535A7 /* Pods_FinerioConnectWidget.framework */; };
+		7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */; };
+		7AEF77C0281A2461000FB919 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */; };
+		AB9407D51ED7DFC6BB89151E /* Pods_FinerioConnectWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -216,7 +227,6 @@
 		0FD2720325F1719600E052F7 /* FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD2720625F1719600E052F7 /* FinerioConnectWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinerioConnectWidget.h; sourceTree = "<group>"; };
 		0FD2720725F1719600E052F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		756E7FAFB87BFE0356DD5C63 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		7A01BBE42783BBB000D3DC96 /* FCBankSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBankSelectionView.swift; sourceTree = "<group>"; };
 		7A01BBE62783BC0600D3DC96 /* CountriesSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesSelectorView.swift; sourceTree = "<group>"; };
 		7A01BBE82783C57E00D3DC96 /* FCLoaderAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCLoaderAnimationView.swift; sourceTree = "<group>"; };
@@ -228,7 +238,12 @@
 		7A01BBF42783C76500D3DC96 /* FCCredentialsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCCredentialsFormView.swift; sourceTree = "<group>"; };
 		7A01BBF62783C78500D3DC96 /* FCBannerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCBannerImageView.swift; sourceTree = "<group>"; };
 		7A01BBF82783C92000D3DC96 /* UIResponder+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extensions.swift"; sourceTree = "<group>"; };
+		7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentPageVC.swift; sourceTree = "<group>"; };
+		7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingStepView.swift; sourceTree = "<group>"; };
+		7A121F4B282709870076A41E /* FCUserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCUserConfig.swift; sourceTree = "<group>"; };
 		7A27F70727C5C6AD00177465 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		7A28C77428184652002DD9F5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingMainView.swift; sourceTree = "<group>"; };
 		7A5CC31B27C6FE7E0071AE7D /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		7A73CA1C279A40E800DF418C /* FCDropDownListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDropDownListView.swift; sourceTree = "<group>"; };
 		7A73CA1E279A47CB00DF418C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
@@ -241,9 +256,16 @@
 		7A8A81B827860D9C00DF09AB /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		7A8A81BE278642A500DF09AB /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		7A97DF9927B4304D00238F78 /* FCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCColor.swift; sourceTree = "<group>"; };
+		7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingMainVC.swift; sourceTree = "<group>"; };
+		7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOnboardingData.swift; sourceTree = "<group>"; };
 		7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
-		9D3C876CA01DBD2085B535A7 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF243D496C5A707CE1F377CE /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageVC.swift; sourceTree = "<group>"; };
+		7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
+		ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.release.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.release.xcconfig"; sourceTree = "<group>"; };
+		B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinerioConnectWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinerioConnectWidget.debug.xcconfig"; path = "Target Support Files/Pods-FinerioConnectWidget/Pods-FinerioConnectWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,13 +273,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C60A8072C86AB9673D6A31D3 /* Pods_FinerioConnectWidget.framework in Frameworks */,
+				AB9407D51ED7DFC6BB89151E /* Pods_FinerioConnectWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DFAAD185C66E7A70EA6ED65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B74F6CB8607916B0E0DBBF26 /* Pods_FinerioConnectWidget.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0FCBAEB025F1785300DA2D18 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +386,7 @@
 				0FCBAF1825F1795C00DA2D18 /* Constants.swift */,
 				0FCBAF1B25F1795D00DA2D18 /* Enums.swift */,
 				7A01BBEA2783C5D400D3DC96 /* FCBaseView.swift */,
+				7A121F4B282709870076A41E /* FCUserConfig.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -363,6 +394,7 @@
 		0FCBAF1F25F1795D00DA2D18 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				7A4B9A4D28176A9F00C4DBA7 /* Onboarding */,
 				0FCBAF2D25F1795D00DA2D18 /* Account */,
 				0FCBAF2525F1795D00DA2D18 /* Bank */,
 				0FCBAF2025F1795D00DA2D18 /* Credential */,
@@ -515,6 +547,7 @@
 				7AD2D11927473B8B007CE809 /* HeaderSectionView.swift */,
 				0FCBAF5B25F1795D00DA2D18 /* PaddedTextField.swift */,
 				7A79CB932751AEC000B7F60D /* VerticallyCenteredTextView.swift */,
+				7AEF77BF281A2461000FB919 /* ContentSizedTableView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -558,7 +591,7 @@
 				0FD2720525F1719600E052F7 /* FinerioConnectWidget */,
 				0FD2720425F1719600E052F7 /* Products */,
 				B72BAD0A5444E289A13BF8A5 /* Pods */,
-				37377FE24F3752C4388B8802 /* Frameworks */,
+				0DFAAD185C66E7A70EA6ED65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -586,12 +619,25 @@
 			path = FinerioConnectWidget;
 			sourceTree = "<group>";
 		};
-		37377FE24F3752C4388B8802 /* Frameworks */ = {
+		7A118646281AFCF700C34748 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9D3C876CA01DBD2085B535A7 /* Pods_FinerioConnectWidget.framework */,
+				7ABFC4ED2825FB0A001F44B3 /* OnboardingMainVC.swift */,
+				7A4B9A5028176D6300C4DBA7 /* FCOnboardingMainView.swift */,
+				7A28C77428184652002DD9F5 /* OnboardingCell.swift */,
 			);
-			name = Frameworks;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7A4B9A4D28176A9F00C4DBA7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7ABFC4F12825FBB7001F44B3 /* FCOnboardingData.swift */,
+				7ABFC4EF2825FB37001F44B3 /* OnboardingCoordinator.swift */,
+				7AE00CB92820C30800B4EED3 /* Paginator */,
+				7A118646281AFCF700C34748 /* Main */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		7A8A81B327860D8000DF09AB /* Fonts */ = {
@@ -606,11 +652,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		7AE00CB92820C30800B4EED3 /* Paginator */ = {
+			isa = PBXGroup;
+			children = (
+				7A11864A281AFDB100C34748 /* FCOnboardingStepView.swift */,
+				7A118648281AFD8800C34748 /* OnboardingContentPageVC.swift */,
+				7AE00CB728209C1500B4EED3 /* OnboardingPageVC.swift */,
+				7ABFC4EB2825FAE6001F44B3 /* Onboarding.swift */,
+			);
+			path = Paginator;
+			sourceTree = "<group>";
+		};
 		B72BAD0A5444E289A13BF8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				756E7FAFB87BFE0356DD5C63 /* Pods-FinerioConnectWidget.debug.xcconfig */,
-				CF243D496C5A707CE1F377CE /* Pods-FinerioConnectWidget.release.xcconfig */,
+				EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */,
+				ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -633,7 +690,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD2720B25F1719600E052F7 /* Build configuration list for PBXNativeTarget "FinerioConnectWidget" */;
 			buildPhases = (
-				4C0B98123809E65D4E4BDF64 /* [CP] Check Pods Manifest.lock */,
+				A4905F57AE031EFD6F25D8F8 /* [CP] Check Pods Manifest.lock */,
 				0FD271FE25F1719600E052F7 /* Headers */,
 				0FD271FF25F1719600E052F7 /* Sources */,
 				0FD2720025F1719600E052F7 /* Frameworks */,
@@ -654,7 +711,7 @@
 		0FD271FA25F1719600E052F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = "Finerio Connect";
 				TargetAttributes = {
 					0FD2720225F1719600E052F7 = {
@@ -704,7 +761,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C0B98123809E65D4E4BDF64 /* [CP] Check Pods Manifest.lock */ = {
+		A4905F57AE031EFD6F25D8F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -747,11 +804,13 @@
 				0FCBAFC625F1795D00DA2D18 /* PaddedTextField.swift in Sources */,
 				0FCBAF7625F1795D00DA2D18 /* Palette.swift in Sources */,
 				7A01BBF72783C78500D3DC96 /* FCBannerImageView.swift in Sources */,
+				7ABFC4F02825FB37001F44B3 /* OnboardingCoordinator.swift in Sources */,
 				0FCBAFAF25F1795D00DA2D18 /* UINavigationController+Extensions.swift in Sources */,
 				0FCBAF9925F1795D00DA2D18 /* CredentialCoordinator.swift in Sources */,
 				0FCBAFC125F1795D00DA2D18 /* RotationAnimation.swift in Sources */,
 				0FCBAFBD25F1795D00DA2D18 /* Reachability.swift in Sources */,
 				0FCBAF9425F1795D00DA2D18 /* FCComponentsStyle.swift in Sources */,
+				7ABFC4EE2825FB0A001F44B3 /* OnboardingMainVC.swift in Sources */,
 				0FCBAFBA25F1795D00DA2D18 /* Background.swift in Sources */,
 				0FCBAFA125F1795D00DA2D18 /* AccountStatusViewModel.swift in Sources */,
 				0FCBAFA725F1795D00DA2D18 /* UIImageView+Extensions.swift in Sources */,
@@ -764,9 +823,12 @@
 				0F776B63264C78A800B92AD8 /* UITextField+Extensions.swift in Sources */,
 				0FCBAF9125F1795D00DA2D18 /* BaseViewController.swift in Sources */,
 				7A5CC31C27C6FE7E0071AE7D /* UIAlertController+Extensions.swift in Sources */,
+				7A4B9A5128176D6300C4DBA7 /* FCOnboardingMainView.swift in Sources */,
 				0FCBAFC325F1795D00DA2D18 /* StrokeAnimation.swift in Sources */,
 				0FCBAF8625F1795D00DA2D18 /* JSONMappable.swift in Sources */,
+				7A121F4C282709870076A41E /* FCUserConfig.swift in Sources */,
 				7A27F70827C5C6AD00177465 /* UISegmentedControl+Extensions.swift in Sources */,
+				7A28C77528184652002DD9F5 /* OnboardingCell.swift in Sources */,
 				0FCBAF8F25F1795D00DA2D18 /* Constants.swift in Sources */,
 				0FCBAF7925F1795D00DA2D18 /* Animations.swift in Sources */,
 				0FCBAF8A25F1795D00DA2D18 /* FinerioConnectWidgetAPIURLEncoding.swift in Sources */,
@@ -782,17 +844,21 @@
 				0FCBAF9625F1795D00DA2D18 /* CredentialTableViewCell.swift in Sources */,
 				7A01BBF12783C6ED00D3DC96 /* CredentialAccount.swift in Sources */,
 				0FCBAFAE25F1795D00DA2D18 /* UIViewController+Extension.swift in Sources */,
+				7A118649281AFD8800C34748 /* OnboardingContentPageVC.swift in Sources */,
 				0FCBAFAA25F1795D00DA2D18 /* String+Extensions.swift in Sources */,
 				0FCBAF7C25F1795D00DA2D18 /* CredentialStatus.swift in Sources */,
 				0F6586312614EF7B00D1BBA6 /* ImageCaching.swift in Sources */,
 				0FCBAF7825F1795D00DA2D18 /* SessionManager.swift in Sources */,
 				7AD2D11A27473B8B007CE809 /* HeaderSectionView.swift in Sources */,
+				7AE00CB828209C1500B4EED3 /* OnboardingPageVC.swift in Sources */,
 				7A01BBF52783C76500D3DC96 /* FCCredentialsFormView.swift in Sources */,
 				7A79CB922751ACDC00B7F60D /* UITableView+Extensions.swift in Sources */,
 				0FCBAFD425F1795D00DA2D18 /* LocalizableConstants.swift in Sources */,
 				0FCBAF9225F1795D00DA2D18 /* Enums.swift in Sources */,
 				0F5E462726EAC19200A9CB63 /* CredentialHelpDialog.swift in Sources */,
+				7ABFC4F22825FBB7001F44B3 /* FCOnboardingData.swift in Sources */,
 				0FCBAF9D25F1795D00DA2D18 /* BankCoordinator.swift in Sources */,
+				7A11864B281AFDB100C34748 /* FCOnboardingStepView.swift in Sources */,
 				0FCBAFB325F1795D00DA2D18 /* Context.swift in Sources */,
 				0FCBAF7D25F1795D00DA2D18 /* CredentialResponse.swift in Sources */,
 				0FCBAFA625F1795D00DA2D18 /* AccountViewController.swift in Sources */,
@@ -806,6 +872,7 @@
 				0FCBAF8D25F1795D00DA2D18 /* FinerioConnectWidget.swift in Sources */,
 				7A01BBE52783BBB000D3DC96 /* FCBankSelectionView.swift in Sources */,
 				0FCBAF9F25F1795D00DA2D18 /* StartViewController.swift in Sources */,
+				7AEF77C0281A2461000FB919 /* ContentSizedTableView.swift in Sources */,
 				0FCBAFB925F1795D00DA2D18 /* Localize.swift in Sources */,
 				7A79CB942751AEC000B7F60D /* VerticallyCenteredTextView.swift in Sources */,
 				0FCBAF8B25F1795D00DA2D18 /* APIRoute.swift in Sources */,
@@ -826,6 +893,7 @@
 				0FCBAFA325F1795D00DA2D18 /* AccountCoordinator.swift in Sources */,
 				0FCBAF8925F1795D00DA2D18 /* MagicLinkAPIError.swift in Sources */,
 				0FCBAF8825F1795D00DA2D18 /* HTTPClient.swift in Sources */,
+				7ABFC4EC2825FAE6001F44B3 /* Onboarding.swift in Sources */,
 				0FCBAF9E25F1795D00DA2D18 /* StartViewModel.swift in Sources */,
 				7A8058532744581600F12B80 /* BankTableViewCell.swift in Sources */,
 				0FCBAF7A25F1795D00DA2D18 /* CredentialToken.swift in Sources */,
@@ -963,10 +1031,10 @@
 		};
 		0FD2720C25F1719600E052F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 756E7FAFB87BFE0356DD5C63 /* Pods-FinerioConnectWidget.debug.xcconfig */;
+			baseConfigurationReference = EB73369D53D25B1E31A98B68 /* Pods-FinerioConnectWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -981,7 +1049,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -993,10 +1061,10 @@
 		};
 		0FD2720D25F1719600E052F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF243D496C5A707CE1F377CE /* Pods-FinerioConnectWidget.release.xcconfig */;
+			baseConfigurationReference = ABE70937E0FBFA01B8A2E7C3 /* Pods-FinerioConnectWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CFDLJ2DHRX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1011,7 +1079,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finerioconnect.widget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

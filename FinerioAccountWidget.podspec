@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
-  s.name                  = "FinerioAccountWidget"
-  s.version               = "2.0.0"
+  s.name                  = 'FinerioAccountWidget'
+  s.version               = ENV['LIB_VERSION'] || '2.5.0'
   s.swift_version         = '5.0'
-  s.summary               = "Finerio Connect Widget"
-  s.homepage              = "https://finerioconnect.com"
+  s.summary               = 'Finerio Connect Widget'
+  s.homepage              = 'https://finerioconnect.com'
   s.license               = { :type => "GLP", :file => "LICENSE" }
-  s.author                = "Finerio Connect"
-  s.source                = { :git => "https://github.com/Finerio-Connect/widget-ios.git", :tag => s.version }
+  s.author                = 'Finerio Connect'
+  s.source                = { :git => 'https://github.com/Finerio-Connect/widget-ios.git', :tag => s.version }
   
   s.default_subspec       = 'Sources'
   s.platform              = :ios, '11.0'
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftyRSA'
   s.dependency 'lottie-ios'
   s.dependency 'Mixpanel-swift'
+  s.dependency 'ZendeskSDKMessaging'
   
   s.requires_arc          = true
 end

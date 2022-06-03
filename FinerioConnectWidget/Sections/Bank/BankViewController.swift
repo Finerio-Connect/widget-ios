@@ -11,10 +11,10 @@ import UIKit
 internal class BankViewController: BaseViewController {
     // Components
     private var bankSelectionView: FCBankSelectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = FCComponentsStyle.viewControllersAIOBackground.dynamicColor
+        view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
         
         bankSelectionView = FCBankSelectionView()
         view.addSubview(bankSelectionView)
@@ -24,22 +24,17 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.trailingAnchor(equalTo: view.trailingAnchor)
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // To enable the navBar
-        navigationController?.navigationBar.isHidden = false
-    }
 }
 
-//MARK: - FCBankSelectionView Delegate
+// MARK: - FCBankSelectionView Delegate
+
 extension BankViewController: FCBankSelectionViewDelegate {
     func bankSelectionView(didSelect bank: Bank, nextFlowView: FCCredentialsFormView) {
         let coordinator = CredentialCoordinator(context: context!, bank: bank)
         context?.initialize(coordinator: coordinator)
     }
-    
+
     func bankSelectionView(onFailure: ServiceStatus, message: String) {
-        self.showAlert(message, viewController: self)
+        showAlert(message, viewController: self)
     }
 }
