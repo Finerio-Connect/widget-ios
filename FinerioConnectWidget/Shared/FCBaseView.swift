@@ -63,6 +63,7 @@ extension FCBaseView {
             topVC?.navigationController?.navigationBar.isHidden = false
         }
 
+        trackEvent(eventName: Constants.Events.clickSupportChat)
         navigationController.show(viewController, sender: self)
     }
 
