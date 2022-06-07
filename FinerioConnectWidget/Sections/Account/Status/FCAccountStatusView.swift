@@ -74,6 +74,7 @@ extension FCAccountStatusView {
 extension FCAccountStatusView {
     private func configureViewFailure() {
         if !floatingButtonAdded {
+            trackEvent(eventName: Constants.Events.showSupportChat)
             addFloatingButton()
             floatingButtonAdded = true
         }
