@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'FinerioAccountWidget'
-  s.version               = ENV['LIB_VERSION'] || '2.5.1'
+  s.version               = '2.5.1'
   s.swift_version         = '5.0'
   s.summary               = 'Finerio Connect Widget'
   s.homepage              = 'https://finerioconnect.com'
