@@ -15,9 +15,9 @@ internal class AccountStatusViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
-        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        view.backgroundColor = Configuration.shared.palette.backgroundView.dynamicColor
+
         accountStatusView.delegate = self
 
         view.addSubview(accountStatusView)
@@ -55,6 +55,7 @@ extension AccountStatusViewController: FCAccountStatusViewDelegate {
 
     func accountStatusView(didSelectExitButton: UIButton) {
         let topVC = UIApplication.fcTopViewController()
+        topVC?.navigationController?.navigationBar.isHidden = false
         topVC?.navigationController?.popToRootViewController(animated: true)
     }
 }
