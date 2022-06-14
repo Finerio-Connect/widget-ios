@@ -56,13 +56,13 @@ extension FCBaseView {
 
     @objc private func startZendesk() {
         guard let viewController = Zendesk.instance?.messaging?.messagingViewController() else { return }
-        guard let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
+        guard let navigationController = UIApplication.fcTopViewController()?.navigationController else { return }
 
         let topVC = UIApplication.fcTopViewController()
         if topVC is AccountStatusViewController {
             topVC?.navigationController?.navigationBar.isHidden = false
         }
-
+        
         trackEvent(eventName: Constants.Events.clickSupportChat)
         navigationController.show(viewController, sender: self)
     }

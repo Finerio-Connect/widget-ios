@@ -90,6 +90,7 @@ extension FCCredentialsFormView {
     }
 
     @objc private func createCredential() {
+        endEditing(true)
         loadingView.start()
         getTextFieldValuesFromTableView()
 
