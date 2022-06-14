@@ -21,6 +21,7 @@ public final class FinerioConnectWidget: NSObject {
     public var presentingViewController: UIViewController?
 
     // MARK: - Instance Properties
+
     internal var context: Context?
 
     public var logLevel: LogLevel {
@@ -88,19 +89,19 @@ public final class FinerioConnectWidget: NSObject {
             configuration.showBankTypeOptions = showBankTypeOptions
         }
     }
-    
+
     public var showOnboarding: Bool = true {
         didSet {
             configuration.showOnboarding = showOnboarding
         }
     }
-    
+
     public var hasShownOnboarding: Bool = false {
         didSet {
             UserConfig.hasShownOnboarding = hasShownOnboarding
         }
     }
-    
+
     public var onboarding: Onboarding = onboardingFinerioData {
         didSet {
             configuration.onboarding = onboarding
@@ -146,14 +147,19 @@ public final class FinerioConnectWidget: NSObject {
 
 extension FinerioConnectWidget {
     private func firebaseConfigure() {
+        guard FirebaseApp.app(name: Constants.Keys.firebaseAppName) == nil else {
+            logInfo("App has been configured.")
+            return
+        }
+
         let filePath = Bundle.finerioConnectWidget().path(forResource: "GoogleService-Info", ofType: "plist")
         guard let fileopts = FirebaseOptions(contentsOfFile: filePath!) else {
             assert(false, "Couldn't load config file")
             return
         }
 
-        FirebaseApp.configure(options: fileopts)
-        logInfo("Firebase Configuration")
+        FirebaseApp.configure(name: Constants.Keys.firebaseAppName, options: fileopts)
+        logInfo("Firebase App Configuration")
     }
 
     private func mixpanelConfigure() {
@@ -186,6 +192,8 @@ extension FinerioConnectWidget {
                       automaticFetching: Bool = true,
                       state: String = "stateEncrypted",
                       presentingViewController: UIViewController? = nil) {
+        firebaseConfigure()
+
         if !isReadySDK {
             logInfo("FinerioConnectWidget is starting...")
             logInfo("SDK Version: \(Configuration.shared.app.getSDKVersion())")

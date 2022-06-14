@@ -1,13 +1,13 @@
 PODS:
-  - FinerioAccountWidget (2.5.1):
-    - FinerioAccountWidget/Sources (= 2.5.1)
+  - FinerioAccountWidget (2.5.2):
+    - FinerioAccountWidget/Sources (= 2.5.2)
     - Firebase/Analytics
     - Firebase/Database
     - lottie-ios
     - Mixpanel-swift
     - SwiftyRSA
     - ZendeskSDKMessaging
-  - FinerioAccountWidget/Sources (2.5.1):
+  - FinerioAccountWidget/Sources (2.5.2):
     - Firebase/Analytics
     - Firebase/Database
     - lottie-ios
@@ -177,7 +177,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FinerioAccountWidget: 0c5359031b17714182ae3bd0d0302afa925978d0
+  FinerioAccountWidget: 20d307e55044bc7d627cb112224d5218bf71f164
   Firebase: 91c243d75573ac6e7c9735ec859b72bffb61347d
   FirebaseAnalytics: bf11064790ac96804df1df9ddc0ae45af950d9fc
   FirebaseCore: b7bfc258e996eada23b3666bd6b9a22ca092acb8
@@ -206,4 +206,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9e1de5dadc4fb9d018c332b311d91eeff2c0914f
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
