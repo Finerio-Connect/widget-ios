@@ -1,0 +1,24 @@
+name: Continuous Deployment
+
+on:
+  push:
+    tags:
+      - '*'
+      
+jobs:
+  deploy:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Cocoapods
+      run: gem install cocoapods
+    - name: Lint
+      run: |
+        set -e
+        pod lib lint
+    - name: Deploy to Cocoapods
+      run: |
+        set -eo pipefail
+        pod trunk push
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
