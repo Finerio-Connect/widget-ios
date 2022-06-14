@@ -6,6 +6,7 @@
 //  Copyright © 2021 Finerio. All rights reserved.
 //
 
+import FirebaseCore
 import FirebaseDatabase
 import UIKit
 
@@ -19,7 +20,7 @@ internal class AccountViewModel {
     var bank: Bank!
 
     var serviceStatusHandler: (ServiceStatus) -> Void = { _ in }
-    let databaseReference = Database.database().reference()
+    let databaseReference = Database.database(app: FirebaseApp.app(name: Constants.Keys.firebaseAppName)!).reference()
 
     func updateCredentialToken(credentialToken: CredentialToken) {
         FinerioConnectWidgetAPI.updateCredentialToken(credentialToken: credentialToken) { [weak self] result in
@@ -76,31 +77,31 @@ internal class AccountViewModel {
                 for value in snap.children {
                     let account = value as! DataSnapshot
                     let valueDictionary = account.value as! [String: AnyObject]
-                    
+
                     let accountName = valueDictionary["name"] as? String ?? ""
                     let accountStatus = valueDictionary["status"] as? String ?? ""
-                    
+
                     let transaction = AccountStatus(id: account.key,
                                                     name: accountName,
                                                     status: accountStatus)
-                    
+
                     if accountStatus == Constants.CredentialStatus.accountCreated {
-                        let credentialAccount = CredentialAccount(credentialId: self.credentialId,
+                        let credentialAccount = CredentialAccount(credentialId: credentialId,
                                                                   accountId: account.key,
                                                                   name: accountName,
                                                                   status: accountStatus)
-                        
+
                         credentialAccounts.append(credentialAccount)
                     }
-                    
+
                     let filtered = accounts.filter { accountFound in
                         accountFound.id == account.key
                     }
-                    
+
                     if filtered.isEmpty {
                         accounts.append(transaction)
                     }
-                    
+
                     filtered.first?.status = accountStatus
                 }
             }
