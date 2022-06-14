@@ -60,27 +60,18 @@ internal struct Constants {
         static var password = "password"
         static var securityCode = "securityCode"
     }
-    
+
     /// Texfields Name
     struct TexfieldsFriendlyName {
         static var user = "Usuario"
     }
 
-    /// Tags
-//    struct Tags {
-//        static let loader = 200
-//        static let fieldSecurityCode = 33
-//        static let fieldPassword = 66
-//        static let fieldSelect = 99
-//    }
-    
     struct FieldType {
         static let loader = 200
         static let plainText = 33
         static let passwordText = 66
         static let selectorOptions = 99
     }
-    
 
     /// URLS
     struct URLS {
@@ -94,8 +85,9 @@ internal struct Constants {
 
     /// Keys
     struct Keys {
-        static let publicKey = "MIIBCgKCAQEAv1STVY1D8uelL+j4Tm0zsgOsgof3KMsmWUIyvLtKUnH5SBrcPqEbjI5+gwRTwc1d5QcGWqEgx2uSUSaOdDWyTR6mKG8iSMYWEtEeCI/LmwAKGapGDB/ciguhXzsjVa9dZThlHvW4XiHWEIenxzbahXexBuEQfSP9DiJuM9yRqHX60+aCJxupRtLgaWQkTtFGI5tGQ1tMN0qZW7eat//rvzHrp4MU2EOVXiRE06ypWRQhni8zY+VaNPjXHybPC+dIiXspBqwaySKBKqNVZCXtqVa7ouJfXs3HUrpthJqQ30cPefEt0jAFj6QRJDsGwKTXS3gq7mGz3AYq0Be2LuTD1wIDAQAB"
+        static let firebaseAppName = "FC_IOS_WIDGET"
         static let firebaseNode = "CtkFJ3subunSceVh7vUAPMB4TckRSv"
+        static let publicKey = "MIIBCgKCAQEAv1STVY1D8uelL+j4Tm0zsgOsgof3KMsmWUIyvLtKUnH5SBrcPqEbjI5+gwRTwc1d5QcGWqEgx2uSUSaOdDWyTR6mKG8iSMYWEtEeCI/LmwAKGapGDB/ciguhXzsjVa9dZThlHvW4XiHWEIenxzbahXexBuEQfSP9DiJuM9yRqHX60+aCJxupRtLgaWQkTtFGI5tGQ1tMN0qZW7eat//rvzHrp4MU2EOVXiRE06ypWRQhni8zY+VaNPjXHybPC+dIiXspBqwaySKBKqNVZCXtqVa7ouJfXs3HUrpthJqQ30cPefEt0jAFj6QRJDsGwKTXS3gq7mGz3AYq0Be2LuTD1wIDAQAB"
         static let productionMixpanelToken = "849778938cdb0486c91d953502082582"
         static let sandboxMixpanelToken = "86830d7eeedf9117694afc6e85d94f56"
         static let zendeskChannelKey = "eyJzZXR0aW5nc191cmwiOiJodHRwczovL2ZpbmVyaW9jb25uZWN0aGVscC56ZW5kZXNrLmNvbS9tb2JpbGVfc2RrX2FwaS9zZXR0aW5ncy8wMUcwSzRUMlYyWEtUMDA1WUpYWktTOFk3Ry5qc29uIn0="
@@ -150,7 +142,7 @@ internal struct Constants {
         static let showSupportChat = "Show Support Chat"
         static let clickSupportChat = "Click Support Chat"
     }
-    
+
     struct SuperPropertiesValues {
         static let appName = "WidgetMOBILE"
     }

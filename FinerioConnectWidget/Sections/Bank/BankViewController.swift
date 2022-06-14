@@ -24,6 +24,12 @@ internal class BankViewController: BaseViewController {
         bankSelectionView.trailingAnchor(equalTo: view.trailingAnchor)
         bankSelectionView.bottomAnchor(equalTo: view.safeBottomAnchor)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 // MARK: - FCBankSelectionView Delegate
